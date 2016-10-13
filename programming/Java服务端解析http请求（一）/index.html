@@ -1,0 +1,1049 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java服务端解析http请求（一）">
+<meta property="og:url" content="http://blublu.xyz/programming/Java服务端解析http请求（一）/index.html">
+<meta property="og:site_name" content="&三鹿伴我长大">
+<meta property="og:description" content="现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。">
+<meta property="og:updated_time" content="2016-07-21T03:52:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java服务端解析http请求（一）">
+<meta name="twitter:description" content="现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6229843713841956000,
+      author: 'Vague'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  <title> Java服务端解析http请求（一） | &三鹿伴我长大 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">&三鹿伴我长大</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java服务端解析http请求（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T18:18:36+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/Java服务端解析http请求（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/Java服务端解析http请求（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/Java服务端解析http请求（一）/" class="leancloud_visitors" data-flag-title="Java服务端解析http请求（一）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。</strong></p>
+<p>平时在进行web解析的时候，我们一般都使用tomcat这个庞然大物来对client的请求进行解析，它返回给我们一个完整的HttpRequest对象，其中含有client向我们传输的所需要的各种信息。今天我们就来说说如何模仿tomcat服务器解析程序的雏形，自己写一个http服务器解析程序。</p>
+<p><strong>客户端与服务端的通信有三步：</strong><br>1.与服务端进行连接(当然，连接还是用socket来实现的)<br>2.向服务端发出请求<br>3.服务端返回结果</p>
+<p><a href="https://zh.wikipedia.org/wiki/超文本传输协议" target="_blank" rel="external">http</a>其实就是一个web交互协议，通过一套完整的协议约束，对于不同的浏览器只要能够解析http协议就可以和服务器进行通信。</p>
+<p>我们在设计一个服务端的时候，当连接完成后的第一步就是能够正确解析客户端发出的请求。<br>在原始的时候，没有协议，我们一般都是通过在向服务器发送命令的时候在String前含有几位保留字符，用数字或者其他来标识此条命令，告诉服务器应该使用哪个部分进行解析，但是当程序扩展之后，这种方式难免不利于维护。同时也不利于复用，于是各种通信协议就产生了，在web上用得最多的就是http协议。今天要说的就是http服务器的解析。</p>
+<p>在服务端，通过一个客户端线程，获取客户端的输入流就可以得到一个客户端封装好的http请求信息。而一般来说，一些现成的工具（tomcat）已经帮我们自动对这些信息进行解析。如果我们要自己动手造一个解析程序，此时我们获取到的信息首先是一串字节流，通过解码还原成string，但这还远远达不到我们要求，我们需要一个HttpRequest类来存储request中各个部分的信息。所以第一步就是对这串string进行切割解析。</p>
+<a id="more"></a>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Kicks off the request's parsing. Called inside constructor.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@throws</span> IOException      When an InputStream can't be retreived from the</div><div class="line"> *                          socket.</div><div class="line"> * <span class="doctag">@throws</span> SocketException  When the client breaks early. This is a browser</div><div class="line"> *                          issue, and not a server issue, but it gets thrown</div><div class="line"> *                          upstream because it can't be dealt with until it</div><div class="line"> *                          gets to the HttpServer.</div><div class="line"> * <span class="doctag">@throws</span> HttpException    When headers aren't in key/value pairs separated</div><div class="line"> *                          by ": ".</div><div class="line"> *</div><div class="line"> * <span class="doctag">@see</span> HttpServer</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parseRequest</span><span class="params">()</span> <span class="keyword">throws</span> IOException, SocketException, HttpException </span>&#123;</div><div class="line">    <span class="comment">// Used to read in from the socket</span></div><div class="line">    BufferedReader input = <span class="keyword">new</span> BufferedReader(</div><div class="line">            <span class="keyword">new</span> InputStreamReader(getConnection().getInputStream()));</div><div class="line"></div><div class="line">    StringBuilder requestBuilder = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">    <span class="comment">/*  The HTTP spec (Section 4.1) says that a blank first line should be</span></div><div class="line">        ignored, and that the next line SHOULD have the request line. To be</div><div class="line">        extra sure, all initial blank lines are discarded.</div><div class="line">        */</div><div class="line">    String firstLine = input.readLine();</div><div class="line">    <span class="keyword">if</span> (firstLine == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="string">"Input is returning nulls..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (firstLine.isEmpty()) &#123;</div><div class="line">        firstLine = input.readLine();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// start with the first non-empty line.</span></div><div class="line">    setRequestLine(firstLine);</div><div class="line">    requestBuilder.append(getRequestLine());</div><div class="line">    requestBuilder.append(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">    <span class="comment">/*  Every line after the first, but before an empty line is a header,</span></div><div class="line">        which is a key/value pair.</div><div class="line"></div><div class="line">        The key is before the ": ", the value, after</div><div class="line"></div><div class="line">        <span class="doctag">TODO:</span> parse this to spec. Spec says it's cool to have any number of</div><div class="line">        whitespace characters following the colon, and the values</div><div class="line">        can be spread accross multiple lines provided each following line</div><div class="line">        starts with a whitespace character.</div><div class="line"></div><div class="line">        For more information, see issue 12 and RFC 2616#4.2.</div><div class="line">        Issue 12: https://github.com/dkuntz2/java-httpserver/issues/12</div><div class="line">        RFC 2616#4.2: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2</div><div class="line">        */</div><div class="line">    <span class="keyword">for</span> (String line = input.readLine(); line != <span class="keyword">null</span> &amp;&amp; !line.isEmpty(); line = input.readLine()) &#123;</div><div class="line">        requestBuilder.append(line);</div><div class="line">        requestBuilder.append(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">        String[] items = line.split(<span class="string">": "</span>);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (items.length == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="string">"No key value pair in \n\t"</span> + line);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String value = items[<span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; items.length; i++) &#123;</div><div class="line">            value += <span class="string">": "</span> + items[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        getHeaders().put(items[<span class="number">0</span>], value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/*  If the client sent over a POST, PUT, or DELETE request, there's *probably* still data</span></div><div class="line">        in the stream. This reads in only the number of chars specified in the</div><div class="line">        "Content-Length" header.</div><div class="line">        */</div><div class="line">    <span class="keyword">if</span> ((getRequestType().equals(POST_REQUEST_TYPE) || getRequestType().equals(DELETE_REQUEST_TYPE) || getRequestType().equals(PUT_REQUEST_TYPE)) &amp;&amp; getHeaders().containsKey(<span class="string">"Content-Length"</span>)) &#123;</div><div class="line">        <span class="keyword">int</span> contentLength = Integer.parseInt(getHeaders().get(<span class="string">"Content-Length"</span>));</div><div class="line">        StringBuilder b = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; contentLength; i++) &#123;</div><div class="line">            b.append((<span class="keyword">char</span>)input.read());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        requestBuilder.append(b.toString());</div><div class="line"></div><div class="line">        requestBody = b.toString();</div><div class="line"></div><div class="line">        String[] data = requestBody.split(<span class="string">"&amp;"</span>);</div><div class="line">        getParams().putAll(parseInputData(data));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    setHttpRequest(requestBuilder.toString());</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Turns an array of "key=value" strings into a map. &lt;p&gt;</div><div class="line"> *</div><div class="line"> * Any item in the array missing an "=" is given a value of null.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> data  List of strings in "key=value" form, you know, like HTTP GET</div><div class="line"> *              or POST lines?</div><div class="line"> * <span class="doctag">@return</span>  Map of key value pairs</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> Map&lt;String, String&gt; <span class="title">parseInputData</span><span class="params">(String[] data)</span> </span>&#123;</div><div class="line">    Map&lt;String, String&gt; out = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">    <span class="keyword">for</span> (String item : data) &#123;</div><div class="line">        <span class="keyword">if</span> (item.indexOf(<span class="string">"="</span>) == -<span class="number">1</span>) &#123;</div><div class="line">            out.put(item, <span class="keyword">null</span>);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String value = item.substring(item.indexOf(<span class="string">'='</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="comment">/*  Attempt to URL decode the value, because it *might* be user input.</span></div><div class="line">            If it can't be decoded, it doesn't matter, the original, undecoded</div><div class="line">            value is still used.</div><div class="line">            */</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            value = URLDecoder.decode(value, <span class="string">"UTF-8"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;&#125;</div><div class="line"></div><div class="line">        out.put(item.substring(<span class="number">0</span>, item.indexOf(<span class="string">'='</span>)), value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> out;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>信息如下:</strong></p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/index</span> HTTP/1.1</div><div class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36</div><div class="line"><span class="attribute">Host</span>: localhost:10086</div><div class="line"><span class="attribute">Accept</span>: text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1</div><div class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.9,en;q=0.8</div><div class="line"><span class="attribute">Accept-Charset</span>: iso-8859-1, utf-8, utf-16, *;q=0.1</div><div class="line"><span class="attribute">Accept-Encoding</span>: deflate, gzip, x-gzip, identity, *;q=0</div><div class="line"><span class="attribute">Connection</span>: Keep-Alive</div></pre></td></tr></table></figure>
+<p>在Tomcat中所有的请求信息我们都已经封装好放入一个HttpRequest对象中；我们自己模仿的解析程序也是如此，将解析后的字符串放入一个HttpRequest对象中，以供后续使用。</p>
+<p><strong>HttpRequst类源码如下:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> httpserver;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</div><div class="line"><span class="keyword">import</span> java.net.Socket;</div><div class="line"><span class="keyword">import</span> java.net.SocketException;</div><div class="line"><span class="keyword">import</span> java.net.URLDecoder;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * An HttpRequest takes an incoming connection and parses out all of the</div><div class="line"> * relevant data, supposing the connection follows HTTP protocol.</div><div class="line"> *</div><div class="line"> * At present, HttpRequest only knows how to handle HTTP 1.1 requests, and</div><div class="line"> * doesn't handle persistent connections. Technically, it could handle an</div><div class="line"> * HTTP 1.0 request, because 1.0 doesn't have persistent connections.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@see</span>   &lt;a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html"&gt;</div><div class="line"> *        HTTP 1.1 Spec&lt;/a&gt;</div><div class="line"> * <span class="doctag">@see</span> HttpHandler</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpRequest</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="comment">/** HTTP GET request type */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_REQUEST_TYPE = <span class="string">"GET"</span>;</div><div class="line"></div><div class="line">    <span class="comment">/** HTTP POST request type */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String POST_REQUEST_TYPE = <span class="string">"POST"</span>;</div><div class="line"></div><div class="line">    <span class="comment">/** HTTP HEAD request type */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HEAD_REQUEST_TYPE = <span class="string">"HEAD"</span>;</div><div class="line"></div><div class="line">    <span class="comment">/** HTTP DELETE request type */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DELETE_REQUEST_TYPE = <span class="string">"DELETE"</span>;</div><div class="line"></div><div class="line">    <span class="comment">/** HTTP PUT request type */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PUT_REQUEST_TYPE = <span class="string">"PUT"</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// used to determine what one does with the request</span></div><div class="line">    <span class="keyword">private</span> HttpRouter router;</div><div class="line"></div><div class="line">    <span class="comment">// connection with client</span></div><div class="line">    <span class="keyword">private</span> Socket connection;</div><div class="line"></div><div class="line">    <span class="comment">// the handler used to determine what the server actually does</span></div><div class="line">    <span class="comment">// with this request</span></div><div class="line">    <span class="keyword">private</span> HttpHandler handler;</div><div class="line"></div><div class="line">    <span class="comment">// the full text of the incoming request, including headers</span></div><div class="line">    <span class="comment">// and sent over data</span></div><div class="line">    <span class="keyword">private</span> String httpRequest;</div><div class="line"></div><div class="line">    <span class="comment">// the request line, or first line of entire request</span></div><div class="line">    <span class="keyword">private</span> String requestLine;</div><div class="line"></div><div class="line">    <span class="comment">// the type of request, as in GET, POST, ...</span></div><div class="line">    <span class="keyword">private</span> String requestType;</div><div class="line"></div><div class="line">    <span class="comment">// the protocol the client is using</span></div><div class="line">    <span class="keyword">private</span> String requestProtocol;</div><div class="line"></div><div class="line">    <span class="comment">// All headers, because they're all key/value pairs</span></div><div class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; headers = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// The requested path, split by '/'</span></div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; splitPath = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// The path relative to the handler's path</span></div><div class="line">    <span class="keyword">private</span> String path;</div><div class="line"></div><div class="line">    <span class="comment">// the full path</span></div><div class="line">    <span class="keyword">private</span> String fullPath;</div><div class="line"></div><div class="line">    <span class="comment">// the POST data</span></div><div class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; params = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; varargs = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String requestBody;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Used to parse out an HTTP request provided a Socket and figure out the</div><div class="line">     * handler to be used.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> connection The socket between the server and client</div><div class="line">     * <span class="doctag">@throws</span> IOException      When it gets thrown by</div><div class="line">     *                          &#123;<span class="doctag">@link</span> HttpRequest#parseRequest&#125;.</div><div class="line">     * <span class="doctag">@throws</span> SocketException  When it gets thrown by</div><div class="line">     *                          &#123;<span class="doctag">@link</span> HttpRequest#parseRequest&#125;.</div><div class="line">     * <span class="doctag">@throws</span> HttpException    When something that doesn't follow HTTP spec</div><div class="line">     *                          occurs.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#parseRequest</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HttpRequest</span><span class="params">(HttpRouter router, Socket connection)</span> <span class="keyword">throws</span> IOException, SocketException, HttpException </span>&#123;</div><div class="line">        <span class="keyword">this</span>.router = router;</div><div class="line">        connection.setKeepAlive(<span class="keyword">true</span>);</div><div class="line">        setConnection(connection);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (getConnection().isClosed()) &#123;</div><div class="line">            System.out.println(<span class="string">"Socket is closed..."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            createResponse().respond();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException | HttpException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> HttpResponse <span class="title">createResponse</span><span class="params">()</span> <span class="keyword">throws</span> IOException, HttpException </span>&#123;</div><div class="line">        parseRequest();</div><div class="line">        HttpResponse response = <span class="keyword">new</span> HttpResponse(<span class="keyword">this</span>);</div><div class="line">        determineHandler().handle(<span class="keyword">this</span>, response);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> response;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Kicks off the request's parsing. Called inside constructor.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@throws</span> IOException      When an InputStream can't be retreived from the</div><div class="line">     *                          socket.</div><div class="line">     * <span class="doctag">@throws</span> SocketException  When the client breaks early. This is a browser</div><div class="line">     *                          issue, and not a server issue, but it gets thrown</div><div class="line">     *                          upstream because it can't be dealt with until it</div><div class="line">     *                          gets to the HttpServer.</div><div class="line">     * <span class="doctag">@throws</span> HttpException    When headers aren't in key/value pairs separated</div><div class="line">     *                          by ": ".</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpServer</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parseRequest</span><span class="params">()</span> <span class="keyword">throws</span> IOException, SocketException, HttpException </span>&#123;</div><div class="line">        <span class="comment">// Used to read in from the socket</span></div><div class="line">        BufferedReader input = <span class="keyword">new</span> BufferedReader(</div><div class="line">                <span class="keyword">new</span> InputStreamReader(getConnection().getInputStream()));</div><div class="line"></div><div class="line">        StringBuilder requestBuilder = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">        <span class="comment">/*  The HTTP spec (Section 4.1) says that a blank first line should be</span></div><div class="line">            ignored, and that the next line SHOULD have the request line. To be</div><div class="line">            extra sure, all initial blank lines are discarded.</div><div class="line">            */</div><div class="line">        String firstLine = input.readLine();</div><div class="line">        <span class="keyword">if</span> (firstLine == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="string">"Input is returning nulls..."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (firstLine.isEmpty()) &#123;</div><div class="line">            firstLine = input.readLine();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// start with the first non-empty line.</span></div><div class="line">        setRequestLine(firstLine);</div><div class="line">        requestBuilder.append(getRequestLine());</div><div class="line">        requestBuilder.append(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">        <span class="comment">/*  Every line after the first, but before an empty line is a header,</span></div><div class="line">            which is a key/value pair.</div><div class="line"></div><div class="line">            The key is before the ": ", the value, after</div><div class="line"></div><div class="line">            <span class="doctag">TODO:</span> parse this to spec. Spec says it's cool to have any number of</div><div class="line">            whitespace characters following the colon, and the values</div><div class="line">            can be spread accross multiple lines provided each following line</div><div class="line">            starts with a whitespace character.</div><div class="line"></div><div class="line">            For more information, see issue 12 and RFC 2616#4.2.</div><div class="line">            Issue 12: https://github.com/dkuntz2/java-httpserver/issues/12</div><div class="line">            RFC 2616#4.2: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2</div><div class="line">            */</div><div class="line">        <span class="keyword">for</span> (String line = input.readLine(); line != <span class="keyword">null</span> &amp;&amp; !line.isEmpty(); line = input.readLine()) &#123;</div><div class="line">            requestBuilder.append(line);</div><div class="line">            requestBuilder.append(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">            String[] items = line.split(<span class="string">": "</span>);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (items.length == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="string">"No key value pair in \n\t"</span> + line);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            String value = items[<span class="number">1</span>];</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; items.length; i++) &#123;</div><div class="line">                value += <span class="string">": "</span> + items[i];</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            getHeaders().put(items[<span class="number">0</span>], value);</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">/*  If the client sent over a POST, PUT, or DELETE request, there's *probably* still data</span></div><div class="line">            in the stream. This reads in only the number of chars specified in the</div><div class="line">            "Content-Length" header.</div><div class="line">            */</div><div class="line">        <span class="keyword">if</span> ((getRequestType().equals(POST_REQUEST_TYPE) || getRequestType().equals(DELETE_REQUEST_TYPE) || getRequestType().equals(PUT_REQUEST_TYPE)) &amp;&amp; getHeaders().containsKey(<span class="string">"Content-Length"</span>)) &#123;</div><div class="line">            <span class="keyword">int</span> contentLength = Integer.parseInt(getHeaders().get(<span class="string">"Content-Length"</span>));</div><div class="line">            StringBuilder b = <span class="keyword">new</span> StringBuilder();</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; contentLength; i++) &#123;</div><div class="line">                b.append((<span class="keyword">char</span>)input.read());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            requestBuilder.append(b.toString());</div><div class="line"></div><div class="line">            requestBody = b.toString();</div><div class="line"></div><div class="line">            String[] data = requestBody.split(<span class="string">"&amp;"</span>);</div><div class="line">            getParams().putAll(parseInputData(data));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        setHttpRequest(requestBuilder.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Turns an array of "key=value" strings into a map. &lt;p&gt;</div><div class="line">     *</div><div class="line">     * Any item in the array missing an "=" is given a value of null.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> data  List of strings in "key=value" form, you know, like HTTP GET</div><div class="line">     *              or POST lines?</div><div class="line">     * <span class="doctag">@return</span>  Map of key value pairs</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> Map&lt;String, String&gt; <span class="title">parseInputData</span><span class="params">(String[] data)</span> </span>&#123;</div><div class="line">        Map&lt;String, String&gt; out = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">        <span class="keyword">for</span> (String item : data) &#123;</div><div class="line">            <span class="keyword">if</span> (item.indexOf(<span class="string">"="</span>) == -<span class="number">1</span>) &#123;</div><div class="line">                out.put(item, <span class="keyword">null</span>);</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            String value = item.substring(item.indexOf(<span class="string">'='</span>) + <span class="number">1</span>);</div><div class="line"></div><div class="line">            <span class="comment">/*  Attempt to URL decode the value, because it *might* be user input.</span></div><div class="line">                If it can't be decoded, it doesn't matter, the original, undecoded</div><div class="line">                value is still used.</div><div class="line">                */</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                value = URLDecoder.decode(value, <span class="string">"UTF-8"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;&#125;</div><div class="line"></div><div class="line">            out.put(item.substring(<span class="number">0</span>, item.indexOf(<span class="string">'='</span>)), value);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> out;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Figure out what kind of HttpHandler you want, based on the path. &lt;p&gt;</div><div class="line">     *</div><div class="line">     * This uses the statically set &#123;<span class="doctag">@link</span> HttpRouter&#125; to determine the</div><div class="line">     * correct HttpHandler to be used for the current request. If there isn't</div><div class="line">     * a statically set HttpRouter, a 500 error is sent back to the</div><div class="line">     * client.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> a new instance of some form of HttpHandler.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpRouter</div><div class="line">     * <span class="doctag">@see</span> HttpRouter#determineHandler</div><div class="line">     * <span class="doctag">@see</span> HttpHandler</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> HttpHandler <span class="title">determineHandler</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (router == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> DeathHandler();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String path = getSplitPath().isEmpty() ? <span class="string">""</span> : getSplitPath().get(<span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> router.route(path, <span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Return if the request type is the passed in type.</div><div class="line">     * <span class="doctag">@param</span> requestTypeCheck The type to check.</div><div class="line">     * <span class="doctag">@return</span> whether the request type equals the passed in String.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isType</span><span class="params">(String requestTypeCheck)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getRequestType().equalsIgnoreCase(requestTypeCheck);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Sets the requestLine, and all derived items. &lt;p&gt;</div><div class="line">     *</div><div class="line">     * Based off of the passed in line, the request type, request path, and</div><div class="line">     * request protocol can be set.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> line  The first line in an HTTP request. Should be in</div><div class="line">     *              &#123;<span class="doctag">@code</span> [type] [full path] [protocol]&#125; form.</div><div class="line">     * <span class="doctag">@throws</span> HttpException  When the first line does not contain two spaces,</div><div class="line">     *                        signifying that the passed in line is not in</div><div class="line">     *                        HTTP 1.1. When the type is not an expected type</div><div class="line">     *                        (currently GET, POST, and HEAD).</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#setRequestType</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#setFullPath</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#setRequestProtocol</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRequestLine</span><span class="params">(String line)</span> <span class="keyword">throws</span> HttpException </span>&#123;</div><div class="line">        <span class="keyword">this</span>.requestLine = line;</div><div class="line"></div><div class="line">        <span class="comment">/*  Split apart the request line by spaces, as per the protocol.</span></div><div class="line">            The request line should be:</div><div class="line">            [request type] [path] [protocol]</div><div class="line">            */</div><div class="line">        String[] splitty = requestLine.trim().split(<span class="string">" "</span>);</div><div class="line">        <span class="keyword">if</span> (splitty.length != <span class="number">3</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="string">"Request line has a number of spaces other than 3."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// Set the request type</span></div><div class="line">        setRequestType(splitty[<span class="number">0</span>].toUpperCase());</div><div class="line"></div><div class="line">        <span class="comment">// set the path</span></div><div class="line">        setFullPath(splitty[<span class="number">1</span>]);</div><div class="line"></div><div class="line">        <span class="comment">// set the protocol type</span></div><div class="line">        setRequestProtocol(splitty[<span class="number">2</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Return the request line.</div><div class="line">     * <span class="doctag">@return</span>  the request line.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRequestLine</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> requestLine;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Set the full path, and path list. &lt;p&gt;</div><div class="line">     *</div><div class="line">     * Because the path list is derived from the full path, it's set at the same</div><div class="line">     * time.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> inPath  The full requested path (in `/path/to/request` form)</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#setPath</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#setSplitPath</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFullPath</span><span class="params">(String inPath)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.fullPath = inPath;</div><div class="line">        setPath(inPath);</div><div class="line">        setSplitPath(inPath);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Gets the full path of the request.</div><div class="line">     * <span class="doctag">@return</span> The full path.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFullPath</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> fullPath;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPath</span><span class="params">(String path)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.path = path;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Gets the path relative to the handler's path.</div><div class="line">     * <span class="doctag">@return</span> Everything in the path after the handler's path.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPath</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> path;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Given a full path, set the splitPath to the path, split by `/`. &lt;p&gt;</div><div class="line">     *</div><div class="line">     * If there's a query string attached to the path, it gets removed from the</div><div class="line">     * splitPath, and the request's associated GET data is parsed from the query</div><div class="line">     * string.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@see</span> HttpRequest#getGetData</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSplitPath</span><span class="params">(String fullPath)</span> </span>&#123;</div><div class="line">        <span class="comment">/*  Split apart the path for future reference by the handlers</span></div><div class="line">            The split path should be used by handlers to figure out what</div><div class="line">            action should be taken. It's also used to parse out GET request</div><div class="line">            data.</div><div class="line"></div><div class="line">            The first character *should* always be a `/`, and that could cause</div><div class="line">            an error with splitting (as in, the first split could be an empty</div><div class="line">            string, which we don't want).</div><div class="line">            */</div><div class="line">        <span class="keyword">for</span> (String segment : fullPath.substring(<span class="number">1</span>).split(<span class="string">"/"</span>)) &#123;</div><div class="line">            <span class="keyword">if</span> (segment.isEmpty()) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            getSplitPath().add(segment);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (getSplitPath().isEmpty()) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">/*  Parse out any GET data in the request URL.</span></div><div class="line">            This could occur on any request.</div><div class="line">            */</div><div class="line">        <span class="keyword">if</span> (getSplitPath().get(getSplitPath().size() - <span class="number">1</span>).indexOf(<span class="string">'?'</span>) != -<span class="number">1</span>) &#123;</div><div class="line">            String lastItem = getSplitPath().get(getSplitPath().size() - <span class="number">1</span>);</div><div class="line">            <span class="comment">// remove the ? onward from the last item in the path, because that's not</span></div><div class="line">            <span class="comment">// part of the requested URL</span></div><div class="line">            getSplitPath().set(getSplitPath().size() - <span class="number">1</span>, lastItem.substring(<span class="number">0</span>,</div><div class="line">                        lastItem.indexOf(<span class="string">'?'</span>)));</div><div class="line"></div><div class="line">            <span class="comment">// split apart the request query into an array of "key=value" strings.</span></div><div class="line">            String[] data = lastItem.substring(lastItem.indexOf(<span class="string">'?'</span>) + <span class="number">1</span>).split(<span class="string">"&amp;"</span>);</div><div class="line"></div><div class="line">            <span class="comment">// Set the GET data to the GET data...</span></div><div class="line">            getParams().putAll(parseInputData(data));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSplitPath</span><span class="params">(List&lt;String&gt; path)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.splitPath = path;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Gets the path relative to the handler's path split by '/'</div><div class="line">     * <span class="doctag">@return</span> A List of Strings</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getSplitPath</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> splitPath;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setConnection</span><span class="params">(Socket connection)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.connection = connection;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Socket <span class="title">getConnection</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> connection;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeaders</span><span class="params">(Map&lt;String, String&gt; headers)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.headers = headers;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">getHeaders</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> headers;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setParams</span><span class="params">(Map&lt;String, String&gt; data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.params = data;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">getParams</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> params;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeParams</span><span class="params">(Map&lt;String, String&gt; data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.params.putAll(data);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getParam</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.params.get(key);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeVarargs</span><span class="params">(List&lt;String&gt; data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.varargs.addAll(data);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getVarargs</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.varargs;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHttpRequest</span><span class="params">(String httpRequest)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.httpRequest = httpRequest;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHttpRequest</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> httpRequest;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRequestType</span><span class="params">(String requestType)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.requestType = requestType;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRequestType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> requestType;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRequestProtocol</span><span class="params">(String requestProtocol)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.requestProtocol = requestProtocol;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRequestProtocol</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> requestProtocol;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(HttpHandler handler)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.handler = handler;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> HttpHandler <span class="title">getHandler</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> handler;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRouter</span><span class="params">(HttpRouter router)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.router = router;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> HttpRouter <span class="title">getRouter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> router;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRequestBody</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> requestBody;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</div><div class="line">        builder.append(<span class="string">"HttpRequest from "</span>);</div><div class="line">        builder.append(getConnection().getLocalAddress().getHostAddress());</div><div class="line">        builder.append(<span class="string">"\n\t"</span>);</div><div class="line">        builder.append(<span class="string">"Request Line: "</span>);</div><div class="line">        builder.append(getRequestLine());</div><div class="line">        builder.append(<span class="string">"\n\t\t"</span>);</div><div class="line">        builder.append(<span class="string">"Request Type "</span>);</div><div class="line">        builder.append(getRequestType());</div><div class="line">        builder.append(<span class="string">"\n\t\t"</span>);</div><div class="line">        builder.append(<span class="string">"Request Path "</span>);</div><div class="line">        builder.append(getFullPath());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> builder.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>今天主要就先说说封装好请求的HttpRequest类，下一节我们将封装进行应答的HttpResponse类</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/Java与C++的异同/" rel="next" title="Java与C++的异同">
+                <i class="fa fa-chevron-left"></i> Java与C++的异同
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/security/密码加密——计时攻击/" rel="prev" title="密码加密——计时攻击">
+                密码加密——计时攻击 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="programming/Java服务端解析http请求（一）/"
+     data-title="Java服务端解析http请求（一）"
+     data-content=""
+     data-url="http://blublu.xyz/programming/Java服务端解析http请求（一）/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="programming/Java服务端解析http请求（一）/"
+           data-title="Java服务端解析http请求（一）" data-url="http://blublu.xyz/programming/Java服务端解析http请求（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xpajj.com1.z0.glb.clouddn.com/2016-07-17_20:43:46.jpg"
+               alt="jhWei" />
+          <p class="site-author-name" itemprop="name">jhWei</p>
+          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vagueco" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
+                  
+                    <i class="fa fa-fw fa-spinner"></i>
+                  
+                  coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lxysc.cc/" title="舒成" target="_blank">舒成</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tuicool.com/" title="推酷" target="_blank">推酷</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jhWei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blublu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if ( $('#local-search-input').size() === 0) {
+        return;
+      }
+
+      // Popup Window;
+      var isfetched = false;
+      // Search DB path;
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      // monitor main search box;
+
+      function proceedsearch() {
+        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+        $('.popup').toggle();
+
+      }
+      // search function;
+      var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+          url: path,
+          dataType: "xml",
+          async: true,
+          success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+              return {
+                title: $( "title", this ).text(),
+                content: $("content",this).text(),
+                url: $( "url" , this).text()
+              };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+              var matchcounts = 0;
+              var str='<ul class=\"search-result-list\">';
+              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+              $resultContent.innerHTML = "";
+              if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if(data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if( index_title < 0 && index_content < 0 ){
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i == 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    matchcounts += 1;
+                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                    var content = data.content.trim().replace(/<[^>]+>/g,"");
+                    if (first_occur >= 0) {
+                      // cut out 100 characters
+                      var start = first_occur - 20;
+                      var end = first_occur + 80;
+                      if(start < 0){
+                        start = 0;
+                      }
+                      if(start == 0){
+                        end = 50;
+                      }
+                      if(end > content.length){
+                        end = content.length;
+                      }
+                      var match_content = content.substring(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword){
+                        var regS = new RegExp(keyword, "gi");
+                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      });
+
+                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    }
+                    str += "</li>";
+                  }
+                })};
+              str += "</ul>";
+              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+              $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+          }
+        });}
+
+      // handle and trigger popup window;
+      $('.popup-trigger').mousedown(function(e) {
+        e.stopPropagation();
+        if (isfetched == false) {
+          searchFunc(path, 'local-search-input', 'local-search-result');
+        } else {
+          proceedsearch();
+        };
+
+      });
+
+      $('.popup-btn-close').click(function(e){
+        $('.popup').hide();
+        $(".popoverlay").remove();
+        $('body').css('overflow', '');
+      });
+      $('.popup').click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+  
+
+
+</body>
+</html>
