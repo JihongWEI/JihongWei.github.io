@@ -132,7 +132,7 @@
     motion: true,
     duoshuo: {
       userId: 6229843713841956000,
-      author: 'Vague'
+      author: 'jhWei'
     },
     algolia: {
       applicationID: '',
@@ -291,6 +291,144 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/C++中关于数组的引用/" itemprop="url">
+                  C++中关于数组的引用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-14T23:12:41+08:00" content="2015-12-14">
+              2015-12-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/C++中关于数组的引用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/C++中关于数组的引用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/C++中关于数组的引用/" class="leancloud_visitors" data-flag-title="C++中关于数组的引用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天在编译一份代码的时候遇到了引用数组作为形参的函数，后来编译遇到了一些问题，虽然数组可以用指针传递来解决。不过既然碰到了用引用数组来作形参的，我是一定要深究下去的，不撞南墙不回头。随后查看了很多资料。感觉有所理解了。所以记录下来，以备过后查看。</p>
+<p>首先，当传递一个数组作为参数的时候我们通常的做法就是通过传递数组名指针来作为参数的，但是这样就会有一个问题，传递进来之后你不知道它的具体大小，容易引发越界操作的问题。同时有时候我们希望传递进来的数组仅供读取而不允许修改，那么此时我们可以如以下代码所示，在参数中加上const即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * ary)</span></span></div></pre></td></tr></table></figure>
+<p>而要确保传进来的数组能够控制大小，可以采用引用的方式。</p>
+<p>例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> &amp;ary[] ary首先向右结合，所以这个相当于 (<span class="keyword">int</span>&amp;)ary[] ary是个数组，其中的元素是引用。不过这个是非法的</div><div class="line"><span class="keyword">int</span> (&amp;ary)[<span class="number">10</span>] ary首先和&amp;结合，所以ary是引用，引用的对象是数组</div></pre></td></tr></table></figure>
+<p>那么我们可以得出</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> &amp; <span class="built_in">array</span>[<span class="number">10</span>];  <span class="comment">//wrong</span></div><div class="line"><span class="keyword">int</span>(&amp;<span class="built_in">array</span>)[<span class="number">10</span>];  <span class="comment">//ok</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/C++中关于数组的引用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1237,138 +1375,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/skills/Git的一些常用命令集合/" itemprop="url">
-                  Git的一些常用命令集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-02-15T15:06:27+08:00" content="2015-02-15">
-              2015-02-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">必备技能</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/skills/Git的一些常用命令集合/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="skills/Git的一些常用命令集合/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/skills/Git的一些常用命令集合/" class="leancloud_visitors" data-flag-title="Git的一些常用命令集合">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>== 查看、添加、提交、删除、找回，重置修改文件 ==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">git help &lt;command&gt; # 显示command的help</div><div class="line">git show # 默认显示最新版本提交的内容 </div><div class="line">git show $id #显示指定版本的提交内容</div><div class="line">git co -- &lt;file&gt; # 抛弃工作区修改</div><div class="line">git co . # 抛弃工作区修改</div><div class="line">git add &lt;file&gt; # 将工作文件修改提交到本地暂存区</div><div class="line">git add . # 将所有修改过的工作文件提交暂存区</div><div class="line">git rm &lt;file&gt; # 从版本库中删除文件</div><div class="line">git rm &lt;file&gt; --cached # 从版本库中删除文件，但不删除文件</div><div class="line">git reset &lt;file&gt; # 从暂存区恢复到工作文件</div><div class="line">git reset -- . # 从暂存区恢复到工作文件</div><div class="line">git reset --hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</div><div class="line">git ci --amend # 修改最后一次提交记录</div><div class="line">git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</div><div class="line">git revert HEAD # 恢复最后一次提交的状态</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/skills/Git的一些常用命令集合/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1414,7 +1420,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1422,7 +1428,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1494,7 +1500,7 @@
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://lxysc.cc/" title="舒成" target="_blank">舒成</a>
+                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
@@ -1630,7 +1636,7 @@
   
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"blublu"};
+    var duoshuoQuery = {short_name:"jhWei"};
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
