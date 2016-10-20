@@ -312,6 +312,145 @@
             
               
                 
+                <a class="post-title-link" href="/programming/python元类到底是什么/" itemprop="url">
+                  Python元类到底是什么
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T09:01:41+08:00" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/python元类到底是什么/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/python元类到底是什么/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/python元类到底是什么/" class="leancloud_visitors" data-flag-title="Python元类到底是什么">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(<em>^__^</em>) 好像没什么区别）Python确实在很大意义上方便了我们的编程，解放了双手。特别是从Java变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！”</p>
+<p>在读到Python元类的时候，刚开始看到下面这段代码的我是一脸懵逼的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object, type)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(type, object)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object(), type)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+<p>wtf？type和object互为子类？深受静态语言洗脑的我完全无法接受这样的现实.然后就开始了啃书啃知识的阶段了…各种搜寻它们俩到底是个什么关系？</p>
+<p>最后打破世界观的观点来了.type和object就好比蛋鸡关系那样，它们是一个共生关系，并不能说先有谁后有谁，需要同时存在.object的类型是type，也就是说object类是type类的实例对象，它们之间的关系就是实例关系.说起来有点拗口，不嫌烦的话再啰嗦一句，object类是type的实例化对象.</p>
+<p>首先，要缕清这个关系，还是需要舍弃掉之前静态语言所带来的概念，重新构造我们的世界观.在python里，一切都是对象，这个一切比号称完全面向对象的java还要完全.<strong> 包括class、type、object等等都是对象 </strong>.</p>
+<blockquote>
+<p>“鸡・蛋”问题通常都是通过一种叫“自举”（bootstrap）的过程来解决的。其实“鸡蛋问题”的根本矛盾就在于假定了“鸡”或“蛋”的其中一个要先进入“完全可用”的状态。而许多现实中被简化为“鸡蛋问题”的情况实际可以在“混沌”中把“鸡”和“蛋”都初始化好，而不存在先后问题；在它们初始化的过程中，两者都不处于“完全可用”状态，而完成初始化后它们就同时都进入了可用状态。</p>
+<p>打个比方，番茄炒蛋。并不是要先把番茄完全炒好，然后把鸡蛋完全炒好，然后把它们混起来；而是先炒番茄炒到半熟，再炒鸡蛋炒到半熟，然后把两个半熟的部分混在一起同时炒熟。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/python元类到底是什么/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programming/java中常见的坑/" itemprop="url">
                   Java中常见的坑
                 </a>
@@ -1248,141 +1387,6 @@ Java不支持指针出于以下两个原因：
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/security/即使被拖库，也可以保证密码不泄露/" itemprop="url">
-                  即使被拖库，也可以保证密码不泄露
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-12T09:57:31+08:00" content="2016-01-12">
-              2016-01-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/security/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/security/即使被拖库，也可以保证密码不泄露/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="security/即使被拖库，也可以保证密码不泄露/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/security/即使被拖库，也可以保证密码不泄露/" class="leancloud_visitors" data-flag-title="即使被拖库，也可以保证密码不泄露">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>首先，我们明确一下安全加密方案的终极目标：</p>
-<p>即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。</p>
-<p>说具体一些，我们理想中的绝对安全的系统大概是这样的：</p>
-<p>首先保障数据很难被拖库。<br>即使数据被拖库，攻击者也无法从中破解出用户的密码。<br>即使数据被拖库，攻击者也无法伪造登录请求通过验证。<br>即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。<br>如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 <code>md5</code> 后保存。<code>md5</code> 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。</p>
-<p>所以，只对密码进行 <code>md5</code> 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 <code>md5</code> ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们称为==盐（Salt）==，通过这种方式加密的结果，我们称为 ==加盐 Hash== 。比如：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/a/a0/01a5423571060b8d1d7428749e133.png" alt=""><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/security/即使被拖库，也可以保证密码不泄露/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1428,7 +1432,7 @@ Java不支持指针出于以下两个原因：
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
