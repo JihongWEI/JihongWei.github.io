@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blublu.xyz/"/>
-  <updated>2016-10-20T13:08:29.000Z</updated>
+  <updated>2016-10-27T06:15:22.000Z</updated>
   <id>http://blublu.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blublu.xyz/computer-principle/float%E4%B8%8Edouble%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://blublu.xyz/computer-principle/float与double精度丢失的问题/</id>
     <published>2016-10-20T12:44:05.000Z</published>
-    <updated>2016-10-20T13:08:29.000Z</updated>
+    <updated>2016-10-27T06:15:22.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;将同一实数分别赋值给单精度和双精度类型变量，然后打印输出&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; a;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;double&lt;/span&gt; b;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    a = &lt;span class=&quot;number&quot;&gt;123456.789e4&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    b = &lt;span class=&quot;number&quot;&gt;123456.789e4&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;%f\n %f\n&quot;&lt;/span&gt;,a,b);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;输出结果：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1234567936.000000&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1234567890.000000&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -78,6 +78,10 @@
 &lt;li&gt;四舍也就是不够前面一位的一半，也就是1/2,就把这部分舍去；六入就是超过1/2则向前进一位。五成双就是被修约的数字等于5时，要看5前面的数字，若是奇数则进位，若是偶数则将5舍掉。从统计学的角度，“四舍六入五成双”比“四舍五入”要科学，在大量运算时，它使舍入后的结果误差的均值趋于零，而不是像四舍五入那样逢五就入，导致结果偏向大数，使得误差产生积累进而产生系统误差，“四舍六入五成双”使测量结果受到舍入误差的影响降到最低。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;现在再看看之前的11010010，显然大于前一位的1/2,所以要向前进1.这也是为什么结果会偏大的原因。把其从内存中还原出来就是：&lt;code&gt;1.001001-10010110-00000011-00000000 x 2^30 = 12345678936.0000&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;通常情况下我们采取的舍入规则是在原来的值是舍入值的中间值时,采取向偶数舍入,在二进制中,偶数我们认为是末尾为0的数.而倘若不是这种情况的话,则一般会有选择性的使用向上和向下舍入,但总会向最接近的值舍入.其实这正是IEEE采取的默认的舍入方式,因为这种舍入方式总是企图向最近的值舍入.&lt;/p&gt;
+&lt;p&gt;比如对于10.10011这个值来讲,当舍入到个位数时,会采取向上舍入,因此此时的值为11.当舍入到小数点后1位时,会采取向下舍入,因此此时的值为10.1.当舍入到这个小数点后4位时,由于此时的10.10011舍入值的中间值,因此采取向偶数舍入,此时舍入后的值为10.1010.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;最后还想谈谈关于为什么三段式存储方式中指数部分要用Bias偏置位表示：&lt;br&gt;如果用八位中的最高位来表示符号位的话，如果用判断&lt;code&gt;010XXXXX &amp;gt; 0001XXXX&lt;/code&gt;成立的电路去判断&lt;code&gt;010XXXXX &amp;lt; 1000XXXX&lt;/code&gt;显然也是成立的，但是事实上是&lt;code&gt;010XXXXX &amp;gt; 1000XXXX&lt;/code&gt;。所以就需要多设计一套电路去判断符号位，显然这是不划算的。所以可以采取偏置位把所有数都偏移到正数上，就可以使用一套电路来判断。至于为什么是偏移2^k-1 - 1位，我的理解是这样刚好把最小指数偏移到0位上。&lt;/p&gt;
 </content>
     
@@ -136,7 +140,7 @@
     <link href="http://blublu.xyz/computer-principle/%E5%85%B3%E4%BA%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
     <id>http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/</id>
     <published>2016-10-11T14:39:23.000Z</published>
-    <updated>2016-10-16T07:19:30.000Z</updated>
+    <updated>2016-10-24T15:29:13.000Z</updated>
     
     <content type="html">&lt;p&gt;今天在上计组的课的时候又再次提到了位运算，当然也提到了加减法中的经典问题，为什么计算机要用补码（Two’s Complement）来表示负数。&lt;/p&gt;
 &lt;h3 id=&quot;二进制的基本表示范围&quot;&gt;&lt;a href=&quot;#二进制的基本表示范围&quot; class=&quot;headerlink&quot; title=&quot;二进制的基本表示范围&quot;&gt;&lt;/a&gt;二进制的基本表示范围&lt;/h3&gt;&lt;p&gt;首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。&lt;br&gt;8位二进制正数表示范围：&lt;/p&gt;
@@ -157,6 +161,7 @@
 &lt;p&gt;这不就是我们上边所说的，符号位不变，按位取反再加1么。结果已经很快的出来了，是正确的。&lt;strong&gt;根据&lt;code&gt;1 111 0000&lt;/code&gt;再求一次补码就可以得到它的真值&lt;code&gt;1 001 0000&lt;/code&gt;。&lt;/strong&gt;当然如果是正数也是需要再求一次补码才能得到真值的，但是因为正数的补码与原码相同，所以可以直接求值。&lt;/p&gt;
 &lt;p&gt;我们再来看看之前16-8产生溢出的情况，因为结果肯定是为正数，那么前一位的符号位此时为1必然要溢出掉变为0才会得到我们想要的正数结果，是什么造成这样的溢出呢？我们可以看前文，补码的本质是向前借了一位来进行运算求补码的，所以其实这多溢出的一位就是之前向前借的那一位。&lt;/p&gt;
 &lt;h3 id=&quot;关于补码再求补码为真值&quot;&gt;&lt;a href=&quot;#关于补码再求补码为真值&quot; class=&quot;headerlink&quot; title=&quot;关于补码再求补码为真值&quot;&gt;&lt;/a&gt;关于补码再求补码为真值&lt;/h3&gt;&lt;p&gt;其实我们可以假设一个时钟的周期为12小时，当前为2点钟，如果要把时钟调整到5点，一种方案是顺时针转动3个单位，另一种方案是逆时针转动9个单位，我们约定顺时针为-，逆时针为+。那么就有-3的补码就是+9，补码的再求补就是-3，就是原值了。相当于反复拨时钟而已。&lt;/p&gt;
+&lt;h3 id=&quot;移位&quot;&gt;&lt;a href=&quot;#移位&quot; class=&quot;headerlink&quot; title=&quot;移位&quot;&gt;&lt;/a&gt;移位&lt;/h3&gt;&lt;p&gt;逻辑移位（不管是左移位还是右移位） 都是空缺处补0&lt;br&gt;算术移位要保证符号位的不改变（逻辑左移位补0, 逻辑右移位看符号位）&lt;/p&gt;
 &lt;h3 id=&quot;题外话&quot;&gt;&lt;a href=&quot;#题外话&quot; class=&quot;headerlink&quot; title=&quot;题外话&quot;&gt;&lt;/a&gt;题外话&lt;/h3&gt;&lt;p&gt;不难发现，-1的补码还可以这么求：1取反（包括符号位），然后加1，其实也能得到-1的补码。在程序中，可以让表示一个数的相反数表示如下：~num + 1。当然，表示为-1* num更为直观。其实本质就是先通过符号位取反来达到负数的效果，然后求补码，因为在C语言中int型变量是要用补码来表示的，所以自然而然就求出了相反数。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;如果是正数，比如0001，那么求出的负数的补码就是1111，当计算机要显示为十进制时，又需要再求一次补码，变为1001，结果就是-1；&lt;/li&gt;
