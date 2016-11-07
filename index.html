@@ -392,7 +392,7 @@
         
           <h6 id="3-54"><a href="#3-54" class="headerlink" title="3.54"></a>3.54</h6><p>一个函数的原型为<br><code>int decode2(int x, int y, int z);</code></p>
 <p>将这个函数编译成 IA32 汇编代码。代码体如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># x at %ebp+8, y at %ebp+12, z at %ebp+16</div><div class="line">1  movl    16(%ebp), %edx</div><div class="line">2  subl    12(%ebp), %edx</div><div class="line">3  movl    %edx, %eax</div><div class="line">4  sall    $15, %eax</div><div class="line">5  sarl    $15, %eax</div><div class="line">6  xorl    8(%ebp), %edx</div><div class="line">7  imull   %edx, %eax</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">movl    16(%ebp), %edx</div><div class="line">subl    12(%ebp), %edx</div><div class="line">movl    %edx, %eax</div><div class="line">sall    $15, %eax</div><div class="line">sarl    $15, %eax</div><div class="line">xorl    8(%ebp), %edx</div><div class="line">imull   %edx, %eax</div><div class="line"># x at %ebp+8, y at %ebp+12, z at %ebp+16</div></pre></td></tr></table></figure>
 <p>参数 x、y 和 z 存放在存储器中相对于寄存器 %ebp 中地址偏移量为 8、12 和 16的地方。代码将返回值存放在寄存器 %eax 中。写出等价于我们汇编代码的 decode2 的 C 代码。</p>
 <p><strong>答：</strong></p>
 <table>
