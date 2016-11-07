@@ -1,0 +1,1073 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程素养," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="整数的除运算代码一：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int argc, char *argv) &amp;#123;	int a = 0x80000000;	int b = a/-1;	printf(&quot;%d\n&quot;,b );	return 0;&amp;#125;
+代码二：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int ar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浮点数除0与整数除0的问题">
+<meta property="og:url" content="http://blublu.xyz/computer-principle/浮点数除0与整数除0的问题/index.html">
+<meta property="og:site_name" content="&三鹿伴我长大">
+<meta property="og:description" content="整数的除运算代码一：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int argc, char *argv) &amp;#123;	int a = 0x80000000;	int b = a/-1;	printf(&quot;%d\n&quot;,b );	return 0;&amp;#125;
+代码二：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int ar">
+<meta property="og:image" content="http://blublu.xyz/media/14782590201708/14782600432442.jpg">
+<meta property="og:image" content="http://blublu.xyz/media/14782590201708/14782602147934.jpg">
+<meta property="og:image" content="http://blublu.xyz/media/14782590201708/14782611514261.jpg">
+<meta property="og:image" content="http://blublu.xyz/media/14782590201708/14782610970092.jpg">
+<meta property="og:updated_time" content="2016-11-07T12:06:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浮点数除0与整数除0的问题">
+<meta name="twitter:description" content="整数的除运算代码一：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int argc, char *argv) &amp;#123;	int a = 0x80000000;	int b = a/-1;	printf(&quot;%d\n&quot;,b );	return 0;&amp;#125;
+代码二：
+12345678#include&amp;lt;stdio.h&amp;gt;int main(int ar">
+<meta name="twitter:image" content="http://blublu.xyz/media/14782590201708/14782600432442.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6229843713841956000,
+      author: 'jhWei'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  <title> 浮点数除0与整数除0的问题 | &三鹿伴我长大 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">&三鹿伴我长大</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浮点数除0与整数除0的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-04T19:02:45+08:00" content="2016-11-04">
+              2016-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/浮点数除0与整数除0的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/浮点数除0与整数除0的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/浮点数除0与整数除0的问题/" class="leancloud_visitors" data-flag-title="浮点数除0与整数除0的问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="整数的除运算"><a href="#整数的除运算" class="headerlink" title="整数的除运算"></a>整数的除运算</h2><p>代码一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码二：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>虽然以上两段代码看起来的功能都是一样的，就是变量 a 除以 -1 。但是实际运行起来的结果却迥然不同。<br><strong>第一段代码的结果：</strong><br><img src="media/14782590201708/14782600432442.jpg" alt=""><br><strong>第二段代码的结果：</strong><br><img src="media/14782590201708/14782602147934.jpg" alt=""><br>和我们预想的两段代码的结果一致预期不符。为了弄清楚原因，反汇编是最好的选择。<br>第一段代码的汇编代码：</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="number">0804840</span>b &lt;main&gt;:</div><div class="line"><span class="number">804840</span>b:   <span class="number">8</span>d <span class="number">4</span>c <span class="number">24</span> <span class="number">04</span>             lea    <span class="number">0x4</span>(%esp),%ecx</div><div class="line"><span class="number">804840</span>f:   <span class="number">83</span> e4 f0                and    $<span class="number">0xfffffff0</span>,%esp</div><div class="line"><span class="number">8048412</span>:   ff <span class="number">71</span> fc                pushl  <span class="number">-0x4</span>(%ecx)</div><div class="line"><span class="number">8048415</span>:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048416</span>:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048418</span>:   <span class="number">51</span>                      push   %ecx</div><div class="line"><span class="number">8048419</span>:   <span class="number">83</span> ec <span class="number">14</span>                sub    $<span class="number">0x14</span>,%esp</div><div class="line"><span class="number">804841</span>c:   c7 <span class="number">45</span> f0 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span>    movl   $<span class="number">0x80000000</span>,<span class="number">-0x10</span>(%ebp)</div><div class="line"><span class="number">8048423</span>:   <span class="number">8</span>b <span class="number">45</span> f0                mov    <span class="number">-0x10</span>(%ebp),%eax</div><div class="line"><span class="number">8048426</span>:   f7 d8                   neg    %eax</div><div class="line"><span class="number">8048428</span>:   <span class="number">89</span> <span class="number">45</span> f4                mov    %eax,<span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">804842</span>b:   <span class="number">83</span> ec <span class="number">08</span>                sub    $<span class="number">0x8</span>,%esp</div><div class="line"><span class="number">804842</span>e:   ff <span class="number">75</span> f4                pushl  <span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">8048431</span>:   <span class="number">68</span> d0 <span class="number">84</span> <span class="number">04</span> <span class="number">08</span>          push   $<span class="number">0x80484d0</span></div><div class="line"><span class="number">8048436</span>:   e8 a5 fe ff ff          call   <span class="number">80482e0</span> &lt;printf@plt&gt;</div><div class="line"><span class="number">804843</span>b:   <span class="number">83</span> c4 <span class="number">10</span>                add    $<span class="number">0x10</span>,%esp</div><div class="line"><span class="number">804843</span>e:   b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</div><div class="line"><span class="number">8048443</span>:   <span class="number">8</span>b <span class="number">4</span>d fc                mov    <span class="number">-0x4</span>(%ebp),%ecx</div><div class="line"><span class="number">8048446</span>:   c9                      leave  </div><div class="line"><span class="number">8048447</span>:   <span class="number">8</span>d <span class="number">61</span> fc                lea    <span class="number">-0x4</span>(%ecx),%esp</div><div class="line"><span class="number">804844</span>a:   c3                      ret    </div><div class="line"><span class="number">804844</span>b:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">804844</span>d:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">804844</span>f:   <span class="number">90</span>                      nop</div></pre></td></tr></table></figure>
+<p>第二段代码的汇编代码：</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="number">0804840</span>b &lt;main&gt;:</div><div class="line"><span class="number">804840</span>b:   <span class="number">8</span>d <span class="number">4</span>c <span class="number">24</span> <span class="number">04</span>             lea    <span class="number">0x4</span>(%esp),%ecx</div><div class="line"><span class="number">804840</span>f:   <span class="number">83</span> e4 f0                and    $<span class="number">0xfffffff0</span>,%esp</div><div class="line"><span class="number">8048412</span>:   ff <span class="number">71</span> fc                pushl  <span class="number">-0x4</span>(%ecx)</div><div class="line"><span class="number">8048415</span>:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048416</span>:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048418</span>:   <span class="number">51</span>                      push   %ecx</div><div class="line"><span class="number">8048419</span>:   <span class="number">83</span> ec <span class="number">14</span>                sub    $<span class="number">0x14</span>,%esp</div><div class="line"><span class="number">804841</span>c:   c7 <span class="number">45</span> ec <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span>    movl   $<span class="number">0x80000000</span>,<span class="number">-0x14</span>(%ebp)</div><div class="line"><span class="number">8048423</span>:   c7 <span class="number">45</span> f0 ff ff ff ff    movl   $<span class="number">0xffffffff</span>,<span class="number">-0x10</span>(%ebp)</div><div class="line"><span class="number">804842</span>a:   <span class="number">8</span>b <span class="number">45</span> ec                mov    <span class="number">-0x14</span>(%ebp),%eax</div><div class="line"><span class="number">804842</span>d:   <span class="number">99</span>                      cltd   </div><div class="line"><span class="number">804842</span>e:   f7 <span class="number">7</span>d f0                idivl  <span class="number">-0x10</span>(%ebp)</div><div class="line"><span class="number">8048431</span>:   <span class="number">89</span> <span class="number">45</span> f4                mov    %eax,<span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">8048434</span>:   <span class="number">83</span> ec <span class="number">08</span>                sub    $<span class="number">0x8</span>,%esp</div><div class="line"><span class="number">8048437</span>:   ff <span class="number">75</span> f4                pushl  <span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">804843</span>a:   <span class="number">68</span> e0 <span class="number">84</span> <span class="number">04</span> <span class="number">08</span>          push   $<span class="number">0x80484e0</span></div><div class="line"><span class="number">804843</span>f:   e8 <span class="number">9</span>c fe ff ff          call   <span class="number">80482e0</span> &lt;printf@plt&gt;</div><div class="line"><span class="number">8048444</span>:   <span class="number">83</span> c4 <span class="number">10</span>                add    $<span class="number">0x10</span>,%esp</div><div class="line"><span class="number">8048447</span>:   b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</div><div class="line"><span class="number">804844</span>c:   <span class="number">8</span>b <span class="number">4</span>d fc                mov    <span class="number">-0x4</span>(%ebp),%ecx</div><div class="line"><span class="number">804844</span>f:   c9                      leave  </div><div class="line"><span class="number">8048450</span>:   <span class="number">8</span>d <span class="number">61</span> fc                lea    <span class="number">-0x4</span>(%ecx),%esp</div><div class="line"><span class="number">8048453</span>:   c3                      ret    </div><div class="line"><span class="number">8048454</span>:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">8048456</span>:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">8048458</span>:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">804845</span>a:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">804845</span>c:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"><span class="number">804845</span>e:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div></pre></td></tr></table></figure>
+<p>通过对比可以看到，第一段代码的汇编代码中是直接用<code>neg</code>指令对变量a进行求相反数（全部按位取反再+1，也就是求相反数的补码）得到结果，而同时又因为符号位溢出了，所以导致相反数的补码与自身补码一致，所以结果不变，依然为-2147483648。而第二段中是用<code>idivl</code>指令做除法运算的。按2进制的除法运算规则0x80000000这个数(十进制为-2147483648)它除以-1应该为十进制的2147483648。但是%eax这个寄存器是32位的，它能存储的最大数字是2147483647，导致的结果就是真实的值无法存入%eax这个寄存器里面，便出现了上述与代码一截然不同的结果。</p>
+<hr>
+<h2 id="整数除0与浮点数除0的问题"><a href="#整数除0与浮点数除0的问题" class="headerlink" title="整数除0与浮点数除0的问题"></a>整数除0与浮点数除0的问题</h2><p>依然通过两段代码来探讨这两个问题：<br>代码一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="comment">//代码一</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">0</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a/b );</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码二：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="comment">//代码二</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span></span>&#123;</div><div class="line">    <span class="keyword">double</span> x=<span class="number">1.0</span>,y=<span class="number">-1.0</span>,z=<span class="number">0.0</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f,%f\n"</span>, x/z,y/z);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码一的结果：<br><img src="media/14782590201708/14782611514261.jpg" alt=""><br>代码二的结果：<br><img src="media/14782590201708/14782610970092.jpg" alt=""></p>
+<p>可以看到，整数除0与浮点数除0的结果是不相同的，整数除0会报异常，而浮点数除0则会得到inf的结果。</p>
+<p><strong>代码一汇编代码：</strong></p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="number">0804840</span>b &lt;main&gt;:</div><div class="line"><span class="number">804840</span>b:   <span class="number">8</span>d <span class="number">4</span>c <span class="number">24</span> <span class="number">04</span>             lea    <span class="number">0x4</span>(%esp),%ecx</div><div class="line"><span class="number">804840</span>f:   <span class="number">83</span> e4 f0                and    $<span class="number">0xfffffff0</span>,%esp</div><div class="line"><span class="number">8048412</span>:   ff <span class="number">71</span> fc                pushl  <span class="number">-0x4</span>(%ecx)</div><div class="line"><span class="number">8048415</span>:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048416</span>:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048418</span>:   <span class="number">51</span>                      push   %ecx</div><div class="line"><span class="number">8048419</span>:   <span class="number">83</span> ec <span class="number">14</span>                sub    $<span class="number">0x14</span>,%esp</div><div class="line"><span class="number">804841</span>c:   c7 <span class="number">45</span> f0 <span class="number">01</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>    movl   $<span class="number">0x1</span>,<span class="number">-0x10</span>(%ebp)</div><div class="line"><span class="number">8048423</span>:   c7 <span class="number">45</span> f4 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>    movl   $<span class="number">0x0</span>,<span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">804842</span>a:   <span class="number">8</span>b <span class="number">45</span> f0                mov    <span class="number">-0x10</span>(%ebp),%eax</div><div class="line"><span class="number">804842</span>d:   <span class="number">99</span>                      cltd   </div><div class="line"><span class="number">804842</span>e:   f7 <span class="number">7</span>d f4                idivl  <span class="number">-0xc</span>(%ebp)</div><div class="line"><span class="number">8048431</span>:   <span class="number">83</span> ec <span class="number">08</span>                sub    $<span class="number">0x8</span>,%esp</div><div class="line"><span class="number">8048434</span>:   <span class="number">50</span>                      push   %eax</div><div class="line"><span class="number">8048435</span>:   <span class="number">68</span> d0 <span class="number">84</span> <span class="number">04</span> <span class="number">08</span>          push   $<span class="number">0x80484d0</span></div><div class="line"><span class="number">804843</span>a:   e8 a1 fe ff ff          call   <span class="number">80482e0</span> &lt;printf@plt&gt;</div><div class="line"><span class="number">804843</span>f:   <span class="number">83</span> c4 <span class="number">10</span>                add    $<span class="number">0x10</span>,%esp</div><div class="line"><span class="number">8048442</span>:   b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</div><div class="line"><span class="number">8048447</span>:   <span class="number">8</span>b <span class="number">4</span>d fc                mov    <span class="number">-0x4</span>(%ebp),%ecx</div><div class="line"><span class="number">804844</span>a:   c9                      leave  </div><div class="line"><span class="number">804844</span>b:   <span class="number">8</span>d <span class="number">61</span> fc                lea    <span class="number">-0x4</span>(%ecx),%esp</div><div class="line"><span class="number">804844</span>e:   c3                      ret    </div><div class="line"><span class="number">804844</span>f:   <span class="number">90</span>                      nop</div></pre></td></tr></table></figure>
+<p><strong>代码二的汇编代码：</strong></p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="number">0804840</span>b &lt;main&gt;:</div><div class="line"> <span class="number">804840</span>b:   <span class="number">8</span>d <span class="number">4</span>c <span class="number">24</span> <span class="number">04</span>             lea    <span class="number">0x4</span>(%esp),%ecx</div><div class="line"> <span class="number">804840</span>f:   <span class="number">83</span> e4 f0                and    $<span class="number">0xfffffff0</span>,%esp</div><div class="line"> <span class="number">8048412</span>:   ff <span class="number">71</span> fc                pushl  <span class="number">-0x4</span>(%ecx)</div><div class="line"> <span class="number">8048415</span>:   <span class="number">55</span>                      push   %ebp</div><div class="line"> <span class="number">8048416</span>:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"> <span class="number">8048418</span>:   <span class="number">51</span>                      push   %ecx</div><div class="line"> <span class="number">8048419</span>:   <span class="number">83</span> ec <span class="number">24</span>                sub    $<span class="number">0x24</span>,%esp</div><div class="line"> <span class="number">804841</span>c:   d9 e8                   fld1   <span class="comment">//将1.0压入ST(0)中</span></div><div class="line"> <span class="number">804841</span>e:   dd <span class="number">5</span>d e0                fstpl  <span class="number">-0x20</span>(%ebp)<span class="comment">//将ST(0)中的数据以浮点数形式存入-0x20(%ebp)地址中，且进行出栈操作</span></div><div class="line"> <span class="number">8048421</span>:   d9 e8                   fld1   <span class="comment">//将1.0压入ST(0)中</span></div><div class="line"> <span class="number">8048423</span>:   d9 e0                   fchs   <span class="comment">//取 ST(0) 符号位的反</span></div><div class="line"> <span class="number">8048425</span>:   dd <span class="number">5</span>d e8                fstpl  <span class="number">-0x18</span>(%ebp)<span class="comment">//将ST(0)中的数据以浮点数形式存入-0x18(%ebp)地址中，且进行出栈操作</span></div><div class="line"> <span class="number">8048428</span>:   d9 ee                   fldz   <span class="comment">//将0.0压入ST(0)中</span></div><div class="line"> <span class="number">804842</span>a:   dd <span class="number">5</span>d f0                fstpl  <span class="number">-0x10</span>(%ebp)<span class="comment">//将ST(0)中的数据以浮点数形式存入-0x10(%ebp)地址中，且进行出栈操作</span></div><div class="line"> <span class="number">804842</span>d:   dd <span class="number">45</span> e8                fldl   <span class="number">-0x18</span>(%ebp)<span class="comment">//将浮点数-0x18(%ebp)压入ST(0)中</span></div><div class="line"> <span class="number">8048430</span>:   dc <span class="number">75</span> f0                fdivl  <span class="number">-0x10</span>(%ebp)<span class="comment">//将 ST(0) 除以 -0x10(%ebp)，结果存储到 ST(0)</span></div><div class="line"> <span class="number">8048433</span>:   dd <span class="number">45</span> e0                fldl   <span class="number">-0x20</span>(%ebp)<span class="comment">//将浮点数-0x18(%ebp)压入ST(0)中，当ST(0)存在数据时，执行压栈操作后，ST(0)中的数据将装入ST(1)中</span></div><div class="line"> <span class="number">8048436</span>:   dc <span class="number">75</span> f0                fdivl  <span class="number">-0x10</span>(%ebp)<span class="comment">//将 ST(0) 除以 -0x10(%ebp)，结果存储到 ST(0)</span></div><div class="line"> <span class="number">8048439</span>:   d9 c9                   fxch   %st(<span class="number">1</span>)<span class="comment">//ST(0)与ST(1)交换数据</span></div><div class="line"> <span class="number">804843</span>b:   <span class="number">83</span> ec <span class="number">0</span>c                sub    $<span class="number">0xc</span>,%esp</div><div class="line"> <span class="number">804843</span>e:   <span class="number">8</span>d <span class="number">64</span> <span class="number">24</span> f8             lea    <span class="number">-0x8</span>(%esp),%esp</div><div class="line"> <span class="number">8048442</span>:   dd <span class="number">1</span>c <span class="number">24</span>                fstpl  (%esp)<span class="comment">//将ST(0)中的数据以浮点数形式存入(%esp)中,之后ST(1)的数据会自动转入ST(0)中</span></div><div class="line"> <span class="number">8048445</span>:   <span class="number">8</span>d <span class="number">64</span> <span class="number">24</span> f8             lea    <span class="number">-0x8</span>(%esp),%esp</div><div class="line"> <span class="number">8048449</span>:   dd <span class="number">1</span>c <span class="number">24</span>                fstpl  (%esp)<span class="comment">//将ST(0)中的数据以浮点数形式存入(%esp)中</span></div><div class="line"> <span class="number">804844</span>c:   <span class="number">68</span> f0 <span class="number">84</span> <span class="number">04</span> <span class="number">08</span>          push   $<span class="number">0x80484f0</span></div><div class="line"> <span class="number">8048451</span>:   e8 <span class="number">8</span>a fe ff ff          call   <span class="number">80482e0</span> &lt;printf@plt&gt;</div><div class="line"> <span class="number">8048456</span>:   <span class="number">83</span> c4 <span class="number">20</span>                add    $<span class="number">0x20</span>,%esp</div><div class="line"> <span class="number">8048459</span>:   b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</div><div class="line"> <span class="number">804845</span>e:   <span class="number">8</span>b <span class="number">4</span>d fc                mov    <span class="number">-0x4</span>(%ebp),%ecx</div><div class="line"> <span class="number">8048461</span>:   c9                      leave  </div><div class="line"> <span class="number">8048462</span>:   <span class="number">8</span>d <span class="number">61</span> fc                lea    <span class="number">-0x4</span>(%ecx),%esp</div><div class="line"> <span class="number">8048465</span>:   c3                      ret    </div><div class="line"> <span class="number">8048466</span>:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"> <span class="number">8048468</span>:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"> <span class="number">804846</span>a:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"> <span class="number">804846</span>c:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div><div class="line"> <span class="number">804846</span>e:   <span class="number">66</span> <span class="number">90</span>                   xchg   %ax,%ax</div></pre></td></tr></table></figure>
+<p>可以看到，整数除0与浮点数除0所用的指令是不相同的。</p>
+<p><strong>浮点数是如何做除法的？</strong><br>浮点寄存器是通过栈结构来实现的，由ST(0)～ST(7)共8个栈空间组成，每个浮点寄存器占8字节。每次使用浮点寄存器都是率先使用ST(0)，而不能越过ST(0)直接使用ST(1)。浮点寄存器的使用就是压栈、出栈的过程。当ST(0)存在数据时，执行压栈操作后，ST(0)中的数据将装入ST(1)中，如无出栈操作，将顺序地向下压栈，直到将浮点寄存器占满。<br>若浮点数寄存器已满，此时再有数据压栈，则栈中的数据将会从ST(7)开始依次出栈转存入内存。</p>
+<p>代码2是浮点数除0，计算机用浮点数表示0的时候并不能做到精确的保存，一方面为浮点数除法提供了可能，另一方面一个数除以过于靠近0的数可能会导致结果过大而溢出，所以计算机对这类的计算作出了统一处理。用inf(011111111110…0)和-inf(111111111110…0)作为这类结果。</p>
+<p>因为浮点数使用FPU计算的原因，所以才导致了以上整数除 0 出现异常，而浮点数除 0 会得到<code>inf</code> 与<code>-inf</code>的结果。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Programming-literacy/" rel="tag"># 编程素养</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/computer-principle/深入理解计算机系统-拆炸弹实验/" rel="next" title="深入理解计算机系统-拆炸弹实验">
+                <i class="fa fa-chevron-left"></i> 深入理解计算机系统-拆炸弹实验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/computer-principle/深入理解计算机系统-第三章课后作业/" rel="prev" title="深入理解计算机系统-第三章课后作业">
+                深入理解计算机系统-第三章课后作业 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="computer-principle/浮点数除0与整数除0的问题/"
+     data-title="浮点数除0与整数除0的问题"
+     data-content=""
+     data-url="http://blublu.xyz/computer-principle/浮点数除0与整数除0的问题/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="computer-principle/浮点数除0与整数除0的问题/"
+           data-title="浮点数除0与整数除0的问题" data-url="http://blublu.xyz/computer-principle/浮点数除0与整数除0的问题/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xpajj.com1.z0.glb.clouddn.com/2016-07-17_20:43:46.jpg"
+               alt="jhWei" />
+          <p class="site-author-name" itemprop="name">jhWei</p>
+          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vagueco" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
+                  
+                    <i class="fa fa-fw fa-spinner"></i>
+                  
+                  coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tuicool.com/" title="推酷" target="_blank">推酷</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整数的除运算"><span class="nav-number">1.</span> <span class="nav-text">整数的除运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数除0与浮点数除0的问题"><span class="nav-number">2.</span> <span class="nav-text">整数除0与浮点数除0的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jhWei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blublu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if ( $('#local-search-input').size() === 0) {
+        return;
+      }
+
+      // Popup Window;
+      var isfetched = false;
+      // Search DB path;
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      // monitor main search box;
+
+      function proceedsearch() {
+        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+        $('.popup').toggle();
+
+      }
+      // search function;
+      var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+          url: path,
+          dataType: "xml",
+          async: true,
+          success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+              return {
+                title: $( "title", this ).text(),
+                content: $("content",this).text(),
+                url: $( "url" , this).text()
+              };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+              var matchcounts = 0;
+              var str='<ul class=\"search-result-list\">';
+              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+              $resultContent.innerHTML = "";
+              if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if(data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if( index_title < 0 && index_content < 0 ){
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i == 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    matchcounts += 1;
+                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                    var content = data.content.trim().replace(/<[^>]+>/g,"");
+                    if (first_occur >= 0) {
+                      // cut out 100 characters
+                      var start = first_occur - 20;
+                      var end = first_occur + 80;
+                      if(start < 0){
+                        start = 0;
+                      }
+                      if(start == 0){
+                        end = 50;
+                      }
+                      if(end > content.length){
+                        end = content.length;
+                      }
+                      var match_content = content.substring(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword){
+                        var regS = new RegExp(keyword, "gi");
+                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      });
+
+                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    }
+                    str += "</li>";
+                  }
+                })};
+              str += "</ul>";
+              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+              $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+          }
+        });}
+
+      // handle and trigger popup window;
+      $('.popup-trigger').mousedown(function(e) {
+        e.stopPropagation();
+        if (isfetched == false) {
+          searchFunc(path, 'local-search-input', 'local-search-result');
+        } else {
+          proceedsearch();
+        };
+
+      });
+
+      $('.popup-btn-close').click(function(e){
+        $('.popup').hide();
+        $(".popoverlay").remove();
+        $('body').css('overflow', '');
+      });
+      $('.popup').click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+  
+
+
+</body>
+</html>

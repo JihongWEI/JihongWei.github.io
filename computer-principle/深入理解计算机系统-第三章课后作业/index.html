@@ -1,0 +1,1155 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程素养," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="3.54一个函数的原型为int decode2(int x, int y, int z);
+将这个函数编译成 IA32 汇编代码。代码体如下：
+12345678# x at %ebp+8, y at %ebp+12, z at %ebp+161  movl    16(%ebp), %edx2  subl    12(%ebp), %edx3  movl    %edx, %eax4  sall">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统-第三章课后作业">
+<meta property="og:url" content="http://blublu.xyz/computer-principle/深入理解计算机系统-第三章课后作业/index.html">
+<meta property="og:site_name" content="&三鹿伴我长大">
+<meta property="og:description" content="3.54一个函数的原型为int decode2(int x, int y, int z);
+将这个函数编译成 IA32 汇编代码。代码体如下：
+12345678# x at %ebp+8, y at %ebp+12, z at %ebp+161  movl    16(%ebp), %edx2  subl    12(%ebp), %edx3  movl    %edx, %eax4  sall">
+<meta property="og:updated_time" content="2016-11-07T12:09:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统-第三章课后作业">
+<meta name="twitter:description" content="3.54一个函数的原型为int decode2(int x, int y, int z);
+将这个函数编译成 IA32 汇编代码。代码体如下：
+12345678# x at %ebp+8, y at %ebp+12, z at %ebp+161  movl    16(%ebp), %edx2  subl    12(%ebp), %edx3  movl    %edx, %eax4  sall">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6229843713841956000,
+      author: 'jhWei'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  <title> 深入理解计算机系统-第三章课后作业 | &三鹿伴我长大 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">&三鹿伴我长大</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入理解计算机系统-第三章课后作业
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-05T20:06:27+08:00" content="2016-11-05">
+              2016-11-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/深入理解计算机系统-第三章课后作业/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/深入理解计算机系统-第三章课后作业/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/深入理解计算机系统-第三章课后作业/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-第三章课后作业">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="3-54"><a href="#3-54" class="headerlink" title="3.54"></a>3.54</h6><p>一个函数的原型为<br><code>int decode2(int x, int y, int z);</code></p>
+<p>将这个函数编译成 IA32 汇编代码。代码体如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># x at %ebp+8, y at %ebp+12, z at %ebp+16</div><div class="line">1  movl    16(%ebp), %edx</div><div class="line">2  subl    12(%ebp), %edx</div><div class="line">3  movl    %edx, %eax</div><div class="line">4  sall    $15, %eax</div><div class="line">5  sarl    $15, %eax</div><div class="line">6  xorl    8(%ebp), %edx</div><div class="line">7  imull   %edx, %eax</div></pre></td></tr></table></figure>
+<p>参数 x、y 和 z 存放在存储器中相对于寄存器 %ebp 中地址偏移量为 8、12 和 16的地方。代码将返回值存放在寄存器 %eax 中。写出等价于我们汇编代码的 decode2 的 C 代码。</p>
+<p><strong>答：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sal</th>
+<th style="text-align:center">算术左移指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sar</td>
+<td style="text-align:center">算术右移指令</td>
+</tr>
+<tr>
+<td style="text-align:center">xor</td>
+<td style="text-align:center">异或指令</td>
+</tr>
+<tr>
+<td style="text-align:center">imul</td>
+<td style="text-align:center">有符号数乘法指令</td>
+</tr>
+</tbody>
+</table>
+<p>所以根据以上汇编代码可以得到等价的C代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">decode2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = z-y;</div><div class="line">    <span class="keyword">return</span> (temp ^ x) * (temp &lt;&lt; <span class="number">15</span> &gt;&gt; <span class="number">15</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<a id="more"></a>
+<h6 id="3-56"><a href="#3-56" class="headerlink" title="3.56"></a>3.56</h6><p>考虑下面的汇编代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># x at %ebp+8, n at %ebp+12</div><div class="line">1  movl    8(%ebp), %esi</div><div class="line">2  movl    12(%ebp), %ebx</div><div class="line">3  movl    $1431655765, %edi</div><div class="line">4  movl    $-2147483648, %edx</div><div class="line">5 .L2:</div><div class="line">6  movl    %edx, %eax</div><div class="line">7  andl    %esi, %eax</div><div class="line">8  xorl    %eax, %edi</div><div class="line">9  movl    %ebx, %ecx</div><div class="line">10 shrl    %cl, %edx</div><div class="line">11 testl   %edx, %edx</div><div class="line">12 jne     .L2</div><div class="line">13 movl    %edi, %eax</div></pre></td></tr></table></figure>
+<p>以上代码是以下整体形式的 C 代码编译产生的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>  <span class="function"><span class="keyword">int</span> <span class="title">loop</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span></span></div><div class="line">2  &#123;</div><div class="line"><span class="number">3</span>      <span class="keyword">int</span> result = <span class="number">____</span>;</div><div class="line"><span class="number">4</span>      <span class="keyword">int</span> mask;</div><div class="line"><span class="number">5</span>      <span class="keyword">for</span> (mask = <span class="number">____</span>; mask <span class="number">____</span>; mask = <span class="number">____</span>) &#123;</div><div class="line"><span class="number">6</span>          result ^= <span class="number">____</span>;</div><div class="line"><span class="number">7</span>      &#125;</div><div class="line"><span class="number">8</span>      <span class="keyword">return</span> result;</div><div class="line"><span class="number">9</span>  &#125;</div></pre></td></tr></table></figure>
+<p>你的任务是填写这个 C 代码中缺失的部分，得到一个程序等价于产生的汇编代码。回想一下，这个函数的结果是在寄存器 %eax 中返回的。你会发现以下工作很有帮助：检查循环之前、之中和之后的汇编代码，形成一个寄存器和程序变量之间一致的映射。</p>
+<p>A. 哪个寄存器保存着程序值 x、n、result 和 mask？<br>B. result 和 mask 的初始值是什么？<br>C. mask 的测试条件是什么？<br>D. mask 是如何被修改的？<br>E. result 是如何被修改的？<br>F. 填写这段 C 代码中所有缺失的部分。</p>
+<p><strong>答：</strong><br>A. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">寄存器</th>
+<th style="text-align:center">对应的程序变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">esi</td>
+<td style="text-align:center">x</td>
+</tr>
+<tr>
+<td style="text-align:center">ebx</td>
+<td style="text-align:center">n</td>
+</tr>
+<tr>
+<td style="text-align:center">edi</td>
+<td style="text-align:center">result</td>
+</tr>
+<tr>
+<td style="text-align:center">edx</td>
+<td style="text-align:center">mask</td>
+</tr>
+</tbody>
+</table>
+<p>B.result的初始值为<code>0x55555555</code>，mask的初始值为<code>0x8fffffff</code><br>C.根据<code>testl   %edx, %edx</code> 与 <code>jne     .L2</code>语句可知mask的测试条件是 <code>mask!=0</code><br>D.根据<code>movl    %edx, %eax</code>、<code>movl    %ebx, %ecx</code> 与 <code>shrl    %cl, %edx</code>语句可以知道，mask右移的位数为cl，也就是n的低八位，所以相当于<code>mask = (unsigned)mask &gt;&gt; n&amp;0xff</code>，因为若mask不强转为unsigned类型，移位之后会被符号位（1）填充，mask != 0将一直成立，for循环会死循环。<br>E.根据<code>andl    %esi, %eax</code> 与 <code>xorl    %eax, %edi</code>语句可以得到 result ^= (x &amp; mask)<br>F.完整代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">loop</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">0x55555555</span>;</div><div class="line">    <span class="keyword">int</span> mask;</div><div class="line">    <span class="keyword">for</span> (mask = <span class="number">0x8fffffff</span>; mask != <span class="number">0</span>; mask = (<span class="keyword">unsigned</span>)mask &gt;&gt; n&amp;<span class="number">0xff</span>) &#123;</div><div class="line">        result ^= (x &amp; mask);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h6 id="3-58"><a href="#3-58" class="headerlink" title="3.58"></a>3.58</h6><p>下面的代码是在一个开关语句中根据枚举类型值进行分支选择的例子。回忆一下，C语言中枚举类型只是一种引入一组与整数值相对应的名字的方法。默认情况下，值是从 0 向上依次赋给名字的。在我们的代码中，省略了与各种情况标号相对应的动作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Enumerated type creates set of constants numbered 0 and upward */</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; MODE_A, MODE_B, MODE_C, MODE_D, MODE_E &#125; <span class="keyword">mode_t</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">switch3</span><span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2, <span class="keyword">mode_t</span> action)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">switch</span> (action) &#123;</div><div class="line">        <span class="keyword">case</span> MODE_A:</div><div class="line">        <span class="keyword">case</span> MODE_B:</div><div class="line">        <span class="keyword">case</span> MODE_C:</div><div class="line">        <span class="keyword">case</span> MODE_D:</div><div class="line">        <span class="keyword">case</span> MODE_E:</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>产生的实现各个动作的汇编代码部分如下所示。注释指明了参数位置，寄存器值，以及各个跳转目的的情况标号。寄存器 %edx 对应于程序变量 result，并被初始化为-1。<strong>填写 C 代码中缺失的部分。注意那些会落入其他情况中的情况。</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"># Arguments: p1 at %ebp+8, p2 at %ebp+12, action at %ebp+16</div><div class="line"># Registers: result in %edx (initialized to -1)</div><div class="line"># The jump targets:</div><div class="line">1  .L17:                   # MODE_E</div><div class="line">2    movl  $17, %edx</div><div class="line">3    jmp   .L19</div><div class="line">4  .L13:                   # MODE_A</div><div class="line">5    movl  8(%ebp), %eax</div><div class="line">6    movl  (%eax), %edx</div><div class="line">7    movl  12(%ebp), %ecx</div><div class="line">8    movl  (%ecx), %eax</div><div class="line">9    movl  8(%ebp), %ecx</div><div class="line">10   movl  %eax, (%ecx)</div><div class="line">11   jmp   .L19</div><div class="line">12 .L14:                   # MODE_B</div><div class="line">13   movl  12(%ebp), %edx</div><div class="line">14   movl  (%edx), %eax</div><div class="line">15   movl  %eax, %edx</div><div class="line">16   movl  8(%ebp), %ecx</div><div class="line">17   addl  (%ecx), %edx</div><div class="line">18   movl  12(%ebp), %eax</div><div class="line">19   movl  %edx, (%eax)</div><div class="line">20   jmp   .L19</div><div class="line">21 .L15:                   # MODE_C</div><div class="line">22   movl  12(%ebp), %edx</div><div class="line">23   movl  $15, (%edx)</div><div class="line">24   movl  8(%ebp), %ecx</div><div class="line">25   movl  (%ecx), %edx</div><div class="line">26   jmp   .L19</div><div class="line">27 .L16:                   # MODE_D</div><div class="line">28   movl  8(%ebp), %edx</div><div class="line">29   movl  (%edx), %eax</div><div class="line">30   movl  12(%ebp), %ecx</div><div class="line">31   movl  %eax, (%ecx)</div><div class="line">32   movl  $17, %edx</div><div class="line">33 .L19:                   # default</div><div class="line">34   movl  %edx, %eax      # Set return value</div><div class="line">上面的代码实现了 switch 语句的各个分支</div></pre></td></tr></table></figure>
+<p><strong>答：</strong><br>根据汇编代码填写的C代码缺失部分如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; MODE_A, MODE_B, MODE_C, MODE_D, MODE_E &#125; <span class="keyword">mode_t</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">switch3</span><span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2, <span class="keyword">mode_t</span> action)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">switch</span> (action) &#123;</div><div class="line">        <span class="keyword">case</span> MODE_A:</div><div class="line">            result = *p1;</div><div class="line">            *p1 = *p2;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> MODE_B:</div><div class="line">            result = p2;</div><div class="line">            result = *p2;</div><div class="line">            result += *p1;</div><div class="line">            *p2 = result;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> MODE_C:</div><div class="line">            *p2 = <span class="number">15</span>;</div><div class="line">            result = *p1;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> MODE_D:</div><div class="line">            *p2 = *p1;</div><div class="line">            result = <span class="number">17</span>; </div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> MODE_E:</div><div class="line">            result = <span class="number">17</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h6 id="3-62"><a href="#3-62" class="headerlink" title="3.62"></a>3.62</h6><p>下面的代码转置一个 MxM 矩阵的元素，这里 M 是一个用 #define 定义的常数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">transpose</span><span class="params">(<span class="keyword">int</span> A[M][M])</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; M; i++)</div><div class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; i; j++) &#123;</div><div class="line">            <span class="keyword">int</span> t = A[i][j];</div><div class="line">            A[i][j] = A[j][i];</div><div class="line">            A[j][i] = t;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当用优化等级 -O2 编译时，GCC 为这个函数的内部循环产生下面的代码：</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> .L3:</div><div class="line"><span class="number">2</span>   movl (%ebx), %eax</div><div class="line"><span class="number">3</span>   movl (%esi,%ecx,<span class="number">4</span>), %edx</div><div class="line"><span class="number">4</span>   movl %eax, (%esi,%ecx,<span class="number">4</span>)</div><div class="line"><span class="number">5</span>   addl $<span class="number">1</span>, %ecx</div><div class="line"><span class="number">6</span>   movl %edx, (%ebx)</div><div class="line"><span class="number">7</span>   addl $<span class="number">76</span>, %ebx</div><div class="line"><span class="number">8</span>   cmpl %edi, %ecx</div><div class="line"><span class="number">9</span>   jl   .L3</div></pre></td></tr></table></figure>
+<p>A. M 的值是多少？<br>B. 哪个寄存器保存着程序值 i 和 j？<br>C. 写 transpose 的一个 C 代码版本，使用在这个循环中出现的优化。在你的代码中，使用参数 M，而不要使用常数值。</p>
+<p><strong>答：</strong><br>A. M 的值为19<br>B. ecx寄存器保存着j的值，edi寄存器保存着i的值。(cmpl s2,s1指令，s1-s2差关系)<br>C. 代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">transpose</span><span class="params">(<span class="keyword">int</span> A[M][M], <span class="keyword">int</span> M)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;M; i++)&#123;</div><div class="line">        <span class="keyword">int</span> *p = &amp;A[i][<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</div><div class="line">            <span class="keyword">int</span> temp = A[i][j];</div><div class="line">            A[i][j] = *p;</div><div class="line">            *p = temp;</div><div class="line">            p += <span class="number">19</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h6 id="3-66"><a href="#3-66" class="headerlink" title="3.66"></a>3.66</h6><p>你负责维护一个大型的 C 程序时，遇到下面这样的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>  <span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line"><span class="number">2</span>      <span class="keyword">int</span> left;</div><div class="line"><span class="number">3</span>      a_struct a[CNT];</div><div class="line"><span class="number">4</span>      <span class="keyword">int</span> right;</div><div class="line"><span class="number">5</span>  &#125; b_struct;</div><div class="line"><span class="number">6</span></div><div class="line"><span class="number">7</span>  <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i, b_struct *bp)</span></span></div><div class="line">8  &#123;</div><div class="line"><span class="number">9</span>      <span class="keyword">int</span> n = bp-&gt;left + bp-&gt;right;</div><div class="line"><span class="number">10</span>     a_struct *ap = &amp;bp-&gt;a[i];</div><div class="line"><span class="number">11</span>     ap-&gt;x[ap-&gt;idx] = n;</div><div class="line"><span class="number">12</span> &#125;</div></pre></td></tr></table></figure>
+<p>编译时常数 CNT 和结构 a_struct 的声明在一个你没有访问权限的文件中。幸好，你有代码的’.o’版本，可以用 objdump 程序来反汇编这些文件，得到下面的反汇编代码：</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>     <span class="number">00000000</span> &lt;test&gt;:</div><div class="line"><span class="number">2</span>      <span class="number">0</span>:  <span class="number">55</span>                   push %ebp</div><div class="line"><span class="number">3</span>      <span class="number">1</span>:  <span class="number">89</span> e5                mov %esp, %ebp</div><div class="line"><span class="number">4</span>      <span class="number">3</span>:  <span class="number">53</span>                   push %ebx</div><div class="line"><span class="number">5</span>      <span class="number">4</span>:  <span class="number">8</span>b <span class="number">45</span> <span class="number">08</span>             mov <span class="number">0x8</span>(%ebp), %eax</div><div class="line"><span class="number">6</span>      <span class="number">7</span>:  <span class="number">8</span>b <span class="number">4</span>d <span class="number">0</span>c             mov <span class="number">0xc</span>(%ebp), %ecx</div><div class="line"><span class="number">7</span>      a:  <span class="number">6</span>b d8 <span class="number">1</span>c             imul $<span class="number">0x1c</span>, %eax, %ebx</div><div class="line"><span class="number">8</span>      d:  <span class="number">8</span>d <span class="number">14</span> c5 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> lea <span class="number">0x0</span>(,%eax,<span class="number">8</span>), %edx</div><div class="line"><span class="number">9</span>      <span class="number">14</span>: <span class="number">29</span> c2                sub %eax, %edx</div><div class="line"><span class="number">10</span>     <span class="number">16</span>: <span class="number">03</span> <span class="number">54</span> <span class="number">19</span> <span class="number">04</span>          add <span class="number">0x4</span>(%ecx,%ebx,<span class="number">1</span>), %edx</div><div class="line"><span class="number">11</span>     <span class="number">1</span>a: <span class="number">8</span>b <span class="number">81</span> c3 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>    mov <span class="number">0xc8</span>(%ecx), %eax</div><div class="line"><span class="number">12</span>     <span class="number">20</span>: <span class="number">03</span> <span class="number">01</span>                add (%ecx), %eax</div><div class="line"><span class="number">13</span>     <span class="number">22</span>: <span class="number">89</span> <span class="number">44</span> <span class="number">91</span> <span class="number">08</span>          mov %eax, <span class="number">0x8</span>(%ecx,%edx,<span class="number">4</span>)</div><div class="line"><span class="number">14</span>     <span class="number">25</span>: <span class="number">5</span>b                   pop %ebx</div><div class="line"><span class="number">15</span>     <span class="number">27</span>: <span class="number">5</span>d                   pop %ebp</div><div class="line"><span class="number">16</span>     <span class="number">28</span>: c3                   ret</div></pre></td></tr></table></figure>
+<p>运用你的逆向工程技术，推断下列的内容：<br>A. CNT 的值<br>B. 结构 a_struct 的完整声明。假设这个结构只有字段 idx 和 x。</p>
+<p><strong>答：</strong><br>A. CNT的值为7<br>B. a_struct的完整声明如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> a_struct&#123;</div><div class="line">    <span class="keyword">int</span> idx;</div><div class="line">    <span class="keyword">int</span> x[<span class="number">6</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>整段代码顺序看不容易理解，所以倒序推导。首先根据第13行<code>mov %eax, 0x8(%ecx,%edx,4)</code>可知道其等价于C代码中的<code>ap-&gt;x[ap-&gt;idx] = n</code>语句。那么自然而然%eax就是n了，后面<code>%ecx + %edx*4 + 8</code>语句就是<code>a[i]-&gt;x[ap-&gt;idx]</code>。再根据第6行<code>mov 0xc(%ebp), %ecx</code>语句可知%ecx就是<code>bp</code>指针。所以<code>%edx*4 + 8</code>就相当于对于<code>bp</code>指针的偏移量。<br>再往上看第11行<code>mov 0xc8(%ecx), %eax</code>还有第12行<code>add (%ecx), %eax</code>，其实就相当于C代码中的<code>int n = bp-&gt;left + bp-&gt;right</code>。由此可知bp-&gt;right相对于bp-left偏移了0xc8(200)个字节。那么<code>a[CNT]</code>的空间就应该为<code>200-4=196</code>字节。<br>再看看第7行<code>imul $0x1c, %eax, %ebx</code>，可以猜想到ebx应该存放的是相对于a[0]地址的偏移量，28*i。由于i是下标，所以很显然就可以得到<code>196/28=7</code>个<code>a_struct</code>数组，且<code>a_struct</code>结构体占用的空间为 28 字节。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">int left</th>
+<th style="text-align:center">4字节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a[0]</td>
+<td style="text-align:center">28字节</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">a[6]</td>
+<td style="text-align:center">28字节</td>
+</tr>
+<tr>
+<td style="text-align:center">int right</td>
+<td style="text-align:center">4字节</td>
+</tr>
+</tbody>
+</table>
+<p>整个内存空间如上所示。</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">8</span>      d:  <span class="number">8</span>d <span class="number">14</span> c5 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> lea <span class="number">0x0</span>(,%eax,<span class="number">8</span>), %edx</div><div class="line"><span class="number">9</span>      <span class="number">14</span>: <span class="number">29</span> c2                sub %eax, %edx</div><div class="line"><span class="number">10</span>     <span class="number">16</span>: <span class="number">03</span> <span class="number">54</span> <span class="number">19</span> <span class="number">04</span>          add <span class="number">0x4</span>(%ecx,%ebx,<span class="number">1</span>), %edx<span class="comment">//7i+idx</span></div></pre></td></tr></table></figure>
+<p>根据这三条语句以及之前得出的<code>%edx*4 + 8</code>为x[a[i]-&gt;idx]相对于bp的偏移量，7i为相对于<code>left</code>的偏移量，idx为相对于<code>idx</code>的偏移量。最后+8是把<code>left</code>还有<code>idx</code>的偏移量算上。<br>综上推测，整个汇编满足<code>void test(int i, b_struct *bp)</code>函数所表达的功能。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Programming-literacy/" rel="tag"># 编程素养</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/computer-principle/浮点数除0与整数除0的问题/" rel="next" title="浮点数除0与整数除0的问题">
+                <i class="fa fa-chevron-left"></i> 浮点数除0与整数除0的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="computer-principle/深入理解计算机系统-第三章课后作业/"
+     data-title="深入理解计算机系统-第三章课后作业"
+     data-content=""
+     data-url="http://blublu.xyz/computer-principle/深入理解计算机系统-第三章课后作业/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="computer-principle/深入理解计算机系统-第三章课后作业/"
+           data-title="深入理解计算机系统-第三章课后作业" data-url="http://blublu.xyz/computer-principle/深入理解计算机系统-第三章课后作业/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xpajj.com1.z0.glb.clouddn.com/2016-07-17_20:43:46.jpg"
+               alt="jhWei" />
+          <p class="site-author-name" itemprop="name">jhWei</p>
+          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vagueco" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
+                  
+                    <i class="fa fa-fw fa-spinner"></i>
+                  
+                  coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tuicool.com/" title="推酷" target="_blank">推酷</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-54"><span class="nav-number">1.</span> <span class="nav-text">3.54</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-56"><span class="nav-number">2.</span> <span class="nav-text">3.56</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-58"><span class="nav-number">3.</span> <span class="nav-text">3.58</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-62"><span class="nav-number">4.</span> <span class="nav-text">3.62</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-66"><span class="nav-number">5.</span> <span class="nav-text">3.66</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jhWei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blublu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if ( $('#local-search-input').size() === 0) {
+        return;
+      }
+
+      // Popup Window;
+      var isfetched = false;
+      // Search DB path;
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      // monitor main search box;
+
+      function proceedsearch() {
+        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+        $('.popup').toggle();
+
+      }
+      // search function;
+      var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+          url: path,
+          dataType: "xml",
+          async: true,
+          success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+              return {
+                title: $( "title", this ).text(),
+                content: $("content",this).text(),
+                url: $( "url" , this).text()
+              };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+              var matchcounts = 0;
+              var str='<ul class=\"search-result-list\">';
+              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+              $resultContent.innerHTML = "";
+              if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if(data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if( index_title < 0 && index_content < 0 ){
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i == 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    matchcounts += 1;
+                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                    var content = data.content.trim().replace(/<[^>]+>/g,"");
+                    if (first_occur >= 0) {
+                      // cut out 100 characters
+                      var start = first_occur - 20;
+                      var end = first_occur + 80;
+                      if(start < 0){
+                        start = 0;
+                      }
+                      if(start == 0){
+                        end = 50;
+                      }
+                      if(end > content.length){
+                        end = content.length;
+                      }
+                      var match_content = content.substring(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword){
+                        var regS = new RegExp(keyword, "gi");
+                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      });
+
+                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    }
+                    str += "</li>";
+                  }
+                })};
+              str += "</ul>";
+              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+              $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+          }
+        });}
+
+      // handle and trigger popup window;
+      $('.popup-trigger').mousedown(function(e) {
+        e.stopPropagation();
+        if (isfetched == false) {
+          searchFunc(path, 'local-search-input', 'local-search-result');
+        } else {
+          proceedsearch();
+        };
+
+      });
+
+      $('.popup-btn-close').click(function(e){
+        $('.popup').hide();
+        $(".popoverlay").remove();
+        $('body').css('overflow', '');
+      });
+      $('.popup').click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+  
+
+
+</body>
+</html>

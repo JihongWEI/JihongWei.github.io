@@ -312,6 +312,624 @@
             
               
                 
+                <a class="post-title-link" href="/programming/指针的指针——二级指针/" itemprop="url">
+                  指针的指针--二级指针
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T17:32:12+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/指针的指针——二级指针/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/指针的指针——二级指针/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/指针的指针——二级指针/" class="leancloud_visitors" data-flag-title="指针的指针--二级指针">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在重新温习C/C++的时候不可避免的重头戏就是指针，指针要用得好，光用一层显然是不行的，我们还需要知道二级指针的操纵。</p>
+<p>假设A-&gt;B-&gt;C,即A指向B，B指向C的关系中，C是一段我们实际关心的内容，假如我们用malloc或者new分配了一块内存，然后赋值”一段内容”进去，那么就是C了。我们假设C的内存起始地址为0x00000008.那么我们自然而然就可以得出：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">B == <span class="number">0x00000008</span>;<span class="comment">//B内存块的实际内容</span></div><div class="line">*B == <span class="string">"一段内容"</span>;<span class="comment">//B解引用，也就是B指针指向的C的值</span></div><div class="line">&amp;B == <span class="number">0x00000008</span> <span class="string">"//B取地址，B的地址是0x00000004</span></div></pre></td></tr></table></figure>
+<p>那么我们再来看看A此时的情况：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*A == B == <span class="number">0x00000008</span>;  <span class="comment">//A解引用也就是B的内容   </span></div><div class="line">**A == *B == <span class="string">"一段内容"</span>;  <span class="comment">//B解引用，也就是B指针指向的C的值  </span></div><div class="line">A == &amp;B == <span class="number">0x00000004</span>;  <span class="comment">//A存的是B的地址，B的地址是0x00000004  </span></div><div class="line">&amp;A == <span class="number">0x00000000</span>;  <span class="comment">//A取地址，A的地址是0x00000000</span></div></pre></td></tr></table></figure>
+<p><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-10-10-17%3A58%3A23.jpg" alt=""><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/指针的指针——二级指针/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/AT-T风格汇编语言语法/" itemprop="url">
+                  AT&T风格汇编语言语法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-01T20:17:39+08:00" content="2016-10-01">
+              2016-10-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/AT-T风格汇编语言语法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/AT-T风格汇编语言语法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/AT-T风格汇编语言语法/" class="leancloud_visitors" data-flag-title="AT&T风格汇编语言语法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="AT-amp-T风格汇编语言语法"><a href="#AT-amp-T风格汇编语言语法" class="headerlink" title="AT&amp;T风格汇编语言语法"></a>AT&amp;T风格汇编语言语法</h1><h4 id="1-Register-Reference"><a href="#1-Register-Reference" class="headerlink" title="1. Register Reference"></a>1. Register Reference</h4><p>引用寄存器要在寄存器号前加百分号<code>%</code>,如<code>“movl %eax, %ebx”</code>。<br>80386 有如下寄存器:<br>[1] 8 个32-bit 寄存器 <code>%eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp</code>；<br>( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：<code>%ax，%bx，%cx，%dx，%di，%si，%bp，%sp</code>；8 个8-bit 寄存器：<code>%ah，%al，%bh，%bl，%ch，%cl，%dh，%dl</code>。它们事实上是寄存器<code>%ax，%bx，%cx，%dx 的高8 位和低8位</code>；)<br>[2] 6 个段寄存器：<code>%cs(code)，%ds(data)，%ss(stack), %es，%fs，%gs</code>；<br>[3] 3 个控制寄存器：<code>%cr0，%cr2，%cr3</code>；<br>[4] 6 个debug 寄存器：<code>%db0，%db1，%db2，%db3，%db6，%db7</code>；<br>[5] 2 个测试寄存器：<code>%tr6，%tr7</code>；<br>[6] 8 个浮点寄存器<br>栈：<code>%st(0)，%st(1)，%st(2)，%st(3)，%st(4)，%st(5)，%st(6)，%st(7)</code>。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/AT-T风格汇编语言语法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/" itemprop="url">
+                  使用Intellij Idea + Maven构建Java Web项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-18T20:57:49+08:00" content="2016-09-18">
+              2016-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Web/使用Intellij-Idea-Maven构建Java-Web项目/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/Web/使用Intellij-Idea-Maven构建Java-Web项目/" class="leancloud_visitors" data-flag-title="使用Intellij Idea + Maven构建Java Web项目">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>   最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。</p>
+<p>   接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解一下Maven是什么，以及它可以拿来干嘛。</p>
+<blockquote>
+<p>Maven 其实是很多东西，Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。Maven 有一个生命周期，当你运行 mvn install 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。此外，Maven能够很方便的帮你管理项目报告，生成站点，管理JAR文件，等等。</p>
+</blockquote>
+<p><strong>但是简而言之，maven是把设计模式应用于构建架构的一种尝试，如下列出了maven 的大部分功能。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-Builds</div><div class="line">-Documentation</div><div class="line">-Reporting</div><div class="line">-Dependencies</div><div class="line">-SCMs</div><div class="line">-Releases</div><div class="line">-Distribution.</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/knowledge/vim常用命令/" itemprop="url">
+                  vim常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-27T20:19:43+08:00" content="2016-06-27">
+              2016-06-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">必备知识</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/knowledge/vim常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="knowledge/vim常用命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/knowledge/vim常用命令/" class="leancloud_visitors" data-flag-title="vim常用命令">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h1><h3 id="光标移动-Cursor-Movement"><a href="#光标移动-Cursor-Movement" class="headerlink" title="光标移动(Cursor Movement)"></a>光标移动(Cursor Movement)</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用（解释）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h,j,k,l</td>
+<td>h表示往左，j表示往下，k表示往右，l表示往上</td>
+</tr>
+<tr>
+<td>Ctrl+f</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>w, e, W, E</td>
+<td>跳到单词的后面，小写包括标点</td>
+</tr>
+<tr>
+<td>b, B</td>
+<td>以单词为单位往前跳动光标，小写包含标点</td>
+</tr>
+<tr>
+<td>O</td>
+<td>开启新的一行</td>
+</tr>
+<tr>
+<td>^</td>
+<td>一行的开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td>一行的结尾</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>文档的第一行</td>
+</tr>
+<tr>
+<td>[N]G</td>
+<td>文档的第N行或者最后一行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="插入模式-Insert-Mode"><a href="#插入模式-Insert-Mode" class="headerlink" title="插入模式(Insert Mode)"></a>插入模式(Insert Mode)</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用（解释)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>插入到光标前面</td>
+</tr>
+<tr>
+<td>I</td>
+<td>插入到行的开始位置</td>
+</tr>
+<tr>
+<td>a</td>
+<td>插入到光标的后面</td>
+</tr>
+<tr>
+<td>A</td>
+<td>插入到行的最后位置</td>
+</tr>
+<tr>
+<td>o, O</td>
+<td>新开一行</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>关闭插入模式</td>
+</tr>
+</tbody>
+</table>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/knowledge/vim常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programming/python元类到底是什么/" itemprop="url">
                   Python元类到底是什么
                 </a>
@@ -835,558 +1453,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/security/密码加密——计时攻击/" itemprop="url">
-                  密码加密——计时攻击
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T14:20:29+08:00" content="2016-03-06">
-              2016-03-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/security/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/security/密码加密——计时攻击/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="security/密码加密——计时攻击/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/security/密码加密——计时攻击/" class="leancloud_visitors" data-flag-title="密码加密——计时攻击">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>今天在扒加密相关的代码的时候发现了一段比较有意思的代码。google后才知道“计时攻击”（Timing Attack）这么个东西的存在，安全方面真心弱鸡啊。看来要补的东西还是很多。</strong></p>
-<p>###先贴代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">slowEquals</span><span class="params">(<span class="keyword">byte</span>[] a, <span class="keyword">byte</span>[] b)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> diff = a.length ^ b.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length &amp;&amp; i &lt; b.length; i++)</div><div class="line">    diff |= a[i] ^ b[i];</div><div class="line">    <span class="keyword">return</span> diff == <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/security/密码加密——计时攻击/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/Java服务端解析http请求（一）/" itemprop="url">
-                  Java服务端解析http请求（一）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T18:18:36+08:00" content="2016-02-01">
-              2016-02-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/programming/Java服务端解析http请求（一）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/Java服务端解析http请求（一）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/programming/Java服务端解析http请求（一）/" class="leancloud_visitors" data-flag-title="Java服务端解析http请求（一）">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。</strong></p>
-<p>平时在进行web解析的时候，我们一般都使用tomcat这个庞然大物来对client的请求进行解析，它返回给我们一个完整的HttpRequest对象，其中含有client向我们传输的所需要的各种信息。今天我们就来说说如何模仿tomcat服务器解析程序的雏形，自己写一个http服务器解析程序。</p>
-<p><strong>客户端与服务端的通信有三步：</strong><br>1.与服务端进行连接(当然，连接还是用socket来实现的)<br>2.向服务端发出请求<br>3.服务端返回结果</p>
-<p><a href="https://zh.wikipedia.org/wiki/超文本传输协议">http</a>其实就是一个web交互协议，通过一套完整的协议约束，对于不同的浏览器只要能够解析http协议就可以和服务器进行通信。</p>
-<p>我们在设计一个服务端的时候，当连接完成后的第一步就是能够正确解析客户端发出的请求。<br>在原始的时候，没有协议，我们一般都是通过在向服务器发送命令的时候在String前含有几位保留字符，用数字或者其他来标识此条命令，告诉服务器应该使用哪个部分进行解析，但是当程序扩展之后，这种方式难免不利于维护。同时也不利于复用，于是各种通信协议就产生了，在web上用得最多的就是http协议。今天要说的就是http服务器的解析。</p>
-<p>在服务端，通过一个客户端线程，获取客户端的输入流就可以得到一个客户端封装好的http请求信息。而一般来说，一些现成的工具（tomcat）已经帮我们自动对这些信息进行解析。如果我们要自己动手造一个解析程序，此时我们获取到的信息首先是一串字节流，通过解码还原成string，但这还远远达不到我们要求，我们需要一个HttpRequest类来存储request中各个部分的信息。所以第一步就是对这串string进行切割解析。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/Java服务端解析http请求（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/Java与C++的异同/" itemprop="url">
-                  Java与C++的异同
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-31T13:27:48+08:00" content="2016-01-31">
-              2016-01-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/programming/Java与C++的异同/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/Java与C++的异同/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/programming/Java与C++的异同/" class="leancloud_visitors" data-flag-title="Java与C++的异同">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>C++与Java的区别大致分为三类：</p>
-<ul>
-<li>Java不支持的C++特性</li>
-<li>Java的独特之处</li>
-<li>C++和Java都有但是不相同的特性</li>
-</ul>
-</blockquote>
-<h3 id="Java摈弃的C-的内容"><a href="#Java摈弃的C-的内容" class="headerlink" title="Java摈弃的C++的内容"></a>Java摈弃的C++的内容</h3><pre><code>有相当一部分C++的特性Java不再支持。在某些情况下，一个特殊的C++特性和Java的运行环境不想关。另一情况下，Java的设计者摈弃了C++中某些重复的内容。还有就是出于对网络应用运行安全的考虑，Java不再支持某些C++的特点。
-Java与C++之间最大的不同就是Java不再支持指针，指针是使C++语言成为世界上功能最强大语言的主要原因。但是对于指针的使用有着一定程序的危险。
-Java不支持指针出于以下两个原因：
-（1）指针本身就不安全。如，使用C++的状态指针，可以访问程序代码和数据段外的内存地址。一个恶意程序可以利用这个特点破坏系统，完成一次或多次非法的访问（获取你的密码）或是违反安全限制。
-（2）即使指针可以被限制在Java的运行系统中（理论上），但是设计者仍然认为它的使用是麻烦的Java中不存在指针，所以也没有-&gt;操作符
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/Java与C++的异同/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/hack-gwf/Linux下使用shadowsocks科学上网/" itemprop="url">
-                  Linux下使用shadowsocks科学上网
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-13T22:45:23+08:00" content="2016-01-13">
-              2016-01-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hack-gwf/" itemprop="url" rel="index">
-                    <span itemprop="name">科学上网</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/hack-gwf/Linux下使用shadowsocks科学上网/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="hack-gwf/Linux下使用shadowsocks科学上网/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/hack-gwf/Linux下使用shadowsocks科学上网/" class="leancloud_visitors" data-flag-title="Linux下使用shadowsocks科学上网">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>因为最近在家，都是在用ubuntu，所以使用unbutu来进行解释。<br>因为shadowsocks在windows和osx都有客户端，所以不再详细说明。可以从github上clone源码自行编译。</p>
-<ul>
-<li>用PIP安装很简单</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div></pre></td></tr></table></figure>
-<ul>
-<li>接着安装shadowsocks</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/hack-gwf/Linux下使用shadowsocks科学上网/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1432,7 +1498,7 @@ Java不支持指针出于以下两个原因：
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

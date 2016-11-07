@@ -312,6 +312,433 @@
             
               
                 
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-第三章课后作业/" itemprop="url">
+                  深入理解计算机系统-第三章课后作业
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-05T20:06:27+08:00" content="2016-11-05">
+              2016-11-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/深入理解计算机系统-第三章课后作业/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/深入理解计算机系统-第三章课后作业/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/深入理解计算机系统-第三章课后作业/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-第三章课后作业">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h6 id="3-54"><a href="#3-54" class="headerlink" title="3.54"></a>3.54</h6><p>一个函数的原型为<br><code>int decode2(int x, int y, int z);</code></p>
+<p>将这个函数编译成 IA32 汇编代码。代码体如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># x at %ebp+8, y at %ebp+12, z at %ebp+16</div><div class="line">1  movl    16(%ebp), %edx</div><div class="line">2  subl    12(%ebp), %edx</div><div class="line">3  movl    %edx, %eax</div><div class="line">4  sall    $15, %eax</div><div class="line">5  sarl    $15, %eax</div><div class="line">6  xorl    8(%ebp), %edx</div><div class="line">7  imull   %edx, %eax</div></pre></td></tr></table></figure>
+<p>参数 x、y 和 z 存放在存储器中相对于寄存器 %ebp 中地址偏移量为 8、12 和 16的地方。代码将返回值存放在寄存器 %eax 中。写出等价于我们汇编代码的 decode2 的 C 代码。</p>
+<p><strong>答：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sal</th>
+<th style="text-align:center">算术左移指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sar</td>
+<td style="text-align:center">算术右移指令</td>
+</tr>
+<tr>
+<td style="text-align:center">xor</td>
+<td style="text-align:center">异或指令</td>
+</tr>
+<tr>
+<td style="text-align:center">imul</td>
+<td style="text-align:center">有符号数乘法指令</td>
+</tr>
+</tbody>
+</table>
+<p>所以根据以上汇编代码可以得到等价的C代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">decode2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = z-y;</div><div class="line">    <span class="keyword">return</span> (temp ^ x) * (temp &lt;&lt; <span class="number">15</span> &gt;&gt; <span class="number">15</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/深入理解计算机系统-第三章课后作业/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/computer-principle/浮点数除0与整数除0的问题/" itemprop="url">
+                  浮点数除0与整数除0的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-04T19:02:45+08:00" content="2016-11-04">
+              2016-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/浮点数除0与整数除0的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/浮点数除0与整数除0的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/浮点数除0与整数除0的问题/" class="leancloud_visitors" data-flag-title="浮点数除0与整数除0的问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="整数的除运算"><a href="#整数的除运算" class="headerlink" title="整数的除运算"></a>整数的除运算</h2><p>代码一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码二：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/浮点数除0与整数除0的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-拆炸弹实验/" itemprop="url">
+                  深入理解计算机系统-拆炸弹实验
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-28T20:04:40+08:00" content="2016-10-28">
+              2016-10-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/深入理解计算机系统-拆炸弹实验/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/深入理解计算机系统-拆炸弹实验/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/深入理解计算机系统-拆炸弹实验/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-拆炸弹实验">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>查看bomb.c文件里的main函数，可以发现它在分析完命令行的参数完成之后调用了initialize_bomb()函数，之后输出了两个语句。紧接着就是read_line()函数，显然这个是读取我们所需要的字符，接着就是phase_1()与phase_defused()函数了。再往下看，可以看出分别调用了phase_1 ~ phase_6六个函数，这应该就是每个拆除炸弹的阶段函数了。<br>通过<code>objdump -d bomb &gt; bomb.s</code>把反汇编代码输出到bomb.s文件上，方便查找。<br>接下来就是逐个阶段的分析了</p>
+<h6 id="phase1："><a href="#phase1：" class="headerlink" title="phase1："></a>phase1：</h6><p>首先找到phase_1函数的汇编代码如下:</p>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="number">08048</span>f61 &lt;phase_1&gt;:</div><div class="line"><span class="number">8048</span>f61:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048</span>f62:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048</span>f64:   <span class="number">83</span> ec <span class="number">18</span>                sub    $<span class="number">0x18</span>,%esp</div><div class="line"><span class="number">8048</span>f67:   c7 <span class="number">44</span> <span class="number">24</span> <span class="number">04</span> <span class="number">5</span>c a1 <span class="number">04</span>    movl   $<span class="number">0x804a15c</span>,<span class="number">0x4</span>(%esp)</div><div class="line"><span class="number">8048</span>f6e:   <span class="number">08</span> </div><div class="line"><span class="number">8048</span>f6f:   <span class="number">8</span>b <span class="number">45</span> <span class="number">08</span>                mov    <span class="number">0x8</span>(%ebp),%eax</div><div class="line"><span class="number">8048</span>f72:   <span class="number">89</span> <span class="number">04</span> <span class="number">24</span>                mov    %eax,(%esp)</div><div class="line"><span class="number">8048</span>f75:   e8 <span class="number">31</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">8048</span>fab &lt;strings_not_equal&gt;</div><div class="line"><span class="number">8048</span>f7a:   <span class="number">85</span> c0                   test   %eax,%eax</div><div class="line"><span class="number">8048</span>f7c:   <span class="number">74</span> <span class="number">05</span>                   je     <span class="number">8048</span>f83 &lt;phase_1+<span class="number">0x22</span>&gt;</div><div class="line"><span class="number">8048</span>f7e:   e8 <span class="number">4</span>e <span class="number">01</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">80490</span>d1 &lt;explode_bomb&gt;</div><div class="line"><span class="number">8048</span>f83:   c9                      leave  </div><div class="line"><span class="number">8048</span>f84:   c3                      ret    </div><div class="line"><span class="number">8048</span>f85:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f86:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f87:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f88:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f89:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8a:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8b:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8c:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8d:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8e:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8f:   <span class="number">90</span>                      nop</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/深入理解计算机系统-拆炸弹实验/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/computer-principle/float与double精度丢失的问题/" itemprop="url">
                   float与double精度丢失的问题
                 </a>
@@ -529,6 +956,140 @@
 <h3 id="嘲笑理想主义者的时代是悲哀的"><a href="#嘲笑理想主义者的时代是悲哀的" class="headerlink" title="嘲笑理想主义者的时代是悲哀的"></a>嘲笑理想主义者的时代是悲哀的</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/programer/老罗新机发布会的一些感受/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-第二章课后作业/" itemprop="url">
+                  深入理解计算机系统-第二章课后作业
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T20:06:21+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/深入理解计算机系统-第二章课后作业/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/深入理解计算机系统-第二章课后作业/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/深入理解计算机系统-第二章课后作业/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-第二章课后作业">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h6 id="2-58"><a href="#2-58" class="headerlink" title="2.58"></a>2.58</h6><p>编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_little_endian</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> *(<span class="keyword">char</span>*)&amp;x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>假设是32位的小端机器，那么x变量存储方式将为<code>0000 0001 0000 0000 0000 0000 0000 0000</code>，反之则为<code>0000 0000 0000 0000 0000 0000 0000 0001</code>。通过取变量<code>x</code>的地址然后强制转换<code>char*</code>，再通过指针取出这个强制转换后的地址上的值（无论是大端还是小端，都是取内存低8位的地址，所以大端模式取到的是<code>0000 0000</code>，而小端模式取到的值是<code>0000 0001</code>）。<strong>如果第二句语句改为<code>return (char)x</code>，则无论是大端还是小端机器，最终的结果都为1。因为强制转换是在寄存器进行的而不是在内存进行的，那么<code>(char)x</code>就是保留其低八位的值，也就是<code>0000 0001</code></strong></p>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/深入理解计算机系统-第二章课后作业/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -828,624 +1389,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/指针的指针——二级指针/" itemprop="url">
-                  指针的指针--二级指针
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-09T17:32:12+08:00" content="2016-10-09">
-              2016-10-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/programming/指针的指针——二级指针/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/指针的指针——二级指针/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/programming/指针的指针——二级指针/" class="leancloud_visitors" data-flag-title="指针的指针--二级指针">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在重新温习C/C++的时候不可避免的重头戏就是指针，指针要用得好，光用一层显然是不行的，我们还需要知道二级指针的操纵。</p>
-<p>假设A-&gt;B-&gt;C,即A指向B，B指向C的关系中，C是一段我们实际关心的内容，假如我们用malloc或者new分配了一块内存，然后赋值”一段内容”进去，那么就是C了。我们假设C的内存起始地址为0x00000008.那么我们自然而然就可以得出：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">B == <span class="number">0x00000008</span>;<span class="comment">//B内存块的实际内容</span></div><div class="line">*B == <span class="string">"一段内容"</span>;<span class="comment">//B解引用，也就是B指针指向的C的值</span></div><div class="line">&amp;B == <span class="number">0x00000008</span> <span class="string">"//B取地址，B的地址是0x00000004</span></div></pre></td></tr></table></figure>
-<p>那么我们再来看看A此时的情况：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*A == B == <span class="number">0x00000008</span>;  <span class="comment">//A解引用也就是B的内容   </span></div><div class="line">**A == *B == <span class="string">"一段内容"</span>;  <span class="comment">//B解引用，也就是B指针指向的C的值  </span></div><div class="line">A == &amp;B == <span class="number">0x00000004</span>;  <span class="comment">//A存的是B的地址，B的地址是0x00000004  </span></div><div class="line">&amp;A == <span class="number">0x00000000</span>;  <span class="comment">//A取地址，A的地址是0x00000000</span></div></pre></td></tr></table></figure>
-<p><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-10-10-17%3A58%3A23.jpg" alt=""><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/指针的指针——二级指针/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/AT-T风格汇编语言语法/" itemprop="url">
-                  AT&T风格汇编语言语法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-01T20:17:39+08:00" content="2016-10-01">
-              2016-10-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/programming/AT-T风格汇编语言语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/AT-T风格汇编语言语法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/programming/AT-T风格汇编语言语法/" class="leancloud_visitors" data-flag-title="AT&T风格汇编语言语法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="AT-amp-T风格汇编语言语法"><a href="#AT-amp-T风格汇编语言语法" class="headerlink" title="AT&amp;T风格汇编语言语法"></a>AT&amp;T风格汇编语言语法</h1><h4 id="1-Register-Reference"><a href="#1-Register-Reference" class="headerlink" title="1. Register Reference"></a>1. Register Reference</h4><p>引用寄存器要在寄存器号前加百分号<code>%</code>,如<code>“movl %eax, %ebx”</code>。<br>80386 有如下寄存器:<br>[1] 8 个32-bit 寄存器 <code>%eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp</code>；<br>( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：<code>%ax，%bx，%cx，%dx，%di，%si，%bp，%sp</code>；8 个8-bit 寄存器：<code>%ah，%al，%bh，%bl，%ch，%cl，%dh，%dl</code>。它们事实上是寄存器<code>%ax，%bx，%cx，%dx 的高8 位和低8位</code>；)<br>[2] 6 个段寄存器：<code>%cs(code)，%ds(data)，%ss(stack), %es，%fs，%gs</code>；<br>[3] 3 个控制寄存器：<code>%cr0，%cr2，%cr3</code>；<br>[4] 6 个debug 寄存器：<code>%db0，%db1，%db2，%db3，%db6，%db7</code>；<br>[5] 2 个测试寄存器：<code>%tr6，%tr7</code>；<br>[6] 8 个浮点寄存器<br>栈：<code>%st(0)，%st(1)，%st(2)，%st(3)，%st(4)，%st(5)，%st(6)，%st(7)</code>。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/AT-T风格汇编语言语法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/" itemprop="url">
-                  使用Intellij Idea + Maven构建Java Web项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T20:57:49+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Web/使用Intellij-Idea-Maven构建Java-Web项目/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/Web/使用Intellij-Idea-Maven构建Java-Web项目/" class="leancloud_visitors" data-flag-title="使用Intellij Idea + Maven构建Java Web项目">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>   最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。</p>
-<p>   接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解一下Maven是什么，以及它可以拿来干嘛。</p>
-<blockquote>
-<p>Maven 其实是很多东西，Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。Maven 有一个生命周期，当你运行 mvn install 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。此外，Maven能够很方便的帮你管理项目报告，生成站点，管理JAR文件，等等。</p>
-</blockquote>
-<p><strong>但是简而言之，maven是把设计模式应用于构建架构的一种尝试，如下列出了maven 的大部分功能。</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-Builds</div><div class="line">-Documentation</div><div class="line">-Reporting</div><div class="line">-Dependencies</div><div class="line">-SCMs</div><div class="line">-Releases</div><div class="line">-Distribution.</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/Web/使用Intellij-Idea-Maven构建Java-Web项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/knowledge/vim常用命令/" itemprop="url">
-                  vim常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-27T20:19:43+08:00" content="2016-06-27">
-              2016-06-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/knowledge/" itemprop="url" rel="index">
-                    <span itemprop="name">必备知识</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/knowledge/vim常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="knowledge/vim常用命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/knowledge/vim常用命令/" class="leancloud_visitors" data-flag-title="vim常用命令">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h1><h3 id="光标移动-Cursor-Movement"><a href="#光标移动-Cursor-Movement" class="headerlink" title="光标移动(Cursor Movement)"></a>光标移动(Cursor Movement)</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用（解释）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>h,j,k,l</td>
-<td>h表示往左，j表示往下，k表示往右，l表示往上</td>
-</tr>
-<tr>
-<td>Ctrl+f</td>
-<td>上一页</td>
-</tr>
-<tr>
-<td>Ctrl+b</td>
-<td>下一页</td>
-</tr>
-<tr>
-<td>w, e, W, E</td>
-<td>跳到单词的后面，小写包括标点</td>
-</tr>
-<tr>
-<td>b, B</td>
-<td>以单词为单位往前跳动光标，小写包含标点</td>
-</tr>
-<tr>
-<td>O</td>
-<td>开启新的一行</td>
-</tr>
-<tr>
-<td>^</td>
-<td>一行的开始</td>
-</tr>
-<tr>
-<td>$</td>
-<td>一行的结尾</td>
-</tr>
-<tr>
-<td>gg</td>
-<td>文档的第一行</td>
-</tr>
-<tr>
-<td>[N]G</td>
-<td>文档的第N行或者最后一行</td>
-</tr>
-</tbody>
-</table>
-<h3 id="插入模式-Insert-Mode"><a href="#插入模式-Insert-Mode" class="headerlink" title="插入模式(Insert Mode)"></a>插入模式(Insert Mode)</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用（解释)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>插入到光标前面</td>
-</tr>
-<tr>
-<td>I</td>
-<td>插入到行的开始位置</td>
-</tr>
-<tr>
-<td>a</td>
-<td>插入到光标的后面</td>
-</tr>
-<tr>
-<td>A</td>
-<td>插入到行的最后位置</td>
-</tr>
-<tr>
-<td>o, O</td>
-<td>新开一行</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>关闭插入模式</td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/knowledge/vim常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1491,7 +1434,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
