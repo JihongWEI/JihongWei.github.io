@@ -28,6 +28,199 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/sbin/iptables -I INPUT -p tcp --dport 1688 -j ACCEPT</div><div class="line">/sbin/iptables-save</div></pre></td></tr></table></figure>
 <p><strong>当然了，在Mac与Windows上直接搭建也是可以的，但因为服务器上运行的是Linux，故一般首选Linux来安装。若没有服务器，也可以在本地机子Windows or MacOS系统上搭建</strong></p>
 <p><strong>除此之外还可以在家用（支持刷open wrt固件）的路由器上直接搭建一个kms服务器，方便日后激活系统等</strong></p>
+<h3 id="常用的Windows与Office的GVLK密钥"><a href="#常用的Windows与Office的GVLK密钥" class="headerlink" title="常用的Windows与Office的GVLK密钥"></a>常用的Windows与Office的GVLK密钥</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Windows</th>
+<th style="text-align:center">GVLK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Windows 10 Pro</td>
+<td style="text-align:center">W269N-WFGWX-YVC9B-4J6C9-T83GX</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Pro N</td>
+<td style="text-align:center">MH37W-N47XK-V7XM9-C7227-GCQG9</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Enterprise</td>
+<td style="text-align:center">NPPR9-FWDCX-D2C8J-H872K-2YT43</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Enterprise N</td>
+<td style="text-align:center">DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Education</td>
+<td style="text-align:center">NW6C2-QMPVW-D7KKK-3GKT6-VCFB2</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Education N</td>
+<td style="text-align:center">2WH4N-8QGBV-H22JP-CT43Q-MDWWJ</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Enterprise LTSB (2015)</td>
+<td style="text-align:center">WNMTR-4C88C-JK8YV-HQ7T2-76DF9</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 10 Enterprise LTSB N (2015)</td>
+<td style="text-align:center">2F77B-TNFGY-69QQF-B8YKP-D69TJ</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8.1 Pro</td>
+<td style="text-align:center">GCRJD-8NW9H-F2CDX-CCM8D-9D6T9</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8.1 Pro N</td>
+<td style="text-align:center">HMCNV-VVBFX-7HMBH-CTY9B-B4FXY</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8.1 Enterprise</td>
+<td style="text-align:center">MHF9N-XY6XB-WVXMC-BTDCT-MKKG7</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8.1 Enterprise N</td>
+<td style="text-align:center">TT4HM-HN7YT-62K67-RGRQJ-JFFXW</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8 Pro</td>
+<td style="text-align:center">NG4HW-VH26C-733KW-K6F98-J8CK4</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8 Pro N</td>
+<td style="text-align:center">XCVCF-2NXM9-723PB-MHCB7-2RYQQ</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8 Enterprise</td>
+<td style="text-align:center">32JNW-9KQ84-P47T8-D8GGY-CWCK7</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 8 Enterprise N</td>
+<td style="text-align:center">JMNMF-RHW7P-DMY6X-RF3DR-X2BQT</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Professional</td>
+<td style="text-align:center">FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Professional N</td>
+<td style="text-align:center">MRPKT-YTG23-K7D7T-X2JMM-QY7MG</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Professional E</td>
+<td style="text-align:center">W82YF-2Q76Y-63HXB-FGJG9-GF7QX</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Enterprise</td>
+<td style="text-align:center">33PXH-7Y6KF-2VJC9-XBBR8-HVTHH</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Enterprise N</td>
+<td style="text-align:center">YDRBP-3D83W-TY26F-D46B2-XCKRJ</td>
+</tr>
+<tr>
+<td style="text-align:center">Windows 7 Enterprise E</td>
+<td style="text-align:center">C29WB-22CC8-VJ326-GHFJW-H9DH4</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Office</th>
+<th style="text-align:center">GVLK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Office Professional Plus 2016</td>
+<td style="text-align:center">XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Standard 2016</td>
+<td style="text-align:center">JNRGM-WHDWX-FJJG3-K47QV-DRTFM</td>
+</tr>
+<tr>
+<td style="text-align:center">Project Professional 2016</td>
+<td style="text-align:center">YG9NW-3K39V-2T3HJ-93F3Q-G83KT</td>
+</tr>
+<tr>
+<td style="text-align:center">Project Standard 2016</td>
+<td style="text-align:center">GNFHQ-F6YQM-KQDGJ-327XX-KQBVC</td>
+</tr>
+<tr>
+<td style="text-align:center">Visio Professional 2016</td>
+<td style="text-align:center">PD3PC-RHNGV-FXJ29-8JK7D-RJRJK</td>
+</tr>
+<tr>
+<td style="text-align:center">Visio Standard 2016</td>
+<td style="text-align:center">7WHWN-4T7MP-G96JF-G33KR-W8GF4</td>
+</tr>
+<tr>
+<td style="text-align:center">Access 2016</td>
+<td style="text-align:center">GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW</td>
+</tr>
+<tr>
+<td style="text-align:center">Excel 2016</td>
+<td style="text-align:center">9C2PK-NWTVB-JMPW8-BFT28-7FTBF</td>
+</tr>
+<tr>
+<td style="text-align:center">OneNote 2016</td>
+<td style="text-align:center">DR92N-9HTF2-97XKM-XW2WJ-XW3J6</td>
+</tr>
+<tr>
+<td style="text-align:center">Outlook 2016</td>
+<td style="text-align:center">R69KK-NTPKF-7M3Q4-QYBHW-6MT9B</td>
+</tr>
+<tr>
+<td style="text-align:center">PowerPoint 2016</td>
+<td style="text-align:center">J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6</td>
+</tr>
+<tr>
+<td style="text-align:center">Publisher 2016</td>
+<td style="text-align:center">F47MM-N3XJP-TQXJ9-BP99D-8K837</td>
+</tr>
+<tr>
+<td style="text-align:center">Skype for Business 2016</td>
+<td style="text-align:center">869NQ-FJ69K-466HW-QYCP2-DDBV6</td>
+</tr>
+<tr>
+<td style="text-align:center">Word 2016</td>
+<td style="text-align:center">WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Professional Plus 2013</td>
+<td style="text-align:center">YC7DK-G2NP3-2QQC3-J6H88-GVGXT</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Standard 2013</td>
+<td style="text-align:center">KBKQT-2NMXY-JJWGP-M62JB-92CD4</td>
+</tr>
+<tr>
+<td style="text-align:center">Project Professional 2013</td>
+<td style="text-align:center">FN8TT-7WMH6-2D4X9-M337T-2342K</td>
+</tr>
+<tr>
+<td style="text-align:center">Visio Professional 2013</td>
+<td style="text-align:center">C2FG9-N6J68-H8BTJ-BW3QX-RM3B3</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Professional Plus 2010</td>
+<td style="text-align:center">VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Standard 2010</td>
+<td style="text-align:center">V7QKV-4XVVR-XYV4D-F7DFM-8R6BM</td>
+</tr>
+<tr>
+<td style="text-align:center">Office Home &amp; Business 2010</td>
+<td style="text-align:center">D6QFG-VBYP2-XQHM7-J97RH-WRCK</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
     </entry>
     
