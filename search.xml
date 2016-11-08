@@ -15,15 +15,15 @@
 <p>每次在一些没有OEM授权的电脑上或者升级新版Windows的时候（用作学习用途），总是需要一些工具绕开激活机制。为了图方便，所以搭建了这个KMS激活服务器，一劳永逸。</p>
 <p><strong>所以以下所说的全部内容仅可用于学习所需，如有侵权，请联系我删除</strong></p>
 <p><strong>服务器端口：1688</strong></p>
-<h3 id="安装方法："><a href="#安装方法：" class="headerlink" title="安装方法："></a>安装方法：</h3><p>使用root用户登录，分别运行以下3条命令：</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>使用root用户登录，分别运行以下3条命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -c http://mirrors.tintsoft.com/software/vlmcsd/vlmcsd.sh</div><div class="line">chmod +x vlmcsd.sh</div><div class="line">./vlmcsd.sh 2&gt;&amp;1 | tee vlmcsd.log</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>安装过程如图所示：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122307.jpg" alt=""><br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122154.jpg" alt=""><br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122206.jpg" alt=""></p>
-<h3 id="卸载方法："><a href="#卸载方法：" class="headerlink" title="卸载方法："></a>卸载方法：</h3><p>使用 root 用户登录，运行以下命令：</p>
+<h3 id="卸载方法"><a href="#卸载方法" class="headerlink" title="卸载方法"></a>卸载方法</h3><p>使用 root 用户登录，运行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./vlmcsd.sh uninstall</div></pre></td></tr></table></figure>
 <h3 id="查看安装状态"><a href="#查看安装状态" class="headerlink" title="查看安装状态"></a>查看安装状态</h3><p>安装完成后即已后台启动 vlmcsd ，运行以下命令查看状态：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/vlmcsd status</div></pre></td></tr></table></figure>
-<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">启动：/etc/init.d/vlmcsd start</div><div class="line">停止：/etc/init.d/vlmcsd stop</div><div class="line">重启：/etc/init.d/vlmcsd restart</div><div class="line">状态：/etc/init.d/vlmcsd status</div></pre></td></tr></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">启动：/etc/init.d/vlmcsd start</div><div class="line">停止：/etc/init.d/vlmcsd stop</div><div class="line">重启：/etc/init.d/vlmcsd restart</div><div class="line">状态：/etc/init.d/vlmcsd status</div></pre></td></tr></table></figure>
 <h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><p>如果你的服务器开启了防火墙，请执行以下语句添加例外</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/sbin/iptables -I INPUT -p tcp --dport 1688 -j ACCEPT</div><div class="line">/sbin/iptables-save</div></pre></td></tr></table></figure>
 ]]></content>
