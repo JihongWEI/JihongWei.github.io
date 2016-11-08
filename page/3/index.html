@@ -312,6 +312,139 @@
             
               
                 
+                <a class="post-title-link" href="/knowledge/字符编码的明坑与暗坑/" itemprop="url">
+                  字符编码--UTF-8与Unicode
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-15T19:11:09+08:00" content="2016-03-15">
+              2016-03-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">必备知识</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/knowledge/字符编码的明坑与暗坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="knowledge/字符编码的明坑与暗坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/knowledge/字符编码的明坑与暗坑/" class="leancloud_visitors" data-flag-title="字符编码--UTF-8与Unicode">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>自从上个学期简单地了解了字符编码之后就一直没有再过多的理会它。对字符编码这一块总是似懂非懂，今天突然就想把它彻底地了解一遍，不想再有这种疑惑的感觉。重新理顺了一遍字符编码之间的关系，以及utf-8、utf-16以及utf-32和Unicode之间的那些千丝万缕的关系。</p>
+<h3 id="首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。"><a href="#首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。" class="headerlink" title="首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。"></a>首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。</h3><h2 id="首先我们来看看关于Unicode的介绍"><a href="#首先我们来看看关于Unicode的介绍" class="headerlink" title="首先我们来看看关于Unicode的介绍"></a>首先我们来看看关于Unicode的介绍</h2><blockquote>
+<p>世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。<br>可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。<br>Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字“严”。具体的符号对应表，可以查询<a href="http://unicode.org">Unicode官网</a>，或者专门的汉字对应表。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/knowledge/字符编码的明坑与暗坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/security/密码加密——计时攻击/" itemprop="url">
                   密码加密——计时攻击
                 </a>
@@ -1250,141 +1383,6 @@ Java不支持指针出于以下两个原因：
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programer/程序员最恐怖的梦魇是什么/" itemprop="url">
-                  程序员最恐怖的梦魇是什么
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-07T09:57:46+08:00" content="2015-12-07">
-              2015-12-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programer/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员的那些事</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/programer/程序员最恐怖的梦魇是什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="programer/程序员最恐怖的梦魇是什么/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/programer/程序员最恐怖的梦魇是什么/" class="leancloud_visitors" data-flag-title="程序员最恐怖的梦魇是什么">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这是Quora上的一个问题，其中Mick的回答获得了13.5k“赞同”，他如此回忆道：</p>
-<p>曾经有位心理学的博士雇我查一个BUG，程序是他的一个学生写的，经常会出现奇怪的输出。程序的功能是，从文件中读取数据，提出50个问题，进行一系列计算，然后基于这位博士的研究来得出一个分数。程序跑在大学的一台3B2上。他给我演示了程序，确认这个Bug可以重现——每次在问题之间切换的时候，总会闪出一些奇怪的字符。我觉得这应该很简单，所以答应了他，并且我们同意按小时付费。</p>
-<p>Day1<br>我来到这台3B2面前，用那个学生的帐号登录，找到了用C写的源代码，并开始测试。代码可读性非常差，所有的代码都写在了一行，变量名都是三个字母，而且还是随机组合的！真庆幸我当初选择按小时收费。我把代码格式化为习惯的风格，这样看起来多少还能读。</p>
-<p>做完之后，我用curses库移到屏幕上一个点，打印一个问题和答案，然后等待回应。但是在打印出第一行之后，出现了一些乱码，过了大约1/2秒之后，乱码被问题覆盖掉。这个问题应该很容易解决，只有五个地方需要打印信息，所有的地方都出现了一闪而过的乱码。小意思，只要删掉mvpwintw()应该就ok了。我删掉之后开始编译，觉得问题差不多解决了。但是运行的时候，干扰信息又出现了！只是乱码变了，但是症状还是一样！</p>
-<p>我检查了一下代码，发现竟然回到了我改之前的样子！15个文件，混乱的格式，三个字母的变量。当初为什么不备份一下代码呢，真想射自己一枪。我再一次格式化它们，这次把代码放到三个文件中，以不同的名字命名。然后备份了整个文件夹，并且将权限设置为只读。编译之后，一切正常。一运行，这个文件夹中又出现了15个文件！我改过之后的源代码没有被删除，然后干扰信息又回来了。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programer/程序员最恐怖的梦魇是什么/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1430,7 +1428,7 @@ Java不支持指针出于以下两个原因：
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
