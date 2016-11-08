@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122307.jpg">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122154.jpg">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-08-122206.jpg">
-<meta property="og:updated_time" content="2016-11-08T12:25:25.000Z">
+<meta property="og:updated_time" content="2016-11-08T12:30:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下搭建Windows与office的KMS服务器">
 <meta name="twitter:description" content="因为各种各样原因，在世界范围内，充斥着不少的破解激活的windows系统。微软对此也是睁一只眼闭一只眼，否则以微软的尿性完全可以弄个复杂一万倍的激活机制出来打击Windows的盗版。（但计算机的本质决定了只要你有激活机制，就永远有办法破解掉）所以打击严厉盗版…你懂的
@@ -400,7 +400,7 @@
 <p>事实上，Windows的盗版范围并没有想象中的那么大，欧美国家用的几乎都是正版，而国内因为各大OEM厂商都预装了正版的Windows系统，所以盗版也仅仅只是一些第三方DIY机型或者散户们图省事直接装的盗版的Windows。</p>
 <p>每次在一些没有OEM授权的电脑上或者升级新版Windows的时候（用作学习用途），总是需要一些工具绕开激活机制。为了图方便，所以搭建了这个KMS激活服务器，一劳永逸。</p>
 <p><strong>所以以下所说的全部内容仅可用于学习所需，如有侵权，请联系我删除</strong></p>
-<p><strong>服务器端口：1688</strong></p>
+<p><strong>服务器端口：1688</strong><br><strong>系统：Centos linux 发行版</strong></p>
 <h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>使用root用户登录，分别运行以下3条命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -c http://mirrors.tintsoft.com/software/vlmcsd/vlmcsd.sh</div><div class="line">chmod +x vlmcsd.sh</div><div class="line">./vlmcsd.sh 2&gt;&amp;1 | tee vlmcsd.log</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -412,6 +412,8 @@
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">启动：/etc/init.d/vlmcsd start</div><div class="line">停止：/etc/init.d/vlmcsd stop</div><div class="line">重启：/etc/init.d/vlmcsd restart</div><div class="line">状态：/etc/init.d/vlmcsd status</div></pre></td></tr></table></figure>
 <h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><p>如果你的服务器开启了防火墙，请执行以下语句添加例外</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/sbin/iptables -I INPUT -p tcp --dport 1688 -j ACCEPT</div><div class="line">/sbin/iptables-save</div></pre></td></tr></table></figure>
+<p><strong>当然了，在Mac与Windows上直接搭建也是可以的，但因为服务器上运行的是Linux，故一般首选Linux来安装。若没有服务器，也可以在本地机子Windows or MacOS系统上搭建</strong></p>
+<p><strong>除此之外还可以在家用（支持刷open wrt固件）的路由器上直接搭建一个kms服务器，方便日后激活系统等</strong></p>
 
       
     </div>
