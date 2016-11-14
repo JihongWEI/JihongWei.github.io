@@ -312,6 +312,141 @@
             
               
                 
+                <a class="post-title-link" href="/security/Cookie、session、OAuth token的异同之处/" itemprop="url">
+                  Cookie、session、OAuth token的异同之处
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-22T15:49:53+08:00" content="2016-03-22">
+              2016-03-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/security/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/security/Cookie、session、OAuth token的异同之处/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="security/Cookie、session、OAuth token的异同之处/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/security/Cookie、session、OAuth token的异同之处/" class="leancloud_visitors" data-flag-title="Cookie、session、OAuth token的异同之处">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天朋友在开发网站后台的时候遇到验证这方面的问题，然后一直很困惑Cookie与session的区别，还有OAuth token.我把我的想法和他解释半天他还是似懂非懂。顺便就在此记录一下cookie与session的区别.如果有错误，欢迎批评指正。</p>
+<h3 id="Cookie和Session到底是什么？？？"><a href="#Cookie和Session到底是什么？？？" class="headerlink" title="Cookie和Session到底是什么？？？"></a>Cookie和Session到底是什么？？？</h3><p><strong> 因为Http协议是一种无状态协议，一请求一返回就完成了一次事务操作。这样做的的好处就是能够减轻服务器的压力，避免不必要的长连接,占用资源。但是弊端也是显而易见的，没有办法保持上一个会话状态，就比如最简单的购物车，下一次请求后无法知晓上一步的具体选择。虽然Http1.1加入了长连接，但是keep-alive是连接层上的事情，对于应用层来说并没有改变无状态的本质。http2.0那就另说了。（默认的http1.1 keep-alive的时间是300s，增加长连接是为了减少不必要的连接-断开-连接这样的操作）。</strong></p>
+<p>回到正题：</p>
+<ol>
+<li>Cookie是保存在本地的为了保存会话状态的一种机制，服务器生成，保存在本地，当然了，保存的信息由服务器决定，可能是账号密码，这些都由服务器开发者来进行抉择。不过Cookie一般不会拿来存储很重要的信息，当然了，即使是密码，也肯定是经过签名了的。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/security/Cookie、session、OAuth token的异同之处/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/knowledge/字符编码的明坑与暗坑/" itemprop="url">
                   字符编码--UTF-8与Unicode
                 </a>
@@ -1250,144 +1385,11 @@ Java不支持指针出于以下两个原因：
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/algorithm/最短路径-Floyd算法/" itemprop="url">
-                  最短路径-Floyd算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-13T17:34:15+08:00" content="2015-12-13">
-              2015-12-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/algorithm/最短路径-Floyd算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="algorithm/最短路径-Floyd算法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/algorithm/最短路径-Floyd算法/" class="leancloud_visitors" data-flag-title="最短路径-Floyd算法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天在做数据结构作业的时候遇到最短路径求解问题，书上一大堆工程代码看得真心令人眼花缭乱。醉得不行，不过好在在挣扎中摸索了一番之后大概了解了它的具体思想以及编码方案。故在此记录一下想法。希望对大家有一些理解上的帮助。</p>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><pre><code>求一张有向图中任意两点中最短路径方案。
-</code></pre><p><strong> 思路：</strong><br>依照Floyd算法的总体思想来说，求出最短路径不外乎两种情况，一种是两点之间直接可达，另一种就是通过若干个节点之后也可达。若第一种情况下花费代价最小，那么最短路径即为两点之间直接路径；反之，若通过走若干节点之后到达目的地代价较小，那么最短路径即为第二种情况下的所走过的路径。由此我们可以考虑用邻接矩阵来存储各点之间的权值，通过三层循环刷新之后可以得出两点之间代价最小值。（原先某些不可达点通过第二种方案之后也可达，且代价总为最小）。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/algorithm/最短路径-Floyd算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1428,7 +1430,7 @@ Java不支持指针出于以下两个原因：
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

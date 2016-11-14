@@ -312,6 +312,141 @@
             
               
                 
+                <a class="post-title-link" href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/" itemprop="url">
+                  关于二进制运算中的原码反码补码的一些理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-11T22:39:23+08:00" content="2016-10-11">
+              2016-10-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/关于二进制运算中的原码反码补码的一些理解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/关于二进制运算中的原码反码补码的一些理解/" class="leancloud_visitors" data-flag-title="关于二进制运算中的原码反码补码的一些理解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天在上计组的课的时候又再次提到了位运算，当然也提到了加减法中的经典问题，为什么计算机要用补码（Two’s Complement）来表示负数。</p>
+<h3 id="二进制的基本表示范围"><a href="#二进制的基本表示范围" class="headerlink" title="二进制的基本表示范围"></a>二进制的基本表示范围</h3><p>首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。<br>8位二进制正数表示范围：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">0000</span> <span class="number">0000</span> ~ <span class="number">1111</span> <span class="number">1111</span></div><div class="line">（<span class="number">0</span> ~ <span class="number">255</span>）</div></pre></td></tr></table></figure>
+<p>可见直观的二进制方案只能表示正数，那么如果需要表示负数就需要占用最高位来作为符号位，0表示正数，1表示负数。这样，8位二进制数表示范围就发生了变化：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">负数：<span class="number">1</span> <span class="number">111</span> <span class="number">1111</span> ~ <span class="number">1</span> <span class="number">000</span> <span class="number">0000</span> </div><div class="line">    （<span class="number">-127</span> ~  <span class="number">-0</span>)</div><div class="line">正数：<span class="number">0</span> <span class="number">000</span> <span class="number">0000</span> ~ <span class="number">0</span> <span class="number">111</span> <span class="number">1111</span></div><div class="line">    （<span class="number">0</span> ~ <span class="number">127</span>）</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programming/二级指针操纵单向链表/" itemprop="url">
                   二级指针操纵单向链表
                 </a>
@@ -1319,146 +1454,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/security/Cookie、session、OAuth token的异同之处/" itemprop="url">
-                  Cookie、session、OAuth token的异同之处
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-22T15:49:53+08:00" content="2016-03-22">
-              2016-03-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/security/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/security/Cookie、session、OAuth token的异同之处/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="security/Cookie、session、OAuth token的异同之处/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/security/Cookie、session、OAuth token的异同之处/" class="leancloud_visitors" data-flag-title="Cookie、session、OAuth token的异同之处">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天朋友在开发网站后台的时候遇到验证这方面的问题，然后一直很困惑Cookie与session的区别，还有OAuth token.我把我的想法和他解释半天他还是似懂非懂。顺便就在此记录一下cookie与session的区别.如果有错误，欢迎批评指正。</p>
-<h3 id="Cookie和Session到底是什么？？？"><a href="#Cookie和Session到底是什么？？？" class="headerlink" title="Cookie和Session到底是什么？？？"></a>Cookie和Session到底是什么？？？</h3><p><strong> 因为Http协议是一种无状态协议，一请求一返回就完成了一次事务操作。这样做的的好处就是能够减轻服务器的压力，避免不必要的长连接,占用资源。但是弊端也是显而易见的，没有办法保持上一个会话状态，就比如最简单的购物车，下一次请求后无法知晓上一步的具体选择。虽然Http1.1加入了长连接，但是keep-alive是连接层上的事情，对于应用层来说并没有改变无状态的本质。http2.0那就另说了。（默认的http1.1 keep-alive的时间是300s，增加长连接是为了减少不必要的连接-断开-连接这样的操作）。</strong></p>
-<p>回到正题：</p>
-<ol>
-<li>Cookie是保存在本地的为了保存会话状态的一种机制，服务器生成，保存在本地，当然了，保存的信息由服务器决定，可能是账号密码，这些都由服务器开发者来进行抉择。不过Cookie一般不会拿来存储很重要的信息，当然了，即使是密码，也肯定是经过签名了的。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/security/Cookie、session、OAuth token的异同之处/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1499,7 +1499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

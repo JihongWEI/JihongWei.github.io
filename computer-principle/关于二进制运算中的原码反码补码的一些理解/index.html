@@ -122,13 +122,15 @@
 二进制的基本表示范围首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。8位二进制正数表示范围：
 120000 0000 ~ 1111 1111（0 ~ 255）
 可见直观的二进制方案只能表示正数，那么如果需要表示负数就需要占用最高位来作为符号">
-<meta property="og:updated_time" content="2016-10-24T15:29:13.000Z">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-14-075944.jpg">
+<meta property="og:updated_time" content="2016-11-14T08:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于二进制运算中的原码反码补码的一些理解">
 <meta name="twitter:description" content="今天在上计组的课的时候又再次提到了位运算，当然也提到了加减法中的经典问题，为什么计算机要用补码（Two’s Complement）来表示负数。
 二进制的基本表示范围首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。8位二进制正数表示范围：
 120000 0000 ~ 1111 1111（0 ~ 255）
 可见直观的二进制方案只能表示正数，那么如果需要表示负数就需要占用最高位来作为符号">
+<meta name="twitter:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-14-075944.jpg">
 
 
 
@@ -419,6 +421,9 @@
 <li>如果是正数，比如0001，那么求出的负数的补码就是1111，当计算机要显示为十进制时，又需要再求一次补码，变为1001，结果就是-1；</li>
 <li>如果是负数，比如1011(-3)，那么求出的正数的补码就是0101，当计算机要显示为十进制的时候同样需要再求一次补码，但是因为正数补码相同，所以结果是3. </li>
 </ul>
+<p>一般来说补码教科书上所说的补码都是说表示正数时补码与原码相同，表示负数时符号位不变，按位取反再+1。但是其实这样理解我个人觉得是不能了解补码的本质的。根绝上面写的时钟的例子，再用一个环来表示补码可能更容易理解一些。</p>
+<p>我们可以想象把0~255首尾相接成为一个环，那么环的一边从0 0000000 ~ 0 1111111表示正数，另一边从表示负数。如下图<img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-14-075944.jpg" alt=""></p>
+<p><strong>那么可以得到，0-1的结果为-1，也就是环中位置左移至1 1111111，与-1的补码为1 1111111这个结果一致。一个正数与其相反数(补码表示)相加的结果是为0的。0 0000001 + x = 00000000，那么x的值为多少？通过计算我们可以得到x为1 1111110。与我们用环表示的结果不谋而合</strong><br><strong>那么-128呢？-128+x=0，x的值为128，用二进制表示就是1 0000000，但是我们已经用来表示-128了。所以128在8位二进制中是没法表示的。</strong><br><strong>这也就是为什么求一个数的补码可以用其相反数全部按位取反再+1，这样它俩相加之后的结果就会溢出，结果为0</strong><br><strong>好了，再来说说为什么正数与其相反数相加之后为什么结果是0。这不是废话么哈哈哈哈</strong></p>
 
       
     </div>
@@ -556,7 +561,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

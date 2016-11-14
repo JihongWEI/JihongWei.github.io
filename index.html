@@ -312,6 +312,156 @@
             
               
                 
+                <a class="post-title-link" href="/computer-principle/IEEE754-浮点数范围与精度/" itemprop="url">
+                  IEEE754 浮点数范围
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-14T13:46:06+08:00" content="2016-11-14">
+              2016-11-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/IEEE754-浮点数范围与精度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/IEEE754-浮点数范围与精度/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/IEEE754-浮点数范围与精度/" class="leancloud_visitors" data-flag-title="IEEE754 浮点数范围">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在<a href="http://blublu.xyz/computer-principle/float与double精度丢失的问题/">float与double精度丢失的问题</a>里有解释，这里就不再赘述了。</p>
+<h2 id="浮点数的范围"><a href="#浮点数的范围" class="headerlink" title="浮点数的范围"></a>浮点数的范围</h2><p>都知道浮点数的存储是分为[sign][exponent][significand]三个部分的，而阶码采用了偏置位来计算。也就是E=e-Bias，Bias=2^(k-1) - 1，k为阶码的位数。</p>
+<ul>
+<li>关于Bias，其实这个和补码的原理是一样的，但是为什么不直接采取补码？这个在之前的文章里也解释过，是因为不需要再重新设计一套电路来判断符号位，直接使用偏置位来使其能够表示负数。</li>
+<li>关于补码，可以查看我之前写的<a href="http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/">关于二进制运算中的原码反码补码的一些理解</a></li>
+</ul>
+<p>下面开始进入正题：<br>如果是32位的float格式，那么指数E的范围就是-126~127。为什么是-126~127？因为阶码为<code>0</code>与<code>255</code>时都为非规格化数与特殊值(Inf or Nan)，另有它用了。所以实际上我们能用的数就是1~254，很显然偏置位Bias=127，那么E的最小值为<code>1-127=-126</code>，最大值为<code>254-127=127</code>。如果你还非要问为什么Bias=2^(k-1) - 1 的话，那么其实是这样的：(2^k - 2)/2=2^(k-1) - 1。因为[00..0]与[11..1]这两个阶码被使用作为表示非规格化数与特殊值了，所以总的能表示其它数字的个数只剩下2^k - 2个。</p>
+<p>好了我们来讨论浮点数的范围，既然指数的值为-126~127，那么所能表达的最大的数当然是1.1111111…1<sub>23位</sub> * 2^127 近似于2^128 = 3.40E^38 ，那么负数亦然，只需要把符号位改为1即可。所以float的范围为-3.40E^38 ~ 3.40E^38 。double类型也是如此，因为double的指数范围为<code>-1022 ~ 1023</code>,所以最大能表示的数值约等于2^1024 = 1.7E^308 。所以double的范围为-1.7E^308 ~ 1.7E^308。</p>
+<hr>
+<h3 id="几点容易弄混的地方"><a href="#几点容易弄混的地方" class="headerlink" title="几点容易弄混的地方"></a>几点容易弄混的地方</h3><p>有好几个地方我特别容易弄混，好几次了都纠缠在这上面</p>
+<ul>
+<li>当阶码为01111111(float)时，也就是正好表示127时，那么E是为0的，这个与±0.0毫无关系，±0.0是根据阶码<code>00000000</code>来表示的。(浮点数是有±0.0之分的)</li>
+</ul>
+<ul>
+<li>为什么非规格化数的指数E=1-Bias，而不是E=0-Bias？这正是IEEE 754 巧妙的地方。因为非规格化数尾数是没有隐含位1的，而通过E=0-Bias+1弥补了尾数没有隐含位1的这一事实。为什么是+1？假设最小规格化数为0 0001 000，最大非规格化数为0 0000 111，那么我们人为地使指数增加1让它们的指数级别一样，这样就可以平滑地从0.111转变为1.000。</li>
+</ul>
+<ul>
+<li><p>非规格化数的另外一个功能是表示那些非常接近于0.0的数。他们提供了一种逐渐溢出的属性，可能的数值分布均匀地接近于0.0。</p>
+</li>
+<li><p>精度对于指数E为负数同样有效，指数为负数是因为右移了小数点使其接近最左边的1，指数的大小通过右移的位数来决定的。右移到1.x形式为至。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programer/Linux下搭建Windows与office的KMS服务器/" itemprop="url">
                   Linux下搭建Windows与Office的KMS服务器
                 </a>
@@ -1261,146 +1411,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/" itemprop="url">
-                  关于二进制运算中的原码反码补码的一些理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-11T22:39:23+08:00" content="2016-10-11">
-              2016-10-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/关于二进制运算中的原码反码补码的一些理解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/computer-principle/关于二进制运算中的原码反码补码的一些理解/" class="leancloud_visitors" data-flag-title="关于二进制运算中的原码反码补码的一些理解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天在上计组的课的时候又再次提到了位运算，当然也提到了加减法中的经典问题，为什么计算机要用补码（Two’s Complement）来表示负数。</p>
-<h3 id="二进制的基本表示范围"><a href="#二进制的基本表示范围" class="headerlink" title="二进制的基本表示范围"></a>二进制的基本表示范围</h3><p>首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。<br>8位二进制正数表示范围：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">0000</span> <span class="number">0000</span> ~ <span class="number">1111</span> <span class="number">1111</span></div><div class="line">（<span class="number">0</span> ~ <span class="number">255</span>）</div></pre></td></tr></table></figure>
-<p>可见直观的二进制方案只能表示正数，那么如果需要表示负数就需要占用最高位来作为符号位，0表示正数，1表示负数。这样，8位二进制数表示范围就发生了变化：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">负数：<span class="number">1</span> <span class="number">111</span> <span class="number">1111</span> ~ <span class="number">1</span> <span class="number">000</span> <span class="number">0000</span> </div><div class="line">    （<span class="number">-127</span> ~  <span class="number">-0</span>)</div><div class="line">正数：<span class="number">0</span> <span class="number">000</span> <span class="number">0000</span> ~ <span class="number">0</span> <span class="number">111</span> <span class="number">1111</span></div><div class="line">    （<span class="number">0</span> ~ <span class="number">127</span>）</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1441,7 +1456,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
