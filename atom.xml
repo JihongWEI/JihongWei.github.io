@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blublu.xyz/"/>
-  <updated>2016-11-14T08:47:49.000Z</updated>
+  <updated>2016-11-14T11:38:26.000Z</updated>
   <id>http://blublu.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blublu.xyz/computer-principle/IEEE754-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%B2%BE%E5%BA%A6/"/>
     <id>http://blublu.xyz/computer-principle/IEEE754-浮点数范围与精度/</id>
     <published>2016-11-14T05:46:06.000Z</published>
-    <updated>2016-11-14T08:47:49.000Z</updated>
+    <updated>2016-11-14T11:38:26.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在&lt;a href=&quot;http://blublu.xyz/computer-principle/float与double精度丢失的问题/&quot;&gt;float与double精度丢失的问题&lt;/a&gt;里有解释，这里就不再赘述了。&lt;/p&gt;
 &lt;h2 id=&quot;浮点数的范围&quot;&gt;&lt;a href=&quot;#浮点数的范围&quot; class=&quot;headerlink&quot; title=&quot;浮点数的范围&quot;&gt;&lt;/a&gt;浮点数的范围&lt;/h2&gt;&lt;p&gt;都知道浮点数的存储是分为[sign][exponent][significand]三个部分的，而阶码采用了偏置位来计算。也就是E=e-Bias，Bias=2^(k-1) - 1，k为阶码的位数。&lt;/p&gt;
@@ -31,6 +31,7 @@
 &lt;p&gt;下面开始进入正题：&lt;br&gt;如果是32位的float格式，那么指数E的范围就是-126~127。为什么是-126~127？因为阶码为&lt;code&gt;0&lt;/code&gt;与&lt;code&gt;255&lt;/code&gt;时都为非规格化数与特殊值(Inf or Nan)，另有它用了。所以实际上我们能用的数就是1~254，很显然偏置位Bias=127，那么E的最小值为&lt;code&gt;1-127=-126&lt;/code&gt;，最大值为&lt;code&gt;254-127=127&lt;/code&gt;。如果你还非要问为什么Bias=2^(k-1) - 1 的话，那么其实是这样的：(2^k - 2)/2=2^(k-1) - 1。因为[00..0]与[11..1]这两个阶码被使用作为表示非规格化数与特殊值了，所以总的能表示其它数字的个数只剩下2^k - 2个。&lt;/p&gt;
 &lt;p&gt;好了我们来讨论浮点数的范围，既然指数的值为-126~127，那么所能表达的最大的数当然是1.1111111…1&lt;sub&gt;23位&lt;/sub&gt; * 2^127 近似于2^128 = 3.40E^38 ，那么负数亦然，只需要把符号位改为1即可。所以float的范围为-3.40E^38 ~ 3.40E^38 。double类型也是如此，因为double的指数范围为&lt;code&gt;-1022 ~ 1023&lt;/code&gt;,所以最大能表示的数值约等于2^1024 = 1.7E^308 。所以double的范围为-1.7E^308 ~ 1.7E^308。&lt;/p&gt;
 &lt;hr&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;几点容易弄混的地方&quot;&gt;&lt;a href=&quot;#几点容易弄混的地方&quot; class=&quot;headerlink&quot; title=&quot;几点容易弄混的地方&quot;&gt;&lt;/a&gt;几点容易弄混的地方&lt;/h3&gt;&lt;p&gt;有好几个地方我特别容易弄混，好几次了都纠缠在这上面&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当阶码为01111111(float)时，也就是正好表示127时，那么E是为0的，这个与±0.0毫无关系，±0.0是根据阶码&lt;code&gt;00000000&lt;/code&gt;来表示的。(浮点数是有±0.0之分的)&lt;/li&gt;
@@ -48,7 +49,15 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在&lt;a href=&quot;http://blublu.xyz/computer-principle/float与double精度丢失的问题/&quot;&gt;float与double精度丢失的问题&lt;/a&gt;里有解释，这里就不再赘述了。&lt;/p&gt;
+&lt;h2 id=&quot;浮点数的范围&quot;&gt;&lt;a href=&quot;#浮点数的范围&quot; class=&quot;headerlink&quot; title=&quot;浮点数的范围&quot;&gt;&lt;/a&gt;浮点数的范围&lt;/h2&gt;&lt;p&gt;都知道浮点数的存储是分为[sign][exponent][significand]三个部分的，而阶码采用了偏置位来计算。也就是E=e-Bias，Bias=2^(k-1) - 1，k为阶码的位数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关于Bias，其实这个和补码的原理是一样的，但是为什么不直接采取补码？这个在之前的文章里也解释过，是因为不需要再重新设计一套电路来判断符号位，直接使用偏置位来使其能够表示负数。&lt;/li&gt;
+&lt;li&gt;关于补码，可以查看我之前写的&lt;a href=&quot;http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/&quot;&gt;关于二进制运算中的原码反码补码的一些理解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面开始进入正题：&lt;br&gt;如果是32位的float格式，那么指数E的范围就是-126~127。为什么是-126~127？因为阶码为&lt;code&gt;0&lt;/code&gt;与&lt;code&gt;255&lt;/code&gt;时都为非规格化数与特殊值(Inf or Nan)，另有它用了。所以实际上我们能用的数就是1~254，很显然偏置位Bias=127，那么E的最小值为&lt;code&gt;1-127=-126&lt;/code&gt;，最大值为&lt;code&gt;254-127=127&lt;/code&gt;。如果你还非要问为什么Bias=2^(k-1) - 1 的话，那么其实是这样的：(2^k - 2)/2=2^(k-1) - 1。因为[00..0]与[11..1]这两个阶码被使用作为表示非规格化数与特殊值了，所以总的能表示其它数字的个数只剩下2^k - 2个。&lt;/p&gt;
+&lt;p&gt;好了我们来讨论浮点数的范围，既然指数的值为-126~127，那么所能表达的最大的数当然是1.1111111…1&lt;sub&gt;23位&lt;/sub&gt; * 2^127 近似于2^128 = 3.40E^38 ，那么负数亦然，只需要把符号位改为1即可。所以float的范围为-3.40E^38 ~ 3.40E^38 。double类型也是如此，因为double的指数范围为&lt;code&gt;-1022 ~ 1023&lt;/code&gt;,所以最大能表示的数值约等于2^1024 = 1.7E^308 。所以double的范围为-1.7E^308 ~ 1.7E^308。&lt;/p&gt;
+&lt;hr&gt;
     
     </summary>
     
