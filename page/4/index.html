@@ -312,6 +312,279 @@
             
               
                 
+                <a class="post-title-link" href="/security/即使被拖库，也可以保证密码不泄露/" itemprop="url">
+                  即使被拖库，也可以保证密码不泄露
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-12T09:57:31+08:00" content="2016-01-12">
+              2016-01-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/security/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/security/即使被拖库，也可以保证密码不泄露/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="security/即使被拖库，也可以保证密码不泄露/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/security/即使被拖库，也可以保证密码不泄露/" class="leancloud_visitors" data-flag-title="即使被拖库，也可以保证密码不泄露">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先，我们明确一下安全加密方案的终极目标：</p>
+<p>即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。</p>
+<p>说具体一些，我们理想中的绝对安全的系统大概是这样的：</p>
+<p>首先保障数据很难被拖库。<br>即使数据被拖库，攻击者也无法从中破解出用户的密码。<br>即使数据被拖库，攻击者也无法伪造登录请求通过验证。<br>即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。<br>如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 <code>md5</code> 后保存。<code>md5</code> 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。</p>
+<p>所以，只对密码进行 <code>md5</code> 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 <code>md5</code> ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们称为==盐（Salt）==，通过这种方式加密的结果，我们称为 ==加盐 Hash== 。比如：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/a/a0/01a5423571060b8d1d7428749e133.png" alt=""><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/security/即使被拖库，也可以保证密码不泄露/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/C++中关于数组的引用/" itemprop="url">
+                  C++中关于数组的引用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-14T23:12:41+08:00" content="2015-12-14">
+              2015-12-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/programming/C++中关于数组的引用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="programming/C++中关于数组的引用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/programming/C++中关于数组的引用/" class="leancloud_visitors" data-flag-title="C++中关于数组的引用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天在编译一份代码的时候遇到了引用数组作为形参的函数，后来编译遇到了一些问题，虽然数组可以用指针传递来解决。不过既然碰到了用引用数组来作形参的，我是一定要深究下去的，不撞南墙不回头。随后查看了很多资料。感觉有所理解了。所以记录下来，以备过后查看。</p>
+<p>首先，当传递一个数组作为参数的时候我们通常的做法就是通过传递数组名指针来作为参数的，但是这样就会有一个问题，传递进来之后你不知道它的具体大小，容易引发越界操作的问题。同时有时候我们希望传递进来的数组仅供读取而不允许修改，那么此时我们可以如以下代码所示，在参数中加上const即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * ary)</span></span></div></pre></td></tr></table></figure>
+<p>而要确保传进来的数组能够控制大小，可以采用引用的方式。</p>
+<p>例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> &amp;ary[] ary首先向右结合，所以这个相当于 (<span class="keyword">int</span>&amp;)ary[] ary是个数组，其中的元素是引用。不过这个是非法的</div><div class="line"><span class="keyword">int</span> (&amp;ary)[<span class="number">10</span>] ary首先和&amp;结合，所以ary是引用，引用的对象是数组</div></pre></td></tr></table></figure>
+<p>那么我们可以得出</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> &amp; <span class="built_in">array</span>[<span class="number">10</span>];  <span class="comment">//wrong</span></div><div class="line"><span class="keyword">int</span>(&amp;<span class="built_in">array</span>)[<span class="number">10</span>];  <span class="comment">//ok</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/C++中关于数组的引用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/algorithm/最短路径-Floyd算法/" itemprop="url">
                   最短路径-Floyd算法
                 </a>
@@ -1100,275 +1373,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/skills/如何删除远程的Git分支/" itemprop="url">
-                  如何删除远程的Git分支
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-13T21:01:18+08:00" content="2015-03-13">
-              2015-03-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">必备技能</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/skills/如何删除远程的Git分支/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="skills/如何删除远程的Git分支/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/skills/如何删除远程的Git分支/" class="leancloud_visitors" data-flag-title="如何删除远程的Git分支">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>平时基本上不怎么用到删除Git的远程分支，今天突然有了这个需求，一时间竟无法下手。Google了一下关于Git删除远程分支的用法。</p>
-<p>可以用这个非常无厘头的语法来删除它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push  [远程名] :[分支名]</div></pre></td></tr></table></figure>
-<p>例如：如果想在服务器上删除 Develop 分支，运行下面的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :Develop</div></pre></td></tr></table></figure>
-<p>相信你将来也会用到那个命令的，而且你很可能会忘掉它的语法。我们可以这样记住：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push [远程名] [本地分支]:[远程分支]</div></pre></td></tr></table></figure>
-<p>语法，如果省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]”。这样就很容易记忆了。</p>
-<p><strong> 注意origin后边的空格哟 </strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/skills/Git的一些常用命令集合/" itemprop="url">
-                  Git的一些常用命令集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-02-15T15:06:27+08:00" content="2015-02-15">
-              2015-02-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">必备技能</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/skills/Git的一些常用命令集合/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="skills/Git的一些常用命令集合/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/skills/Git的一些常用命令集合/" class="leancloud_visitors" data-flag-title="Git的一些常用命令集合">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>== 查看、添加、提交、删除、找回，重置修改文件 ==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">git help &lt;command&gt; # 显示command的help</div><div class="line">git show # 默认显示最新版本提交的内容 </div><div class="line">git show $id #显示指定版本的提交内容</div><div class="line">git co -- &lt;file&gt; # 抛弃工作区修改</div><div class="line">git co . # 抛弃工作区修改</div><div class="line">git add &lt;file&gt; # 将工作文件修改提交到本地暂存区</div><div class="line">git add . # 将所有修改过的工作文件提交暂存区</div><div class="line">git rm &lt;file&gt; # 从版本库中删除文件</div><div class="line">git rm &lt;file&gt; --cached # 从版本库中删除文件，但不删除文件</div><div class="line">git reset &lt;file&gt; # 从暂存区恢复到工作文件</div><div class="line">git reset -- . # 从暂存区恢复到工作文件</div><div class="line">git reset --hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</div><div class="line">git ci --amend # 修改最后一次提交记录</div><div class="line">git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</div><div class="line">git revert HEAD # 恢复最后一次提交的状态</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/skills/Git的一些常用命令集合/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1414,7 +1418,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

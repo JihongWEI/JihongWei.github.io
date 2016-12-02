@@ -1,0 +1,1064 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程素养," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="实验目的kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统-perflab-handout">
+<meta property="og:url" content="http://blublu.xyz/computer-principle/深入理解计算机系统-perflab-handout/index.html">
+<meta property="og:site_name" content="&三鹿伴我长大">
+<meta property="og:description" content="实验目的kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-153511.jpg">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-153949.jpg">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-154529.jpg">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-155542.jpg">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-135529.jpg">
+<meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-151411.jpg">
+<meta property="og:updated_time" content="2016-12-02T10:47:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统-perflab-handout">
+<meta name="twitter:description" content="实验目的kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比">
+<meta name="twitter:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-153511.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6229843713841956000,
+      author: 'jhWei'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+  <title> 深入理解计算机系统-perflab-handout | &三鹿伴我长大 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">&三鹿伴我长大</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入理解计算机系统-perflab-handout
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T18:45:48+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/深入理解计算机系统-perflab-handout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/深入理解计算机系统-perflab-handout/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/深入理解计算机系统-perflab-handout/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-perflab-handout">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比。本次实验，要求针对每个函数、每个人均至少写出3种优化版本、并根据driver报告的结果进行性能分析。 </p>
+<h3 id="优化rotate函数"><a href="#优化rotate函数" class="headerlink" title="优化rotate函数"></a>优化rotate函数</h3><p>原始的rotate函数如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"> * naive_rotate - The naive baseline version of rotate </div><div class="line"> */</div><div class="line"><span class="keyword">char</span> naive_rotate_descr[] = <span class="string">"naive_rotate: Naive baseline implementation"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">naive_rotate</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>-j, i, dim)] = src[RIDX(i, j, dim)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>原始代码用了一个双层循环将每个像素点变换到对应的地方去。不难发现，在最内层循环中，j的值每次都会改变，所以每执行一次赋值就要计算一次dim-1-j，这样随着像素点的增多，速度将会慢下来。仔细分析一下代码就能发现一个十分简单的优化方法：将原本从(0,0)处作为src读取起始点改为用i的值作为列作为初始读取值。换句话说就是每次因为外层i保持不变，我们可以将其用<code>dim-1-i</code>来作为读取列,一直从最后一列的第一个像素读到底并转换到i行上。那么赋值语句将变成<code>dst[RIDX(i, j, dim)] = src[RIDX(j, dim-i-1, dim)]</code>，这样就不用每次都计算<code>dim-1-j</code>了。<br>优化代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> rotate_descr_v2[] = <span class="string">"The first optimized version"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate_v2</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">        dst[RIDX(i, j, dim)] = src[RIDX(j, dim-i<span class="number">-1</span>, dim)];<span class="comment">//i change less </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>并在register函数里注册<code>add_rotate_function(&amp;rotate_v2, rotate_descr_v2);</code><br>下图是<code>./driver</code>运行后的评测结果，可以看到CPE比原始的的函数小了不少，特别是像素点越来越大的时候，差距很明显了<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-153511.jpg" alt=""></p>
+<p>在网上看了不少的解析，大致第二种优化方案就是把图片再分成若干小块，那么这个小块是多大呢？根据fcyc.c文件中的语句我们可以看到，它把<code>CACHE_BLOCK</code>定义为32x32.<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-153949.jpg" alt=""><br>那么我们可以考虑将图片分割成32x32的小块来进行变换，进一步加速程序。<br><strong>在cache存储体不足够大的情况下，对循环分块能够提升高速缓存命中率，从而提升了空间局部性。</strong><br>下面是优化代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> rotate_descr_v3[] = <span class="string">"The second optimized version"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate_v3</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j,i1,j1=<span class="number">0</span>;</div><div class="line">    <span class="comment">//32*32 block size</span></div><div class="line">    <span class="keyword">int</span> block_size=<span class="number">32</span>;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;dim;i+=block_size)</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;dim;j+=block_size)&#123;</div><div class="line">            <span class="keyword">for</span>(i1=i;i1&lt;i+block_size;i1++)</div><div class="line">                <span class="keyword">for</span>(j1=j;j1&lt;j+block_size;j1++)</div><div class="line">                    dst[RIDX(i1, j1, dim)] = src[RIDX(j1, dim-i1<span class="number">-1</span>, dim)];              </div><div class="line">            &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同样，运行之后可以观察到，与上一个优化的函数相比，在像素点逐步提升的情况下，CPE是有明显下降的，确实有了比较显著的提升。<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-154529.jpg" alt=""></p>
+<p>如果再进一步提升速度的话，得充分利用CPU的流水线特性，并行运算。那么我们可以根据cache的大小分32路并行来写，分析变换后可以得到以下代码（dst += (dim - 1) * dim;将dst指向最后一行第一个元素的地址，因为是从src的首元素，每次+=32进行递增的，也就是按列转换，类似于(0,0)(1,0)(2,0)..这样的顺序一直按列转换。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> rotate_descr_v4[]= <span class="string">"The three optimized version"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate_v4</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i,j=<span class="number">0</span>;</div><div class="line">    dst += (dim<span class="number">-1</span>)*dim;<span class="comment">//将dst指向最后一行第一个元素的地址</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;dim;i+=<span class="number">32</span>)&#123;</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;dim;j++)&#123;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            dst++;src+=dim;</div><div class="line"></div><div class="line">            *dst=*src;</div><div class="line">            <span class="comment">//dst++;src+=dim;</span></div><div class="line"></div><div class="line">            src-=<span class="number">31</span>*dim;src++;<span class="comment">//将src移回当前小块首行下一个元素</span></div><div class="line">            dst-=<span class="number">31</span>;dst-=dim;<span class="comment">//将dst移到当前dst行首的上一行</span></div><div class="line">        &#125;</div><div class="line">        src+=<span class="number">31</span>*dim;<span class="comment">//一次循环结束之后src处于整个块的第二行第一列，加上31*m即可到达下一小块的第一行第一列</span></div><div class="line">        dst+=<span class="number">32</span>;dst+=dim*dim;<span class="comment">//一次循环之后dst处于整个像素矩阵(开始处-31)地址上，所以需要+32使其处于像素矩阵的(开始处+1)地址上，再加上dim*dim，又可以回到整个像素矩阵分成的小块中下一个小块的最底层处</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，相比与第二个优化方案，又有了不小的提升。至此，由于知识的局限性暂时想不到关于rotate函数还能有什么其他的优化方法了。<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-24-155542.jpg" alt=""></p>
+<hr>
+<h3 id="优化smooth函数"><a href="#优化smooth函数" class="headerlink" title="优化smooth函数"></a>优化smooth函数</h3><p>与Smooth函数相关的原始代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* A struct used to compute averaged pixel value */</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">    <span class="keyword">int</span> red;</div><div class="line">    <span class="keyword">int</span> green;</div><div class="line">    <span class="keyword">int</span> blue;</div><div class="line">    <span class="keyword">int</span> num;</div><div class="line">&#125; pixel_sum;</div><div class="line"></div><div class="line"><span class="comment">/* Compute min and max of two integers, respectively */</span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> (a &lt; b ? a : b); &#125;</div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> (a &gt; b ? a : b); &#125;</div><div class="line"></div><div class="line"><span class="comment">/* </span></div><div class="line"> * initialize_pixel_sum - Initializes all fields of sum to 0 </div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initialize_pixel_sum</span><span class="params">(pixel_sum *sum)</span> </span></div><div class="line">&#123;</div><div class="line">    sum-&gt;red = sum-&gt;green = sum-&gt;blue = <span class="number">0</span>;</div><div class="line">    sum-&gt;num = <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* </span></div><div class="line"> * accumulate_sum - Accumulates field values of p in corresponding </div><div class="line"> * fields of sum </div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">accumulate_sum</span><span class="params">(pixel_sum *sum, pixel p)</span> </span></div><div class="line">&#123;</div><div class="line">    sum-&gt;red += (<span class="keyword">int</span>) p.red;</div><div class="line">    sum-&gt;green += (<span class="keyword">int</span>) p.green;</div><div class="line">    sum-&gt;blue += (<span class="keyword">int</span>) p.blue;</div><div class="line">    sum-&gt;num++;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* </span></div><div class="line"> * assign_sum_to_pixel - Computes averaged pixel value in current_pixel </div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">assign_sum_to_pixel</span><span class="params">(pixel *current_pixel, pixel_sum sum)</span> </span></div><div class="line">&#123;</div><div class="line">    current_pixel-&gt;red = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) (sum.red/sum.num);</div><div class="line">    current_pixel-&gt;green = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) (sum.green/sum.num);</div><div class="line">    current_pixel-&gt;blue = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) (sum.blue/sum.num);</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* </span></div><div class="line"> * avg - Returns averaged pixel value at (i,j) </div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">static</span> pixel <span class="title">avg</span><span class="params">(<span class="keyword">int</span> dim, <span class="keyword">int</span> i, <span class="keyword">int</span> j, pixel *src)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> ii, jj;</div><div class="line">    pixel_sum sum;</div><div class="line">    pixel current_pixel;</div><div class="line"></div><div class="line">    initialize_pixel_sum(&amp;sum);</div><div class="line">    <span class="keyword">for</span>(ii = max(i<span class="number">-1</span>, <span class="number">0</span>); ii &lt;= min(i+<span class="number">1</span>, dim<span class="number">-1</span>); ii++) </div><div class="line">	<span class="keyword">for</span>(jj = max(j<span class="number">-1</span>, <span class="number">0</span>); jj &lt;= min(j+<span class="number">1</span>, dim<span class="number">-1</span>); jj++) </div><div class="line">	    accumulate_sum(&amp;sum, src[RIDX(ii, jj, dim)]);</div><div class="line"></div><div class="line">    assign_sum_to_pixel(&amp;current_pixel, sum);</div><div class="line">    <span class="keyword">return</span> current_pixel;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/******************************************************</span></div><div class="line"> * Your different versions of the smooth kernel go here</div><div class="line"> ******************************************************/</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * naive_smooth - The naive baseline version of smooth </div><div class="line"> */</div><div class="line"><span class="keyword">char</span> naive_smooth_descr[] = <span class="string">"naive_smooth: Naive baseline implementation"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">naive_smooth</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">	 <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">	    dst[RIDX(i, j, dim)] = avg(dim, i, j, src);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * smooth - Your current working version of smooth. </div><div class="line"> * IMPORTANT: This is the version you will be graded on</div><div class="line"> */</div><div class="line"><span class="keyword">char</span> smooth_descr[] = <span class="string">"smooth: Current working version"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">smooth</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    naive_smooth(dim, src, dst);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，从smooth开始，调用<code>naive_smooth</code>，最重要的是，在<code>naive_smooth</code>中的两层for循环中调用了<code>avg</code>函数，而在<code>avg</code>函数中在两层for循环的条件中又调用了<code>min</code>与<code>max</code>函数，在循环体中又调用了<code>accumulate_sum</code>函数，这些频繁的调用显然是会影响到整体的运算效率的。那么可以考虑把这些调用函数都去掉，直接在smooth函数中运算。像素点分成图片四个角、图片四条边、图片内部三块分别进行处理。对角而言只需要4个像素点的均值，对于边而言为6个像素点均值，图片内部则需要9个像素点均值。所以自己写求平均的函数，要分三种情况，一是图像的四个角落，二是四条边界上的点，三是一般情况。<br>优化后的代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> smooth_descr_v2[] = <span class="string">"The first smooth version "</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">smooth_v2</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line"></div><div class="line">    <span class="comment">//四个角</span></div><div class="line">    <span class="comment">//左上角</span></div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].red=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].red+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].blue=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].blue+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].green=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].green+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//右上角</span></div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].red=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].red+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].blue+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].green=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].green+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//左下角</span></div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].red=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].red+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].blue+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].green=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].green+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//右下角</span></div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].red+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].blue+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].green+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="comment">//四条边</span></div><div class="line">    <span class="comment">//左</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i++)&#123;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].red=(src[RIDX(i,<span class="number">0</span>,dim)].red+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].red+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].red+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].red+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].blue=(src[RIDX(i,<span class="number">0</span>,dim)].blue+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].blue+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].blue+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].green=(src[RIDX(i,<span class="number">0</span>,dim)].green+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].green+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].green+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].green+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//右</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i++)&#123;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].red=(src[RIDX(i,dim<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].red+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].red+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(i,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].blue+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].blue+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].green=(src[RIDX(i,dim<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].green+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].green+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//上</span></div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].red=(src[RIDX(<span class="number">0</span>,j,dim)].red+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].red+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].red+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].blue=(src[RIDX(<span class="number">0</span>,j,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].blue+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].blue+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].green=(src[RIDX(<span class="number">0</span>,j,dim)].green+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].green+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].green+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//下</span></div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].red=(src[RIDX(dim<span class="number">-1</span>,j,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].red+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].red+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,j,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].blue+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].blue+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].green=(src[RIDX(dim<span class="number">-1</span>,j,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].green+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].green+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//正常情况</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i++)</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">            dst[RIDX(i,j,dim)].red=(src[RIDX(i,j,dim)].red+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j,dim)].red+src[RIDX(i<span class="number">-1</span>,j,dim)].red+</div><div class="line">            src[RIDX(i,j<span class="number">-1</span>,dim)].red+src[RIDX(i+<span class="number">1</span>,j<span class="number">-1</span>,dim)].red+</div><div class="line">            src[RIDX(i<span class="number">-1</span>,j<span class="number">-1</span>,dim)].red+src[RIDX(i,j+<span class="number">1</span>,dim)].red+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j+<span class="number">1</span>,dim)].red+src[RIDX(i<span class="number">-1</span>,j+<span class="number">1</span>,dim)].red)/<span class="number">9</span>;</div><div class="line">            dst[RIDX(i,j,dim)].blue=(src[RIDX(i,j,dim)].blue+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j,dim)].blue+src[RIDX(i<span class="number">-1</span>,j,dim)].blue+</div><div class="line">            src[RIDX(i,j<span class="number">-1</span>,dim)].blue+src[RIDX(i+<span class="number">1</span>,j<span class="number">-1</span>,dim)].blue+</div><div class="line">            src[RIDX(i<span class="number">-1</span>,j<span class="number">-1</span>,dim)].blue+src[RIDX(i,j+<span class="number">1</span>,dim)].blue+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j+<span class="number">1</span>,dim)].blue+src[RIDX(i<span class="number">-1</span>,j+<span class="number">1</span>,dim)].blue)/<span class="number">9</span>;</div><div class="line">            dst[RIDX(i,j,dim)].green=(src[RIDX(i,j,dim)].green+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j,dim)].green+src[RIDX(i<span class="number">-1</span>,j,dim)].green+</div><div class="line">            src[RIDX(i,j<span class="number">-1</span>,dim)].green+src[RIDX(i+<span class="number">1</span>,j<span class="number">-1</span>,dim)].green+</div><div class="line">            src[RIDX(i<span class="number">-1</span>,j<span class="number">-1</span>,dim)].green+src[RIDX(i,j+<span class="number">1</span>,dim)].green+</div><div class="line">            src[RIDX(i+<span class="number">1</span>,j+<span class="number">1</span>,dim)].green+src[RIDX(i<span class="number">-1</span>,j+<span class="number">1</span>,dim)].green)/<span class="number">9</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，CPE值较优化前有了很大的提升：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-135529.jpg" alt=""></p>
+<p>有了前面rotate函数循环展开的经验，那么同样我们可以在smooth函数上使用循环展开，提高并行效率。<br>优化代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> smooth_descr_v3[] = <span class="string">"The second smooth version "</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">smooth_v3</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line"></div><div class="line">    <span class="comment">//四个角</span></div><div class="line">    <span class="comment">//左上角</span></div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].red=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].red+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].blue=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].blue+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].green=(src[RIDX(<span class="number">0</span>,<span class="number">0</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">0</span>,dim)].green+src[RIDX(<span class="number">0</span>,<span class="number">1</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,<span class="number">1</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//右上角</span></div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].red=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].red+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].red+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].blue+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].blue+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].green=(src[RIDX(<span class="number">0</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-1</span>,dim)].green+src[RIDX(<span class="number">0</span>,dim<span class="number">-2</span>,dim)].green+</div><div class="line">    src[RIDX(<span class="number">1</span>,dim<span class="number">-2</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//左下角</span></div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].red=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].red+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].blue+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].green=(src[RIDX(dim<span class="number">-1</span>,<span class="number">0</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">0</span>,dim)].green+src[RIDX(dim<span class="number">-1</span>,<span class="number">1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,<span class="number">1</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//右下角</span></div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].red+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].red)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].blue+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].blue)&gt;&gt;<span class="number">2</span>;</div><div class="line">    dst[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green=(src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].green+src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">    src[RIDX(dim<span class="number">-2</span>,dim<span class="number">-2</span>,dim)].green)&gt;&gt;<span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="comment">//四条边</span></div><div class="line">    <span class="comment">//左</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i++)&#123;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].red=(src[RIDX(i,<span class="number">0</span>,dim)].red+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].red+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].red+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].red+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].blue=(src[RIDX(i,<span class="number">0</span>,dim)].blue+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].blue+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].blue+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].blue+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,<span class="number">0</span>,dim)].green=(src[RIDX(i,<span class="number">0</span>,dim)].green+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,<span class="number">0</span>,dim)].green+src[RIDX(i<span class="number">-1</span>,<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(i,<span class="number">1</span>,dim)].green+src[RIDX(i+<span class="number">1</span>,<span class="number">0</span>,dim)].green+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,<span class="number">1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//右</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i++)&#123;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].red=(src[RIDX(i,dim<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].red+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].red+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].red+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].blue=(src[RIDX(i,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].blue+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].blue+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].blue+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(i,dim<span class="number">-1</span>,dim)].green=(src[RIDX(i,dim<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(i<span class="number">-1</span>,dim<span class="number">-1</span>,dim)].green+src[RIDX(i<span class="number">-1</span>,dim<span class="number">-2</span>,dim)].green+</div><div class="line">        src[RIDX(i,dim<span class="number">-2</span>,dim)].green+src[RIDX(i+<span class="number">1</span>,dim<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(i+<span class="number">1</span>,dim<span class="number">-2</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//上</span></div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].red=(src[RIDX(<span class="number">0</span>,j,dim)].red+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].red+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].red+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].blue=(src[RIDX(<span class="number">0</span>,j,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].blue+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].blue+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(<span class="number">0</span>,j,dim)].green=(src[RIDX(<span class="number">0</span>,j,dim)].green+</div><div class="line">        src[RIDX(<span class="number">0</span>,j<span class="number">-1</span>,dim)].green+src[RIDX(<span class="number">1</span>,j<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(<span class="number">1</span>,j,dim)].green+src[RIDX(<span class="number">0</span>,j+<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(<span class="number">1</span>,j+<span class="number">1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//下</span></div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].red=(src[RIDX(dim<span class="number">-1</span>,j,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].red+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].red+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].red+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].red)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].blue=(src[RIDX(dim<span class="number">-1</span>,j,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].blue+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].blue+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].blue+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].blue)/<span class="number">6</span>;</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>,j,dim)].green=(src[RIDX(dim<span class="number">-1</span>,j,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-1</span>,j+<span class="number">1</span>,dim)].green+src[RIDX(dim<span class="number">-1</span>,j<span class="number">-1</span>,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j,dim)].green+src[RIDX(dim<span class="number">-2</span>,j+<span class="number">1</span>,dim)].green+</div><div class="line">        src[RIDX(dim<span class="number">-2</span>,j<span class="number">-1</span>,dim)].green)/<span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//正常情况</span></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;dim<span class="number">-1</span>;i+=<span class="number">2</span>)</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;dim<span class="number">-1</span>;j++)&#123;</div><div class="line">            <span class="keyword">int</span> pos=i*dim+j;</div><div class="line">            dst[pos].red=(src[pos].red+src[pos+dim].red+src[pos-dim].red+</div><div class="line">            src[pos<span class="number">-1</span>].red+src[pos+dim<span class="number">-1</span>].red+src[pos-dim<span class="number">-1</span>].red+</div><div class="line">            src[pos+<span class="number">1</span>].red+src[pos+<span class="number">1</span>+dim].red+src[pos+<span class="number">1</span>-dim].red)/<span class="number">9</span>;</div><div class="line">            dst[pos].blue=(src[pos].blue+src[pos+dim].blue+src[pos-dim].blue+</div><div class="line">            src[pos<span class="number">-1</span>].blue+src[pos+dim<span class="number">-1</span>].blue+src[pos-dim<span class="number">-1</span>].blue+</div><div class="line">            src[pos+<span class="number">1</span>].blue+src[pos+<span class="number">1</span>+dim].blue+src[pos+<span class="number">1</span>-dim].blue)/<span class="number">9</span>;</div><div class="line">            dst[pos].green=(src[pos].green+src[pos+dim].green+src[pos-dim].green+</div><div class="line">            src[pos<span class="number">-1</span>].green+src[pos+dim<span class="number">-1</span>].green+src[pos-dim<span class="number">-1</span>].green+</div><div class="line">            src[pos+<span class="number">1</span>].green+src[pos+<span class="number">1</span>+dim].green+src[pos+<span class="number">1</span>-dim].green)/<span class="number">9</span>;</div><div class="line"></div><div class="line">            <span class="comment">//pos移到下一行</span></div><div class="line">            pos+=dim;</div><div class="line"></div><div class="line">            dst[pos].red=(src[pos].red+src[pos+dim].red+src[pos-dim].red+</div><div class="line">            src[pos<span class="number">-1</span>].red+src[pos+dim<span class="number">-1</span>].red+src[pos-dim<span class="number">-1</span>].red+</div><div class="line">            src[pos+<span class="number">1</span>].red+src[pos+<span class="number">1</span>+dim].red+src[pos+<span class="number">1</span>-dim].red)/<span class="number">9</span>;</div><div class="line">            dst[pos].blue=(src[pos].blue+src[pos+dim].blue+src[pos-dim].blue+</div><div class="line">            src[pos<span class="number">-1</span>].blue+src[pos+dim<span class="number">-1</span>].blue+src[pos-dim<span class="number">-1</span>].blue+</div><div class="line">            src[pos+<span class="number">1</span>].blue+src[pos+<span class="number">1</span>+dim].blue+src[pos+<span class="number">1</span>-dim].blue)/<span class="number">9</span>;</div><div class="line">            dst[pos].green=(src[pos].green+src[pos+dim].green+src[pos-dim].green+</div><div class="line">            src[pos<span class="number">-1</span>].green+src[pos+dim<span class="number">-1</span>].green+src[pos-dim<span class="number">-1</span>].green+</div><div class="line">            src[pos+<span class="number">1</span>].green+src[pos+<span class="number">1</span>+dim].green+src[pos+<span class="number">1</span>-dim].green)/<span class="number">9</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到虽然进行了循环展开，但是CPE在不同的数据上差距并不明显，甚至还有数据越大越低于未展开时的函数，但也算是一种优化方案吧。关于循环展开的长度，因为要去掉上下左右的边，所以变为了32*n-2，而这个数最安全的公因数就是2了，所以选择了两路并行。</p>
+<p>想破脑袋也没想出第三种优化方案，看到网上有关于作弊优化的说明，尝试了一下。确实很好玩…</p>
+<p>说说细节吧：</p>
+<p>总的来说，这个实验就是让我们用一张白纸去依据要求复制一幅画。而验证的时候，程序是通过将你画的画与它事先复制好的样品比对。若一致，则说明程序是正确的。所以我们的优化就是尽量画得快一些。<br>那么，漏洞就来了。既然最后的验证只是与样品比对，那么我们就可以通过在比对前，就先给样品处理，这里是全部涂黑。这样的话，我们画的画就不需要再参照原本的画来画了，只需要也响应涂黑了。涂黑的动作可以根据memset函数来非常快速地格式化掉。<br>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> smooth_descr_v4[] = <span class="string">"The three smooth version "</span>;<span class="function"><span class="keyword">void</span> <span class="title">smooth_v4</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span>&#123;    <span class="built_in">memset</span>(src,<span class="number">0</span>,<span class="keyword">sizeof</span>(pixel)*dim*dim);    <span class="built_in">memset</span>(dst+dim*dim,<span class="number">0</span>,<span class="keyword">sizeof</span>(pixel)*dim*dim);&#125;</div></pre></td></tr></table></figure>
+<p>可以看到结果非常变态，CPE已经降到0.6之低了…不过别忘记加上包含memset函数声明的string.h头文件<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-151411.jpg" alt=""></p>
+<h3 id="实验心得"><a href="#实验心得" class="headerlink" title="实验心得"></a>实验心得</h3><p>这个实验题目不是很多，但要做的事情却不少。坦白说刚开始是一点思路都没有的，看了解析之后豁然开朗，原来还可以这么干！优化代码需要的知识面很广，也很深，更加促使我要继续往深处学习。总而言之，这个实验让我认识到了自己的很多不足，在优化代码面前的手足无措，也让我学会了如何一步步分析代码原理并根据计算机特性对代码进行优化。虽然现在CPU的运算速度已经很快了，但是看到优化效率的大幅度提升确实很震撼，这才是我们需要写出的代码！用最小的代价换取最大运算效率！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Programming-literacy/" rel="tag"># 编程素养</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programer/比特小镇的集市/" rel="next" title="比特小镇的集市">
+                <i class="fa fa-chevron-left"></i> 比特小镇的集市
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="computer-principle/深入理解计算机系统-perflab-handout/"
+     data-title="深入理解计算机系统-perflab-handout"
+     data-content=""
+     data-url="http://blublu.xyz/computer-principle/深入理解计算机系统-perflab-handout/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="computer-principle/深入理解计算机系统-perflab-handout/"
+           data-title="深入理解计算机系统-perflab-handout" data-url="http://blublu.xyz/computer-principle/深入理解计算机系统-perflab-handout/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xpajj.com1.z0.glb.clouddn.com/2016-07-17_20:43:46.jpg"
+               alt="jhWei" />
+          <p class="site-author-name" itemprop="name">jhWei</p>
+          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vagueco" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
+                  
+                    <i class="fa fa-fw fa-spinner"></i>
+                  
+                  coding
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tuicool.com/" title="推酷" target="_blank">推酷</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验目的"><span class="nav-number">1.</span> <span class="nav-text">实验目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化rotate函数"><span class="nav-number">2.</span> <span class="nav-text">优化rotate函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化smooth函数"><span class="nav-number">3.</span> <span class="nav-text">优化smooth函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验心得"><span class="nav-number">4.</span> <span class="nav-text">实验心得</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jhWei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blublu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if ( $('#local-search-input').size() === 0) {
+        return;
+      }
+
+      // Popup Window;
+      var isfetched = false;
+      // Search DB path;
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      // monitor main search box;
+
+      function proceedsearch() {
+        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+        $('.popup').toggle();
+
+      }
+      // search function;
+      var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+          url: path,
+          dataType: "xml",
+          async: true,
+          success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+              return {
+                title: $( "title", this ).text(),
+                content: $("content",this).text(),
+                url: $( "url" , this).text()
+              };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+              var matchcounts = 0;
+              var str='<ul class=\"search-result-list\">';
+              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+              $resultContent.innerHTML = "";
+              if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if(data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if( index_title < 0 && index_content < 0 ){
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i == 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    matchcounts += 1;
+                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                    var content = data.content.trim().replace(/<[^>]+>/g,"");
+                    if (first_occur >= 0) {
+                      // cut out 100 characters
+                      var start = first_occur - 20;
+                      var end = first_occur + 80;
+                      if(start < 0){
+                        start = 0;
+                      }
+                      if(start == 0){
+                        end = 50;
+                      }
+                      if(end > content.length){
+                        end = content.length;
+                      }
+                      var match_content = content.substring(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword){
+                        var regS = new RegExp(keyword, "gi");
+                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      });
+
+                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    }
+                    str += "</li>";
+                  }
+                })};
+              str += "</ul>";
+              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+              $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+          }
+        });}
+
+      // handle and trigger popup window;
+      $('.popup-trigger').mousedown(function(e) {
+        e.stopPropagation();
+        if (isfetched == false) {
+          searchFunc(path, 'local-search-input', 'local-search-result');
+        } else {
+          proceedsearch();
+        };
+
+      });
+
+      $('.popup-btn-close').click(function(e){
+        $('.popup').hide();
+        $(".popoverlay").remove();
+        $('body').css('overflow', '');
+      });
+      $('.popup').click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+  
+
+
+</body>
+</html>
