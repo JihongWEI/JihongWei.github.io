@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blublu.xyz/"/>
-  <updated>2016-12-02T10:52:57.000Z</updated>
+  <updated>2016-12-03T02:26:29.000Z</updated>
   <id>http://blublu.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blublu.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-perflab-handout/"/>
     <id>http://blublu.xyz/computer-principle/深入理解计算机系统-perflab-handout/</id>
     <published>2016-12-02T10:45:48.000Z</published>
-    <updated>2016-12-02T10:52:57.000Z</updated>
+    <updated>2016-12-03T02:26:29.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比。本次实验，要求针对每个函数、每个人均至少写出3种优化版本、并根据driver报告的结果进行性能分析。 &lt;/p&gt;
 &lt;h3 id=&quot;优化rotate函数&quot;&gt;&lt;a href=&quot;#优化rotate函数&quot; class=&quot;headerlink&quot; title=&quot;优化rotate函数&quot;&gt;&lt;/a&gt;优化rotate函数&lt;/h3&gt;&lt;p&gt;原始的rotate函数如下：&lt;/p&gt;
@@ -47,7 +47,6 @@
 &lt;p&gt;总的来说，这个实验就是让我们用一张白纸去依据要求复制一幅画。而验证的时候，程序是通过将你画的画与它事先复制好的样品比对。若一致，则说明程序是正确的。所以我们的优化就是尽量画得快一些。&lt;br&gt;那么，漏洞就来了。既然最后的验证只是与样品比对，那么我们就可以通过在比对前，就先给样品处理，这里是全部涂黑。这样的话，我们画的画就不需要再参照原本的画来画了，只需要也响应涂黑了。涂黑的动作可以根据memset函数来非常快速地格式化掉。&lt;br&gt;代码如下：&lt;/p&gt;
 &lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; smooth_descr_v4[] = &lt;span class=&quot;string&quot;&gt;&quot;The three smooth version &quot;&lt;/span&gt;;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;smooth_v4&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; dim, pixel *src, pixel *dst)&lt;/span&gt; &lt;/span&gt;&amp;#123;    &lt;span class=&quot;built_in&quot;&gt;memset&lt;/span&gt;(src,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;sizeof&lt;/span&gt;(pixel)*dim*dim);    &lt;span class=&quot;built_in&quot;&gt;memset&lt;/span&gt;(dst+dim*dim,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;sizeof&lt;/span&gt;(pixel)*dim*dim);&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;可以看到结果非常变态，CPE已经降到0.6之低了…不过别忘记加上包含memset函数声明的string.h头文件&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-151411.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;实验心得&quot;&gt;&lt;a href=&quot;#实验心得&quot; class=&quot;headerlink&quot; title=&quot;实验心得&quot;&gt;&lt;/a&gt;实验心得&lt;/h3&gt;&lt;p&gt;这个实验题目不是很多，但要做的事情却不少。坦白说刚开始是一点思路都没有的，看了解析之后豁然开朗，原来还可以这么干！优化代码需要的知识面很广，也很深，更加促使我要继续往深处学习。总而言之，这个实验让我认识到了自己的很多不足，在优化代码面前的手足无措，也让我学会了如何一步步分析代码原理并根据计算机特性对代码进行优化。虽然现在CPU的运算速度已经很快了，但是看到优化效率的大幅度提升确实很震撼，这才是我们需要写出的代码！用最小的代价换取最大运算效率！&lt;/p&gt;
 </content>
     
     <summary type="html">

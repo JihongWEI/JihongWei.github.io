@@ -31,7 +31,6 @@
 <p>总的来说，这个实验就是让我们用一张白纸去依据要求复制一幅画。而验证的时候，程序是通过将你画的画与它事先复制好的样品比对。若一致，则说明程序是正确的。所以我们的优化就是尽量画得快一些。<br>那么，漏洞就来了。既然最后的验证只是与样品比对，那么我们就可以通过在比对前，就先给样品处理，这里是全部涂黑。这样的话，我们画的画就不需要再参照原本的画来画了，只需要也响应涂黑了。涂黑的动作可以根据memset函数来非常快速地格式化掉。<br>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> smooth_descr_v4[] = <span class="string">"The three smooth version "</span>;<span class="function"><span class="keyword">void</span> <span class="title">smooth_v4</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span>&#123;    <span class="built_in">memset</span>(src,<span class="number">0</span>,<span class="keyword">sizeof</span>(pixel)*dim*dim);    <span class="built_in">memset</span>(dst+dim*dim,<span class="number">0</span>,<span class="keyword">sizeof</span>(pixel)*dim*dim);&#125;</div></pre></td></tr></table></figure>
 <p>可以看到结果非常变态，CPE已经降到0.6之低了…不过别忘记加上包含memset函数声明的string.h头文件<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-25-151411.jpg" alt=""></p>
-<h3 id="实验心得"><a href="#实验心得" class="headerlink" title="实验心得"></a>实验心得</h3><p>这个实验题目不是很多，但要做的事情却不少。坦白说刚开始是一点思路都没有的，看了解析之后豁然开朗，原来还可以这么干！优化代码需要的知识面很广，也很深，更加促使我要继续往深处学习。总而言之，这个实验让我认识到了自己的很多不足，在优化代码面前的手足无措，也让我学会了如何一步步分析代码原理并根据计算机特性对代码进行优化。虽然现在CPU的运算速度已经很快了，但是看到优化效率的大幅度提升确实很震撼，这才是我们需要写出的代码！用最小的代价换取最大运算效率！</p>
 ]]></content>
     </entry>
     
