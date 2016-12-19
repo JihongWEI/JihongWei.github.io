@@ -312,6 +312,141 @@
             
               
                 
+                <a class="post-title-link" href="/computer-principle/float与double精度丢失的问题/" itemprop="url">
+                  float与double精度丢失的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T20:44:05+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/computer-principle/float与double精度丢失的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/float与double精度丢失的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/computer-principle/float与double精度丢失的问题/" class="leancloud_visitors" data-flag-title="float与double精度丢失的问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>将同一实数分别赋值给单精度和双精度类型变量，然后打印输出</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">float</span> a;</div><div class="line">    <span class="keyword">double</span> b;</div><div class="line">    a = <span class="number">123456.789e4</span>;</div><div class="line">    b = <span class="number">123456.789e4</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f\n %f\n"</span>,a,b);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">输出结果：</div><div class="line"><span class="number">1234567936.000000</span></div><div class="line"><span class="number">1234567890.000000</span></div></pre></td></tr></table></figure>
+<p>为什么一个整数分别赋值给double和float,在输出的时候float型却不一样且偏大了呢？</p>
+<p>其实导致这样的结果主要是因为float的精度的问题，float在内存中主要分为三部分，第一部分是符号位，第二部分是指数位，第三部分是尾数部分。尾数部分的长度为23位，又因为可以隐式地认为第一位是1（因为我们总是可以通过调整指数大小把小数点移动到最高位为1上的右边），所以实际上我们float能够识别24位二进制数，也就是2^24 - 1 = 16,777,215,所以float的精度是不高于八位的。</p>
+<p>同理因为double是64位的，所以识别的精度要有2^52 - 1 = 450,359,962,770,496，也就是不高于16位。但是题目中的1234567890也就是只有十位而已，所以double可以确保它的精度不被改变而float却不行。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/computer-principle/float与double精度丢失的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programer/老罗新机发布会的一些感受/" itemprop="url">
                   老罗新机发布会的一些感受
                 </a>
@@ -1231,220 +1366,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/knowledge/vim常用命令/" itemprop="url">
-                  vim常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-27T20:19:43+08:00" content="2016-06-27">
-              2016-06-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/knowledge/" itemprop="url" rel="index">
-                    <span itemprop="name">必备知识</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/knowledge/vim常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="knowledge/vim常用命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/knowledge/vim常用命令/" class="leancloud_visitors" data-flag-title="vim常用命令">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h1><h3 id="光标移动-Cursor-Movement"><a href="#光标移动-Cursor-Movement" class="headerlink" title="光标移动(Cursor Movement)"></a>光标移动(Cursor Movement)</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用（解释）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>h,j,k,l</td>
-<td>h表示往左，j表示往下，k表示往右，l表示往上</td>
-</tr>
-<tr>
-<td>Ctrl+f</td>
-<td>上一页</td>
-</tr>
-<tr>
-<td>Ctrl+b</td>
-<td>下一页</td>
-</tr>
-<tr>
-<td>w, e, W, E</td>
-<td>跳到单词的后面，小写包括标点</td>
-</tr>
-<tr>
-<td>b, B</td>
-<td>以单词为单位往前跳动光标，小写包含标点</td>
-</tr>
-<tr>
-<td>O</td>
-<td>开启新的一行</td>
-</tr>
-<tr>
-<td>^</td>
-<td>一行的开始</td>
-</tr>
-<tr>
-<td>$</td>
-<td>一行的结尾</td>
-</tr>
-<tr>
-<td>gg</td>
-<td>文档的第一行</td>
-</tr>
-<tr>
-<td>[N]G</td>
-<td>文档的第N行或者最后一行</td>
-</tr>
-</tbody>
-</table>
-<h3 id="插入模式-Insert-Mode"><a href="#插入模式-Insert-Mode" class="headerlink" title="插入模式(Insert Mode)"></a>插入模式(Insert Mode)</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用（解释)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>插入到光标前面</td>
-</tr>
-<tr>
-<td>I</td>
-<td>插入到行的开始位置</td>
-</tr>
-<tr>
-<td>a</td>
-<td>插入到光标的后面</td>
-</tr>
-<tr>
-<td>A</td>
-<td>插入到行的最后位置</td>
-</tr>
-<tr>
-<td>o, O</td>
-<td>新开一行</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>关闭插入模式</td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/knowledge/vim常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1490,7 +1411,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

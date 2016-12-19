@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blublu.xyz/"/>
-  <updated>2016-12-03T02:26:29.000Z</updated>
+  <updated>2016-12-19T10:24:58.000Z</updated>
   <id>http://blublu.xyz/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows、MacOS、IOS、Android各平台shadowsocks使用指南</title>
+    <link href="http://blublu.xyz/knowledge/Windows%E3%80%81MacOS%E3%80%81IOS%E3%80%81Android%E5%90%84%E5%B9%B3%E5%8F%B0shadowsocks%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://blublu.xyz/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/</id>
+    <published>2016-12-19T10:23:41.000Z</published>
+    <updated>2016-12-19T10:24:58.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;接着是添加路由规则配置文件&lt;/strong&gt;&lt;br&gt;在底部选项中选择Config，然后添加配置文件：&lt;/p&gt;
+&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094200.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后在URL地址栏中输入配置文件地址（你也可以使用别的配置文件）：&lt;br&gt;&lt;a href=&quot;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&lt;/a&gt;&lt;br&gt;下载完成之后点击新添加的规则，使用这个规则&lt;/p&gt;
+&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094324.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后回到主页，选择Global Routing进行配置：&lt;/p&gt;
+&lt;h2 id=&quot;-4&quot;&gt;&lt;a href=&quot;#-4&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;最后就是点开连接按钮了，这时候不出意外应该已经正常访问外网了。ios还可以打开shadowrocket的widget，实时监控速度，开启与关闭也非常方便&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Android&quot;&gt;&lt;a href=&quot;#Android&quot; class=&quot;headerlink&quot; title=&quot;Android&quot;&gt;&lt;/a&gt;Android&lt;/h2&gt;&lt;p&gt;Android上就使用ShadowsocksR就可以了&lt;br&gt;首先还是先填写服务器的配置信息&lt;/p&gt;
+&lt;h2 id=&quot;-5&quot;&gt;&lt;a href=&quot;#-5&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-095521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;接着就是选择混淆协议&lt;/p&gt;
+&lt;h2 id=&quot;-6&quot;&gt;&lt;a href=&quot;#-6&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100051.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;混淆参数&lt;/p&gt;
+&lt;h2 id=&quot;-7&quot;&gt;&lt;a href=&quot;#-7&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100206.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-8&quot;&gt;&lt;a href=&quot;#-8&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100318.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;到这不出意外点击右上角的小飞机，应该可以正常访问外网了&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h2&gt;&lt;p&gt;链接: &lt;a href=&quot;https://pan.baidu.com/s/1dFsqdiD&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pan.baidu.com/s/1dFsqdiD&lt;/a&gt; 密码: zubn&lt;br&gt;在上面的链接上下载好Windows版本的ShadowsocksR客户端,解压&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101045.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;不需要安装，直接点开就可以用。&lt;strong&gt;最好解压到一个不是桌面的文件夹，然后把客户端的快捷方式放在桌面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;启动客户端&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101150.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;根据账号密码填写所需参数：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101252.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后在任务栏右键小飞机图标，选择刚刚添加的服务器信息：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101521.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后更新一下规则：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101717.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;最后就点击启用就好了：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101917.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/stro
+    
+    </summary>
+    
+      <category term="必备知识" scheme="http://blublu.xyz/categories/knowledge/"/>
+    
+    
+      <category term="碎片" scheme="http://blublu.xyz/tags/notes/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解计算机系统-perflab-handout</title>
@@ -1831,124 +1865,6 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
       <category term="web后端" scheme="http://blublu.xyz/tags/web-background/"/>
     
       <category term="web前端" scheme="http://blublu.xyz/tags/web-developer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字符编码--UTF-8与Unicode</title>
-    <link href="http://blublu.xyz/knowledge/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%98%8E%E5%9D%91%E4%B8%8E%E6%9A%97%E5%9D%91/"/>
-    <id>http://blublu.xyz/knowledge/字符编码的明坑与暗坑/</id>
-    <published>2016-03-15T11:11:09.000Z</published>
-    <updated>2016-07-18T02:45:41.000Z</updated>
-    
-    <content type="html">&lt;p&gt;自从上个学期简单地了解了字符编码之后就一直没有再过多的理会它。对字符编码这一块总是似懂非懂，今天突然就想把它彻底地了解一遍，不想再有这种疑惑的感觉。重新理顺了一遍字符编码之间的关系，以及utf-8、utf-16以及utf-32和Unicode之间的那些千丝万缕的关系。&lt;/p&gt;
-&lt;h3 id=&quot;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot;&gt;&lt;a href=&quot;#首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot; class=&quot;headerlink&quot; title=&quot;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot;&gt;&lt;/a&gt;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&lt;/h3&gt;&lt;h2 id=&quot;首先我们来看看关于Unicode的介绍&quot;&gt;&lt;a href=&quot;#首先我们来看看关于Unicode的介绍&quot; class=&quot;headerlink&quot; title=&quot;首先我们来看看关于Unicode的介绍&quot;&gt;&lt;/a&gt;首先我们来看看关于Unicode的介绍&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。&lt;br&gt;可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。&lt;br&gt;Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字“严”。具体的符号对应表，可以查询&lt;a href=&quot;http://unicode.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Unicode官网&lt;/a&gt;，或者专门的汉字对应表。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。Unicode 用数字0-0x10FFFF来映射这些字符，最多可以容纳1114112个字符，或者说有1114112个码位。码位就是可以分配给字符的数字。UTF-8、 UTF-16、UTF-32都是将数字转换到程序数据的编码方案。&lt;/p&gt;
-&lt;p&gt;Unicode字符集可以简写为UCS（Unicode Character Set）。早期的Unicode标准有UCS-2、UCS-4的说法。UCS-2用两个字节编码，UCS-4用4个字节编码。UCS-4根据最高位为0的 最高字节分成2^7=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Basic Multilingual Plane）。将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。&lt;br&gt;每个平面有2^16=65536个码位。Unicode计划使用了17个平面，一共有 17*65536=1114112个码位。在Unicode 5.0.0版本中，已定义的码位只有238605个，分布在平面0、平面1、平面2、平面14、平面15、平面16。其中平面15和平面16上只是定义了 两个各占65534个码位的专用区（Private Use Area），分别是0xF0000-0xFFFFD和0x100000-0x10FFFD。所谓专用区，就是保留给大家放自定义字符的区域，可以简写为 PUA。&lt;/p&gt;
-&lt;p&gt;平面0也有一个专用区：0xE000-0xF8FF，有6400个码位。平面0的 0xD800-0xDFFF，共2048个码位，是一个被称作代理区（Surrogate）的特殊区域。代理区的目的用两个UTF-16字符表示BMP以 外的字符。在介绍UTF-16编码时会介绍。&lt;br&gt;如前所述在Unicode 5.0.0版本中，238605-65534*2-6400-2408=99089。余下的99089个已定义码位分布在平面0、平面1、平面2和平面 14上，它们对应着Unicode目前定义的99089个字符，其中包括71226个汉字。平面0、平面1、平面2和平面14上分别定义了52080、 3419、43253和337个字符。平面2的43253个字符都是汉字。平面0上定义了27973个汉字。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;那么，问题来了。utf-8与Unicode之间有什么联系呢？&quot;&gt;&lt;a href=&quot;#那么，问题来了。utf-8与Unicode之间有什么联系呢？&quot; class=&quot;headerlink&quot; title=&quot;那么，问题来了。utf-8与Unicode之间有什么联系呢？&quot;&gt;&lt;/a&gt;那么，问题来了。utf-8与Unicode之间有什么联系呢？&lt;/h2&gt;&lt;p&gt;Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。 &lt;/p&gt;
-&lt;p&gt;比如，汉字“严”的unicode是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多。 &lt;/p&gt;
-&lt;p&gt;这里就有两个严重的问题，第一个问题是，如何才能区别unicode和ascii？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的。 &lt;/p&gt;
-&lt;p&gt;它们造成的结果是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;出现了unicode的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示Unicode。&lt;/li&gt;
-&lt;li&gt;unicode在很长一段时间内无法推广，直到互联网的出现。 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;接着说一下普遍的认为Unicode是2个字节的问题，其实我觉得这是第一代程序员的一种误读吧。因为java虚拟机采用UCS2（通用字符集)标准即UTF-16保存字符，所有的字符在内存中都是2个字节，这样虚拟机处理字符串的截取、长度和判断都非常容易。其他语言如PHP、Python也是，在运行时采用固定长度存储字符。包括windows也都是使用utf-16标准来保存字符。&lt;strong&gt; 但在微软资料中将其错误称为unicode &lt;/strong&gt; 所以有了现在的一个Unicode字符占两个字节的错误说法，其实他们本质上说的就是UTF-16。&lt;br&gt;当然，因为UTF-16相当浪费空间，相对应编译后的class，java规定采用UTF-8保存，因为大部分是英文字符，只有一个字节，可以大量节省存储空间。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;说完一些它们之间屡不清的关系，接下来来看看它们的本质究竟是什么&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;UTF-16&quot;&gt;&lt;a href=&quot;#UTF-16&quot; class=&quot;headerlink&quot; title=&quot;UTF-16&quot;&gt;&lt;/a&gt;UTF-16&lt;/h4&gt;&lt;p&gt;   UTF-16比较好理解,就是任何字符对应的数字都用两个字节来保存.我们通常对Unicode的误解就是把Unicode与UTF-16等同了.但是很显然如果都是英文字母这做有点浪费.明明用一个字节能表示一个字符为啥整两个啊.&lt;/p&gt;
-&lt;p&gt;   于是又有个UTF-8,这里的8非常容易误导人,8不是指一个字节,难道一个字节表示一个字符?实际上不是.当用UTF-8时表示一个字符是可变的,有可能是用一个字节表示一个字符,也可能是两个,三个.当然最多不能超过3个字节了.反正是根据字符对应的数字大小来确定.&lt;/p&gt;
-&lt;p&gt;   于是UTF-8和UTF-16的优劣很容易就看出来了.如果全部英文或英文与其他文字混合,但英文占绝大部分,用UTF-8就比UTF-16节省了很多空间.而如果全部是中文这样类似的字符或者混合字符中中文占绝大多数.UTF-16就占优势了,可以节省很多空间.&lt;/p&gt;
-&lt;h4 id=&quot;UTF-8&quot;&gt;&lt;a href=&quot;#UTF-8&quot; class=&quot;headerlink&quot; title=&quot;UTF-8&quot;&gt;&lt;/a&gt;UTF-8&lt;/h4&gt;&lt;p&gt;互联网的普及，强烈要求出现一种统一的编码方式。UTF-8就是在互联网上使用最广的一种unicode的实现方式。其他实现方式还包括UTF-16和UTF-32，不过在互联网上基本不用。重复一遍，这里的关系是，UTF-8是Unicode的实现方式之一。 &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;UTF-8的编码规则很简单，只有二条： &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 &lt;/li&gt;
-&lt;li&gt;对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;其以字节为单位对Unicode进行编码。从Unicode到UTF-8的编码方式如 下：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;Unicode编码(16进制)&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;UTF-8 字节流(二进制)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;000000 - 00007F&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;0xxxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;000080 - 0007FF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;110xxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;000800 - 00FFFF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;1110xxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;010000 - 10FFFF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;11110xxx 10xxxxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;假如中文字”汉”对应的unicode是6C49(这是用十六进制表示,用十进制表示是27721为啥不用十进制表示呢?很明显用十六进制表示要短点.其实都是等价的没啥不一样.就跟你说60分钟和1小时一样.).你可能会问当用程序打开一个文件时我们怎么知道那是用的UTF-8还是UTF-16啊.自然会有点啥标志,在文件的开头几个字节就是标志.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;EF BB BF 表示UTF-8&lt;/li&gt;
-&lt;li&gt;FE FF 表示UTF-16.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;UTF-32&quot;&gt;&lt;a href=&quot;#UTF-32&quot; class=&quot;headerlink&quot; title=&quot;UTF-32&quot;&gt;&lt;/a&gt;UTF-32&lt;/h4&gt;&lt;p&gt;前面说的都是unicode的第一个版本.但65536显然不算太多的数字,用它来表示常用的字符是没一点问题.足够了,但如果加上很多特殊的就也不够了.于是从1996年开始又来了第二个版本.用四个字节表示所有字符.这样就出现了UTF-8,UTF16,UTF-32.原理和之前肯定是完全一样的,UTF-32就是把所有的字符都用32bit也就是4个字节来表示.然后UTF-8,UTF-16就视情况而定了.UTF-8可以选择1至8个字节中的任一个来表示.而UTF-16只能是选两字节或四字节..由于unicode版本2的原理完全是一样的,就不多说了.&lt;/p&gt;
-&lt;p&gt;前面说了要知道具体是哪种编码方式,需要判断文本开头的标志,下面是所有编码对应的开头标志&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;标志&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;编码&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;EF BB BF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;UTF-8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;FE FF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;UTF-16/UCS-2, little endian&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;FF FE&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;UTF-16/UCS-2, big endian&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;FF FE 00 00&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;UTF-32/UCS-4, little endian.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;00 00 FE FF&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;UTF-32/UCS-4, big-endian.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;UCS就是前面说的ISO制定的标准,和Unicode是完全一样的,只不过名字不一样.ucs-2对应utf-16,ucs-4对应UTF-32.UTF-8是没有对应的UCS&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 总之说到底，Unicode是一种字符与数字间的映射关系，而utf-8等不同的编码则是其在计算机上的实现方式而已。 &lt;/strong&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;自从上个学期简单地了解了字符编码之后就一直没有再过多的理会它。对字符编码这一块总是似懂非懂，今天突然就想把它彻底地了解一遍，不想再有这种疑惑的感觉。重新理顺了一遍字符编码之间的关系，以及utf-8、utf-16以及utf-32和Unicode之间的那些千丝万缕的关系。&lt;/p&gt;
-&lt;h3 id=&quot;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot;&gt;&lt;a href=&quot;#首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot; class=&quot;headerlink&quot; title=&quot;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&quot;&gt;&lt;/a&gt;首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。&lt;/h3&gt;&lt;h2 id=&quot;首先我们来看看关于Unicode的介绍&quot;&gt;&lt;a href=&quot;#首先我们来看看关于Unicode的介绍&quot; class=&quot;headerlink&quot; title=&quot;首先我们来看看关于Unicode的介绍&quot;&gt;&lt;/a&gt;首先我们来看看关于Unicode的介绍&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。&lt;br&gt;可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。&lt;br&gt;Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字“严”。具体的符号对应表，可以查询&lt;a href=&quot;http://unicode.org&quot;&gt;Unicode官网&lt;/a&gt;，或者专门的汉字对应表。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="必备知识" scheme="http://blublu.xyz/categories/knowledge/"/>
-    
-    
-      <category term="碎片" scheme="http://blublu.xyz/tags/notes/"/>
     
   </entry>
   
