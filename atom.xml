@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blublu.xyz/"/>
-  <updated>2016-12-19T10:29:31.000Z</updated>
+  <updated>2016-12-03T02:26:29.000Z</updated>
   <id>http://blublu.xyz/</id>
   
   <author>
@@ -14,45 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Windows、MacOS、IOS、Android各平台shadowsocks使用指南</title>
-    <link href="http://blublu.xyz/knowledge/Windows%E3%80%81MacOS%E3%80%81IOS%E3%80%81Android%E5%90%84%E5%B9%B3%E5%8F%B0shadowsocks%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>http://blublu.xyz/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/</id>
-    <published>2016-12-19T10:23:41.000Z</published>
-    <updated>2016-12-19T10:29:31.000Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;接着是添加路由规则配置文件&lt;/strong&gt;&lt;br&gt;在底部选项中选择Config，然后添加配置文件：&lt;/p&gt;
-&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094200.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后在URL地址栏中输入配置文件地址（你也可以使用别的配置文件）：&lt;br&gt;&lt;a href=&quot;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&lt;/a&gt;&lt;br&gt;下载完成之后点击新添加的规则，使用这个规则&lt;/p&gt;
-&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094324.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后回到主页，选择Global Routing进行配置：&lt;/p&gt;
-&lt;h2 id=&quot;-4&quot;&gt;&lt;a href=&quot;#-4&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;最后就是点开连接按钮了，这时候不出意外应该已经正常访问外网了。ios还可以打开shadowrocket的widget，实时监控速度，开启与关闭也非常方便&lt;/strong&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Android&quot;&gt;&lt;a href=&quot;#Android&quot; class=&quot;headerlink&quot; title=&quot;Android&quot;&gt;&lt;/a&gt;Android&lt;/h2&gt;&lt;p&gt;Android上就使用ShadowsocksR就可以了&lt;br&gt;首先还是先填写服务器的配置信息&lt;/p&gt;
-&lt;h2 id=&quot;-5&quot;&gt;&lt;a href=&quot;#-5&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-095521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;接着就是选择混淆协议&lt;/p&gt;
-&lt;h2 id=&quot;-6&quot;&gt;&lt;a href=&quot;#-6&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100051.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;混淆参数&lt;/p&gt;
-&lt;h2 id=&quot;-7&quot;&gt;&lt;a href=&quot;#-7&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100206.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-8&quot;&gt;&lt;a href=&quot;#-8&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100318.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;到这不出意外点击右上角的小飞机，应该可以正常访问外网了&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h2&gt;&lt;p&gt;链接: &lt;a href=&quot;https://pan.baidu.com/s/1dFsqdiD&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pan.baidu.com/s/1dFsqdiD&lt;/a&gt; 密码: zubn&lt;br&gt;在上面的链接上下载好Windows版本的ShadowsocksR客户端,解压&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101045.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;不需要安装，直接点开就可以用。&lt;strong&gt;最好解压到一个不是桌面的文件夹，然后把客户端的快捷方式放在桌面&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;启动客户端&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101150.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;根据账号密码填写所需参数：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101252.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后在任务栏右键小飞机图标，选择刚刚添加的服务器信息：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101521.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后更新一下规则：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101717.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;最后就点击启用就好了：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101917.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;接着是添加路由规则配置文件&lt;/strong&gt;&lt;br&gt;在底部选项中选择Config，然后添加配置文件：&lt;/p&gt;
-&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094200.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后在URL地址栏中输入配置文件地址（你也可以使用别的配置文件）：&lt;br&gt;&lt;a href=&quot;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&quot;&gt;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&lt;/a&gt;&lt;br&gt;下载完成之后点击新添加的规则，使用这个规则&lt;/p&gt;
-&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094324.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后回到主页，选择Global Routing进行配置：&lt;/p&gt;
-&lt;h2 id=&quot;-4&quot;&gt;&lt;a href=&quot;#-4&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;最后就是点开连接按钮了，这时候不出意外应该已经正常访问外网了。ios还可以打开shadowrocket的widget，实时监控速度，开启与关闭也非常方便&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="必备知识" scheme="http://blublu.xyz/categories/knowledge/"/>
-    
-    
-      <category term="碎片" scheme="http://blublu.xyz/tags/notes/"/>
-    
-  </entry>
   
   <entry>
     <title>深入理解计算机系统-perflab-handout</title>
@@ -1288,6 +1249,43 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     
       <category term="web后端" scheme="http://blublu.xyz/tags/web-background/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows、MacOS、IOS、Android各平台shadowsocks使用指南</title>
+    <link href="http://blublu.xyz/knowledge/Windows%E3%80%81MacOS%E3%80%81IOS%E3%80%81Android%E5%90%84%E5%B9%B3%E5%8F%B0shadowsocks%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://blublu.xyz/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/</id>
+    <published>2016-08-19T10:23:41.000Z</published>
+    <updated>2017-01-01T13:06:52.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;strong&gt;接着是添加路由规则配置文件&lt;/strong&gt;&lt;br&gt;在底部选项中选择Config，然后添加配置文件：&lt;/p&gt;
+&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094200.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后在URL地址栏中输入配置文件地址（你也可以使用别的配置文件）：&lt;br&gt;&lt;a href=&quot;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf&lt;/a&gt;&lt;br&gt;下载完成之后点击新添加的规则，使用这个规则&lt;/p&gt;
+&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094324.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;然后回到主页，选择Global Routing进行配置：&lt;/p&gt;
+&lt;h2 id=&quot;-4&quot;&gt;&lt;a href=&quot;#-4&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;最后就是点开连接按钮了，这时候不出意外应该已经正常访问外网了。ios还可以打开shadowrocket的widget，实时监控速度，开启与关闭也非常方便&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Android&quot;&gt;&lt;a href=&quot;#Android&quot; class=&quot;headerlink&quot; title=&quot;Android&quot;&gt;&lt;/a&gt;Android&lt;/h2&gt;&lt;p&gt;Android上就使用ShadowsocksR就可以了&lt;br&gt;首先还是先填写服务器的配置信息&lt;/p&gt;
+&lt;h2 id=&quot;-5&quot;&gt;&lt;a href=&quot;#-5&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-095521.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;接着就是选择混淆协议&lt;/p&gt;
+&lt;h2 id=&quot;-6&quot;&gt;&lt;a href=&quot;#-6&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100051.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;混淆参数&lt;/p&gt;
+&lt;h2 id=&quot;-7&quot;&gt;&lt;a href=&quot;#-7&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100206.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-8&quot;&gt;&lt;a href=&quot;#-8&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100318.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;到这不出意外点击右上角的小飞机，应该可以正常访问外网了&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h2&gt;&lt;p&gt;链接: &lt;a href=&quot;https://pan.baidu.com/s/1dFsqdiD&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pan.baidu.com/s/1dFsqdiD&lt;/a&gt; 密码: zubn&lt;br&gt;在上面的链接上下载好Windows版本的ShadowsocksR客户端,解压&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101045.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;不需要安装，直接点开就可以用。&lt;strong&gt;最好解压到一个不是桌面的文件夹，然后把客户端的快捷方式放在桌面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;启动客户端&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101150.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;根据账号密码填写所需参数：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101252.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后在任务栏右键小飞机图标，选择刚刚添加的服务器信息：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101521.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后更新一下规则：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101717.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;最后就点击启用就好了：&lt;br&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101917.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;IOS&quot;&gt;&lt;a href=&quot;#IOS&quot; class=&quot;headerlink&quot; title=&quot;IOS&quot;&gt;&lt;/a&gt;IOS&lt;/h2&gt;&lt;p&gt;ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。&lt;br&gt;&lt;strong&gt;首先是添加服务器的账号&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg&quot; alt=&quot;&quot;&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="必备知识" scheme="http://blublu.xyz/categories/knowledge/"/>
+    
+    
+      <category term="碎片" scheme="http://blublu.xyz/tags/notes/"/>
     
   </entry>
   

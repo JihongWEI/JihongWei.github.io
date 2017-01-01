@@ -312,141 +312,6 @@
             
               
                 
-                <a class="post-title-link" href="/computer-principle/float与double精度丢失的问题/" itemprop="url">
-                  float与double精度丢失的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-20T20:44:05+08:00" content="2016-10-20">
-              2016-10-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/computer-principle/float与double精度丢失的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="computer-principle/float与double精度丢失的问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/computer-principle/float与double精度丢失的问题/" class="leancloud_visitors" data-flag-title="float与double精度丢失的问题">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>将同一实数分别赋值给单精度和双精度类型变量，然后打印输出</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">float</span> a;</div><div class="line">    <span class="keyword">double</span> b;</div><div class="line">    a = <span class="number">123456.789e4</span>;</div><div class="line">    b = <span class="number">123456.789e4</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f\n %f\n"</span>,a,b);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">输出结果：</div><div class="line"><span class="number">1234567936.000000</span></div><div class="line"><span class="number">1234567890.000000</span></div></pre></td></tr></table></figure>
-<p>为什么一个整数分别赋值给double和float,在输出的时候float型却不一样且偏大了呢？</p>
-<p>其实导致这样的结果主要是因为float的精度的问题，float在内存中主要分为三部分，第一部分是符号位，第二部分是指数位，第三部分是尾数部分。尾数部分的长度为23位，又因为可以隐式地认为第一位是1（因为我们总是可以通过调整指数大小把小数点移动到最高位为1上的右边），所以实际上我们float能够识别24位二进制数，也就是2^24 - 1 = 16,777,215,所以float的精度是不高于八位的。</p>
-<p>同理因为double是64位的，所以识别的精度要有2^52 - 1 = 450,359,962,770,496，也就是不高于16位。但是题目中的1234567890也就是只有十位而已，所以double可以确保它的精度不被改变而float却不行。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/computer-principle/float与double精度丢失的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/programer/老罗新机发布会的一些感受/" itemprop="url">
                   老罗新机发布会的一些感受
                 </a>
@@ -1366,6 +1231,138 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/" itemprop="url">
+                  Windows、MacOS、IOS、Android各平台shadowsocks使用指南
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-19T18:23:41+08:00" content="2016-08-19">
+              2016-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">必备知识</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/" class="leancloud_visitors" data-flag-title="Windows、MacOS、IOS、Android各平台shadowsocks使用指南">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h2><p>ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。<br><strong>首先是添加服务器的账号</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg" alt=""></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg" alt=""></h2><p><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg" alt=""></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/knowledge/Windows、MacOS、IOS、Android各平台shadowsocks使用教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1403,7 +1400,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://7xpajj.com1.z0.glb.clouddn.com/2016-07-17_20:43:46.jpg"
+               src="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG"
                alt="jhWei" />
           <p class="site-author-name" itemprop="name">jhWei</p>
           <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
@@ -1531,7 +1528,7 @@
         <div class="copyright" >
   
   &copy;  2014 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
