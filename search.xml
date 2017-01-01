@@ -919,26 +919,6 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     </entry>
     
     <entry>
-      <title><![CDATA[Windows、MacOS、IOS、Android各平台shadowsocks使用指南]]></title>
-      <url>http://blublu.xyz/knowledge/Windows%E3%80%81MacOS%E3%80%81IOS%E3%80%81Android%E5%90%84%E5%B9%B3%E5%8F%B0shadowsocks%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h2 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h2><p>ios平台上可以用的ss软件很多，下面拿shadowrocket来详细说。<br><strong>首先是添加服务器的账号</strong></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-092642.jpg" alt=""></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093317.jpg" alt=""></h2><p><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-093524.jpg" alt=""></p>
-<a id="more"></a>
-<p><strong>接着是添加路由规则配置文件</strong><br>在底部选项中选择Config，然后添加配置文件：</p>
-<h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094200.jpg" alt=""></h2><p>然后在URL地址栏中输入配置文件地址（你也可以使用别的配置文件）：<br><a href="http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf" target="_blank" rel="external">http://7xpajj.com1.z0.glb.clouddn.com/Shadowrocket.conf</a><br>下载完成之后点击新添加的规则，使用这个规则</p>
-<h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094324.jpg" alt=""></h2><p>然后回到主页，选择Global Routing进行配置：</p>
-<h2 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-094521.jpg" alt=""></h2><p><strong>最后就是点开连接按钮了，这时候不出意外应该已经正常访问外网了。ios还可以打开shadowrocket的widget，实时监控速度，开启与关闭也非常方便</strong></p>
-<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>Android上就使用ShadowsocksR就可以了<br>首先还是先填写服务器的配置信息</p>
-<h2 id="-5"><a href="#-5" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-095521.jpg" alt=""></h2><p>接着就是选择混淆协议</p>
-<h2 id="-6"><a href="#-6" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100051.jpg" alt=""></h2><p>混淆参数</p>
-<h2 id="-7"><a href="#-7" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100206.jpg" alt=""></h2><h2 id="-8"><a href="#-8" class="headerlink" title=""></a><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-100318.jpg" alt=""></h2><p><strong>到这不出意外点击右上角的小飞机，应该可以正常访问外网了</strong></p>
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>链接: <a href="https://pan.baidu.com/s/1dFsqdiD" target="_blank" rel="external">https://pan.baidu.com/s/1dFsqdiD</a> 密码: zubn<br>在上面的链接上下载好Windows版本的ShadowsocksR客户端,解压<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101045.jpg" alt=""><br>不需要安装，直接点开就可以用。<strong>最好解压到一个不是桌面的文件夹，然后把客户端的快捷方式放在桌面</strong></p>
-<p>启动客户端<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101150.jpg" alt=""></p>
-<p>根据账号密码填写所需参数：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101252.jpg" alt=""><br>然后在任务栏右键小飞机图标，选择刚刚添加的服务器信息：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101521.jpg" alt=""><br>然后更新一下规则：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101717.jpg" alt=""><br>最后就点击启用就好了：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-12-19-101917.jpg" alt=""></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[vim常用命令]]></title>
       <url>http://blublu.xyz/knowledge/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h1 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h1><h3 id="光标移动-Cursor-Movement"><a href="#光标移动-Cursor-Movement" class="headerlink" title="光标移动(Cursor Movement)"></a>光标移动(Cursor Movement)</h3><table>
