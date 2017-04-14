@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/image/7/9b/9d5bd7bee3d45ebbc4a4bf1484206.png">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/image/7/69/ecd0a880832f59676acbc87e8c520.png">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/image/4/c4/da94c77729b0bfc12eb0274ba0ec4.jpg">
-<meta property="og:updated_time" content="2017-04-14T05:24:53.000Z">
+<meta property="og:updated_time" content="2017-04-14T05:26:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="即使被拖库，也可以保证密码不泄露">
 <meta name="twitter:description" content="首先，我们明确一下安全加密方案的终极目标：
@@ -403,17 +403,17 @@
 <p><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/7/69/ecd0a880832f59676acbc87e8c520.png" alt=""></p>
 <p>通过调整 <code>cost</code> 参数，可以调整该函数慢到什么程度。假设让 <code>bcrypt</code> 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。</p>
 <p>好了，有了上面的基础，来看看我的最终解决方案：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/4/c4/da94c77729b0bfc12eb0274ba0ec4.jpg" alt=""><br>上图里有很多细节，我分阶段来讲：</p>
-<h6 id="1-协商密钥"><a href="#1-协商密钥" class="headerlink" title="1. 协商密钥"></a>1. 协商密钥</h6><p>基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。</p>
-<h6 id="2-请求-Salt"><a href="#2-请求-Salt" class="headerlink" title="2. 请求 Salt"></a>2. 请求 Salt</h6><p>双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。</p>
+<h2 id="1-协商密钥"><a href="#1-协商密钥" class="headerlink" title="1. 协商密钥"></a>1. 协商密钥</h2><p>基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。</p>
+<h2 id="2-请求-Salt"><a href="#2-请求-Salt" class="headerlink" title="2. 请求 Salt"></a>2. 请求 Salt</h2><p>双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。</p>
 <p>注意，服务端保存的 Salt1 和 Salt2 最好和用户数据分开存储，存到其他服务器的数据库里，这样即使被 SQL 注入，想要获得 Salt1 和 Salt2 也会非常困难。</p>
-<h6 id="3-验证密码"><a href="#3-验证密码" class="headerlink" title="3. 验证密码"></a>3. 验证密码</h6><p>这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：</p>
+<h2 id="3-验证密码"><a href="#3-验证密码" class="headerlink" title="3. 验证密码"></a>3. 验证密码</h2><p>这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SaltHash1 = bcrypt(SHA512(password), uid + salt1, <span class="number">10</span>)</div><div class="line">SaltHash2 = SHA512(SaltHash1 + uid + salt2)</div></pre></td></tr></table></figure>
 <p>使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)`</div><div class="line">AES(SharedKey, Ticket)</div></pre></td></tr></table></figure>
 <p>服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。</p>
 <p>校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。</p>
 <p>time 用于记录数据包发送的时间，用来防止录制回放攻击。</p>
-<h6 id="4-加密传输"><a href="#4-加密传输" class="headerlink" title="4.加密传输"></a>4.加密传输</h6><p>密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。</p>
+<h2 id="4-加密传输"><a href="#4-加密传输" class="headerlink" title="4.加密传输"></a>4.加密传输</h2><p>密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。</p>
 <p>假设被拖库了</p>
 <p>以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：</p>
 <p>假设数据被拖库了，密码会泄露吗？</p>
@@ -656,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-协商密钥"><span class="nav-number">1.</span> <span class="nav-text">1. 协商密钥</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-请求-Salt"><span class="nav-number">2.</span> <span class="nav-text">2. 请求 Salt</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-验证密码"><span class="nav-number">3.</span> <span class="nav-text">3. 验证密码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-加密传输"><span class="nav-number">4.</span> <span class="nav-text">4.加密传输</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number"></span> <span class="nav-text">Q & A</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-协商密钥"><span class="nav-number">1.</span> <span class="nav-text">1. 协商密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-请求-Salt"><span class="nav-number">2.</span> <span class="nav-text">2. 请求 Salt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-验证密码"><span class="nav-number">3.</span> <span class="nav-text">3. 验证密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-加密传输"><span class="nav-number">4.</span> <span class="nav-text">4.加密传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">5.</span> <span class="nav-text">Q & A</span></a></li></ol></div>
             
 
           </div>
