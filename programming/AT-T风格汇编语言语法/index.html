@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,60 +37,10 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -89,37 +49,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="assembly," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
-
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
 
 
 
 
 
 
-<meta name="description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AT&T风格汇编语言语法">
-<meta property="og:url" content="http://blublu.xyz/programming/AT-T风格汇编语言语法/index.html">
-<meta property="og:site_name" content="&三鹿伴我长大">
-<meta property="og:description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
-<meta property="og:updated_time" content="2016-10-10T12:28:39.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AT&T风格汇编语言语法">
-<meta name="twitter:description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
 
 
 
@@ -128,13 +76,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: undefined,
-      author: '博主'
-    },
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -146,26 +94,46 @@
 </script>
 
 
-
-
-  <title> AT&T风格汇编语言语法 | &三鹿伴我长大 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+  
+  <meta name="keywords" content="assembly," />
+
+
+<meta name="description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
+<meta name="keywords" content="assembly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AT&amp;T风格汇编语言语法">
+<meta property="og:url" content="http://jihong.xyz/programming/AT-T风格汇编语言语法/index.html">
+<meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
+<meta property="og:description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-10-10T12:28:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AT&amp;T风格汇编语言语法">
+<meta name="twitter:description" content="AT&amp;amp;T风格汇编语言语法1. Register Reference引用寄存器要在寄存器号前加百分号%,如“movl %eax, %ebx”。80386 有如下寄存器:[1] 8 个32-bit 寄存器 %eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp；( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：%ax，%bx，%cx">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="三鹿伴我长大's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://jihong.xyz/programming/AT-T风格汇编语言语法/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>AT&T风格汇编语言语法 | 三鹿伴我长大's blog</title>
+  
 
 
 
@@ -173,35 +141,71 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">&三鹿伴我长大</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">三鹿伴我长大's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+      
   </div>
-  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -213,54 +217,35 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
         </li>
       
 
       
         <li class="menu-item menu-item-search">
           
-            <a href="#" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
         </li>
       
     </ul>
@@ -269,20 +254,39 @@
   
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
+
 
 
     </div>
   
 </nav>
 
+
+  
+
+
+
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -299,79 +303,102 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/programming/AT-T风格汇编语言语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                AT&T风格汇编语言语法
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">AT&T风格汇编语言语法</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-01T20:17:39+08:00" content="2016-10-01">
-              2016-10-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-01T20:17:39+08:00">2016-10-01</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/programming/AT-T风格汇编语言语法/" class="leancloud_visitors" data-flag-title="AT&T风格汇编语言语法">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -383,10 +410,10 @@
 <h4 id="3-Immediately-Operator"><a href="#3-Immediately-Operator" class="headerlink" title="3. Immediately Operator"></a>3. Immediately Operator</h4><p>使用立即数，要在数前面加符号\$, 如 <code>“movl $0x04, %ebx”</code><br>或者：<br><code>para = 0x04</code><br><code>movl $para, %ebx</code><br>指令执行的结果是将立即数 <code>0x04</code> 装入寄存器<code>ebx</code>。   </p>
 <h4 id="4-Symbol-Constant"><a href="#4-Symbol-Constant" class="headerlink" title="4. Symbol Constant"></a>4. Symbol Constant</h4><p>符号常数直接引用 如:<br><code>value: .long 0x12a3f2de</code><br><code>movl value , %ebx</code><br>指令执行的结果是将常数<code>0x12a3f2de</code> 装入寄存器<code>ebx</code>。<br>引用符号地址在符号前加符号\$, 如 <code>“movl $value, % ebx”</code>则是将符号<code>value</code> 的地址装入寄存器<code>ebx</code>。   </p>
 <h4 id="5-Length-of-Operator"><a href="#5-Length-of-Operator" class="headerlink" title="5. Length of Operator"></a>5. Length of Operator</h4><p>操作数的长度用加在指令后的符号表示<code>b(byte, 8-bit), w(word, 16-bits), l(long,32-bits)</code>，如<code>“movb %al, %bl”</code>，<code>“movw %ax, %bx”</code>，<code>“movl %eax, %ebx”</code>。<br><strong>如果没有指定操作数长度的话，编译器将按照目标操作数的长度来设置。</strong><br>比如指令 <code>“mov %ax, %bx”</code>，由于目标操作数<code>bx</code> 的长度为<code>word</code>，那么编译器将把此指令等同于<code>“movw %ax,%bx”</code>。同样道理，指令<code>“mov $4, %ebx”</code>等同于指令<code>“movl $4, %ebx”</code>，<code>“push %al”</code>等同于<code>“pushb %al”</code>。<br>对于没有指定操作数长度，但编译器又无法猜测的指令，编译器将会报错，比如指令<code>“push $4”</code>。   </p>
-<h4 id="6-Sign-and-Zero-Extension"><a href="#6-Sign-and-Zero-Extension" class="headerlink" title="6. Sign and Zero Extension"></a>6. Sign and Zero Extension</h4><p>绝大多数面向80386 的AT&amp;T 汇编指令与Intel 格式的汇编指令都是相同的，但符号扩展指令和零扩展指令有不同格式。符号扩展指令和零扩展指令需要指定源操作数长度和目的操作数长度，即使在某些指令中这些操作数是隐含的。<br>在AT&amp;T 语法中，符号扩展和零扩展指令的格式为，基本部分<code>&quot;movs&quot;</code>和<code>&quot;movz&quot;</code>（对应Intel 语法的<code>movsx</code> 和<code>movzx</code>），后面跟上源操作数长度和目的操作数长度。<br><code>movsbl</code>意味着<code>movs（from）byte（to）long</code>；<br><code>movbw</code>意味着<code>movs （from）byte （to）word</code>；<br><code>movswl</code>意味着<code>movs （from）word （to）long</code>。<br>对于movz 指令也一样。比如指令“movsbl %al,%edx”意味着将al 寄存器的内容进行符号扩展后放置到edx 寄存器中。 其它的Intel 格式的符号扩展指令还有：<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cbw -- <span class="keyword">sign</span>-extend byte <span class="keyword">in</span> %al to word <span class="keyword">in</span> %ax； </div><div class="line">cwde -- <span class="keyword">sign</span>-extend word <span class="keyword">in</span> %ax to long <span class="keyword">in</span> %eax； </div><div class="line">cwd -- <span class="keyword">sign</span>-extend word <span class="keyword">in</span> %ax to long <span class="keyword">in</span> %dx:%ax； </div><div class="line">cdq -- <span class="keyword">sign</span>-extend dword <span class="keyword">in</span> %eax to quad <span class="keyword">in</span> %edx:%eax； </div><div class="line">对应的AT&amp;T 语法的指令为cbtw，cwtl，cwtd，cltd.</div></pre></td></tr></table></figure></p>
+<h4 id="6-Sign-and-Zero-Extension"><a href="#6-Sign-and-Zero-Extension" class="headerlink" title="6. Sign and Zero Extension"></a>6. Sign and Zero Extension</h4><p>绝大多数面向80386 的AT&amp;T 汇编指令与Intel 格式的汇编指令都是相同的，但符号扩展指令和零扩展指令有不同格式。符号扩展指令和零扩展指令需要指定源操作数长度和目的操作数长度，即使在某些指令中这些操作数是隐含的。<br>在AT&amp;T 语法中，符号扩展和零扩展指令的格式为，基本部分<code>&quot;movs&quot;</code>和<code>&quot;movz&quot;</code>（对应Intel 语法的<code>movsx</code> 和<code>movzx</code>），后面跟上源操作数长度和目的操作数长度。<br><code>movsbl</code>意味着<code>movs（from）byte（to）long</code>；<br><code>movbw</code>意味着<code>movs （from）byte （to）word</code>；<br><code>movswl</code>意味着<code>movs （from）word （to）long</code>。<br>对于movz 指令也一样。比如指令“movsbl %al,%edx”意味着将al 寄存器的内容进行符号扩展后放置到edx 寄存器中。 其它的Intel 格式的符号扩展指令还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cbw -- sign-extend byte in %al to word in %ax； </div><div class="line">cwde -- sign-extend word in %ax to long in %eax； </div><div class="line">cwd -- sign-extend word in %ax to long in %dx:%ax； </div><div class="line">cdq -- sign-extend dword in %eax to quad in %edx:%eax； </div><div class="line">对应的AT&amp;T 语法的指令为cbtw，cwtl，cwtd，cltd.</div></pre></td></tr></table></figure></p>
 <h4 id="7-Call-and-Jump"><a href="#7-Call-and-Jump" class="headerlink" title="7. Call and Jump"></a>7. Call and Jump</h4><p>段内调用和跳转指令为<code>call</code>，<code>ret</code>和<code>jmp</code>，段间调用和跳转指令为<code>lcall</code>，<code>lret</code>和<code>ljmp</code>。段间调用和跳转指令的格式为<code>lcall/ljmp $SECTION, $OFFSET</code>，而段间返回指令则为<code>lret $STACK-ADJUST</code>。</p>
-<h4 id="8-Prefix"><a href="#8-Prefix" class="headerlink" title="8. Prefix"></a>8. Prefix</h4><p>操作码前缀被用在下列的情况：<br>[1]字符串重复操作指令(rep,repne)；<br>[2]指定被操作的段(cs,ds,ss,es,fs,gs)；<br>[3]进行总线加锁(lock)；<br>[4]指定地址和操作的大小(data16,addr16)；<br>在AT&amp;T 汇编语法中，操作码前缀通常被单独放在一行，后面不跟任何操作数。例如，对于重复scas 指令，其写法为：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">repne</span> </div><div class="line">scas</div></pre></td></tr></table></figure></p>
-<p>上述操作码前缀的意义和用法如下：<br>[1]指定被操作的段前缀为<code>cs,ds,ss,es,fs</code>,和<code>gs</code>。在AT&amp;T 语法中，只需要按照 section:memory-operand 的格式就指定了相应的段前缀。比如：<code>lcall %cs:realmode_swtch</code><br>[2]操作数／地址大小前缀是<code>data16</code>和<code>addr16</code>，它们被用来在32-bit 操作数／地址代码中指定16-bit 的操作数／地址。<br>[3]总线加锁前缀<code>lock</code>，它是为了在多处理器环境中，保证在当前指令执行期间禁止一切中断。这个前缀仅仅对<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ADD</span>, <span class="keyword">ADC</span>, <span class="keyword">AND</span>, <span class="keyword">BTC</span>, <span class="keyword">BTR</span>, <span class="keyword">BTS</span>, <span class="keyword">CMPXCHG</span>,<span class="keyword">DEC</span>, </div><div class="line"><span class="keyword">INC</span>, <span class="keyword">NEG</span>, <span class="keyword">NOT</span>, <span class="keyword">OR</span>, <span class="keyword">SBB</span>, <span class="keyword">SUB</span>, <span class="keyword">XOR</span>, <span class="keyword">XADD</span>,<span class="keyword">XCHG</span></div></pre></td></tr></table></figure></p>
+<h4 id="8-Prefix"><a href="#8-Prefix" class="headerlink" title="8. Prefix"></a>8. Prefix</h4><p>操作码前缀被用在下列的情况：<br>[1]字符串重复操作指令(rep,repne)；<br>[2]指定被操作的段(cs,ds,ss,es,fs,gs)；<br>[3]进行总线加锁(lock)；<br>[4]指定地址和操作的大小(data16,addr16)；<br>在AT&amp;T 汇编语法中，操作码前缀通常被单独放在一行，后面不跟任何操作数。例如，对于重复scas 指令，其写法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">repne </div><div class="line">scas</div></pre></td></tr></table></figure></p>
+<p>上述操作码前缀的意义和用法如下：<br>[1]指定被操作的段前缀为<code>cs,ds,ss,es,fs</code>,和<code>gs</code>。在AT&amp;T 语法中，只需要按照 section:memory-operand 的格式就指定了相应的段前缀。比如：<code>lcall %cs:realmode_swtch</code><br>[2]操作数／地址大小前缀是<code>data16</code>和<code>addr16</code>，它们被用来在32-bit 操作数／地址代码中指定16-bit 的操作数／地址。<br>[3]总线加锁前缀<code>lock</code>，它是为了在多处理器环境中，保证在当前指令执行期间禁止一切中断。这个前缀仅仅对<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ADD, ADC, AND, BTC, BTR, BTS, CMPXCHG,DEC, </div><div class="line">INC, NEG, NOT, OR, SBB, SUB, XOR, XADD,XCHG</div></pre></td></tr></table></figure></p>
 <p>指令有效，如果将Lock 前 缀用在其它指令之前，将会引起异常。<br>[4]字符串重复操作前缀<code>rep</code>,<code>repe</code>,<code>repne</code>用来让字符串操作重复<code>%ecx</code>次。</p>
 <h4 id="9-Memory-Reference"><a href="#9-Memory-Reference" class="headerlink" title="9. Memory Reference"></a>9. Memory Reference</h4><p>Intel 语法的间接内存引用的格式为：<code>section:[base+index*scale+displacement]</code><br>而在AT&amp;T 语法中对应的形式为： <code>section:displacement(base,index,scale)</code><br>其中，<code>base</code> 和<code>index</code>是任意的<code>32-bit base 和index 寄存器</code>。<code>scale</code> 可以取值1，2，4，8。如果不指定scale 值，则默认值为1。<br><code>section</code>可以指定任意的段寄存器作为段前缀，默认的段寄存器在不同的情况下不一样。如果在指令中指定了默认的段前缀，则编译器在目标代码中不会产生此段前缀代码。下面是一些例子：</p>
 <p><code>-4(%ebp)</code>：<code>base=%ebp，displacement=-4</code>，<code>section</code>没有指定，由于<code>base＝%ebp</code>，所以默认的<code>section=%ss</code>，<code>index,scale</code> 没有指定，则<code>index</code>为0。<br><code>foo(,%eax,4)</code>：<code>index=%eax，scale=4，displacement=foo</code>。其它域没有指定。这里默认的<code>section=%ds</code>。<br><code>foo(,1)</code>：这个表达式引用的是指针<code>foo</code>指向的地址所存放的值。注意这个表达式中没有<code>base</code> 和<code>index</code>，并且只有一个逗号，这是一种异常语法，但却合法。</p>
@@ -395,19 +422,17 @@
       
     </div>
 
-    <div>
-      
-        
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
+    
 
+    
+
+    
 
     <footer class="post-footer">
       
@@ -416,6 +441,10 @@
             <a href="/tags/assembly/" rel="tag"># assembly</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -443,6 +472,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -456,11 +489,8 @@
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -476,134 +506,178 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG"
-               alt="jhWei" />
-          <p class="site-author-name" itemprop="name">jhWei</p>
-          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG"
+                alt="JihongWei" />
+            
+              <p class="site-author-name" itemprop="name">JihongWei</p>
+              <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
+            <nav class="site-state motion-element">
               
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">分类</span>
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-            </div>
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
               </a>
             </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/jihongWei" target="_blank" title="Github">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  Github
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
-                  
-                    <i class="fa fa-fw fa-spinner"></i>
-                  
-                  coding
-                </a>
-              </span>
-            
+
           
-        </div>
+          
 
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              Links
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                  </li>
+                
+              </ul>
             </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
-                </li>
-              
-            </ul>
-          </div>
-        
+          
 
+          
+            
+          
+          
+
+        </div>
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
@@ -612,11 +686,14 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AT-amp-T风格汇编语言语法"><span class="nav-number">1.</span> <span class="nav-text">AT&T风格汇编语言语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Register-Reference"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. Register Reference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Operator-Sequence"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. Operator Sequence</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Immediately-Operator"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. Immediately Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Symbol-Constant"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4. Symbol Constant</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Length-of-Operator"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5. Length of Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Sign-and-Zero-Extension"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">6. Sign and Zero Extension</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Call-and-Jump"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">7. Call and Jump</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Prefix"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">8. Prefix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Memory-Reference"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">9. Memory Reference</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AT-amp-T风格汇编语言语法"><span class="nav-number">1.</span> <span class="nav-text">AT&amp;T风格汇编语言语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Register-Reference"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. Register Reference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Operator-Sequence"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. Operator Sequence</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Immediately-Operator"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. Immediately Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Symbol-Constant"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4. Symbol Constant</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Length-of-Operator"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5. Length of Operator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Sign-and-Zero-Extension"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">6. Sign and Zero Extension</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Call-and-Jump"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">7. Call and Jump</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Prefix"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">8. Prefix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Memory-Reference"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">9. Memory Reference</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -629,36 +706,49 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">jhWei</span>
+  <span class="author" itemprop="copyrightHolder">JihongWei</span>
+
+  
+
+  
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+
+
+
+
+
+
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -677,210 +767,421 @@
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
 
-
-
-  
 
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
   <script type="text/javascript">
-    $(document).ready(function () {
-      if ( $('#local-search-input').size() === 0) {
-        return;
-      }
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-      // Popup Window;
-      var isfetched = false;
-      // Search DB path;
-      var search_path = "search.xml";
-      if (search_path.length == 0) {
-        search_path = "search.xml";
-      }
-      var path = "/" + search_path;
-      // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
 
-      function proceedsearch() {
-        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-        $('.popup').toggle();
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
 
-      }
-      // search function;
-      var searchFunc = function(path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-          url: path,
-          dataType: "xml",
-          async: true,
-          success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-              return {
-                title: $( "title", this ).text(),
-                content: $("content",this).text(),
-                url: $( "url" , this).text()
-              };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-              var matchcounts = 0;
-              var str='<ul class=\"search-result-list\">';
-              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-              $resultContent.innerHTML = "";
-              if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                  var isMatch = true;
-                  var content_index = [];
-                  var data_title = data.title.trim().toLowerCase();
-                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                  var data_url = data.url;
-                  var index_title = -1;
-                  var index_content = -1;
-                  var first_occur = -1;
-                  // only match artiles with not empty titles and contents
-                  if(data_title != '' && data_content != '') {
-                    keywords.forEach(function(keyword, i) {
-                      index_title = data_title.indexOf(keyword);
-                      index_content = data_content.indexOf(keyword);
-                      if( index_title < 0 && index_content < 0 ){
-                        isMatch = false;
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
                       } else {
-                        if (index_content < 0) {
-                          index_content = 0;
-                        }
-                        if (i == 0) {
-                          first_occur = index_content;
-                        }
+                        return itemLeft.word.length - itemRight.word.length;
                       }
                     });
-                  }
-                  // show search results
-                  if (isMatch) {
-                    matchcounts += 1;
-                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                    var content = data.content.trim().replace(/<[^>]+>/g,"");
-                    if (first_occur >= 0) {
-                      // cut out 100 characters
-                      var start = first_occur - 20;
-                      var end = first_occur + 80;
-                      if(start < 0){
-                        start = 0;
-                      }
-                      if(start == 0){
-                        end = 50;
-                      }
-                      if(end > content.length){
-                        end = content.length;
-                      }
-                      var match_content = content.substring(start, end);
-                      // highlight all keywords
-                      keywords.forEach(function(keyword){
-                        var regS = new RegExp(keyword, "gi");
-                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                      });
+                  });
 
-                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
                     }
-                    str += "</li>";
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
                   }
-                })};
-              str += "</ul>";
-              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-              $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
           }
-        });}
 
-      // handle and trigger popup window;
-      $('.popup-trigger').mousedown(function(e) {
-        e.stopPropagation();
-        if (isfetched == false) {
-          searchFunc(path, 'local-search-input', 'local-search-result');
-        } else {
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
           proceedsearch();
-        };
+        }
+      });
+    }
 
-      });
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
 
-      $('.popup-btn-close').click(function(e){
-        $('.popup').hide();
-        $(".popoverlay").remove();
-        $('body').css('overflow', '');
-      });
-      $('.popup').click(function(e){
-        e.stopPropagation();
-      });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
     });
   </script>
 
 
-  
-  
 
 
+
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
   <script>
     function showTime(Counter) {
@@ -910,6 +1211,14 @@
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -929,35 +1238,24 @@
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set 'security' option to 'false'.');
+            
           }
         },
         error: function(error) {
@@ -979,11 +1277,21 @@
 
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

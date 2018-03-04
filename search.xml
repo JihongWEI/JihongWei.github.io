@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[深入理解计算机系统-perflab-handout]]></title>
-      <url>http://blublu.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-perflab-handout/</url>
+      <url>http://jihong.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-perflab-handout/</url>
       <content type="html"><![CDATA[<h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比。本次实验，要求针对每个函数、每个人均至少写出3种优化版本、并根据driver报告的结果进行性能分析。 </p>
 <h3 id="优化rotate函数"><a href="#优化rotate函数" class="headerlink" title="优化rotate函数"></a>优化rotate函数</h3><p>原始的rotate函数如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"> * naive_rotate - The naive baseline version of rotate </div><div class="line"> */</div><div class="line"><span class="keyword">char</span> naive_rotate_descr[] = <span class="string">"naive_rotate: Naive baseline implementation"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">naive_rotate</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>-j, i, dim)] = src[RIDX(i, j, dim)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -36,7 +36,7 @@
     
     <entry>
       <title><![CDATA[比特小镇的集市]]></title>
-      <url>http://blublu.xyz/programer/%E6%AF%94%E7%89%B9%E5%B0%8F%E9%95%87%E7%9A%84%E9%9B%86%E5%B8%82/</url>
+      <url>http://jihong.xyz/programer/%E6%AF%94%E7%89%B9%E5%B0%8F%E9%95%87%E7%9A%84%E9%9B%86%E5%B8%82/</url>
       <content type="html"><![CDATA[<h1 id="比特小镇的集市"><a href="#比特小镇的集市" class="headerlink" title="比特小镇的集市"></a>比特小镇的集市</h1><p>从前有个叫比特的小镇，镇子上的居民过着无忧无虑的生活，但令大家最为头痛的事情是每天都要翻山越岭，经过长达十几里的路程到另外一个地方参加集市。小镇有很多特产，每次小镇的居民都会带着不同的特产去参加集会，来交换自己所需要的生活物品。忽然有一天，小镇来了一个农夫，农夫说：“大家每天这么辛苦的跑来跑去，只能换取一点点东西，不划算啊！这样吧，我来建一条公路，每天提供货车，大家知道交一点点过路费就好了。“小镇的居民商量了一下，觉得可以。公路建成那天大家兴高采烈的乘着农夫的货车去往集市。</p>
 <p>时间过得很快，转眼一年多过去了，农夫算了算一年的收益，发现光收取过路费对于成本会有有点困难，毕竟公路还需要修修补补，这也是不小的开销。怎么办呢？如果增加过路费的话，小镇居民肯定不同意，想了又想也没有什么好主意。这天农夫的司机马突然说道，既然路程这么远，公路维护费用这么高，不如我们在路中间的位置开辟一个新的集市，让两边的人在新集市交易多好。这样不仅有双份的过路费，同时集市的摊位还能挣钱。农夫立刻同意，着手开始修建集市。<br><a id="more"></a><br>很快集市建好了，因为路程短了，而且费用不高，所以新集市特别收大家欢迎。短短的时间内，集市的所有摊位都被租光了。没有租到摊位的居民还非常不满，天天吵吵着要农夫增加摊位。好吧，大好的生意哪有不做的道理，很快农夫就开辟了更多的摊位。随着摊位的数量越来越多的，很多人发现，摊位的位置很重要。在边缘位置的摊位一天下来都没有人光顾，更不要提卖出更多特产了。这可苦了一批摊位的老板。这些边缘地带的老板一想，要想办法招揽人啊，怎么办呢？狗的叫声大，不如我们请狗来帮我们吆喝把，声音一大，自然顾客就多了。说干就干，这下可把小镇的狗忙坏了，每天在集市叫嚷。这下子集市从热热闹闹变成了吵吵闹闹，农夫不高兴了，这么多叫嚷怎么可以，于是把那些为了找来顾客而找狗吆喝的摊位全部回收了。集市回到了以前热热闹闹的场景。</p>
 <p>过了几天，企鹅突然登门拜访农夫。农夫知道企鹅肯定又要排挤它周围的摊位了，为什么呢？因为一开始企鹅卖的特产很稀少，它的摊位每天都有很多顾客。周围的摊位眼馋，也卖相同的特产。因为出现竞争，企鹅的顾客一下子少了许多。但它并不生气，反而在购买特产的时候，赠送几种其他的特产。用这种方式，企鹅的顾客又多了起来。时间久了，那些附赠的特产也渐渐变成了商品，种类越滚越多，相邻的几个摊位都被企鹅租了下来。摊位变大了，企鹅底气也足了。以至于看到集市有什么特产都会第一时间在自己的摊位增加相同的品种。大家对其怨声载道，但根本没人管理这事。企鹅今天来拜访农夫其实是想承包一大片摊位，同时承包小镇每天来往的货车。显然农夫是不愿意这么做的。因为企鹅已经在排挤其他小镇居民了，你家的日子过得生龙活虎，那其他人怎么办？把货车承包给你，你每天拉更多的货，公路维修费用要上涨，这个谁来管？</p>
@@ -49,12 +49,12 @@
     
     <entry>
       <title><![CDATA[IEEE754 浮点数范围]]></title>
-      <url>http://blublu.xyz/computer-principle/IEEE754-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%B2%BE%E5%BA%A6/</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在<a href="http://blublu.xyz/computer-principle/float与double精度丢失的问题/">float与double精度丢失的问题</a>里有解释，这里就不再赘述了。</p>
+      <url>http://jihong.xyz/computer-principle/IEEE754-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%B2%BE%E5%BA%A6/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，又记不太清楚了。说明对于这个问题还是理解得不够深刻，于是趁机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在<a href="http://jihong.xyz/computer-principle/float与double精度丢失的问题/" target="_blank" rel="noopener">float与double精度丢失的问题</a>里有解释，这里就不再赘述了。</p>
 <h2 id="浮点数的范围"><a href="#浮点数的范围" class="headerlink" title="浮点数的范围"></a>浮点数的范围</h2><p>都知道浮点数的存储是分为[sign][exponent][significand]三个部分的，而阶码采用了偏置位来计算。也就是E=e-Bias，Bias=2^(k-1) - 1，k为阶码的位数。</p>
 <ul>
 <li>关于Bias，其实这个和补码的原理是一样的，但是为什么不直接采取补码？这个在之前的文章里也解释过，是因为不需要再重新设计一套电路来判断符号位，直接使用偏置位来使其能够表示负数。</li>
-<li>关于补码，可以查看我之前写的<a href="http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/">关于二进制运算中的原码反码补码的一些理解</a></li>
+<li>关于补码，可以查看我之前写的<a href="http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/" target="_blank" rel="noopener">关于二进制运算中的原码反码补码的一些理解</a></li>
 </ul>
 <p>下面开始进入正题：<br>如果是32位的float格式，那么指数E的范围就是-126~127。为什么是-126~127？因为阶码为<code>0</code>与<code>255</code>时都为非规格化数与特殊值(Inf or Nan)，另有它用了。所以实际上我们能用的数就是1~254，很显然偏置位Bias=127，那么E的最小值为<code>1-127=-126</code>，最大值为<code>254-127=127</code>。如果你还非要问为什么Bias=2^(k-1) - 1 的话，那么其实是这样的：(2^k - 2)/2=2^(k-1) - 1。因为[00..0]与[11..1]这两个阶码被使用作为表示非规格化数与特殊值了，所以总的能表示其它数字的个数只剩下2^k - 2个。</p>
 <p>好了我们来讨论浮点数的范围，既然指数的值为-126~127，那么所能表达的最大的数当然是1.1111111…1<sub>23位</sub> * 2^127 近似于2^128 = 3.40E^38 ，那么负数亦然，只需要把符号位改为1即可。所以float的范围为-3.40E^38 ~ 3.40E^38 。double类型也是如此，因为double的指数范围为<code>-1022 ~ 1023</code>,所以最大能表示的数值约等于2^1024 = 1.7E^308 。所以double的范围为-1.7E^308 ~ 1.7E^308。</p>
@@ -78,7 +78,7 @@
     
     <entry>
       <title><![CDATA[Linux下搭建Windows与Office的KMS服务器]]></title>
-      <url>http://blublu.xyz/programer/Linux%E4%B8%8B%E6%90%AD%E5%BB%BAWindows%E4%B8%8Eoffice%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      <url>http://jihong.xyz/programer/Linux%E4%B8%8B%E6%90%AD%E5%BB%BAWindows%E4%B8%8Eoffice%E7%9A%84KMS%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
       <content type="html"><![CDATA[<p>因为各种各样原因，在世界范围内，充斥着不少的破解激活的windows系统。微软对此也是睁一只眼闭一只眼，否则以微软的尿性完全可以弄个复杂一万倍的激活机制出来打击Windows的盗版。（但计算机的本质决定了只要你有激活机制，就永远有办法破解掉）所以打击严厉盗版…你懂的</p>
 <p>至于为什么在天朝盗版遍地飞，中国现行法律规定：非商用目的使用盗版软件，比如个人使用盗版Windows，“不违法”，微软不能把你怎么样。</p>
 <blockquote>
@@ -300,7 +300,7 @@
     
     <entry>
       <title><![CDATA[深入理解计算机系统-第三章课后作业]]></title>
-      <url>http://blublu.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/</url>
+      <url>http://jihong.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/</url>
       <content type="html"><![CDATA[<h6 id="3-54"><a href="#3-54" class="headerlink" title="3.54"></a>3.54</h6><p>一个函数的原型为<br><code>int decode2(int x, int y, int z);</code></p>
 <p>将这个函数编译成 IA32 汇编代码。代码体如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">movl    16(%ebp), %edx</div><div class="line">subl    12(%ebp), %edx</div><div class="line">movl    %edx, %eax</div><div class="line">sall    $15, %eax</div><div class="line">sarl    $15, %eax</div><div class="line">xorl    8(%ebp), %edx</div><div class="line">imull   %edx, %eax</div><div class="line"># x at %ebp+8, y at %ebp+12, z at %ebp+16</div></pre></td></tr></table></figure>
@@ -426,7 +426,7 @@
     
     <entry>
       <title><![CDATA[浮点数除0与整数除0的问题]]></title>
-      <url>http://blublu.xyz/computer-principle/%E6%B5%AE%E7%82%B9%E6%95%B0%E9%99%A40%E4%B8%8E%E6%95%B4%E6%95%B0%E9%99%A40%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      <url>http://jihong.xyz/computer-principle/%E6%B5%AE%E7%82%B9%E6%95%B0%E9%99%A40%E4%B8%8E%E6%95%B4%E6%95%B0%E9%99%A40%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="整数的除运算"><a href="#整数的除运算" class="headerlink" title="整数的除运算"></a>整数的除运算</h2><p>代码一：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码二：</p>
@@ -457,12 +457,12 @@
     
     <entry>
       <title><![CDATA[深入理解计算机系统-拆炸弹实验]]></title>
-      <url>http://blublu.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E6%8B%86%E7%82%B8%E5%BC%B9%E5%AE%9E%E9%AA%8C/</url>
+      <url>http://jihong.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E6%8B%86%E7%82%B8%E5%BC%B9%E5%AE%9E%E9%AA%8C/</url>
       <content type="html"><![CDATA[<p>查看bomb.c文件里的main函数，可以发现它在分析完命令行的参数完成之后调用了initialize_bomb()函数，之后输出了两个语句。紧接着就是read_line()函数，显然这个是读取我们所需要的字符，接着就是phase_1()与phase_defused()函数了。再往下看，可以看出分别调用了phase_1 ~ phase_6六个函数，这应该就是每个拆除炸弹的阶段函数了。<br>通过<code>objdump -d bomb &gt; bomb.s</code>把反汇编代码输出到bomb.s文件上，方便查找。<br>接下来就是逐个阶段的分析了</p>
 <h6 id="phase1"><a href="#phase1" class="headerlink" title="phase1"></a>phase1</h6><p>首先找到phase_1函数的汇编代码如下:</p>
 <figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="number">08048</span>f61 &lt;phase_1&gt;:</div><div class="line"><span class="number">8048</span>f61:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048</span>f62:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048</span>f64:   <span class="number">83</span> ec <span class="number">18</span>                sub    $<span class="number">0x18</span>,%esp</div><div class="line"><span class="number">8048</span>f67:   c7 <span class="number">44</span> <span class="number">24</span> <span class="number">04</span> <span class="number">5</span>c a1 <span class="number">04</span>    movl   $<span class="number">0x804a15c</span>,<span class="number">0x4</span>(%esp)</div><div class="line"><span class="number">8048</span>f6e:   <span class="number">08</span> </div><div class="line"><span class="number">8048</span>f6f:   <span class="number">8</span>b <span class="number">45</span> <span class="number">08</span>                mov    <span class="number">0x8</span>(%ebp),%eax</div><div class="line"><span class="number">8048</span>f72:   <span class="number">89</span> <span class="number">04</span> <span class="number">24</span>                mov    %eax,(%esp)</div><div class="line"><span class="number">8048</span>f75:   e8 <span class="number">31</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">8048</span>fab &lt;strings_not_equal&gt;</div><div class="line"><span class="number">8048</span>f7a:   <span class="number">85</span> c0                   test   %eax,%eax</div><div class="line"><span class="number">8048</span>f7c:   <span class="number">74</span> <span class="number">05</span>                   je     <span class="number">8048</span>f83 &lt;phase_1+<span class="number">0x22</span>&gt;</div><div class="line"><span class="number">8048</span>f7e:   e8 <span class="number">4</span>e <span class="number">01</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">80490</span>d1 &lt;explode_bomb&gt;</div><div class="line"><span class="number">8048</span>f83:   c9                      leave  </div><div class="line"><span class="number">8048</span>f84:   c3                      ret    </div><div class="line"><span class="number">8048</span>f85:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f86:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f87:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f88:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f89:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8a:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8b:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8c:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8d:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8e:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8f:   <span class="number">90</span>                      nop</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>看完整段代码可以发现主要入栈了两个地址上的函数（调用函数）：<code>call   8048fab &lt;strings_not_equal&gt;</code>与<code>call   80490d1 &lt;explode_bomb&gt;</code>。根据字面意思可以猜测出大概的逻辑为:比较输入的字符是否与源字符相等，不相等则拆炸弹失败。根据后面的<code>test   %eax,%eax</code>指令我们也可以看到，eax寄存器里的值必须为0，这样test之后值才会为0，ZF才会置1，je(等同于jz)才会跳转。也就是说<strings_not_equal>必须返回0才能继续进行。<br>再往上看可以看到<code>movl   $0x804a15c,0x4(%esp)</code>指令，把立即数（0x804a15c地址里的值）送入0x4(%esp)中;再往下就可以看到<code>mov    0x8(%ebp),%eax</code>指令，可以假设前一条指令是把源字符送入0x4(%esp)中，而后一条就是把我们输入的指令送入%esp中。所以我们可以在gdb里用x /s 0x804a15c查看0x804a15c地址里的内容：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-07-122443.jpg" alt=""><br><code>We have to stand with our North Korean allies.</code>应该就是拆炸弹所需的密钥了，可以把bomb跑起来试试看第一条密钥是否正确。<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-07-122457.jpg" alt=""><br>可以看到炸弹已经拆除了。</strings_not_equal></p>
+<p>看完整段代码可以发现主要入栈了两个地址上的函数（调用函数）：<code>call   8048fab &lt;strings_not_equal&gt;</code>与<code>call   80490d1 &lt;explode_bomb&gt;</code>。根据字面意思可以猜测出大概的逻辑为:比较输入的字符是否与源字符相等，不相等则拆炸弹失败。根据后面的<code>test   %eax,%eax</code>指令我们也可以看到，eax寄存器里的值必须为0，这样test之后值才会为0，ZF才会置1，je(等同于jz)才会跳转。也就是说&lt;strings_not_equal&gt;必须返回0才能继续进行。<br>再往上看可以看到<code>movl   $0x804a15c,0x4(%esp)</code>指令，把立即数（0x804a15c地址里的值）送入0x4(%esp)中;再往下就可以看到<code>mov    0x8(%ebp),%eax</code>指令，可以假设前一条指令是把源字符送入0x4(%esp)中，而后一条就是把我们输入的指令送入%esp中。所以我们可以在gdb里用x /s 0x804a15c查看0x804a15c地址里的内容：<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-07-122443.jpg" alt=""><br><code>We have to stand with our North Korean allies.</code>应该就是拆炸弹所需的密钥了，可以把bomb跑起来试试看第一条密钥是否正确。<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/2016-11-07-122457.jpg" alt=""><br>可以看到炸弹已经拆除了。</p>
 <hr>
 <h6 id="phase2"><a href="#phase2" class="headerlink" title="phase2"></a>phase2</h6><p>phase_2的汇编代码如下：</p>
 <figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="number">08048</span>d6a &lt;phase_2&gt;:</div><div class="line"><span class="number">8048</span>d6a:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048</span>d6b:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048</span>d6d:   <span class="number">56</span>                      push   %esi</div><div class="line"><span class="number">8048</span>d6e:   <span class="number">53</span>                      push   %ebx</div><div class="line"><span class="number">8048</span>d6f:   <span class="number">83</span> ec <span class="number">30</span>                sub    $<span class="number">0x30</span>,%esp</div><div class="line"><span class="number">8048</span>d72:   <span class="number">8</span>d <span class="number">45</span> e0                lea    <span class="number">-0x20</span>(%ebp),%eax</div><div class="line"><span class="number">8048</span>d75:   <span class="number">89</span> <span class="number">44</span> <span class="number">24</span> <span class="number">04</span>             mov    %eax,<span class="number">0x4</span>(%esp)</div><div class="line"><span class="number">8048</span>d79:   <span class="number">8</span>b <span class="number">45</span> <span class="number">08</span>                mov    <span class="number">0x8</span>(%ebp),%eax</div><div class="line"><span class="number">8048</span>d7c:   <span class="number">89</span> <span class="number">04</span> <span class="number">24</span>                mov    %eax,(%esp)</div><div class="line"><span class="number">8048</span>d7f:   e8 <span class="number">87</span> <span class="number">03</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">804910</span>b &lt;read_six_numbers&gt;</div><div class="line"><span class="number">8048</span>d84:   <span class="number">83</span> <span class="number">7</span>d e0 <span class="number">00</span>             cmpl   $<span class="number">0x0</span>,<span class="number">-0x20</span>(%ebp)</div><div class="line"><span class="number">8048</span>d88:   <span class="number">75</span> <span class="number">06</span>                   jne    <span class="number">8048</span>d90 &lt;phase_2+<span class="number">0x26</span>&gt;</div><div class="line"><span class="number">8048</span>d8a:   <span class="number">83</span> <span class="number">7</span>d e4 <span class="number">01</span>             cmpl   $<span class="number">0x1</span>,<span class="number">-0x1c</span>(%ebp)</div><div class="line"><span class="number">8048</span>d8e:   <span class="number">74</span> <span class="number">05</span>                   je     <span class="number">8048</span>d95 &lt;phase_2+<span class="number">0x2b</span>&gt;</div><div class="line"><span class="number">8048</span>d90:   e8 <span class="number">3</span>c <span class="number">03</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">80490</span>d1 &lt;explode_bomb&gt;</div><div class="line"><span class="number">8048</span>d95:   <span class="number">8</span>d <span class="number">5</span>d e8                lea    <span class="number">-0x18</span>(%ebp),%ebx</div><div class="line"><span class="number">8048</span>d98:   <span class="number">8</span>d <span class="number">75</span> f8                lea    <span class="number">-0x8</span>(%ebp),%esi</div><div class="line"><span class="number">8048</span>d9b:   <span class="number">8</span>b <span class="number">43</span> fc                mov    <span class="number">-0x4</span>(%ebx),%eax</div><div class="line"><span class="number">8048</span>d9e:   <span class="number">03</span> <span class="number">43</span> f8                add    <span class="number">-0x8</span>(%ebx),%eax</div><div class="line"><span class="number">8048</span>da1:   <span class="number">39</span> <span class="number">03</span>                   cmp    %eax,(%ebx)</div><div class="line"><span class="number">8048</span>da3:   <span class="number">74</span> <span class="number">05</span>                   je     <span class="number">8048</span>daa &lt;phase_2+<span class="number">0x40</span>&gt;</div><div class="line"><span class="number">8048</span>da5:   e8 <span class="number">27</span> <span class="number">03</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">80490</span>d1 &lt;explode_bomb&gt;</div><div class="line"><span class="number">8048</span>daa:   <span class="number">83</span> c3 <span class="number">04</span>                add    $<span class="number">0x4</span>,%ebx</div><div class="line"><span class="number">8048</span>dad:   <span class="number">39</span> f3                   cmp    %esi,%ebx</div><div class="line"><span class="number">8048</span>daf:   <span class="number">75</span> ea                   jne    <span class="number">8048</span>d9b &lt;phase_2+<span class="number">0x31</span>&gt;</div><div class="line"><span class="number">8048</span>db1:   <span class="number">83</span> c4 <span class="number">30</span>                add    $<span class="number">0x30</span>,%esp</div><div class="line"><span class="number">8048</span>db4:   <span class="number">5</span>b                      pop    %ebx</div><div class="line"><span class="number">8048</span>db5:   <span class="number">5</span>e                      pop    %esi</div><div class="line"><span class="number">8048</span>db6:   <span class="number">5</span>d                      pop    %ebp</div><div class="line"><span class="number">8048</span>db7:   c3                      ret</div></pre></td></tr></table></figure>
@@ -541,7 +541,7 @@
     
     <entry>
       <title><![CDATA[float与double精度丢失的问题]]></title>
-      <url>http://blublu.xyz/computer-principle/float%E4%B8%8Edouble%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      <url>http://jihong.xyz/computer-principle/float%E4%B8%8Edouble%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><strong>将同一实数分别赋值给单精度和双精度类型变量，然后打印输出</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">float</span> a;</div><div class="line">    <span class="keyword">double</span> b;</div><div class="line">    a = <span class="number">123456.789e4</span>;</div><div class="line">    b = <span class="number">123456.789e4</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f\n %f\n"</span>,a,b);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">输出结果：</div><div class="line"><span class="number">1234567936.000000</span></div><div class="line"><span class="number">1234567890.000000</span></div></pre></td></tr></table></figure>
 <p>为什么一个整数分别赋值给double和float,在输出的时候float型却不一样且偏大了呢？</p>
@@ -600,6 +600,8 @@
 <p>现在再看看之前的11010010，显然大于前一位的1/2,所以要向前进1.这也是为什么结果会偏大的原因。把其从内存中还原出来就是：<code>1.001001-10010110-00000011-00000000 x 2^30 = 12345678936.0000</code></p>
 <blockquote>
 <p>通常情况下我们采取的舍入规则是在原来的值是舍入值的中间值时,采取向偶数舍入,在二进制中,偶数我们认为是末尾为0的数.而倘若不是这种情况的话,则一般会有选择性的使用向上和向下舍入,但总会向最接近的值舍入.其实这正是IEEE采取的默认的舍入方式,因为这种舍入方式总是企图向最近的值舍入.</p>
+</blockquote>
+<blockquote>
 <p>比如对于10.10011这个值来讲,当舍入到个位数时,会采取向上舍入,因此此时的值为11.当舍入到小数点后1位时,会采取向下舍入,因此此时的值为10.1.当舍入到这个小数点后4位时,由于此时的10.10011舍入值的中间值,因此采取向偶数舍入,此时舍入后的值为10.1010.</p>
 </blockquote>
 <p>最后还想谈谈关于为什么三段式存储方式中指数部分要用Bias偏置位表示：<br>如果用八位中的最高位来表示符号位的话，如果用判断<code>010XXXXX &gt; 0001XXXX</code>成立的电路去判断<code>010XXXXX &lt; 1000XXXX</code>显然也是成立的，但是事实上是<code>010XXXXX &gt; 1000XXXX</code>。所以就需要多设计一套电路去判断符号位，显然这是不划算的。所以可以采取偏置位把所有数都偏移到正数上，就可以使用一套电路来判断。至于为什么是偏移2^k-1 - 1位，我的理解是这样刚好把最小指数偏移到0位上。</p>
@@ -608,7 +610,7 @@
     
     <entry>
       <title><![CDATA[老罗新机发布会的一些感受]]></title>
-      <url>http://blublu.xyz/programer/%E8%80%81%E7%BD%97%E6%96%B0%E6%9C%BA%E5%8F%91%E5%B8%83%E4%BC%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/</url>
+      <url>http://jihong.xyz/programer/%E8%80%81%E7%BD%97%E6%96%B0%E6%9C%BA%E5%8F%91%E5%B8%83%E4%BC%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/</url>
       <content type="html"><![CDATA[<h3 id="一些个人对老罗的看法"><a href="#一些个人对老罗的看法" class="headerlink" title="一些个人对老罗的看法"></a>一些个人对老罗的看法</h3><p>知道老罗这个人是从2012年的一场发布会开始的，那时候老罗扬言着说要做一个与现今Android机都不一样的东西出来，带着质疑的眼光，老罗风风火火地就开始上路了。老罗其实早在做手机就已经成名了，他的出名绝不是他不知天高地厚的要跨行做手机，而是他的口才。当然，现在还多了一样东西，就是他的执着、他的理想主义。从认识老罗到现在已经4年多了，每年他的每一场发布会我都会看完，这也是为数不多的我能坚持了几年的事情之一。我和老罗一样是个果粉，从他身上也可以看到Jobs的些许身影。当然从Apple最近七年来看，发布会远没有老罗的精彩，在用户体验上的努力也远没有老罗做得好。特别是老罗每年都把发布会的门票捐赠给开源世界，真的让我很佩服！特别是发布会演示了那么多新特性之后宣布将会毫无保留的开源出来，让我对他又多了一层敬畏。我一直都很倡导开源精神，但是其实现在开源并不是很成熟，许多商业公司并不愿意公布自己的源代码与人类分享自己的果实，但是老罗做到了！了不起！</p>
 <h3 id="嘲笑理想主义者的时代是悲哀的"><a href="#嘲笑理想主义者的时代是悲哀的" class="headerlink" title="嘲笑理想主义者的时代是悲哀的"></a>嘲笑理想主义者的时代是悲哀的</h3><a id="more"></a>
 <p>对于今晚的发布会的几百万观众，很显然有2/3的人是来看他的笑话的，看看这孙子还能吹出什么花来。看着弹幕上全是喷子，不得不感叹现在互联网的环境是如此的混乱。直到发布会结束之后论坛上、V站上，也还到处都是各种喷子，抄袭啊、雇水军在刷评论啊，还有各种粗鄙不堪的言语，让人不忍直视。网上一看全是骂抄袭Apple的原型Home键的，我不知道一个原型的home键为什么都是这些喷子的喷点，现在Android机上但凡带有指纹解锁的全是前置的椭圆形或者后置的圆形、方形，为什么没人喷抄袭？而且单从正常的审美与实用性上，我并不觉得原形的Home键有什么不妥。至少他是Android机上第一个敢模仿Apple的圆形Home键的厂商，光凭这一点就已经足够获取肯定（并不是赞同抄袭，只是从用户体验上来说，这是最好的选择）。而且OPPO、Vivo、乐视、魅族这几家厂商我不觉得他们的新款机型我能分辨出来谁是谁…毫无例外的窄边框、前置椭圆home键、金属中框。不喜欢尽可以不买，甚至可以吐槽，但在毫无证据的情况下认为喜欢锤子的人都是水军，这种心态就真的太lowB了。再说一下个人对于现在网络喷子的看法，这些人大多碌碌无为，没有真正的去坚持做过一件事情，凭借自己心中的YY就觉得做某件事很容易。这其中的辛酸大概也只有老罗自己能知道了把。</p>
@@ -624,7 +626,7 @@
     
     <entry>
       <title><![CDATA[深入理解计算机系统-第二章课后作业]]></title>
-      <url>http://blublu.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/</url>
+      <url>http://jihong.xyz/computer-principle/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/</url>
       <content type="html"><![CDATA[<h6 id="2-58"><a href="#2-58" class="headerlink" title="2.58"></a>2.58</h6><p>编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_little_endian</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> *(<span class="keyword">char</span>*)&amp;x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>假设是32位的小端机器，那么x变量存储方式将为<code>0000 0001 0000 0000 0000 0000 0000 0000</code>，反之则为<code>0000 0000 0000 0000 0000 0000 0000 0001</code>。通过取变量<code>x</code>的地址然后强制转换<code>char*</code>，再通过指针取出这个强制转换后的地址上的值（无论是大端还是小端，都是取内存低8位的地址，所以大端模式取到的是<code>0000 0000</code>，而小端模式取到的值是<code>0000 0001</code>）。<strong>如果第二句语句改为<code>return (char)x</code>，则无论是大端还是小端机器，最终的结果都为1。因为强制转换是在寄存器进行的而不是在内存进行的，那么<code>(char)x</code>就是保留其低八位的值，也就是<code>0000 0001</code></strong></p>
@@ -726,7 +728,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[关于二进制运算中的原码反码补码的一些理解]]></title>
-      <url>http://blublu.xyz/computer-principle/%E5%85%B3%E4%BA%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</url>
+      <url>http://jihong.xyz/computer-principle/%E5%85%B3%E4%BA%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>今天在上计组的课的时候又再次提到了位运算，当然也提到了加减法中的经典问题，为什么计算机要用补码（Two’s Complement）来表示负数。</p>
 <h3 id="二进制的基本表示范围"><a href="#二进制的基本表示范围" class="headerlink" title="二进制的基本表示范围"></a>二进制的基本表示范围</h3><p>首先先从8位二进制说起吧，依次类推，直到64位及以上都是适用的。<br>8位二进制正数表示范围：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">0000</span> <span class="number">0000</span> ~ <span class="number">1111</span> <span class="number">1111</span></div><div class="line">（<span class="number">0</span> ~ <span class="number">255</span>）</div></pre></td></tr></table></figure>
@@ -760,7 +762,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[二级指针操纵单向链表]]></title>
-      <url>http://blublu.xyz/programming/%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E6%93%8D%E7%BA%B5%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/</url>
+      <url>http://jihong.xyz/programming/%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E6%93%8D%E7%BA%B5%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/</url>
       <content type="html"><![CDATA[<p>越往深处学越感觉底层的重要性，在受不了上层无穷多的新武器的学习之后，打算再潜心修炼一下基本功。正好看到了一个比较有趣的关于单向链表删除的问题，下来就来细细剖析这个问题。</p>
 <p>如果对二级指针不太清楚的同学，可以查看我之前写的关于<a href="/programming/指针的指针——二级指针/">二级指针</a>的文章。</p>
 <p>一般来说，在单项链表中要删除当前curr节点时，只需要令<code>prev-&gt;next = next</code>，再<code>free(curr)</code>就完成了这个删除操作。但是这样做不好的地方是我们必然要维护一个previous先序结点，且在每次判断时还需要区分当前结点是否是头节点，如果是头节点在删除之前还要令<code>head = next</code>。完整的代码如下：</p>
@@ -793,7 +795,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[指针的指针--二级指针]]></title>
-      <url>http://blublu.xyz/programming/%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88%E2%80%94%E2%80%94%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88/</url>
+      <url>http://jihong.xyz/programming/%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88%E2%80%94%E2%80%94%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88/</url>
       <content type="html"><![CDATA[<p>在重新温习C/C++的时候不可避免的重头戏就是指针，指针要用得好，光用一层显然是不行的，我们还需要知道二级指针的操纵。</p>
 <p>假设A-&gt;B-&gt;C,即A指向B，B指向C的关系中，C是一段我们实际关心的内容，假如我们用malloc或者new分配了一块内存，然后赋值”一段内容”进去，那么就是C了。我们假设C的内存起始地址为0x00000008.那么我们自然而然就可以得出：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">B == <span class="number">0x00000008</span>;<span class="comment">//B内存块的实际内容</span></div><div class="line">*B == <span class="string">"一段内容"</span>;<span class="comment">//B解引用，也就是B指针指向的C的值</span></div><div class="line">&amp;B == <span class="number">0x00000008</span> <span class="string">"//B取地址，B的地址是0x00000004</span></div></pre></td></tr></table></figure>
@@ -859,16 +861,16 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[AT&T风格汇编语言语法]]></title>
-      <url>http://blublu.xyz/programming/AT-T%E9%A3%8E%E6%A0%BC%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95/</url>
+      <url>http://jihong.xyz/programming/AT-T%E9%A3%8E%E6%A0%BC%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="AT-amp-T风格汇编语言语法"><a href="#AT-amp-T风格汇编语言语法" class="headerlink" title="AT&amp;T风格汇编语言语法"></a>AT&amp;T风格汇编语言语法</h1><h4 id="1-Register-Reference"><a href="#1-Register-Reference" class="headerlink" title="1. Register Reference"></a>1. Register Reference</h4><p>引用寄存器要在寄存器号前加百分号<code>%</code>,如<code>“movl %eax, %ebx”</code>。<br>80386 有如下寄存器:<br>[1] 8 个32-bit 寄存器 <code>%eax，%ebx，%ecx，%edx，%edi，%esi，%ebp，%esp</code>；<br>( 8 个16-bit 寄存器，它们事实上是上面8 个32-bit 寄存器的低16 位：<code>%ax，%bx，%cx，%dx，%di，%si，%bp，%sp</code>；8 个8-bit 寄存器：<code>%ah，%al，%bh，%bl，%ch，%cl，%dh，%dl</code>。它们事实上是寄存器<code>%ax，%bx，%cx，%dx 的高8 位和低8位</code>；)<br>[2] 6 个段寄存器：<code>%cs(code)，%ds(data)，%ss(stack), %es，%fs，%gs</code>；<br>[3] 3 个控制寄存器：<code>%cr0，%cr2，%cr3</code>；<br>[4] 6 个debug 寄存器：<code>%db0，%db1，%db2，%db3，%db6，%db7</code>；<br>[5] 2 个测试寄存器：<code>%tr6，%tr7</code>；<br>[6] 8 个浮点寄存器<br>栈：<code>%st(0)，%st(1)，%st(2)，%st(3)，%st(4)，%st(5)，%st(6)，%st(7)</code>。<br><a id="more"></a></p>
 <h4 id="2-Operator-Sequence"><a href="#2-Operator-Sequence" class="headerlink" title="2. Operator Sequence"></a>2. Operator Sequence</h4><p>操作数排列是从源（左）到目的（右），如“movl %eax(源）, %ebx(目的）”   </p>
 <h4 id="3-Immediately-Operator"><a href="#3-Immediately-Operator" class="headerlink" title="3. Immediately Operator"></a>3. Immediately Operator</h4><p>使用立即数，要在数前面加符号\$, 如 <code>“movl $0x04, %ebx”</code><br>或者：<br><code>para = 0x04</code><br><code>movl $para, %ebx</code><br>指令执行的结果是将立即数 <code>0x04</code> 装入寄存器<code>ebx</code>。   </p>
 <h4 id="4-Symbol-Constant"><a href="#4-Symbol-Constant" class="headerlink" title="4. Symbol Constant"></a>4. Symbol Constant</h4><p>符号常数直接引用 如:<br><code>value: .long 0x12a3f2de</code><br><code>movl value , %ebx</code><br>指令执行的结果是将常数<code>0x12a3f2de</code> 装入寄存器<code>ebx</code>。<br>引用符号地址在符号前加符号\$, 如 <code>“movl $value, % ebx”</code>则是将符号<code>value</code> 的地址装入寄存器<code>ebx</code>。   </p>
 <h4 id="5-Length-of-Operator"><a href="#5-Length-of-Operator" class="headerlink" title="5. Length of Operator"></a>5. Length of Operator</h4><p>操作数的长度用加在指令后的符号表示<code>b(byte, 8-bit), w(word, 16-bits), l(long,32-bits)</code>，如<code>“movb %al, %bl”</code>，<code>“movw %ax, %bx”</code>，<code>“movl %eax, %ebx”</code>。<br><strong>如果没有指定操作数长度的话，编译器将按照目标操作数的长度来设置。</strong><br>比如指令 <code>“mov %ax, %bx”</code>，由于目标操作数<code>bx</code> 的长度为<code>word</code>，那么编译器将把此指令等同于<code>“movw %ax,%bx”</code>。同样道理，指令<code>“mov $4, %ebx”</code>等同于指令<code>“movl $4, %ebx”</code>，<code>“push %al”</code>等同于<code>“pushb %al”</code>。<br>对于没有指定操作数长度，但编译器又无法猜测的指令，编译器将会报错，比如指令<code>“push $4”</code>。   </p>
-<h4 id="6-Sign-and-Zero-Extension"><a href="#6-Sign-and-Zero-Extension" class="headerlink" title="6. Sign and Zero Extension"></a>6. Sign and Zero Extension</h4><p>绝大多数面向80386 的AT&amp;T 汇编指令与Intel 格式的汇编指令都是相同的，但符号扩展指令和零扩展指令有不同格式。符号扩展指令和零扩展指令需要指定源操作数长度和目的操作数长度，即使在某些指令中这些操作数是隐含的。<br>在AT&amp;T 语法中，符号扩展和零扩展指令的格式为，基本部分<code>&quot;movs&quot;</code>和<code>&quot;movz&quot;</code>（对应Intel 语法的<code>movsx</code> 和<code>movzx</code>），后面跟上源操作数长度和目的操作数长度。<br><code>movsbl</code>意味着<code>movs（from）byte（to）long</code>；<br><code>movbw</code>意味着<code>movs （from）byte （to）word</code>；<br><code>movswl</code>意味着<code>movs （from）word （to）long</code>。<br>对于movz 指令也一样。比如指令“movsbl %al,%edx”意味着将al 寄存器的内容进行符号扩展后放置到edx 寄存器中。 其它的Intel 格式的符号扩展指令还有：<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cbw -- <span class="keyword">sign</span>-extend byte <span class="keyword">in</span> %al to word <span class="keyword">in</span> %ax； </div><div class="line">cwde -- <span class="keyword">sign</span>-extend word <span class="keyword">in</span> %ax to long <span class="keyword">in</span> %eax； </div><div class="line">cwd -- <span class="keyword">sign</span>-extend word <span class="keyword">in</span> %ax to long <span class="keyword">in</span> %dx:%ax； </div><div class="line">cdq -- <span class="keyword">sign</span>-extend dword <span class="keyword">in</span> %eax to quad <span class="keyword">in</span> %edx:%eax； </div><div class="line">对应的AT&amp;T 语法的指令为cbtw，cwtl，cwtd，cltd.</div></pre></td></tr></table></figure></p>
+<h4 id="6-Sign-and-Zero-Extension"><a href="#6-Sign-and-Zero-Extension" class="headerlink" title="6. Sign and Zero Extension"></a>6. Sign and Zero Extension</h4><p>绝大多数面向80386 的AT&amp;T 汇编指令与Intel 格式的汇编指令都是相同的，但符号扩展指令和零扩展指令有不同格式。符号扩展指令和零扩展指令需要指定源操作数长度和目的操作数长度，即使在某些指令中这些操作数是隐含的。<br>在AT&amp;T 语法中，符号扩展和零扩展指令的格式为，基本部分<code>&quot;movs&quot;</code>和<code>&quot;movz&quot;</code>（对应Intel 语法的<code>movsx</code> 和<code>movzx</code>），后面跟上源操作数长度和目的操作数长度。<br><code>movsbl</code>意味着<code>movs（from）byte（to）long</code>；<br><code>movbw</code>意味着<code>movs （from）byte （to）word</code>；<br><code>movswl</code>意味着<code>movs （from）word （to）long</code>。<br>对于movz 指令也一样。比如指令“movsbl %al,%edx”意味着将al 寄存器的内容进行符号扩展后放置到edx 寄存器中。 其它的Intel 格式的符号扩展指令还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cbw -- sign-extend byte in %al to word in %ax； </div><div class="line">cwde -- sign-extend word in %ax to long in %eax； </div><div class="line">cwd -- sign-extend word in %ax to long in %dx:%ax； </div><div class="line">cdq -- sign-extend dword in %eax to quad in %edx:%eax； </div><div class="line">对应的AT&amp;T 语法的指令为cbtw，cwtl，cwtd，cltd.</div></pre></td></tr></table></figure></p>
 <h4 id="7-Call-and-Jump"><a href="#7-Call-and-Jump" class="headerlink" title="7. Call and Jump"></a>7. Call and Jump</h4><p>段内调用和跳转指令为<code>call</code>，<code>ret</code>和<code>jmp</code>，段间调用和跳转指令为<code>lcall</code>，<code>lret</code>和<code>ljmp</code>。段间调用和跳转指令的格式为<code>lcall/ljmp $SECTION, $OFFSET</code>，而段间返回指令则为<code>lret $STACK-ADJUST</code>。</p>
-<h4 id="8-Prefix"><a href="#8-Prefix" class="headerlink" title="8. Prefix"></a>8. Prefix</h4><p>操作码前缀被用在下列的情况：<br>[1]字符串重复操作指令(rep,repne)；<br>[2]指定被操作的段(cs,ds,ss,es,fs,gs)；<br>[3]进行总线加锁(lock)；<br>[4]指定地址和操作的大小(data16,addr16)；<br>在AT&amp;T 汇编语法中，操作码前缀通常被单独放在一行，后面不跟任何操作数。例如，对于重复scas 指令，其写法为：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">repne</span> </div><div class="line">scas</div></pre></td></tr></table></figure></p>
-<p>上述操作码前缀的意义和用法如下：<br>[1]指定被操作的段前缀为<code>cs,ds,ss,es,fs</code>,和<code>gs</code>。在AT&amp;T 语法中，只需要按照 section:memory-operand 的格式就指定了相应的段前缀。比如：<code>lcall %cs:realmode_swtch</code><br>[2]操作数／地址大小前缀是<code>data16</code>和<code>addr16</code>，它们被用来在32-bit 操作数／地址代码中指定16-bit 的操作数／地址。<br>[3]总线加锁前缀<code>lock</code>，它是为了在多处理器环境中，保证在当前指令执行期间禁止一切中断。这个前缀仅仅对<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ADD</span>, <span class="keyword">ADC</span>, <span class="keyword">AND</span>, <span class="keyword">BTC</span>, <span class="keyword">BTR</span>, <span class="keyword">BTS</span>, <span class="keyword">CMPXCHG</span>,<span class="keyword">DEC</span>, </div><div class="line"><span class="keyword">INC</span>, <span class="keyword">NEG</span>, <span class="keyword">NOT</span>, <span class="keyword">OR</span>, <span class="keyword">SBB</span>, <span class="keyword">SUB</span>, <span class="keyword">XOR</span>, <span class="keyword">XADD</span>,<span class="keyword">XCHG</span></div></pre></td></tr></table></figure></p>
+<h4 id="8-Prefix"><a href="#8-Prefix" class="headerlink" title="8. Prefix"></a>8. Prefix</h4><p>操作码前缀被用在下列的情况：<br>[1]字符串重复操作指令(rep,repne)；<br>[2]指定被操作的段(cs,ds,ss,es,fs,gs)；<br>[3]进行总线加锁(lock)；<br>[4]指定地址和操作的大小(data16,addr16)；<br>在AT&amp;T 汇编语法中，操作码前缀通常被单独放在一行，后面不跟任何操作数。例如，对于重复scas 指令，其写法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">repne </div><div class="line">scas</div></pre></td></tr></table></figure></p>
+<p>上述操作码前缀的意义和用法如下：<br>[1]指定被操作的段前缀为<code>cs,ds,ss,es,fs</code>,和<code>gs</code>。在AT&amp;T 语法中，只需要按照 section:memory-operand 的格式就指定了相应的段前缀。比如：<code>lcall %cs:realmode_swtch</code><br>[2]操作数／地址大小前缀是<code>data16</code>和<code>addr16</code>，它们被用来在32-bit 操作数／地址代码中指定16-bit 的操作数／地址。<br>[3]总线加锁前缀<code>lock</code>，它是为了在多处理器环境中，保证在当前指令执行期间禁止一切中断。这个前缀仅仅对<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ADD, ADC, AND, BTC, BTR, BTS, CMPXCHG,DEC, </div><div class="line">INC, NEG, NOT, OR, SBB, SUB, XOR, XADD,XCHG</div></pre></td></tr></table></figure></p>
 <p>指令有效，如果将Lock 前 缀用在其它指令之前，将会引起异常。<br>[4]字符串重复操作前缀<code>rep</code>,<code>repe</code>,<code>repne</code>用来让字符串操作重复<code>%ecx</code>次。</p>
 <h4 id="9-Memory-Reference"><a href="#9-Memory-Reference" class="headerlink" title="9. Memory Reference"></a>9. Memory Reference</h4><p>Intel 语法的间接内存引用的格式为：<code>section:[base+index*scale+displacement]</code><br>而在AT&amp;T 语法中对应的形式为： <code>section:displacement(base,index,scale)</code><br>其中，<code>base</code> 和<code>index</code>是任意的<code>32-bit base 和index 寄存器</code>。<code>scale</code> 可以取值1，2，4，8。如果不指定scale 值，则默认值为1。<br><code>section</code>可以指定任意的段寄存器作为段前缀，默认的段寄存器在不同的情况下不一样。如果在指令中指定了默认的段前缀，则编译器在目标代码中不会产生此段前缀代码。下面是一些例子：</p>
 <p><code>-4(%ebp)</code>：<code>base=%ebp，displacement=-4</code>，<code>section</code>没有指定，由于<code>base＝%ebp</code>，所以默认的<code>section=%ss</code>，<code>index,scale</code> 没有指定，则<code>index</code>为0。<br><code>foo(,%eax,4)</code>：<code>index=%eax，scale=4，displacement=foo</code>。其它域没有指定。这里默认的<code>section=%ds</code>。<br><code>foo(,1)</code>：这个表达式引用的是指针<code>foo</code>指向的地址所存放的值。注意这个表达式中没有<code>base</code> 和<code>index</code>，并且只有一个逗号，这是一种异常语法，但却合法。</p>
@@ -878,7 +880,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[使用Intellij Idea + Maven构建Java Web项目]]></title>
-      <url>http://blublu.xyz/Web/%E4%BD%BF%E7%94%A8Intellij-Idea-Maven%E6%9E%84%E5%BB%BAJava-Web%E9%A1%B9%E7%9B%AE/</url>
+      <url>http://jihong.xyz/Web/%E4%BD%BF%E7%94%A8Intellij-Idea-Maven%E6%9E%84%E5%BB%BAJava-Web%E9%A1%B9%E7%9B%AE/</url>
       <content type="html"><![CDATA[<p>   最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。</p>
 <p>   接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解一下Maven是什么，以及它可以拿来干嘛。</p>
 <blockquote>
@@ -920,7 +922,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[vim常用命令]]></title>
-      <url>http://blublu.xyz/knowledge/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <url>http://jihong.xyz/knowledge/vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h1 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h1><h3 id="光标移动-Cursor-Movement"><a href="#光标移动-Cursor-Movement" class="headerlink" title="光标移动(Cursor Movement)"></a>光标移动(Cursor Movement)</h3><table>
 <thead>
 <tr>
@@ -1199,7 +1201,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[Python元类到底是什么]]></title>
-      <url>http://blublu.xyz/programming/python%E5%85%83%E7%B1%BB%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+      <url>http://jihong.xyz/programming/python%E5%85%83%E7%B1%BB%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/</url>
       <content type="html"><![CDATA[<p>最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(<em>^__^</em>) 好像没什么区别）Python确实在很大意义上方便了我们的编程，解放了双手。特别是从Java变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！”</p>
 <p>在读到Python元类的时候，刚开始看到下面这段代码的我是一脸懵逼的.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object, type)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(type, object)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object(), type)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
@@ -1208,6 +1210,8 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 <p>首先，要缕清这个关系，还是需要舍弃掉之前静态语言所带来的概念，重新构造我们的世界观.在python里，一切都是对象，这个一切比号称完全面向对象的java还要完全.<strong> 包括class、type、object等等都是对象 </strong>.</p>
 <blockquote>
 <p>“鸡・蛋”问题通常都是通过一种叫“自举”（bootstrap）的过程来解决的。其实“鸡蛋问题”的根本矛盾就在于假定了“鸡”或“蛋”的其中一个要先进入“完全可用”的状态。而许多现实中被简化为“鸡蛋问题”的情况实际可以在“混沌”中把“鸡”和“蛋”都初始化好，而不存在先后问题；在它们初始化的过程中，两者都不处于“完全可用”状态，而完成初始化后它们就同时都进入了可用状态。</p>
+</blockquote>
+<blockquote>
 <p>打个比方，番茄炒蛋。并不是要先把番茄完全炒好，然后把鸡蛋完全炒好，然后把它们混起来；而是先炒番茄炒到半熟，再炒鸡蛋炒到半熟，然后把两个半熟的部分混在一起同时炒熟。<br><a id="more"></a></p>
 </blockquote>
 <p>对象之间需要联系在一起，靠什么？靠的就是关系，在python中，对象之间有两种关系：</p>
@@ -1218,8 +1222,14 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 <p>首先说说继承关系，这个应该不会很陌生，引用知乎上的一段解析：</p>
 <blockquote>
 <p>比如有class A和class B(A)，再强调一下，A和B都是对象，则对象B继承了对象A，或者说A是B的超类，继承关系可以通过<strong>base</strong>属性得知，如</p>
+</blockquote>
+<blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>B.__base__</div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">A</span>'&gt;</span></div></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
 <p>在python里，所有对象（包括type）均继承自object，而object则是继承体系的根，上面再无对象：</p>
+</blockquote>
+<blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>object.__base__</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type.__base__</div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">object</span>'&gt;</span></div></pre></td></tr></table></figure>
 </blockquote>
 <p>接着在说说实例关系，比如有class A， a = A()，不嫌烦的再强调一下，a和A都是对象，则对象a是对象A的实例，或者说对象A是对象a的类型.如：</p>
@@ -1237,8 +1247,8 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     </entry>
     
     <entry>
-      <title><![CDATA[Java中常见的坑]]></title>
-      <url>http://blublu.xyz/programming/java%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91/</url>
+      <title><![CDATA[Java中常见的问题]]></title>
+      <url>http://jihong.xyz/programming/java%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91/</url>
       <content type="html"><![CDATA[<h3 id="把数组转成ArrayList"><a href="#把数组转成ArrayList" class="headerlink" title="把数组转成ArrayList"></a>把数组转成ArrayList</h3><p>为了将数组转换为ArrayList，我们经常会这样做：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = Arrays.asList(arr);</div></pre></td></tr></table></figure>
 <p>使用<code>Arrays.asList()</code>方法可以得到一个<code>ArrayList</code>，但是得到这个<code>ArrayList</code>其实是定义在<code>Arrays</code>类中的一个私有的静态内部类。这个类虽然和<code>java.util.ArrayList</code>同名，但是并不是同一个类。我就曾经被深深地坑过…<code>java.util.Arrays.ArrayList</code>类中实现了<code>set()</code>, <code>get()</code>, <code>contains()</code>等方法，但是并没有定义向其中增加元素的方法。也就是说通过<code>Arrays.asList()</code>得到的<code>ArrayList</code>的大小是固定的。</p>
@@ -1265,7 +1275,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>));</div><div class="line">Iterator&lt;String&gt; iter = list.iterator();</div><div class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</div><div class="line">    String s = iter.next();</div><div class="line">    <span class="keyword">if</span> (s.equals(<span class="string">"a"</span>)) &#123;</div><div class="line">        iter.remove();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>next()方法必须在调用remove()方法之前调用。如果在循环过程中先调用remove()，再调用next()，就会导致异常ConcurrentModificationException。原因如上。</p>
 <h3 id="HashTable-和-HashMap-的选择"><a href="#HashTable-和-HashMap-的选择" class="headerlink" title="HashTable 和 HashMap 的选择"></a>HashTable 和 HashMap 的选择</h3><p>了解算法的人可能对HashTable比较熟悉，因为他是一个数据结构的名字。但在Java里边，用HashMap来表示这样的数据结构。Hashtable和 HashMap的一个关键性的不同是，HashTable是同步的，而HashMap不是。所以通常不需要HashTable，HashMap用的更多。</p>
-<h3 id="使用原始集合类型"><a href="#使用原始集合类型" class="headerlink" title="使用原始集合类型"></a>使用原始集合类型</h3><p>在Java里边，原始类型和无界通配符类型很容易混合在一起。以Set为例，<code>Set</code>是一个原始类型，而<code>Set&lt; ? &gt;</code>是一个无界通配符类型。 （可以把原始类型理解为没有使用泛型约束的类型）</p>
+<h3 id="使用原始集合类型"><a href="#使用原始集合类型" class="headerlink" title="使用原始集合类型"></a>使用原始集合类型</h3><p>在 Java 里边，原始类型和无界通配符类型很容易混合在一起。以 Set 为例，<code>Set</code>是一个原始类型，而<code>Set&lt; ? &gt;</code>是一个无界通配符类型。 （可以把原始类型理解为没有使用泛型约束的类型）</p>
 <p>考虑下面使用原始类型List作为参数的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(List list, Object o)</span></span>&#123;</div><div class="line">    list.add(o);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">    add(list, <span class="number">10</span>);</div><div class="line">    String s = list.get(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面的代码将会抛出异常：</p>
@@ -1276,14 +1286,10 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 <h3 id="可变与不可变"><a href="#可变与不可变" class="headerlink" title="可变与不可变"></a>可变与不可变</h3><p>不可变对象有许多的优点，比如简单，安全等等。同时，也有人提出疑问：既然不可变有这么多好处，为什么不把所有类都搞成不可变的呢？</p>
 <p>通常情况下，可变对象可以用来避免产生过多的中间对象。一个经典的实例就是连接大量的字符串，如果使用不可变的字符串，将会产生大量的需要进行垃圾回收的对象。这会浪费CPU大量的时间，使用可变对象才是正确的方案(比如StringBuilder)。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String result=<span class="string">""</span>;</div><div class="line"><span class="keyword">for</span>(String s: arr)&#123;</div><div class="line">    result = result + s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/23616211/why-we-need-mutable-classes" target="_blank" rel="external">StackOverflow</a>中也有关于这个的讨论。</p>
-<h3 id="父类和子类的构造函数"><a href="#父类和子类的构造函数" class="headerlink" title="父类和子类的构造函数"></a>父类和子类的构造函数</h3><p>上图的代码中有两处编译时错误，原因其实很简单，主要和构造函数有关。首先，我们都知道：</p>
-<p>如果一个类没有定义构造函数，编译器将会插入一个无参数的默认构造函数。</p>
-<p>如果一个类中定义了一个带参数的构造函数，那么编译器就不会再帮我们创建无参的构造函数。</p>
+<p><a href="http://stackoverflow.com/questions/23616211/why-we-need-mutable-classes" target="_blank" rel="noopener">StackOverflow</a>中也有关于这个的讨论。</p>
+<h3 id="父类和子类的构造函数"><a href="#父类和子类的构造函数" class="headerlink" title="父类和子类的构造函数"></a>父类和子类的构造函数</h3><p>上图的代码中有两处编译时错误，原因其实很简单，主要和构造函数有关。首先，我们都知道：如果一个类没有定义构造函数，编译器将会插入一个无参数的默认构造函数。如果一个类中定义了一个带参数的构造函数，那么编译器就不会再帮我们创建无参的构造函数。</p>
 <p>上面的Super类中定义了一个带参数的构造函数。编译器将不会插入默认的无参数构造函数。</p>
-<p>我们还应该知道：</p>
-<p>子类的所有构造函数（无论是有参还是无参）在执行时，都会调用父类的无参构造函数。</p>
-<p>所以，编译器试图调用Super类中的无参构造函数。但是父类默认的构造函数未定义，编译器就会报出这个错误信息。</p>
+<p>我们还应该知道：<br>子类的所有构造函数（无论是有参还是无参）在执行时，都会调用父类的无参构造函数。<br>所以，编译器试图调用Super类中的无参构造函数。但是父类默认的构造函数未定义，编译器就会报出这个错误信息。</p>
 <p>要解决这个问题，可以简单的通过</p>
 <ol>
 <li>在父类中添加一个Super()构造方法，就像这样：</li>
@@ -1303,46 +1309,48 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[Cookie、session、OAuth token的异同之处]]></title>
-      <url>http://blublu.xyz/security/Cookie%E3%80%81session%E3%80%81OAuth%20token%E7%9A%84%E5%BC%82%E5%90%8C%E4%B9%8B%E5%A4%84/</url>
-      <content type="html"><![CDATA[<p>今天朋友在开发网站后台的时候遇到验证这方面的问题，然后一直很困惑Cookie与session的区别，还有OAuth token.我把我的想法和他解释半天他还是似懂非懂。顺便就在此记录一下cookie与session的区别.如果有错误，欢迎批评指正。</p>
-<h3 id="Cookie和Session到底是什么？？？"><a href="#Cookie和Session到底是什么？？？" class="headerlink" title="Cookie和Session到底是什么？？？"></a>Cookie和Session到底是什么？？？</h3><p><strong> 因为Http协议是一种无状态协议，一请求一返回就完成了一次事务操作。这样做的的好处就是能够减轻服务器的压力，避免不必要的长连接,占用资源。但是弊端也是显而易见的，没有办法保持上一个会话状态，就比如最简单的购物车，下一次请求后无法知晓上一步的具体选择。虽然Http1.1加入了长连接，但是keep-alive是连接层上的事情，对于应用层来说并没有改变无状态的本质。http2.0那就另说了。（默认的http1.1 keep-alive的时间是300s，增加长连接是为了减少不必要的连接-断开-连接这样的操作）。</strong></p>
+      <url>http://jihong.xyz/security/Cookie%E3%80%81session%E3%80%81OAuth%20token%E7%9A%84%E5%BC%82%E5%90%8C%E4%B9%8B%E5%A4%84/</url>
+      <content type="html"><![CDATA[<p>自从学习了 Web 开发之后，Cookie 与 session 的概念就一直混淆，所以今天特地理清这里面的关联和区别。</p>
+<h3 id="Cookie和Session到底是什么？？？"><a href="#Cookie和Session到底是什么？？？" class="headerlink" title="Cookie和Session到底是什么？？？"></a>Cookie和Session到底是什么？？？</h3><p><strong> 因为Http协议是一种无状态协议，一请求一返回就完成了一次事务操作。这样做的的好处就是能够减轻服务器的压力，避免不必要的长连接，占用资源。但是弊端也是显而易见的，没有办法保持上一个会话状态，就比如最简单的购物车，下一次请求后无法知晓上一步的具体选择。虽然Http1.1加入了长连接，但是keep-alive是连接层上的事情，对于应用层来说并没有改变无状态的本质。http2.0那就另说了。（默认的http1.1 keep-alive的时间是300s，增加长连接是为了减少不必要的连接-断开-连接这样的操作）。</strong></p>
 <p>回到正题：</p>
 <ol>
-<li>Cookie是保存在本地的为了保存会话状态的一种机制，服务器生成，保存在本地，当然了，保存的信息由服务器决定，可能是账号密码，这些都由服务器开发者来进行抉择。不过Cookie一般不会拿来存储很重要的信息，当然了，即使是密码，也肯定是经过签名了的。<a id="more"></a></li>
-<li>正是由于http请求是无状态的，每次访问服务端是不知道是否是登录用户，所以人们很自然的想到在http请求报文中加入登录标识就可以了，这个登录标识就可以是cookie，这样的cookie服务端要保存有所有登录用户的cookie，这样请求报文来了之后拿到登录标识cookie，在服务端进行比较久可以了。再比如购物网站，多次点击添加商品到购物车客户端很容易知道哪些物品在购物车中，但是服务端怎么知道每次添加的物品放到哪个登录用户的购物车中呢？也需要请求报文中带着cookie才行（在不登陆的情况下京东也是可以不断添加商品的，推测应该是登录的时候一并创建cookie并且发送物品信息），这些cookie都是为了跟踪会话用的，所以客户端有，服务端也有，并且服务端有全部的会话cookie。</li>
-<li>Session也是为了保存和服务器之间的会话状态而产生的一种机制，因为cookie是存在客户端的，所以还是有泄露的风险，而session则是后来为了安全衍生出来的技术。session把数据保存在服务器上，把一个相对应的sid(SessionId)发送给客户端，客户端用sid来读取存储在服务器上的信息。由此也可以看到，sid是需要保存的，所以session机制有时会需要借助于Cookie的机制来达到保存sid的目的。但除此之外我们还可以有别的选择。因为Cookie是可以人为关闭的，为了能够在cookie被关闭的情况下还能把sid发送回服务器，经常使用的就是URL重写，把sid直接加在URL路径后面。还可以使用表单隐藏字段等等，这些不在我们今天讨论的范围。</li>
-<li>以上所说的session是session的实现方法，而本质上来说session是一个抽象的概念，开发者为了实现终端和继续等待等操作，将 user agent 和 server 之间一对一的交互，抽象为“会话”，进而衍生出“会话状态”，也就是 session 的概念。而我们今天常说的 “session”，是为了绕开 cookie 的各种限制，通常借助 cookie 本身和后端存储实现的，一种更高级的会话状态实现。</li>
-<li>通常我们一般常用的选择是用Cookie来存储sid和一些不重要的信息，像账号密码这些隐私信息就会保存在服务器的长久session中，通过sid来读取从而进行验证。到这里似乎问题就来了，那岂不是获取到sid就可以仿照拥有者进行登录，对服务器进行欺骗了？事实上，是这样的，当sid泄露之后就相当于任何拿到sid的人都可以成为你，对服务器上属于你的资源与信息都拥有完全的访问权限。</li>
-<li>在服务端保存Session的方法很多，内存、数据库、文件都有。集群的时候也要考虑Session的转移，在大型的网站，一般会有专门的Session服务器集群，用来保存用户会话，这个时候 Session 信息都是放在内存的，使用一些缓存服务比如Memcached之类的来放Session。</li>
+<li>Cookie 是保存在本地的为了保存会话状态的一种机制，由服务器生成，保存在本地。当然了，保存的信息由服务器决定，可能是账号密码，这些都由服务器开发者来进行抉择。不过 Cookie 一般不会拿来存储很重要的信息。显然，即使是密码，也肯定是经过签名了的。<a id="more"></a></li>
+<li>正是由于 http 请求是无状态的，每次访问服务端是不知道是否是登录用户，所以人们很自然地想到在 http 请求报文中加入登录标识就可以了，这个登录标识就可以是 Cookie，这样的 Cookie 服务端要保存有所有登录用户的 Cookie，这样请求报文来了之后拿到登录标识 Cookie，在服务端进行比较久可以了。再比如购物网站，多次点击添加商品到购物车客户端很容易知道哪些物品在购物车中，但是服务端怎么知道每次添加的物品放到哪个登录用户的购物车中呢？也需要请求报文中带着 Cookie 才行（在不登陆的情况下京东也是可以不断添加商品的，推测应该是登录的时候一并创建 Cookie 并且发送物品信息）。诚然，这些 Cookie 都是为了跟踪会话用的，所以客户端有，服务端也有，并且服务端存有全部的会话 Cookie 。</li>
+<li>Session 也是为了保存和服务器之间的会话状态而产生的一种机制。因为Cookie 是存在客户端的，所以还是有泄露的风险，而 session 则是后来为了安全衍生出来的技术。session 把数据保存在服务器上，把一个相对应的 sid(SessionId) 发送给客户端，客户端用sid来读取存储在服务器上的信息。由此也可以看到，sid是需要保存的，所以 session 机制有时会需要借助于 Cookie 的机制来达到保存 sid 的目的。但除此之外我们还可以有别的选择。因为 Cookie 是可以人为关闭的，为了能够在 Cookie 被关闭的情况下还能把 sid 发送回服务器，经常使用的就是 URL 重写，把 sid 直接加在 URL 路径后面。还可以使用表单隐藏字段等等，这些不在我们今天讨论的范围。</li>
+<li>以上所说的 session 是 Session 的实现方法，而本质上来说 Session 是一个抽象的概念，开发者为了实现终端和继续等待等操作，将 user agent 和 server 之间一对一的交互，抽象为“会话”，进而衍生出“会话状态”，也就是 session 的概念。而我们今天常说的 “session”，是为了绕开 cookie 的各种限制，通常借助 cookie 本身和后端存储实现的，一种更高级的会话状态实现。</li>
+<li>通常我们一般常用的选择是用 Cookie 来存储 sid 和一些不重要的信息，像账号密码这些隐私信息就会保存在服务器的长久 session 中，通过 sid 来读取从而进行验证。到这里似乎问题就来了，那岂不是获取到 sid 就可以仿照拥有者进行登录，对服务器进行欺骗了？事实上，是这样的，当sid泄露之后就相当于任何拿到sid的人都可以成为你，对服务器上属于你的资源与信息都拥有完全的访问权限。</li>
+<li>在服务端保存 Session 的方法很多，内存、数据库、文件都有。保存在集群的时候还要考虑到Session的转移，在大型的网站，一般会有专门的Session服务器集群，用来保存用户会话。这个时候 Session 信息都是放在内存的，使用一些缓存服务比如 Memcached 之类的来放 Session。</li>
 </ol>
-<p><strong> 综上所述，可以知道cookie和session本质上就是一回事，区别就在于在于一个对客户端可见一个不可见。</strong></p>
-<p><strong> 当然，最重要的一点，session和cookie都是可以设置时间期限的，超过相应的期限就无法再使用了，具体的信息可自行搜索查阅，在这里就不在阐述了</strong></p>
+<p><strong> 综上所述，可以知道 cookie 和 session 本质上就是一回事，区别就在于在于其中一个对客户端可见而另一个不可见。</strong></p>
+<p><strong> 当然，最重要的一点，session 和 cookie 都是可以设置时间期限的，超过相应的期限就无法再使用了。具体的信息可自行搜索查阅，在这里就不在阐述了</strong></p>
 <h3 id="那么有什么办法能够减轻甚至防止这样的情况发生呢？"><a href="#那么有什么办法能够减轻甚至防止这样的情况发生呢？" class="headerlink" title="那么有什么办法能够减轻甚至防止这样的情况发生呢？"></a>那么有什么办法能够减轻甚至防止这样的情况发生呢？</h3><ol>
 <li>通过SSL，传输内容被建立连接时的随机公钥对加密，偷窃者极难分析了解包中的内容，更不可能伪装客户端来进行会话。正规的网站在登录阶段都是HTTPS传输的，银行官方网银/淘宝 。</li>
 <li>在敏感/关键的步骤之前增加校验步骤。例如，在交易页面之前增加一个安全问题页面，如‘自己最喜欢的食物’ 之类的，即使被恶意窃取或模仿，提高关键交易/步骤的安全性。工商银行的网上支付就有类似机制。 </li>
-<li>服务器端时常变化sessionid, sesisonid被窃取后，很可能是一个过时的sessionid。例如每次客户端请求都会拿到新的sessionid，老的sessionid作废，这样极大的降低sessionid被偷窃进行session欺骗的机会。</li>
+<li>服务器端时常变化 sessionid, sesisonid 被窃取后，很可能是一个过时的 sessionid。例如每次客户端请求都会拿到新的sessionid，老的 sessionid 作废，这样极大的降低 sessionid 被偷窃进行session欺骗的机会。</li>
 </ol>
 <h3 id="现在来说说浏览器上保存密码和cookie保存密码的区别"><a href="#现在来说说浏览器上保存密码和cookie保存密码的区别" class="headerlink" title="现在来说说浏览器上保存密码和cookie保存密码的区别"></a>现在来说说浏览器上保存密码和cookie保存密码的区别</h3><ul>
-<li>当我们登录网站时勾选保存用户名和密码或者保持登录状态XXX天的时候，一般保存的都是cookie，将用户名和密码的cookie保存到硬盘中或者服务器session中，这样再次登录的时候浏览器直接将cookie（如果是存储在服务器session中则是发送cookie中的sid）发送到服务端验证。</li>
-<li>浏览器也有一套保存账号密码的方案，不过这个和cookie无关，每个浏览器都可以有自己的加密解密方式，把相应的账号密码加密后存储起来，当需要的时候解密然后置入登录框。如果浏览器保存了账号密码，即使cookie过期了，弹出登录页面，这时输入框就会显示你曾经保存的用户名和密码。如果cookie没有过期，会直接调转到后台，无需登录。这是两种方式，要注意区分。</li>
+<li>当我们登录网站时勾选保存用户名和密码或者保持登录状态XXX天的时候，一般保存的都是 cookie，将用户名和密码的 cookie 保存到硬盘中或者服务器 session 中，这样再次登录的时候浏览器直接将cookie（如果是存储在服务器session中则是发送 cookie 中的sid）发送到服务端验证。</li>
+<li>浏览器也有一套保存账号密码的方案，不过这个和 cookie 无关，每个浏览器都可以有自己的加密解密方式，把相应的账号密码加密后存储起来，当需要的时候解密然后置入登录框。如果浏览器保存了账号密码，即使 cookie 过期了，弹出登录页面，这时输入框就会显示你曾经保存的用户名和密码。如果 cookie 没有过期，会直接调转到后台，无需登录。这是两种方式，要注意区分。</li>
 </ul>
-<h3 id="那么OAuth-token又是什么呢？"><a href="#那么OAuth-token又是什么呢？" class="headerlink" title="那么OAuth token又是什么呢？"></a>那么OAuth token又是什么呢？</h3><p>token简单来说就是一个授权码，你可以对一个账号的操作权限进行分级，当第三方客户端需要访问你在服务器上的资源时，而你又不想把你的账号密码告诉它，那么最好的方式就是对其进行授权。OAuth提供的是<strong> 认证</strong> 和 <strong> 授权</strong> ，认证是针对用户，授权是针对App 。其目的是让 某App 有权利访问 某用户 的信息。这里的Token是唯一的。不可以转移到其它App上，也不可以转到其它用户上。</p>
-<p>事实上“用户登录系统”可以是由Auth + Session组成的。Auth系统在Auth过程之后就完成操作了，剩下的继续由“用户登录系统”交给Session或者Token来实现用户绑定。实际上TokenID也可以看做SessionID，但是这完全取决于你如何实现你的系统。它们其实完全是两个相同的概念，都是认证完毕之后得到的<code>令牌</code>。</p>
-<p>看到这好像大家觉得又绕回来了，token也可以当作sessionId是什么意思？原因其实就在于，sessionId就是我们经过了认证之后获得的一个能够证明我们身份的唯一标志码。那么如果我们把一个登录系统分成认证和维护状态两个模块来看的话，token其实就是sessionId。如果你把一个登录系统看成一个模块，那么session就是cookie的服务器版。</p>
-<p>总之，在我看来 <strong> 一切维护用户状态的技术都是session，一切动态生成的服务端有能力鉴别真假而本身无涵义的字符串都是token。</strong></p>
-<p>关于OAuth2.0的认证方式以及流程，在阮一峰的博客里写得很好，推荐大家看看。<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="external">理解OAuth 2.0</a></p>
+<h3 id="那么OAuth-token又是什么呢？"><a href="#那么OAuth-token又是什么呢？" class="headerlink" title="那么OAuth token又是什么呢？"></a>那么OAuth token又是什么呢？</h3><p>token 简单来说就是一个授权码，你可以对一个账号的操作权限进行分级，当第三方客户端需要访问你在服务器上的资源时，而你又不想把你的账号密码告诉它，那么最好的方式就是对其进行授权。OAuth 提供的是<strong> 认证</strong> 和 <strong> 授权</strong> ，认证是针对用户，授权是针对 App 。其目的是让 某 App 有权利访问 某用户 的信息。这里的 Token 是唯一的。不可以转移到其它 App 上，也不可以转到其它用户上。</p>
+<p>事实上“用户登录系统”可以是由 Auth + Session 组成的。Auth 系统在 Auth 过程之后就完成操作了，剩下的继续由“用户登录系统”交给 Session 或者 Token 来实现用户绑定。实际上 TokenID 也可以看作 SessionID，而这完全取决于你如何实现你的系统。它们其实完全是两个相同的概念，都是认证完毕之后得到的<code>令牌</code>。</p>
+<p>看到这好像大家觉得又绕回来了，token 也可以当作 sessionId 是什么意思？原因其实就在于， sessionId 就是我们经过了认证之后获得的一个能够证明我们身份的唯一标志码。那么如果我们把一个登录系统分成认证和维护状态两个模块来看的话，token 其实就是 sessionId。如果你把一个登录系统看成一个模块，那么 session 就是 cookie 的服务器版。</p>
+<p>总之，在我看来 <strong> 一切维护用户状态的技术都是session，一切动态生成的服务端有能力鉴别真假而本身无涵义的字符串都是 token。</strong></p>
+<p>关于OAuth2.0的认证方式以及流程，在阮一峰的博客里写得很好<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0</a>。</p>
 <h5 id="可能大家都会讨论的是cookie和session的安全性，至于安全性，非HTTPS有安全性可言吗？HTTPS就一定安全吗？"><a href="#可能大家都会讨论的是cookie和session的安全性，至于安全性，非HTTPS有安全性可言吗？HTTPS就一定安全吗？" class="headerlink" title="可能大家都会讨论的是cookie和session的安全性，至于安全性，非HTTPS有安全性可言吗？HTTPS就一定安全吗？"></a>可能大家都会讨论的是cookie和session的安全性，至于安全性，非HTTPS有安全性可言吗？HTTPS就一定安全吗？</h5>]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[字符编码--UTF-8与Unicode]]></title>
-      <url>http://blublu.xyz/knowledge/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%98%8E%E5%9D%91%E4%B8%8E%E6%9A%97%E5%9D%91/</url>
+      <url>http://jihong.xyz/knowledge/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%98%8E%E5%9D%91%E4%B8%8E%E6%9A%97%E5%9D%91/</url>
       <content type="html"><![CDATA[<p>自从上个学期简单地了解了字符编码之后就一直没有再过多的理会它。对字符编码这一块总是似懂非懂，今天突然就想把它彻底地了解一遍，不想再有这种疑惑的感觉。重新理顺了一遍字符编码之间的关系，以及utf-8、utf-16以及utf-32和Unicode之间的那些千丝万缕的关系。</p>
 <h3 id="首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。"><a href="#首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。" class="headerlink" title="首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。"></a>首先需要明确的是Unicode是一套字符编码规范，而UTF-8、UTF-16以及UTF-32只是它的一种实现方式！！！任何的字符在计算机里都是已bit来存储的，更上层一点，每个字符其实都是已byte流来进行存储使用，依照编码方式的不同，在使用时按照规定的编码方式来读取映射，从而达到需要的效果。说白了其实Unicode就是一种数学映射关系而已。</h3><h2 id="首先我们来看看关于Unicode的介绍"><a href="#首先我们来看看关于Unicode的介绍" class="headerlink" title="首先我们来看看关于Unicode的介绍"></a>首先我们来看看关于Unicode的介绍</h2><blockquote>
-<p>世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。<br>可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。<br>Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字“严”。具体的符号对应表，可以查询<a href="http://unicode.org" target="_blank" rel="external">Unicode官网</a>，或者专门的汉字对应表。<br><a id="more"></a><br>Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。Unicode 用数字0-0x10FFFF来映射这些字符，最多可以容纳1114112个字符，或者说有1114112个码位。码位就是可以分配给字符的数字。UTF-8、 UTF-16、UTF-32都是将数字转换到程序数据的编码方案。</p>
-<p>Unicode字符集可以简写为UCS（Unicode Character Set）。早期的Unicode标准有UCS-2、UCS-4的说法。UCS-2用两个字节编码，UCS-4用4个字节编码。UCS-4根据最高位为0的 最高字节分成2^7=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Basic Multilingual Plane）。将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。<br>每个平面有2^16=65536个码位。Unicode计划使用了17个平面，一共有 17*65536=1114112个码位。在Unicode 5.0.0版本中，已定义的码位只有238605个，分布在平面0、平面1、平面2、平面14、平面15、平面16。其中平面15和平面16上只是定义了 两个各占65534个码位的专用区（Private Use Area），分别是0xF0000-0xFFFFD和0x100000-0x10FFFD。所谓专用区，就是保留给大家放自定义字符的区域，可以简写为 PUA。</p>
-<p>平面0也有一个专用区：0xE000-0xF8FF，有6400个码位。平面0的 0xD800-0xDFFF，共2048个码位，是一个被称作代理区（Surrogate）的特殊区域。代理区的目的用两个UTF-16字符表示BMP以 外的字符。在介绍UTF-16编码时会介绍。<br>如前所述在Unicode 5.0.0版本中，238605-65534*2-6400-2408=99089。余下的99089个已定义码位分布在平面0、平面1、平面2和平面 14上，它们对应着Unicode目前定义的99089个字符，其中包括71226个汉字。平面0、平面1、平面2和平面14上分别定义了52080、 3419、43253和337个字符。平面2的43253个字符都是汉字。平面0上定义了27973个汉字。</p>
+<p>世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。<br>可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，就像它的名字都表示的，这是一种所有符号的编码。<br>Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字“严”。具体的符号对应表，可以查询<a href="http://unicode.org" target="_blank" rel="noopener">Unicode官网</a>，或者专门的汉字对应表。<br><a id="more"></a><br>Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。Unicode 用数字0-0x10FFFF来映射这些字符，最多可以容纳1114112个字符，或者说有1114112个码位。码位就是可以分配给字符的数字。UTF-8、 UTF-16、UTF-32都是将数字转换到程序数据的编码方案。</p>
 </blockquote>
+<p>Unicode字符集可以简写为UCS（Unicode Character Set）。早期的Unicode标准有UCS-2、UCS-4的说法。UCS-2用两个字节编码，UCS-4用4个字节编码。UCS-4根据最高位为0的 最高字节分成2^7=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Basic Multilingual Plane）。将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。<br>每个平面有2^16=65536个码位。Unicode计划使用了17个平面，一共有 17*65536=1114112个码位。在Unicode 5.0.0版本中，已定义的码位只有238605个，分布在平面0、平面1、平面2、平面14、平面15、平面16。其中平面15和平面16上只是定义了 两个各占65534个码位的专用区（Private Use Area），分别是0xF0000-0xFFFFD和0x100000-0x10FFFD。所谓专用区，就是保留给大家放自定义字符的区域，可以简写为 PUA。</p>
+<blockquote>
+</blockquote>
+<p>平面0也有一个专用区：0xE000-0xF8FF，有6400个码位。平面0的 0xD800-0xDFFF，共2048个码位，是一个被称作代理区（Surrogate）的特殊区域。代理区的目的用两个UTF-16字符表示BMP以 外的字符。在介绍UTF-16编码时会介绍。<br>如前所述在Unicode 5.0.0版本中，238605-65534*2-6400-2408=99089。余下的99089个已定义码位分布在平面0、平面1、平面2和平面 14上，它们对应着Unicode目前定义的99089个字符，其中包括71226个汉字。平面0、平面1、平面2和平面14上分别定义了52080、 3419、43253和337个字符。平面2的43253个字符都是汉字。平面0上定义了27973个汉字。</p>
 <h2 id="那么，问题来了。utf-8与Unicode之间有什么联系呢？"><a href="#那么，问题来了。utf-8与Unicode之间有什么联系呢？" class="headerlink" title="那么，问题来了。utf-8与Unicode之间有什么联系呢？"></a>那么，问题来了。utf-8与Unicode之间有什么联系呢？</h2><p>Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。 </p>
 <p>比如，汉字“严”的unicode是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多。 </p>
 <p>这里就有两个严重的问题，第一个问题是，如何才能区别unicode和ascii？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的。 </p>
@@ -1436,7 +1444,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[密码加密——计时攻击]]></title>
-      <url>http://blublu.xyz/security/%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E2%80%94%E2%80%94%E8%AE%A1%E6%97%B6%E6%94%BB%E5%87%BB/</url>
+      <url>http://jihong.xyz/security/%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E2%80%94%E2%80%94%E8%AE%A1%E6%97%B6%E6%94%BB%E5%87%BB/</url>
       <content type="html"><![CDATA[<p><strong>今天在扒加密相关的代码的时候发现了一段比较有意思的代码。google后才知道“计时攻击”（Timing Attack）这么个东西的存在，安全方面真心弱鸡啊。看来要补的东西还是很多。</strong></p>
 <p>###先贴代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">slowEquals</span><span class="params">(<span class="keyword">byte</span>[] a, <span class="keyword">byte</span>[] b)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> diff = a.length ^ b.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length &amp;&amp; i &lt; b.length; i++)</div><div class="line">    diff |= a[i] ^ b[i];</div><div class="line">    <span class="keyword">return</span> diff == <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1462,11 +1470,11 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[Java服务端解析http请求（一）]]></title>
-      <url>http://blublu.xyz/programming/Java%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%A7%A3%E6%9E%90http%E8%AF%B7%E6%B1%82%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <url>http://jihong.xyz/programming/Java%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%A7%A3%E6%9E%90http%E8%AF%B7%E6%B1%82%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       <content type="html"><![CDATA[<p><strong>现在服务端的设计都有许多的框架可以选择，很方便的完成我们的需求。虽然说程序员大多数站在前人的肩膀上，用前人造的轮子来造汽车。何况一些框架已经不仅仅是轮子那么简单了，甚至可以是一辆马上就可以开的跑车。但是直接使用框架和现成工具并不利于我们的学习，从学习的角度来说，我们还是最好能够自己深入了解技术原理并自己实现它。虽然自己写的程序功能可能不及它们强大，但是只要学会了其中的原理，就已经达到了我们的目的。</strong></p>
 <p>平时在进行web解析的时候，我们一般都使用tomcat这个庞然大物来对client的请求进行解析，它返回给我们一个完整的HttpRequest对象，其中含有client向我们传输的所需要的各种信息。今天我们就来说说如何模仿tomcat服务器解析程序的雏形，自己写一个http服务器解析程序。</p>
 <p><strong>客户端与服务端的通信有三步：</strong><br>1.与服务端进行连接(当然，连接还是用socket来实现的)<br>2.向服务端发出请求<br>3.服务端返回结果</p>
-<p><a href="https://zh.wikipedia.org/wiki/超文本传输协议" target="_blank" rel="external">http</a>其实就是一个web交互协议，通过一套完整的协议约束，对于不同的浏览器只要能够解析http协议就可以和服务器进行通信。</p>
+<p><a href="https://zh.wikipedia.org/wiki/超文本传输协议" target="_blank" rel="noopener">http</a>其实就是一个web交互协议，通过一套完整的协议约束，对于不同的浏览器只要能够解析http协议就可以和服务器进行通信。</p>
 <p>我们在设计一个服务端的时候，当连接完成后的第一步就是能够正确解析客户端发出的请求。<br>在原始的时候，没有协议，我们一般都是通过在向服务器发送命令的时候在String前含有几位保留字符，用数字或者其他来标识此条命令，告诉服务器应该使用哪个部分进行解析，但是当程序扩展之后，这种方式难免不利于维护。同时也不利于复用，于是各种通信协议就产生了，在web上用得最多的就是http协议。今天要说的就是http服务器的解析。</p>
 <p>在服务端，通过一个客户端线程，获取客户端的输入流就可以得到一个客户端封装好的http请求信息。而一般来说，一些现成的工具（tomcat）已经帮我们自动对这些信息进行解析。如果我们要自己动手造一个解析程序，此时我们获取到的信息首先是一串字节流，通过解码还原成string，但这还远远达不到我们要求，我们需要一个HttpRequest类来存储request中各个部分的信息。所以第一步就是对这串string进行切割解析。</p>
 <a id="more"></a>
@@ -1483,39 +1491,39 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[Java与C++的异同]]></title>
-      <url>http://blublu.xyz/programming/Java%E4%B8%8EC++%E7%9A%84%E5%BC%82%E5%90%8C/</url>
+      <url>http://jihong.xyz/programming/Java%E4%B8%8EC++%E7%9A%84%E5%BC%82%E5%90%8C/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>C++与Java的区别大致分为三类：</p>
-<ul>
-<li>Java不支持的C++特性</li>
-<li>Java的独特之处</li>
-<li>C++和Java都有但是不相同的特性</li>
-</ul>
+<p>C++ 与 Java 的区别大致分为三类：</p>
 </blockquote>
-<h3 id="Java摈弃的C-的内容"><a href="#Java摈弃的C-的内容" class="headerlink" title="Java摈弃的C++的内容"></a>Java摈弃的C++的内容</h3><pre><code>有相当一部分C++的特性Java不再支持。在某些情况下，一个特殊的C++特性和Java的运行环境不想关。另一情况下，Java的设计者摈弃了C++中某些重复的内容。还有就是出于对网络应用运行安全的考虑，Java不再支持某些C++的特点。
-Java与C++之间最大的不同就是Java不再支持指针，指针是使C++语言成为世界上功能最强大语言的主要原因。但是对于指针的使用有着一定程序的危险。
-Java不支持指针出于以下两个原因：
-（1）指针本身就不安全。如，使用C++的状态指针，可以访问程序代码和数据段外的内存地址。一个恶意程序可以利用这个特点破坏系统，完成一次或多次非法的访问（获取你的密码）或是违反安全限制。
-（2）即使指针可以被限制在Java的运行系统中（理论上），但是设计者仍然认为它的使用是麻烦的Java中不存在指针，所以也没有-&gt;操作符
+<ul>
+<li>Java 不支持的 C++ 特性</li>
+<li>Java 的独特之处</li>
+<li>C++ 和 Java 都有但是不相同的特性</li>
+</ul>
+<h3 id="Java-摈弃的-C-的内容"><a href="#Java-摈弃的-C-的内容" class="headerlink" title="Java 摈弃的 C++ 的内容"></a>Java 摈弃的 C++ 的内容</h3><pre><code>有相当一部分 C++ 的特性 Java 不再支持。在某些情况下，一个特殊的 C++ 特性和 Java 的运行环境不相关。另一情况下，Java 的设计者摈弃了 C++ 中某些重复的内容。还有就是出于对网络应用运行安全的考虑，Java不再支持某些C++的特点。
+Java 与 C++ 之间最大的不同就是 Java 不再支持指针，指针是使 C++ 语言成为世界上功能最强大语言的主要原因。但是对于指针的使用有着一定程序的危险。
+Java 不支持指针出于以下两个原因：
+（1）指针本身就不安全。如，使用 C++ 的状态指针，可以访问程序代码和数据段外的内存地址。一个恶意程序可以利用这个特点破坏系统，完成一次或多次非法的访问（获取你的密码）或是违反安全限制。
+（2）即使指针可以被限制在 Java 的运行系统中（理论上），但是设计者仍然认为它的使用是麻烦的 Java 中不存在指针，所以也没有-&gt;操作符
 </code></pre><a id="more"></a>
-<h3 id="细举Java中的“省略”内容："><a href="#细举Java中的“省略”内容：" class="headerlink" title="细举Java中的“省略”内容："></a>细举Java中的“省略”内容：</h3><pre><code>（1）Java不再包含结构或者联合。在可以完全包含它们的类出现之后，这些结构就是多余的
-（2）Java不再支持操作符重载。操作符的重载在某些情况下造成类C++程序的含糊不清，它带来的麻烦要远远大于它带来的好处
-（3）Java中不再包括预处理，也不再支持预处理命令。预处理在C++语言中已经不如在C中那么重要，Java中就彻底弃用了它
-（4）Java不支持自动的类型转换，因为这种类型转换会导致精度的降低。在Java中，如果要将长整型转换为整型的时候，必须显式强制执行类型转换。
-（5）在Java中的代码必须封装在一个或多个类中，所以Java中不再包括所谓全局变量或是全局函数的概念。
-（6）Java中不再允许默认的参数，在C++中，当过程调用时存在没有对应值的参数的时候可以使用一个预先指定的值，Java中不允许这样的做法。
-（7）Java不支持多重继承，不允许一个子类继承多个父类
-（8）Java支持构造函数，但不支持析构函数，Java增加了finalize()函数。
-（9）Java不支持typedef.
-（10）Java中不能声明一个无符号的整数。
-（11）Java不再支持goto语句
-（12）Java没有delete操作符
-（13）Java中的《and》不再重载I/O操作
-（14）Java中，对象只能由引用传递，C++中对象可由值或引用传递。
-</code></pre><h3 id="Java的新特性："><a href="#Java的新特性：" class="headerlink" title="Java的新特性："></a>Java的新特性：</h3><p>Java的许多特点是C++没有的，比如多线程，包和接口，还有其它许多独特多之处。<br>（1）多线程允许两个或者多个相同的线程并发运行。这是一种由语言级支持的并发机制。而C++中并没有这样的机制。如果要并发执行一个C++的程序，必须利用操作系统的功能手工启动，虽然这样也可以执行两个或多个线程，但是很麻烦。<br>（2）C++中没有可以和Java包对应的特性。相对接近的就是用一个公用头文件的一组库函数。而C++中构建和使用函数库与在Java中构建包和使用包是完全不同的方法。<br>（3）Java的接口与C++中的抽象类很像（C++中的抽象类定义为包括至少一个纯虚函数的类）。相同之处就是，Java中的接口与C++中的抽象类不能创建一个实例，两都都用于指定一个子类实现的一致的接口。两者之间最大的区别就在于接口对于这样的功能的实现更为清楚。<br>（4）Java提供一个流线型的内存分配机制，与C++相同，Java支持new关键字，但不支持delete关键字。当一个对象的最后一个引用撤销的时候，对象本身被自动的删除，并进行内存垃圾回收。<br>（5）Java丢弃了C++的标准库，将它替换成自己的API集合类，它们在功能上是相似的，但名字和参数有着明显的不同。同时，因为所有的Java API库都是面向对象的，而C++的标准库中只有一部分是，所以例程调用的方式不同<br>（6）Java增加了break和continue语句以接收标记<br>（7）Java中的char类型是16位的unicode字符。与C++中的wchar_t类型想似，使用时unicode字符增加了代码的可移植性。<br>（8）Java增加了&gt;&gt;&gt;操作，完成无符号的右移<br>（9）除支持单行和多行的注释之外，Java增加了第三种注释方法：文档注释。文档注释以结尾。<br>（10）Java包含一个内置的字符串类型叫做String,String在某种程序上和C++提供的标准string类型相像。当然C++中的String只有在程序中声明后才可以使用，它并不是内置的类型。</p>
+<h3 id="细举Java中的“省略”内容："><a href="#细举Java中的“省略”内容：" class="headerlink" title="细举Java中的“省略”内容："></a>细举Java中的“省略”内容：</h3><pre><code>（1）Java 不再包含结构或者联合。在可以完全包含它们的类出现之后，这些结构就是多余的
+（2）Java 不再支持操作符重载。操作符的重载在某些情况下造成类 C++ 程序的含糊不清，它带来的麻烦要远远大于它带来的好处
+（3）Java 中不再包括预处理，也不再支持预处理命令。预处理在 C++ 语言中已经不如在 C 中那么重要，Java中就彻底弃用了它
+（4）Java 不支持自动的类型转换，因为这种类型转换会导致精度的降低。在 Java 中，如果要将长整型转换为整型的时候，必须显式强制执行类型转换。
+（5）在 Java 中的代码必须封装在一个或多个类中，所以 Java 中不再包括所谓全局变量或是全局函数的概念。
+（6）Java 中不再允许默认的参数，在 C++ 中，当过程调用时存在没有对应值的参数的时候可以使用一个预先指定的值，Java 中不允许这样的做法。
+（7）Java 不支持多重继承，不允许一个子类继承多个父类
+（8）Java 支持构造函数，但不支持析构函数，Java 增加了 finalize() 函数。
+（9）Java 不支持 typedef.
+（10）Java 中不能声明一个无符号的整数。
+（11）Java 不再支持 goto 语句
+（12）Java 没有 delete 操作符
+（13）Java 中的《and》不再重载 I/O 操作
+（14）Java 中，对象只能由引用传递，C++ 中对象可由值或引用传递。
+</code></pre><h3 id="Java的新特性："><a href="#Java的新特性：" class="headerlink" title="Java的新特性："></a>Java的新特性：</h3><p>Java 的许多特点是 C++ 没有的，比如多线程，包和接口，还有其它许多独特多之处。<br>（1）多线程允许两个或者多个相同的线程并发运行。这是一种由语言级支持的并发机制。而 C++ 中并没有这样的机制。如果要并发执行一个 C++ 的程序，必须利用操作系统的功能手工启动，虽然这样也可以执行两个或多个线程，但是很麻烦。<br>（2）C++ 中没有可以和 Java 包对应的特性。相对接近的就是用一个公用头文件的一组库函数。而 C++ 中构建和使用函数库与在 Java 中构建包和使用包是完全不同的方法。<br>（3）Java 的接口与 C++ 中的抽象类很像（C++中的抽象类定义为包括至少一个纯虚函数的类）。相同之处就是，Java 中的接口与 C++ 中的抽象类不能创建一个实例，两都都用于指定一个子类实现的一致的接口。两者之间最大的区别就在于接口对于这样的功能的实现更为清楚。<br>（4）Java 提供一个流线型的内存分配机制，与 C++ 相同，Java 支持 new 关键字，但不支持 delete 关键字。当一个对象的最后一个引用撤销的时候，对象本身被自动的删除，并进行内存垃圾回收。<br>（5）Java 丢弃了C++的标准库，将它替换成自己的 API 集合类，它们在功能上是相似的，但名字和参数有着明显的不同。同时，因为所有的 Java API 库都是面向对象的，而 C++ 的标准库中只有一部分是，所以例程调用的方式不同<br>（6）Java 增加了 break 和 continue 语句以接收标记<br>（7）Java 中的 char 类型是16位的 unicode 字符。与 C++ 中的 wchar_t 类型想似，使用时 unicode 字符增加了代码的可移植性。<br>（8）Java 增加了 &gt;&gt;&gt; 操作，完成无符号的右移<br>（9）除支持单行和多行的注释之外，Java 增加了第三种注释方法：文档注释。文档注释以结尾。<br>（10）Java 包含一个内置的字符串类型叫做 String，String 在某种程序上和 C++ 提供的标准string 类型相像。当然 C++ 中的 String 只有在程序中声明后才可以使用，它并不是内置的类型。</p>
 <h3 id="Java与C-的不同特性："><a href="#Java与C-的不同特性：" class="headerlink" title="Java与C++的不同特性："></a>Java与C++的不同特性：</h3><ul>
-<li>Java和C+都支持布尔类型的数据，但是Java实现true和false的方式和C++不同。在C++中，true是非零值，false是零值。在Java中，true和false都是预先定义好的常量，而且是一个布尔表达式能得到的惟一的两个值。虽然C++也定义了true和false,并指定为布尔变量，但C++自动将非零值转换为true,零值转换为false。Java中是不会出现的。</li>
-<li>在创建C++的类的时候，访问说明符应用到一组声明中。在Java中，访问说明符仅应用于其限定的声明中。</li>
+<li>Java 和 C++ 都支持布尔类型的数据，但是 Java 实现 true 和 false 的方式和 C++ 不同。在 C++ 中，true 是非零值，false 是零值。在 Java 中，true 和 false 都是预先定义好的常量，而且是一个布尔表达式能得到的惟一的两个值。虽然 C++ 也定义了 true 和 false,并指定为布尔变量，但 C++ 自动将非零值转换为 true,零值转换为 false，这在 Java 中是不会出现的。</li>
+<li>在创建 C++ 的类的时候，访问说明符应用到一组声明中。在 Java 中，访问说明符仅应用于其限定的声明中。</li>
 <li>C++支持异常的处理，这与Java类似，但是在C++中无需捕捉一个被引发的异常。</li>
 </ul>
 ]]></content>
@@ -1523,7 +1531,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[Linux下使用shadowsocks科学上网]]></title>
-      <url>http://blublu.xyz/hack-gwf/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+      <url>http://jihong.xyz/hack-gwf/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
       <content type="html"><![CDATA[<p>因为最近在家，都是在用ubuntu，所以使用unbutu来进行解释。<br>因为shadowsocks在windows和osx都有客户端，所以不再详细说明。可以从github上clone源码自行编译。</p>
 <ul>
 <li>用PIP安装很简单</li>
@@ -1564,7 +1572,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[即使被拖库，也可以保证密码不泄露]]></title>
-      <url>http://blublu.xyz/security/%E5%8D%B3%E4%BD%BF%E8%A2%AB%E6%8B%96%E5%BA%93%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E5%AF%86%E7%A0%81%E4%B8%8D%E6%B3%84%E9%9C%B2/</url>
+      <url>http://jihong.xyz/security/%E5%8D%B3%E4%BD%BF%E8%A2%AB%E6%8B%96%E5%BA%93%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E5%AF%86%E7%A0%81%E4%B8%8D%E6%B3%84%E9%9C%B2/</url>
       <content type="html"><![CDATA[<p>首先，我们明确一下安全加密方案的终极目标：</p>
 <p>即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。</p>
 <p>说具体一些，我们理想中的绝对安全的系统大概是这样的：</p>
@@ -1607,14 +1615,14 @@ Java不支持指针出于以下两个原因：
 <p>数据库都已经全被拖走了，密码不泄露还有什么意义呢？</p>
 <p>其实是有意义的，正如刚刚提到的升级 Salt2 的补救方案，用户可以在完全不知情的情况下，不需要修改密码就升级了账号体系。同时，保护好用户的密码，不被攻击者拿去撞别家网站的库，也是一份责任。</p>
 <p>欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！</p>
-<p>作者：CoderZh<br>微信关注：hacker-thinking （一个程序员的思考）<br>本文出处：<a href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/" target="_blank" rel="external">http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</a><br>文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</p>
+<p>作者：CoderZh<br>微信关注：hacker-thinking （一个程序员的思考）<br>本文出处：<a href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/" target="_blank" rel="noopener">http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</a><br>文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[C++中关于数组的引用]]></title>
-      <url>http://blublu.xyz/programming/C++%E4%B8%AD%E5%85%B3%E4%BA%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%BC%95%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>今天在编译一份代码的时候遇到了引用数组作为形参的函数，后来编译遇到了一些问题，虽然数组可以用指针传递来解决。不过既然碰到了用引用数组来作形参的，我是一定要深究下去的，不撞南墙不回头。随后查看了很多资料。感觉有所理解了。所以记录下来，以备过后查看。</p>
+      <url>http://jihong.xyz/programming/C++%E4%B8%AD%E5%85%B3%E4%BA%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%BC%95%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>今天在编译一份代码的时候遇到了引用数组作为形参的函数，后来编译遇到了一些问题，虽然数组可以用指针传递来解决。不过既然碰到了用引用数组来作为形参的问题，还是有必要好好摸索摸索的。随后查看了很多资料，感觉有所理解了。所以专门记录下来，以备过后查看。</p>
 <p>首先，当传递一个数组作为参数的时候我们通常的做法就是通过传递数组名指针来作为参数的，但是这样就会有一个问题，传递进来之后你不知道它的具体大小，容易引发越界操作的问题。同时有时候我们希望传递进来的数组仅供读取而不允许修改，那么此时我们可以如以下代码所示，在参数中加上const即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * ary)</span></span></div></pre></td></tr></table></figure>
 <p>而要确保传进来的数组能够控制大小，可以采用引用的方式。</p>
@@ -1637,7 +1645,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[最短路径-Floyd算法]]></title>
-      <url>http://blublu.xyz/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-Floyd%E7%AE%97%E6%B3%95/</url>
+      <url>http://jihong.xyz/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-Floyd%E7%AE%97%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>今天在做数据结构作业的时候遇到最短路径求解问题，书上一大堆工程代码看得真心令人眼花缭乱。醉得不行，不过好在在挣扎中摸索了一番之后大概了解了它的具体思想以及编码方案。故在此记录一下想法。希望对大家有一些理解上的帮助。</p>
 <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><pre><code>求一张有向图中任意两点中最短路径方案。
 </code></pre><p><strong> 思路：</strong><br>依照Floyd算法的总体思想来说，求出最短路径不外乎两种情况，一种是两点之间直接可达，另一种就是通过若干个节点之后也可达。若第一种情况下花费代价最小，那么最短路径即为两点之间直接路径；反之，若通过走若干节点之后到达目的地代价较小，那么最短路径即为第二种情况下的所走过的路径。由此我们可以考虑用邻接矩阵来存储各点之间的权值，通过三层循环刷新之后可以得出两点之间代价最小值。（原先某些不可达点通过第二种方案之后也可达，且代价总为最小）。<br><a id="more"></a><br>假设求从Vi走到Vj的最短路径，通过图我们得到，经过k点要比直接从Vi走到Vj代价小，即Vi+Vk+Vj要优于Vi+Vj。那么很容易我们就可以得到代码，</p>
@@ -1650,7 +1658,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[程序员最恐怖的梦魇是什么]]></title>
-      <url>http://blublu.xyz/programer/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9C%80%E6%81%90%E6%80%96%E7%9A%84%E6%A2%A6%E9%AD%87%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+      <url>http://jihong.xyz/programer/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9C%80%E6%81%90%E6%80%96%E7%9A%84%E6%A2%A6%E9%AD%87%E6%98%AF%E4%BB%80%E4%B9%88/</url>
       <content type="html"><![CDATA[<p>这是Quora上的一个问题，其中Mick的回答获得了13.5k“赞同”，他如此回忆道：</p>
 <p>曾经有位心理学的博士雇我查一个BUG，程序是他的一个学生写的，经常会出现奇怪的输出。程序的功能是，从文件中读取数据，提出50个问题，进行一系列计算，然后基于这位博士的研究来得出一个分数。程序跑在大学的一台3B2上。他给我演示了程序，确认这个Bug可以重现——每次在问题之间切换的时候，总会闪出一些奇怪的字符。我觉得这应该很简单，所以答应了他，并且我们同意按小时付费。</p>
 <p>Day1<br>我来到这台3B2面前，用那个学生的帐号登录，找到了用C写的源代码，并开始测试。代码可读性非常差，所有的代码都写在了一行，变量名都是三个字母，而且还是随机组合的！真庆幸我当初选择按小时收费。我把代码格式化为习惯的风格，这样看起来多少还能读。</p>
@@ -1677,7 +1685,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[正则表达式]]></title>
-      <url>http://blublu.xyz/knowledge/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      <url>http://jihong.xyz/knowledge/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>字符串是编程时涉及到的最多的一种数据结构，对字符串进行操作的需求几乎无处不在。比如判断一个字符串是否是合法的Email地址，虽然可以编程提取@前后的子串，再分别判断是否是单词和域名，但这样做不但麻烦，而且代码难以复用。</p>
 <p>正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。</p>
 <p>所以我们判断一个字符串是否是合法的Email的方法是：</p>
@@ -1727,7 +1735,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[Mac下安装brew]]></title>
-      <url>http://blublu.xyz/tools/Mac%E4%B8%8B%E5%AE%89%E8%A3%85brew/</url>
+      <url>http://jihong.xyz/tools/Mac%E4%B8%8B%E5%AE%89%E8%A3%85brew/</url>
       <content type="html"><![CDATA[<p>先说说什么是brew，brew又叫Homebrew，是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件，只需要一个命令， 非常方便，brew类似ubuntu系统下的apt-get的功能。从Ubuntu换到MacOS之后就很感叹为什么没有apt-get这样方便快捷的安装命令，后来找到了brew。不用多说，真的相当好用！！！</p>
 <p>直接用terminal来进行安装</p>
 <p>安装命令为：</p>
@@ -1746,8 +1754,8 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[Javascript中string与int转换]]></title>
-      <url>http://blublu.xyz/front-end/Javascript%E4%B8%ADstring%E4%B8%8Eint%E8%BD%AC%E6%8D%A2/</url>
-      <content type="html"><![CDATA[<p>因为javascript只有一种类型var ，为变量赋值时会自动判断类型并进行转换，所以javascript是弱类型语言。所以在数据转换的时候要特别注意。</p>
+      <url>http://jihong.xyz/front-end/Javascript%E4%B8%ADstring%E4%B8%8Eint%E8%BD%AC%E6%8D%A2/</url>
+      <content type="html"><![CDATA[<p>因为javascript只有一种类型var ，为变量赋值时会自动判断类型并进行转换。Javascript是弱类型语言，所以在数据转换的时候要特别注意。</p>
 <p><strong>下面简单说说关于string与int互转方面的一些问题：</strong></p>
 <p>###<strong>==将int型转换成string型==</strong></p>
 <p>#####1.</p>
@@ -1766,7 +1774,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[脑洞大开：只用函数来实现四则运算]]></title>
-      <url>http://blublu.xyz/front-end/%E8%84%91%E6%B4%9E%E5%A4%A7%E5%BC%80%EF%BC%9A%E5%8F%AA%E7%94%A8%E5%87%BD%E6%95%B0%E6%9D%A5%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/</url>
+      <url>http://jihong.xyz/front-end/%E8%84%91%E6%B4%9E%E5%A4%A7%E5%BC%80%EF%BC%9A%E5%8F%AA%E7%94%A8%E5%87%BD%E6%95%B0%E6%9D%A5%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/</url>
       <content type="html"><![CDATA[<p>最近在学JavaScript,然后翻到一篇博文，里面说到：</p>
 <blockquote>
 <p>很久很久以前，有个叫阿隆佐·邱奇的帅哥，发现只需要用函数，就可以用计算机实现运算，而不需要0、1、2、3这些数字和+、-、*、/这些符号。<br>我第一反应就是…这怎么可能呢？？？</p>
@@ -1779,7 +1787,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[如何删除远程的Git分支]]></title>
-      <url>http://blublu.xyz/skills/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E7%9A%84Git%E5%88%86%E6%94%AF/</url>
+      <url>http://jihong.xyz/skills/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E7%9A%84Git%E5%88%86%E6%94%AF/</url>
       <content type="html"><![CDATA[<p>平时基本上不怎么用到删除Git的远程分支，今天突然有了这个需求，一时间竟无法下手。Google了一下关于Git删除远程分支的用法。</p>
 <p>可以用这个非常无厘头的语法来删除它：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push  [远程名] :[分支名]</div></pre></td></tr></table></figure>
@@ -1794,7 +1802,7 @@ Java不支持指针出于以下两个原因：
     
     <entry>
       <title><![CDATA[Git的一些常用命令集合]]></title>
-      <url>http://blublu.xyz/skills/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</url>
+      <url>http://jihong.xyz/skills/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</url>
       <content type="html"><![CDATA[<p>== 查看、添加、提交、删除、找回，重置修改文件 ==</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">git help &lt;command&gt; # 显示command的help</div><div class="line">git show # 默认显示最新版本提交的内容 </div><div class="line">git show $id #显示指定版本的提交内容</div><div class="line">git co -- &lt;file&gt; # 抛弃工作区修改</div><div class="line">git co . # 抛弃工作区修改</div><div class="line">git add &lt;file&gt; # 将工作文件修改提交到本地暂存区</div><div class="line">git add . # 将所有修改过的工作文件提交暂存区</div><div class="line">git rm &lt;file&gt; # 从版本库中删除文件</div><div class="line">git rm &lt;file&gt; --cached # 从版本库中删除文件，但不删除文件</div><div class="line">git reset &lt;file&gt; # 从暂存区恢复到工作文件</div><div class="line">git reset -- . # 从暂存区恢复到工作文件</div><div class="line">git reset --hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</div><div class="line">git ci --amend # 修改最后一次提交记录</div><div class="line">git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</div><div class="line">git revert HEAD # 恢复最后一次提交的状态</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -1804,6 +1812,8 @@ Java不支持指针出于以下两个原因：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log git log &lt;file&gt; # 查看该文件每次提交记录</div><div class="line">git log -p &lt;file&gt; # 查看每次详细修改内容的diff</div><div class="line">git log -p -2 # 查看最近两次详细修改内容的diff</div><div class="line">git log --stat #查看提交统计信息</div></pre></td></tr></table></figure>
 <blockquote>
 <p>tig</p>
+</blockquote>
+<blockquote>
 <p>Mac上可以使用tig代替diff和log，brew install tig</p>
 </blockquote>
 <h1 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h1><p>== 查看、切换、创建和删除分支 ==</p>
@@ -1819,18 +1829,18 @@ Java不支持指针出于以下两个原因：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git remote -v # 查看远程服务器地址和仓库名称</div><div class="line">git remote show origin # 查看远程服务器仓库状态</div><div class="line">git remote add git@github:sample/sample.git 添加远程仓库地址</div><div class="line">git remote set-url origin git@github:sample/sample.git# 设置远程仓库地址(用于修改远程仓库地址) </div><div class="line">git remote rm &lt;repository&gt; # 删除远程仓库</div></pre></td></tr></table></figure>
 <p>== 创建远程仓库 ==</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git clone --bare sample sample.git # 用带版本的项目创建纯版本仓库</div><div class="line">scp -r my_project.git git@ git.coding.net:~ # 将纯仓库上传到服务器上</div><div class="line">mkdir sample.git &amp;&amp; cd sample.git &amp;&amp; git --bare init # 在服务器创建纯仓库</div><div class="line">git remote add origin git@github:sample/sample.git # 设置远程仓库地址  </div><div class="line">git push -u origin master # 客户端首次提交   </div><div class="line">git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track    </div><div class="line">git remote set-head origin master # 设置远程仓库的HEAD指向master分支也可以命令设置跟踪远程库和本地库</div><div class="line">git branch --set-upstream master origin/master</div><div class="line">git branch --set-upstream develop origin/develop</div></pre></td></tr></table></figure>
-<p>##最后！最后放一张最常用的命令图<br><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/8/3c/0ab3df9796aa66672ead4d5f93d83.png" alt=""></p>
+<h2 id="一张最常用的-Git-命令图"><a href="#一张最常用的-Git-命令图" class="headerlink" title="一张最常用的 Git 命令图"></a>一张最常用的 Git 命令图</h2><p><img src="http://7xpajj.com1.z0.glb.clouddn.com/image/8/3c/0ab3df9796aa66672ead4d5f93d83.png" alt=""></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[计算机相关书籍]]></title>
-      <url>http://blublu.xyz/programer/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D/</url>
-      <content type="html"><![CDATA[<p>在<a href="https://github.com/EZLippi/practical-programming-books" target="_blank" rel="external">github</a>上发现一个比较好的项目，收录比较实用的计算机相关技术书籍，特别感谢EZLippi以及为此项目作出贡献的人。特此转发其内容过来分享给每一个需要的人。 </p>
+      <url>http://jihong.xyz/programer/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D/</url>
+      <content type="html"><![CDATA[<p>在<a href="https://github.com/EZLippi/practical-programming-books" target="_blank" rel="noopener">github</a>上发现一个比较好的项目，收录比较实用的计算机相关技术书籍，特别感谢EZLippi以及为此项目作出贡献的人。特此转发其内容过来分享给每一个需要的人。 </p>
 <hr>
 <ul>
-<li><a href="http://coolshell.info/blog/2014/07/qualified-programmer-should-read-what-books.html" target="_blank" rel="external">程序员必读书籍</a></li>
-<li><a href="http://www.freeprogrammingbook.com/" target="_blank" rel="external">免费下载编程类电子书的网站</a></li>
+<li><a href="http://coolshell.info/blog/2014/07/qualified-programmer-should-read-what-books.html" target="_blank" rel="noopener">程序员必读书籍</a></li>
+<li><a href="http://www.freeprogrammingbook.com/" target="_blank" rel="noopener">免费下载编程类电子书的网站</a></li>
 </ul>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><p><a href="#语言相关类">语言相关类</a></p>
@@ -1882,466 +1892,466 @@ Java不支持指针出于以下两个原因：
 </ul>
 <h2 id="语言无关类"><a href="#语言无关类" class="headerlink" title="语言无关类"></a>语言无关类</h2><p>###操作系统</p>
 <ul>
-<li><a href="http://i.linuxtoy.org/docs/guide/index.html" target="_blank" rel="external">开源世界旅行手册</a></li>
-<li><a href="http://linux.vbird.org/" target="_blank" rel="external">鸟哥的Linux私房菜</a></li>
-<li><a href="http://sourceforge.net/apps/trac/elpi/wiki/ALP" target="_blank" rel="external">Linux 系统高级编程</a></li>
-<li><a href="http://billie66.github.io/TLCL/index.html" target="_blank" rel="external">The Linux Command Line</a> (中英文版)</li>
-<li><a href="http://oss.org.cn/kernel-book/ldd3/index.html" target="_blank" rel="external">Linux 设备驱动</a> (第三版)</li>
-<li><a href="http://www.kerneltravel.net/kernel-book/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Linux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81.html" target="_blank" rel="external">深入分析Linux内核源码</a></li>
-<li><a href="http://cb.vu/unixtoolbox_zh_CN.xhtml" target="_blank" rel="external">UNIX TOOLBOX</a></li>
-<li><a href="https://github.com/widuu/chinese_docker" target="_blank" rel="external">Docker中文指南</a></li>
-<li><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="external">Docker —— 从入门到实践</a></li>
-<li><a href="http://yuedu.baidu.com/ebook/d817967416fc700abb68fca1" target="_blank" rel="external">Docker入门实战</a></li>
-<li><a href="http://freeradius.akagi201.org" target="_blank" rel="external">FreeRADIUS新手入门</a></li>
-<li><a href="http://aaaaaashu.gitbooks.io/mac-dev-setup/content/" target="_blank" rel="external">Mac 开发配置手册</a></li>
-<li><a href="https://www.freebsd.org/doc/zh_CN/books/handbook/index.html" target="_blank" rel="external">FreeBSD 使用手册</a></li>
-<li><a href="http://billie66.github.io/TLCL/book/" target="_blank" rel="external">Linux 命令行(中文版)</a></li>
-<li><a href="http://works.jinbuguo.com/lfs/lfs62/index.html" target="_blank" rel="external">Linux 构建指南</a></li>
-<li><a href="https://github.com/me115/linuxtools_rst" target="_blank" rel="external">Linux工具快速教程</a></li>
-<li><a href="https://github.com/tobegit3hub/understand_linux_process" target="_blank" rel="external">理解Linux进程</a></li>
-<li><a href="https://github.com/ryanzz/LFS-systemd-zh_CN" target="_blank" rel="external">Linux From Scratch systemd 中文翻译</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/30-minutes-to-learn-regex.md" target="_blank" rel="external">55分钟学会正则表达式</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/use-linux.md" target="_blank" rel="external">每个Linux用户都应该知道的命令行技巧</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/memory.md" target="_blank" rel="external">每个程序员都应该了解的内存知识</a> </li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/cpu-cache.md" target="_blank" rel="external">每个程序员都应该了解的CPU缓存知识</a> </li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/virtual-memory.md" target="_blank" rel="external">每个程序员都应该了解的虚拟内存知识</a> </li>
-<li><a href="http://billie66.gitbooks.io/tlcl-cn/content/" target="_blank" rel="external">shell脚本教程</a></li>
-<li><a href="http://www.commandlinefu.com/commands/matching/ls/bHM=/sort-by-votes" target="_blank" rel="external">查找命令行的网站</a></li>
-<li><a href="http://www.rubular.com/" target="_blank" rel="external">正则表达式在线测试</a></li>
+<li><a href="http://i.linuxtoy.org/docs/guide/index.html" target="_blank" rel="noopener">开源世界旅行手册</a></li>
+<li><a href="http://linux.vbird.org/" target="_blank" rel="noopener">鸟哥的Linux私房菜</a></li>
+<li><a href="http://sourceforge.net/apps/trac/elpi/wiki/ALP" target="_blank" rel="noopener">Linux 系统高级编程</a></li>
+<li><a href="http://billie66.github.io/TLCL/index.html" target="_blank" rel="noopener">The Linux Command Line</a> (中英文版)</li>
+<li><a href="http://oss.org.cn/kernel-book/ldd3/index.html" target="_blank" rel="noopener">Linux 设备驱动</a> (第三版)</li>
+<li><a href="http://www.kerneltravel.net/kernel-book/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Linux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81.html" target="_blank" rel="noopener">深入分析Linux内核源码</a></li>
+<li><a href="http://cb.vu/unixtoolbox_zh_CN.xhtml" target="_blank" rel="noopener">UNIX TOOLBOX</a></li>
+<li><a href="https://github.com/widuu/chinese_docker" target="_blank" rel="noopener">Docker中文指南</a></li>
+<li><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">Docker —— 从入门到实践</a></li>
+<li><a href="http://yuedu.baidu.com/ebook/d817967416fc700abb68fca1" target="_blank" rel="noopener">Docker入门实战</a></li>
+<li><a href="http://freeradius.akagi201.org" target="_blank" rel="noopener">FreeRADIUS新手入门</a></li>
+<li><a href="http://aaaaaashu.gitbooks.io/mac-dev-setup/content/" target="_blank" rel="noopener">Mac 开发配置手册</a></li>
+<li><a href="https://www.freebsd.org/doc/zh_CN/books/handbook/index.html" target="_blank" rel="noopener">FreeBSD 使用手册</a></li>
+<li><a href="http://billie66.github.io/TLCL/book/" target="_blank" rel="noopener">Linux 命令行(中文版)</a></li>
+<li><a href="http://works.jinbuguo.com/lfs/lfs62/index.html" target="_blank" rel="noopener">Linux 构建指南</a></li>
+<li><a href="https://github.com/me115/linuxtools_rst" target="_blank" rel="noopener">Linux工具快速教程</a></li>
+<li><a href="https://github.com/tobegit3hub/understand_linux_process" target="_blank" rel="noopener">理解Linux进程</a></li>
+<li><a href="https://github.com/ryanzz/LFS-systemd-zh_CN" target="_blank" rel="noopener">Linux From Scratch systemd 中文翻译</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/30-minutes-to-learn-regex.md" target="_blank" rel="noopener">55分钟学会正则表达式</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/use-linux.md" target="_blank" rel="noopener">每个Linux用户都应该知道的命令行技巧</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/memory.md" target="_blank" rel="noopener">每个程序员都应该了解的内存知识</a> </li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/cpu-cache.md" target="_blank" rel="noopener">每个程序员都应该了解的CPU缓存知识</a> </li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/virtual-memory.md" target="_blank" rel="noopener">每个程序员都应该了解的虚拟内存知识</a> </li>
+<li><a href="http://billie66.gitbooks.io/tlcl-cn/content/" target="_blank" rel="noopener">shell脚本教程</a></li>
+<li><a href="http://www.commandlinefu.com/commands/matching/ls/bHM=/sort-by-votes" target="_blank" rel="noopener">查找命令行的网站</a></li>
+<li><a href="http://www.rubular.com/" target="_blank" rel="noopener">正则表达式在线测试</a></li>
 </ul>
 <hr>
 <h3 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h3><ul>
-<li><a href="http://tengine.taobao.org/book/index.html" target="_blank" rel="external">Nginx开发从入门到精通</a> (淘宝团队出品)</li>
-<li><a href="http://www.ttlsa.com/nginx/nginx-stu-pdf/" target="_blank" rel="external">Nginx教程从入门到精通</a>(PDF版本，运维生存时间出品)</li>
-<li><a href="http://works.jinbuguo.com/apache/menu22/index.html" target="_blank" rel="external">Apache 中文手册</a></li>
-<li><a href="http://looly.gitbooks.io/elasticsearch-the-definitive-guide-cn/" target="_blank" rel="external">Elasticsearch权威指南</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/how-stackoverflow-works.md" target="_blank" rel="external">25 台服务器是怎样支撑 StackOverflow 的？</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/picture-server.md" target="_blank" rel="external">图片服务架构演进（孔凡勇）</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/logging.md" target="_blank" rel="external">最佳日志实践（王健）</a></li>
+<li><a href="http://tengine.taobao.org/book/index.html" target="_blank" rel="noopener">Nginx开发从入门到精通</a> (淘宝团队出品)</li>
+<li><a href="http://www.ttlsa.com/nginx/nginx-stu-pdf/" target="_blank" rel="noopener">Nginx教程从入门到精通</a>(PDF版本，运维生存时间出品)</li>
+<li><a href="http://works.jinbuguo.com/apache/menu22/index.html" target="_blank" rel="noopener">Apache 中文手册</a></li>
+<li><a href="http://looly.gitbooks.io/elasticsearch-the-definitive-guide-cn/" target="_blank" rel="noopener">Elasticsearch权威指南</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/how-stackoverflow-works.md" target="_blank" rel="noopener">25 台服务器是怎样支撑 StackOverflow 的？</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/picture-server.md" target="_blank" rel="noopener">图片服务架构演进（孔凡勇）</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/logging.md" target="_blank" rel="noopener">最佳日志实践（王健）</a></li>
 </ul>
 <hr>
 <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ul>
-<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a> </li>
-<li><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git简易指南</a></li>
-<li><a href="http://backlogtool.com/git-guide/cn/" target="_blank" rel="external">猴子都能懂的GIT入门</a></li>
-<li><a href="http://gitref.justjavac.com" target="_blank" rel="external">Git 参考手册</a></li>
-<li><a href="http://git-scm.com/book/zh" target="_blank" rel="external">Pro Git</a></li>
-<li><a href="https://www.gitbook.com/book/0532/progit/details" target="_blank" rel="external">Pro Git 中文版</a> (整理在gitbook上)</li>
-<li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/zh_cn/" target="_blank" rel="external">Git Magic</a></li>
-<li><a href="http://www.worldhello.net/gotgithub/index.html" target="_blank" rel="external">GotGitHub</a></li>
-<li><a href="http://gitbook.liuhui998.com/index.html" target="_blank" rel="external">Git Community Book 中文版</a></li>
-<li><a href="http://mercurial.selenic.com/wiki/ChineseTutorial" target="_blank" rel="external">Mercurial 使用教程</a></li>
-<li><a href="http://bucunzai.net/hginit/" target="_blank" rel="external">HgInit (中文版)</a></li>
-<li><a href="http://igit.linuxtoy.org/" target="_blank" rel="external">沉浸式学 Git</a></li>
-<li><a href="https://github.com/flyhigher139/Git-Cheat-Sheet" target="_blank" rel="external">Git-Cheat-Sheet</a> （感谢 @flyhigher139 翻译了中文版）</li>
-<li><a href="http://snowdream86.gitbooks.io/github-cheat-sheet/content/zh/index.html" target="_blank" rel="external">GitHub秘籍</a></li>
-<li><a href="https://github.com/waylau/github-help" target="_blank" rel="external">Github帮助文档</a></li>
-<li><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a></li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程</a> </li>
+<li><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="noopener">git简易指南</a></li>
+<li><a href="http://backlogtool.com/git-guide/cn/" target="_blank" rel="noopener">猴子都能懂的GIT入门</a></li>
+<li><a href="http://gitref.justjavac.com" target="_blank" rel="noopener">Git 参考手册</a></li>
+<li><a href="http://git-scm.com/book/zh" target="_blank" rel="noopener">Pro Git</a></li>
+<li><a href="https://www.gitbook.com/book/0532/progit/details" target="_blank" rel="noopener">Pro Git 中文版</a> (整理在gitbook上)</li>
+<li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/zh_cn/" target="_blank" rel="noopener">Git Magic</a></li>
+<li><a href="http://www.worldhello.net/gotgithub/index.html" target="_blank" rel="noopener">GotGitHub</a></li>
+<li><a href="http://gitbook.liuhui998.com/index.html" target="_blank" rel="noopener">Git Community Book 中文版</a></li>
+<li><a href="http://mercurial.selenic.com/wiki/ChineseTutorial" target="_blank" rel="noopener">Mercurial 使用教程</a></li>
+<li><a href="http://bucunzai.net/hginit/" target="_blank" rel="noopener">HgInit (中文版)</a></li>
+<li><a href="http://igit.linuxtoy.org/" target="_blank" rel="noopener">沉浸式学 Git</a></li>
+<li><a href="https://github.com/flyhigher139/Git-Cheat-Sheet" target="_blank" rel="noopener">Git-Cheat-Sheet</a> （感谢 @flyhigher139 翻译了中文版）</li>
+<li><a href="http://snowdream86.gitbooks.io/github-cheat-sheet/content/zh/index.html" target="_blank" rel="noopener">GitHub秘籍</a></li>
+<li><a href="https://github.com/waylau/github-help" target="_blank" rel="noopener">Github帮助文档</a></li>
+<li><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="noopener">git-flow 备忘清单</a></li>
 </ul>
 <hr>
 <h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><ul>
-<li><a href="http://exvim.github.io/docs-zh/intro/" target="_blank" rel="external">exvim–vim 改良成IDE项目</a></li>
-<li><a href="http://learnvimscriptthehardway.onefloweroneworld.com/" target="_blank" rel="external">笨方法学Vimscript 中译本</a></li>
-<li><a href="https://github.com/vimcn/vimcdoc" target="_blank" rel="external">Vim中文文档</a></li>
-<li><a href="https://github.com/yangyangwithgnu/use_vim_as_ide" target="_blank" rel="external">所需即所获：像 IDE 一样使用 vim</a></li>
-<li><a href="https://stackedit.io/#" target="_blank" rel="external">在线MarkDown编辑</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/vim.md" target="_blank" rel="external">简明VIM练级攻略</a></li>
+<li><a href="http://exvim.github.io/docs-zh/intro/" target="_blank" rel="noopener">exvim–vim 改良成IDE项目</a></li>
+<li><a href="http://learnvimscriptthehardway.onefloweroneworld.com/" target="_blank" rel="noopener">笨方法学Vimscript 中译本</a></li>
+<li><a href="https://github.com/vimcn/vimcdoc" target="_blank" rel="noopener">Vim中文文档</a></li>
+<li><a href="https://github.com/yangyangwithgnu/use_vim_as_ide" target="_blank" rel="noopener">所需即所获：像 IDE 一样使用 vim</a></li>
+<li><a href="https://stackedit.io/#" target="_blank" rel="noopener">在线MarkDown编辑</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/vim.md" target="_blank" rel="noopener">简明VIM练级攻略</a></li>
 </ul>
 <hr>
 <h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><ul>
-<li><a href="http://www.php100.com/manual/MySQL/" target="_blank" rel="external">MySQL中文手册</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/sql.md" target="_blank" rel="external">十步完全理解SQL</a></li>
-<li><a href="http://www.cnblogs.com/leoo2sk/archive/2011/07/10/mysql-index.html" target="_blank" rel="external">MySQL索引背后的数据结构及算法原理</a></li>
-<li><a href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html" target="_blank" rel="external">21分钟MySQL入门教程</a></li>
+<li><a href="http://www.php100.com/manual/MySQL/" target="_blank" rel="noopener">MySQL中文手册</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/sql.md" target="_blank" rel="noopener">十步完全理解SQL</a></li>
+<li><a href="http://www.cnblogs.com/leoo2sk/archive/2011/07/10/mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></li>
+<li><a href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html" target="_blank" rel="noopener">21分钟MySQL入门教程</a></li>
 </ul>
 <hr>
 <h3 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h3><ul>
-<li><a href="http://www.yankay.com/wp-content/NoSql_Database_Note.html" target="_blank" rel="external">NoSQL数据库笔谈</a> (<a href="http://yankaycom-wordpress.stor.sinaapp.com/uploads/2012/12/NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%B0%88v2.pdf" target="_blank" rel="external">PDF</a>)</li>
-<li><a href="http://redisbook.com/" target="_blank" rel="external">Redis 设计与实现</a></li>
-<li><a href="http://www.redisdoc.com/" target="_blank" rel="external">Redis 命令参考</a></li>
-<li><a href="https://github.com/huangz1990/redis-3.0-annotated" target="_blank" rel="external">带有详细注释的 Redis 3.0 代码</a></li>
-<li><a href="https://github.com/huangz1990/annotated_redis_source" target="_blank" rel="external">带有详细注释的 Redis 2.6 代码</a></li>
-<li><a href="https://github.com/justinyhuang/the-little-mongodb-book-cn/blob/master/mongodb.md" target="_blank" rel="external">The Little MongoDB Book</a></li>
-<li><a href="https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md" target="_blank" rel="external">The Little Redis Book</a></li>
-<li><a href="http://docs.neo4j.org.cn/" target="_blank" rel="external">Neo4j 简体中文手册 v1.8</a></li>
-<li><a href="http://neo4j.tw/" target="_blank" rel="external">Neo4j .rb 中文資源</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/nosql.md" target="_blank" rel="external">8种Nosql数据库系统对比</a></li>
+<li><a href="http://www.yankay.com/wp-content/NoSql_Database_Note.html" target="_blank" rel="noopener">NoSQL数据库笔谈</a> (<a href="http://yankaycom-wordpress.stor.sinaapp.com/uploads/2012/12/NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%B0%88v2.pdf" target="_blank" rel="noopener">PDF</a>)</li>
+<li><a href="http://redisbook.com/" target="_blank" rel="noopener">Redis 设计与实现</a></li>
+<li><a href="http://www.redisdoc.com/" target="_blank" rel="noopener">Redis 命令参考</a></li>
+<li><a href="https://github.com/huangz1990/redis-3.0-annotated" target="_blank" rel="noopener">带有详细注释的 Redis 3.0 代码</a></li>
+<li><a href="https://github.com/huangz1990/annotated_redis_source" target="_blank" rel="noopener">带有详细注释的 Redis 2.6 代码</a></li>
+<li><a href="https://github.com/justinyhuang/the-little-mongodb-book-cn/blob/master/mongodb.md" target="_blank" rel="noopener">The Little MongoDB Book</a></li>
+<li><a href="https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md" target="_blank" rel="noopener">The Little Redis Book</a></li>
+<li><a href="http://docs.neo4j.org.cn/" target="_blank" rel="noopener">Neo4j 简体中文手册 v1.8</a></li>
+<li><a href="http://neo4j.tw/" target="_blank" rel="noopener">Neo4j .rb 中文資源</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/nosql.md" target="_blank" rel="noopener">8种Nosql数据库系统对比</a></li>
 </ul>
 <hr>
 <h3 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h3><ul>
-<li><a href="http://lippiouyang.gitbooks.io/gradle-in-action-cn/content/" target="_blank" rel="external">Gradle实战</a></li>
-<li><a href="http://article.yeeyan.org/view/2251/94882" target="_blank" rel="external">持续集成（第二版）</a> (译言网)</li>
-<li><a href="http://www.ibm.com/developerworks/cn/java/j-ap/" target="_blank" rel="external">让开发自动化系列专栏</a></li>
-<li><a href="http://www.ibm.com/developerworks/cn/java/j-cq/" target="_blank" rel="external">追求代码质量</a></li>
-<li><a href="https://github.com/fool2fish/selenium-doc" target="_blank" rel="external">selenium 中文文档</a></li>
-<li><a href="http://local.joelonsoftware.com/wiki/Chinese_\(Simplified\" target="_blank" rel="external">Joel谈软件</a>)</li>
-<li><a href="http://local.joelonsoftware.com/wiki/%E9%A6%96%E9%A0%81" target="_blank" rel="external">約耳談軟體(Joel on Software)</a></li>
-<li><a href="https://github.com/waylau/Gradle-2-User-Guide" target="_blank" rel="external">Gradle 2 用户指南</a></li>
-<li><a href="https://github.com/ecomfe/spec" target="_blank" rel="external">编码规范</a></li>
-<li><a href="http://www.ituring.com.cn/book/1143" target="_blank" rel="external">开源软件架构</a></li>
+<li><a href="http://lippiouyang.gitbooks.io/gradle-in-action-cn/content/" target="_blank" rel="noopener">Gradle实战</a></li>
+<li><a href="http://article.yeeyan.org/view/2251/94882" target="_blank" rel="noopener">持续集成（第二版）</a> (译言网)</li>
+<li><a href="http://www.ibm.com/developerworks/cn/java/j-ap/" target="_blank" rel="noopener">让开发自动化系列专栏</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/java/j-cq/" target="_blank" rel="noopener">追求代码质量</a></li>
+<li><a href="https://github.com/fool2fish/selenium-doc" target="_blank" rel="noopener">selenium 中文文档</a></li>
+<li><a href="http://local.joelonsoftware.com/wiki/Chinese_\(Simplified\" target="_blank" rel="noopener">Joel谈软件</a>)</li>
+<li><a href="http://local.joelonsoftware.com/wiki/%E9%A6%96%E9%A0%81" target="_blank" rel="noopener">約耳談軟體(Joel on Software)</a></li>
+<li><a href="https://github.com/waylau/Gradle-2-User-Guide" target="_blank" rel="noopener">Gradle 2 用户指南</a></li>
+<li><a href="https://github.com/ecomfe/spec" target="_blank" rel="noopener">编码规范</a></li>
+<li><a href="http://www.ituring.com.cn/book/1143" target="_blank" rel="noopener">开源软件架构</a></li>
 </ul>
 <h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
-<li><a href="https://github.com/me115/design_patterns" target="_blank" rel="external">图说设计模式</a></li>
-<li><a href="http://blog.csdn.net/lovelion/article/details/17517213" target="_blank" rel="external">史上最全设计模式导学目录</a></li>
+<li><a href="https://github.com/me115/design_patterns" target="_blank" rel="noopener">图说设计模式</a></li>
+<li><a href="http://blog.csdn.net/lovelion/article/details/17517213" target="_blank" rel="noopener">史上最全设计模式导学目录</a></li>
 </ul>
 <hr>
 <h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><ul>
-<li><a href="http://coolshell.info/blog/2015/04/web-transmission-basis.html" target="_blank" rel="external">网络传输基础</a></li>
-<li><a href="http://www.20thingsilearned.com/zh-CN/home" target="_blank" rel="external">关于浏览器和网络的 20 项须知</a></li>
-<li><a href="http://knowledge.ecomfe.com/" target="_blank" rel="external">前端知识体系</a></li>
-<li><a href="http://jinlong.github.io/2013/08/29/devtoolsecrets/" target="_blank" rel="external">浏览器开发工具的秘密</a></li>
-<li><a href="https://github.com/CN-Chrome-DevTools/CN-Chrome-DevTools" target="_blank" rel="external">Chrome 开发者工具中文手册</a></li>
-<li><a href="http://open.chrome.360.cn/extension_dev/overview.html" target="_blank" rel="external">Chrome扩展开发文档</a></li>
-<li><a href="http://www.gruntjs.org/" target="_blank" rel="external">Grunt中文文档</a></li>
-<li><a href="http://yeomanjs.org/" target="_blank" rel="external">Yeoman中文文档</a></li>
-<li><a href="https://github.com/AlloyTeam/Mars" target="_blank" rel="external">移动Web前端知识库</a></li>
-<li><a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">正则表达式30分钟入门教程</a></li>
-<li><a href="https://github.com/fouber/blog/issues/2" target="_blank" rel="external">前端开发体系建设日记</a></li>
-<li><a href="https://github.com/hoosin/mobile-web-favorites" target="_blank" rel="external">移动前端开发收藏夹</a></li>
-<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="external">JSON风格指南</a></li>
-<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="external">HTTP 接口设计指北</a></li>
-<li><a href="https://github.com/hacke2/hacke2.github.io/issues/1" target="_blank" rel="external">前端资源分享（一）</a></li>
-<li><a href="https://github.com/hacke2/hacke2.github.io/issues/3" target="_blank" rel="external">前端资源分享（二）</a></li>
-<li><a href="http://coderlmn.github.io/code-standards/" target="_blank" rel="external">前端代码规范 及 最佳实践</a></li>
-<li><a href="http://www.flygon.net/archives/427" target="_blank" rel="external">w3school教程整理</a></li>
-<li><a href="http://man.lupaworld.com/content/network/wireshark/index.html" target="_blank" rel="external">Wireshark用户手册</a></li>
-<li><a href="http://happypeter.github.io/tealeaf-http/" target="_blank" rel="external">HTTP 下午茶</a></li>
-<li><a href="http://yuedu.baidu.com/ebook/478d1a62376baf1ffc4fad99?pn=1" target="_blank" rel="external">HTTP/2.0 中文翻译</a></li>
+<li><a href="http://coolshell.info/blog/2015/04/web-transmission-basis.html" target="_blank" rel="noopener">网络传输基础</a></li>
+<li><a href="http://www.20thingsilearned.com/zh-CN/home" target="_blank" rel="noopener">关于浏览器和网络的 20 项须知</a></li>
+<li><a href="http://knowledge.ecomfe.com/" target="_blank" rel="noopener">前端知识体系</a></li>
+<li><a href="http://jinlong.github.io/2013/08/29/devtoolsecrets/" target="_blank" rel="noopener">浏览器开发工具的秘密</a></li>
+<li><a href="https://github.com/CN-Chrome-DevTools/CN-Chrome-DevTools" target="_blank" rel="noopener">Chrome 开发者工具中文手册</a></li>
+<li><a href="http://open.chrome.360.cn/extension_dev/overview.html" target="_blank" rel="noopener">Chrome扩展开发文档</a></li>
+<li><a href="http://www.gruntjs.org/" target="_blank" rel="noopener">Grunt中文文档</a></li>
+<li><a href="http://yeomanjs.org/" target="_blank" rel="noopener">Yeoman中文文档</a></li>
+<li><a href="https://github.com/AlloyTeam/Mars" target="_blank" rel="noopener">移动Web前端知识库</a></li>
+<li><a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a></li>
+<li><a href="https://github.com/fouber/blog/issues/2" target="_blank" rel="noopener">前端开发体系建设日记</a></li>
+<li><a href="https://github.com/hoosin/mobile-web-favorites" target="_blank" rel="noopener">移动前端开发收藏夹</a></li>
+<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="noopener">JSON风格指南</a></li>
+<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="noopener">HTTP 接口设计指北</a></li>
+<li><a href="https://github.com/hacke2/hacke2.github.io/issues/1" target="_blank" rel="noopener">前端资源分享（一）</a></li>
+<li><a href="https://github.com/hacke2/hacke2.github.io/issues/3" target="_blank" rel="noopener">前端资源分享（二）</a></li>
+<li><a href="http://coderlmn.github.io/code-standards/" target="_blank" rel="noopener">前端代码规范 及 最佳实践</a></li>
+<li><a href="http://www.flygon.net/archives/427" target="_blank" rel="noopener">w3school教程整理</a></li>
+<li><a href="http://man.lupaworld.com/content/network/wireshark/index.html" target="_blank" rel="noopener">Wireshark用户手册</a></li>
+<li><a href="http://happypeter.github.io/tealeaf-http/" target="_blank" rel="noopener">HTTP 下午茶</a></li>
+<li><a href="http://yuedu.baidu.com/ebook/478d1a62376baf1ffc4fad99?pn=1" target="_blank" rel="noopener">HTTP/2.0 中文翻译</a></li>
 </ul>
 <hr>
 <h3 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h3><ul>
-<li><a href="https://github.com/Flowerowl/Big-Data-Resources" target="_blank" rel="external">大数据/数据挖掘/推荐系统/机器学习相关资源</a></li>
-<li><a href="https://github.com/jizhang/guidetodatamining" target="_blank" rel="external">面向程序员的数据挖掘指南</a></li>
-<li><a href="https://code.csdn.net/CODE_Translation/spark_matei_phd" target="_blank" rel="external">大型集群上的快速和通用数据处理架构</a></li>
-<li><a href="https://github.com/linyiqun/DataMiningAlgorithm" target="_blank" rel="external">数据挖掘中经典的算法实现和详细的注释</a></li>
+<li><a href="https://github.com/Flowerowl/Big-Data-Resources" target="_blank" rel="noopener">大数据/数据挖掘/推荐系统/机器学习相关资源</a></li>
+<li><a href="https://github.com/jizhang/guidetodatamining" target="_blank" rel="noopener">面向程序员的数据挖掘指南</a></li>
+<li><a href="https://code.csdn.net/CODE_Translation/spark_matei_phd" target="_blank" rel="noopener">大型集群上的快速和通用数据处理架构</a></li>
+<li><a href="https://github.com/linyiqun/DataMiningAlgorithm" target="_blank" rel="noopener">数据挖掘中经典的算法实现和详细的注释</a></li>
 </ul>
 <hr>
 <h2 id="编程艺术"><a href="#编程艺术" class="headerlink" title="编程艺术"></a>编程艺术</h2><ul>
-<li><a href="https://github.com/julycoding/The-Art-Of-Programming-by-July" target="_blank" rel="external">程序员编程艺术</a></li>
-<li><a href="http://www.oschina.net/translate/what-every-programmer-should-know-about-memory-part1?print" target="_blank" rel="external">每个程序员都应该了解的内存知识(译)</a>【第一部分】</li>
-<li><a href="http://read.douban.com/ebook/4972883/" target="_blank" rel="external">取悦的工序：如何理解游戏</a> (豆瓣阅读，免费书籍)</li>
-<li><a href="http://xiaobeicn.gitbooks.io/programming-skills-summary/" target="_blank" rel="external">编程技巧总汇</a></li>
+<li><a href="https://github.com/julycoding/The-Art-Of-Programming-by-July" target="_blank" rel="noopener">程序员编程艺术</a></li>
+<li><a href="http://www.oschina.net/translate/what-every-programmer-should-know-about-memory-part1?print" target="_blank" rel="noopener">每个程序员都应该了解的内存知识(译)</a>【第一部分】</li>
+<li><a href="http://read.douban.com/ebook/4972883/" target="_blank" rel="noopener">取悦的工序：如何理解游戏</a> (豆瓣阅读，免费书籍)</li>
+<li><a href="http://xiaobeicn.gitbooks.io/programming-skills-summary/" target="_blank" rel="noopener">编程技巧总汇</a></li>
 </ul>
 <hr>
 <h2 id="语言相关类"><a href="#语言相关类" class="headerlink" title="语言相关类"></a>语言相关类</h2><h3 id="AWK"><a href="#AWK" class="headerlink" title="AWK"></a>AWK</h3><ul>
-<li><a href="http://awk.readthedocs.org/en/latest/" target="_blank" rel="external">awk程序设计语言</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/awk.md" target="_blank" rel="external">awk教程</a></li>
+<li><a href="http://awk.readthedocs.org/en/latest/" target="_blank" rel="noopener">awk程序设计语言</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/awk.md" target="_blank" rel="noopener">awk教程</a></li>
 </ul>
 <hr>
 <h3 id="SED"><a href="#SED" class="headerlink" title="SED"></a>SED</h3><ul>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/sed.md" target="_blank" rel="external">sed教程</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/sed.md" target="_blank" rel="noopener">sed教程</a></li>
 </ul>
 <hr>
 <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul>
-<li><a href="https://github.com/waylau/apache-shiro-1.2.x-reference" target="_blank" rel="external">Apache Shiro 用户指南</a></li>
-<li><a href="https://github.com/waylau/Jersey-2.x-User-Guide" target="_blank" rel="external">Jersey 2.x 用户指南</a></li>
-<li><a href="https://github.com/waylau/spring-framework-4-reference" target="_blank" rel="external">Spring Framework 4.x参考文档</a></li>
-<li><a href="https://github.com/qibaoguang/Spring-Boot-Reference-Guide" target="_blank" rel="external">Spring Boot参考指南</a> (翻译中)</li>
-<li><a href="http://mybatis.github.io/mybatis-3/zh/index.html" target="_blank" rel="external">MyBatis中文文档</a></li>
-<li><a href="https://github.com/waylau/RestDemo" target="_blank" rel="external">用jersey构建REST服务</a></li>
-<li><a href="https://github.com/waylau/activiti-5.x-user-guide" target="_blank" rel="external">Activiti 5.x 用户指南</a></li>
-<li><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格指南</a></li>
-<li><a href="https://github.com/waylau/netty-4-user-guide" target="_blank" rel="external">Netty 4.x 用户指南</a></li>
-<li><a href="https://github.com/waylau/essential-netty-in-action" target="_blank" rel="external">Netty 实战(精髓)</a></li>
-<li><a href="https://github.com/waylau/rest-in-action" target="_blank" rel="external">REST 实战</a></li>
-<li><a href="https://github.com/waylau/java-code-conventions" target="_blank" rel="external">Java 编码规范</a></li>
-<li><a href="https://github.com/waylau/apache-mina-2.x-user-guide" target="_blank" rel="external">Apache MINA 2 用户指南</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/jvm.md" target="_blank" rel="external">JVM必备指南</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/java-string.md" target="_blank" rel="external">Java入门教程</a></li>
-<li><a href="http://javarevisited.blogspot.com/" target="_blank" rel="external">javarevisited博客</a></li>
-<li><a href="http://www.journaldev.com/" target="_blank" rel="external">journaldev教程</a></li>
+<li><a href="https://github.com/waylau/apache-shiro-1.2.x-reference" target="_blank" rel="noopener">Apache Shiro 用户指南</a></li>
+<li><a href="https://github.com/waylau/Jersey-2.x-User-Guide" target="_blank" rel="noopener">Jersey 2.x 用户指南</a></li>
+<li><a href="https://github.com/waylau/spring-framework-4-reference" target="_blank" rel="noopener">Spring Framework 4.x参考文档</a></li>
+<li><a href="https://github.com/qibaoguang/Spring-Boot-Reference-Guide" target="_blank" rel="noopener">Spring Boot参考指南</a> (翻译中)</li>
+<li><a href="http://mybatis.github.io/mybatis-3/zh/index.html" target="_blank" rel="noopener">MyBatis中文文档</a></li>
+<li><a href="https://github.com/waylau/RestDemo" target="_blank" rel="noopener">用jersey构建REST服务</a></li>
+<li><a href="https://github.com/waylau/activiti-5.x-user-guide" target="_blank" rel="noopener">Activiti 5.x 用户指南</a></li>
+<li><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="noopener">Google Java编程风格指南</a></li>
+<li><a href="https://github.com/waylau/netty-4-user-guide" target="_blank" rel="noopener">Netty 4.x 用户指南</a></li>
+<li><a href="https://github.com/waylau/essential-netty-in-action" target="_blank" rel="noopener">Netty 实战(精髓)</a></li>
+<li><a href="https://github.com/waylau/rest-in-action" target="_blank" rel="noopener">REST 实战</a></li>
+<li><a href="https://github.com/waylau/java-code-conventions" target="_blank" rel="noopener">Java 编码规范</a></li>
+<li><a href="https://github.com/waylau/apache-mina-2.x-user-guide" target="_blank" rel="noopener">Apache MINA 2 用户指南</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/jvm.md" target="_blank" rel="noopener">JVM必备指南</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/java-string.md" target="_blank" rel="noopener">Java入门教程</a></li>
+<li><a href="http://javarevisited.blogspot.com/" target="_blank" rel="noopener">javarevisited博客</a></li>
+<li><a href="http://www.journaldev.com/" target="_blank" rel="noopener">journaldev教程</a></li>
 </ul>
 <hr>
 <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ul>
-<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">开发工具下载</a></li>
-<li><a href="http://guides.codepath.com/android/Home" target="_blank" rel="external">CodePath Android教程</a></li>
-<li><a href="http://www.apkbus.com/design/index.html" target="_blank" rel="external">Android Design(中文版)</a></li>
-<li>Google Material Design 正體中文版 (<a href="http://wcc723.gitbooks.io/google_design_translate/content/style-icons.html" target="_blank" rel="external">译本一</a> <a href="https://github.com/1sters/material_design_zh" target="_blank" rel="external">译本二</a>)</li>
-<li><a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="external">Google Android官方培训课程中文版</a></li>
-<li><a href="http://stormzhang.github.io/android/2014/07/07/learn-android-from-rookie/" target="_blank" rel="external">Android学习之路</a></li>
-<li><a href="http://tools.android.com/tech-docs/new-build-system" target="_blank" rel="external">Android构建工具</a></li>
-<li><a href="https://github.com/bboyfeiyu/android-tech-frontier" target="_blank" rel="external">Android开发技术前线(android-tech-frontier)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof1.md" target="_blank" rel="external">Android内存优化(上)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof2.md" target="_blank" rel="external">Android内存优化(中)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof3.md" target="_blank" rel="external">Android内存优化(全)</a></li>
-<li><a href="http://www.codota.com/" target="_blank" rel="external">查找代码的一个网站</a></li>
-<li><a href="https://android-arsenal.com/free" target="_blank" rel="external">Android开源库汇总</a></li>
-<li><a href="http://www.codota.com/" target="_blank" rel="external">查找示例代码的网站</a></li>
-<li><a href="http://tutsplus.com/" target="_blank" rel="external">Android SDK使用教程</a></li>
-<li><a href="https://github.com/futurice/android-best-practices" target="_blank" rel="external">Android最佳实践</a></li>
-<li><a href="http://google.github.io/material-design-icons/#icons-for-android" target="_blank" rel="external">Android Material icons</a></li>
+<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="noopener">开发工具下载</a></li>
+<li><a href="http://guides.codepath.com/android/Home" target="_blank" rel="noopener">CodePath Android教程</a></li>
+<li><a href="http://www.apkbus.com/design/index.html" target="_blank" rel="noopener">Android Design(中文版)</a></li>
+<li>Google Material Design 正體中文版 (<a href="http://wcc723.gitbooks.io/google_design_translate/content/style-icons.html" target="_blank" rel="noopener">译本一</a> <a href="https://github.com/1sters/material_design_zh" target="_blank" rel="noopener">译本二</a>)</li>
+<li><a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="noopener">Google Android官方培训课程中文版</a></li>
+<li><a href="http://stormzhang.github.io/android/2014/07/07/learn-android-from-rookie/" target="_blank" rel="noopener">Android学习之路</a></li>
+<li><a href="http://tools.android.com/tech-docs/new-build-system" target="_blank" rel="noopener">Android构建工具</a></li>
+<li><a href="https://github.com/bboyfeiyu/android-tech-frontier" target="_blank" rel="noopener">Android开发技术前线(android-tech-frontier)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof1.md" target="_blank" rel="noopener">Android内存优化(上)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof2.md" target="_blank" rel="noopener">Android内存优化(中)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/android-memory-prof3.md" target="_blank" rel="noopener">Android内存优化(全)</a></li>
+<li><a href="http://www.codota.com/" target="_blank" rel="noopener">查找代码的一个网站</a></li>
+<li><a href="https://android-arsenal.com/free" target="_blank" rel="noopener">Android开源库汇总</a></li>
+<li><a href="http://www.codota.com/" target="_blank" rel="noopener">查找示例代码的网站</a></li>
+<li><a href="http://tutsplus.com/" target="_blank" rel="noopener">Android SDK使用教程</a></li>
+<li><a href="https://github.com/futurice/android-best-practices" target="_blank" rel="noopener">Android最佳实践</a></li>
+<li><a href="http://google.github.io/material-design-icons/#icons-for-android" target="_blank" rel="noopener">Android Material icons</a></li>
 </ul>
 <hr>
 <h3 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h3><ul>
-<li><a href="https://github.com/forhappy/A-Detailed-Cplusplus-Concurrency-Tutorial" target="_blank" rel="external">C++ 并发编程指南</a> (<a href="http://weibo.com/1702076100" target="_blank" rel="external">@傅海平ICT</a>)</li>
-<li><a href="http://akaedu.github.io/book/" target="_blank" rel="external">Linux C编程一站式学习</a> (宋劲杉, 北京亚嵌教育研究中心)</li>
-<li><a href="https://github.com/leeyiw/cgdb-manual-in-chinese" target="_blank" rel="external">CGDB中文手册</a></li>
-<li><a href="https://github.com/hellogcc/100-gdb-tips/blob/master/src/index.md" target="_blank" rel="external">100个gdb小技巧</a></li>
-<li><a href="https://github.com/hellogcc/100-gcc-tips/blob/master/src/index.md" target="_blank" rel="external">100个gcc小技巧</a></li>
-<li><a href="https://github.com/hellogcc/100-gdb-tips" target="_blank" rel="external">学习gdb调试技巧</a></li>
-<li><a href="https://github.com/anjuke/zguide-cn" target="_blank" rel="external">ZMQ 指南</a></li>
-<li><a href="http://www.ituring.com.cn/book/1203" target="_blank" rel="external">How to Think Like a Computer Scientist</a> (中英文版)</li>
-<li><a href="http://scc.qibebt.cas.cn/docs/linux/base/%B8%FA%CE%D2%D2%BB%C6%F0%D0%B4Makefile-%B3%C2%F0%A9.pdf" target="_blank" rel="external">跟我一起写Makefile(PDF)</a></li>
-<li><a href="http://www.yayu.org/book/gnu_make/" target="_blank" rel="external">GNU make中文手册</a></li>
-<li><a href="http://docs.huihoo.com/gnu/linux/gmake.html" target="_blank" rel="external">GNU make 指南</a></li>
-<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="external">Google C++ 风格指南</a></li>
-<li><a href="https://github.com/andycai/cprimer" target="_blank" rel="external">C/C++ Primer</a> (by @andycai)</li>
-<li><a href="http://www.nowamagic.net/librarys/books/contents/c" target="_blank" rel="external">简单易懂的C魔法</a></li>
-<li><a href="http://sewm.pku.edu.cn/src/paradise/reference/CMake%20Practice.pdf" target="_blank" rel="external">Cmake 实践</a> (PDF版)</li>
-<li><a href="http://www.sunistudio.com/cppfaq/" target="_blank" rel="external">C++ FAQ LITE(中文版)</a></li>
-<li><a href="https://github.com/Mooophy/Cpp-Primer" target="_blank" rel="external">C++ Primer 5th Answers</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c1.md" target="_blank" rel="external">C进阶指南（1)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c2.md" target="_blank" rel="external">C进阶指南（2)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c3.md" target="_blank" rel="external">C进阶指南（3)</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c-globle-variable.md" target="_blank" rel="external">C语言全局变量那些事儿</a></li>
-<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/malloc.md" target="_blank" rel="external">如何实现一个malloc</a></li>
-<li><a href="http://ideone.com/" target="_blank" rel="external">在线编程和调试的网站</a></li>
+<li><a href="https://github.com/forhappy/A-Detailed-Cplusplus-Concurrency-Tutorial" target="_blank" rel="noopener">C++ 并发编程指南</a> (<a href="http://weibo.com/1702076100" target="_blank" rel="noopener">@傅海平ICT</a>)</li>
+<li><a href="http://akaedu.github.io/book/" target="_blank" rel="noopener">Linux C编程一站式学习</a> (宋劲杉, 北京亚嵌教育研究中心)</li>
+<li><a href="https://github.com/leeyiw/cgdb-manual-in-chinese" target="_blank" rel="noopener">CGDB中文手册</a></li>
+<li><a href="https://github.com/hellogcc/100-gdb-tips/blob/master/src/index.md" target="_blank" rel="noopener">100个gdb小技巧</a></li>
+<li><a href="https://github.com/hellogcc/100-gcc-tips/blob/master/src/index.md" target="_blank" rel="noopener">100个gcc小技巧</a></li>
+<li><a href="https://github.com/hellogcc/100-gdb-tips" target="_blank" rel="noopener">学习gdb调试技巧</a></li>
+<li><a href="https://github.com/anjuke/zguide-cn" target="_blank" rel="noopener">ZMQ 指南</a></li>
+<li><a href="http://www.ituring.com.cn/book/1203" target="_blank" rel="noopener">How to Think Like a Computer Scientist</a> (中英文版)</li>
+<li><a href="http://scc.qibebt.cas.cn/docs/linux/base/%B8%FA%CE%D2%D2%BB%C6%F0%D0%B4Makefile-%B3%C2%F0%A9.pdf" target="_blank" rel="noopener">跟我一起写Makefile(PDF)</a></li>
+<li><a href="http://www.yayu.org/book/gnu_make/" target="_blank" rel="noopener">GNU make中文手册</a></li>
+<li><a href="http://docs.huihoo.com/gnu/linux/gmake.html" target="_blank" rel="noopener">GNU make 指南</a></li>
+<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="noopener">Google C++ 风格指南</a></li>
+<li><a href="https://github.com/andycai/cprimer" target="_blank" rel="noopener">C/C++ Primer</a> (by @andycai)</li>
+<li><a href="http://www.nowamagic.net/librarys/books/contents/c" target="_blank" rel="noopener">简单易懂的C魔法</a></li>
+<li><a href="http://sewm.pku.edu.cn/src/paradise/reference/CMake%20Practice.pdf" target="_blank" rel="noopener">Cmake 实践</a> (PDF版)</li>
+<li><a href="http://www.sunistudio.com/cppfaq/" target="_blank" rel="noopener">C++ FAQ LITE(中文版)</a></li>
+<li><a href="https://github.com/Mooophy/Cpp-Primer" target="_blank" rel="noopener">C++ Primer 5th Answers</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c1.md" target="_blank" rel="noopener">C进阶指南（1)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c2.md" target="_blank" rel="noopener">C进阶指南（2)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c3.md" target="_blank" rel="noopener">C进阶指南（3)</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/c-globle-variable.md" target="_blank" rel="noopener">C语言全局变量那些事儿</a></li>
+<li><a href="https://github.com/LippiOuYang/practical-computer-skills/blob/master/src/malloc.md" target="_blank" rel="noopener">如何实现一个malloc</a></li>
+<li><a href="http://ideone.com/" target="_blank" rel="noopener">在线编程和调试的网站</a></li>
 </ul>
 <hr>
 <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ul>
-<li><a href="http://zh.learnlayout.com/" target="_blank" rel="external">学习CSS布局</a></li>
-<li><a href="https://github.com/chadluo/CSS-Guidelines/blob/master/README.md" target="_blank" rel="external">通用 CSS 笔记、建议与指导</a></li>
-<li><a href="http://css.doyoe.com/" target="_blank" rel="external">CSS参考手册</a></li>
-<li><a href="http://yanxyz.github.io/emmet-docs/" target="_blank" rel="external">Emmet 文档</a></li>
-<li><a href="http://alloyteam.github.io/code-guide/" target="_blank" rel="external">前端代码规范</a> (腾讯alloyteam团队)</li>
-<li><a href="http://codeguide.bootcss.com/" target="_blank" rel="external">HTML和CSS编码规范</a></li>
-<li><a href="http://sass-guidelin.es/zh/" target="_blank" rel="external">Sass Guidelines 中文</a></li>
+<li><a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">学习CSS布局</a></li>
+<li><a href="https://github.com/chadluo/CSS-Guidelines/blob/master/README.md" target="_blank" rel="noopener">通用 CSS 笔记、建议与指导</a></li>
+<li><a href="http://css.doyoe.com/" target="_blank" rel="noopener">CSS参考手册</a></li>
+<li><a href="http://yanxyz.github.io/emmet-docs/" target="_blank" rel="noopener">Emmet 文档</a></li>
+<li><a href="http://alloyteam.github.io/code-guide/" target="_blank" rel="noopener">前端代码规范</a> (腾讯alloyteam团队)</li>
+<li><a href="http://codeguide.bootcss.com/" target="_blank" rel="noopener">HTML和CSS编码规范</a></li>
+<li><a href="http://sass-guidelin.es/zh/" target="_blank" rel="noopener">Sass Guidelines 中文</a></li>
 </ul>
 <hr>
 <h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><ul>
-<li><a href="https://github.com/Unknwon/go-fundamental-programming" target="_blank" rel="external">Go编程基础</a></li>
-<li><a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" target="_blank" rel="external">Go入门指南</a></li>
-<li><a href="http://mikespook.com/learning-go/" target="_blank" rel="external">学习Go语言</a> (<a href="http://xxiyy.qiniudn.com/%E5%AD%A6%E4%B9%A0%20Go%20%E8%AF%AD%E8%A8%80\(Golang\" target="_blank" rel="external">PDF</a>.pdf?download))</li>
-<li><a href="https://github.com/astaxie/build-web-application-with-golang" target="_blank" rel="external">Go Web 编程</a> (此书已经出版，希望开发者们去购买，支持作者的创作)</li>
-<li><a href="https://github.com/astaxie/Go-in-Action" target="_blank" rel="external">Go实战开发</a> (当我收录此项目时，作者已经写完第三章，如果读完前面章节觉得有帮助，可以给作者<a href="https://me.alipay.com/astaxie" target="_blank" rel="external">捐赠</a>，以鼓励作者的继续创作)</li>
-<li><a href="https://github.com/astaxie/NPWG_zh" target="_blank" rel="external">Network programming with Go 中文翻译版本</a></li>
-<li><a href="http://www.hellogcc.org/effective_go.html" target="_blank" rel="external">Effective Go</a></li>
+<li><a href="https://github.com/Unknwon/go-fundamental-programming" target="_blank" rel="noopener">Go编程基础</a></li>
+<li><a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Go入门指南</a></li>
+<li><a href="http://mikespook.com/learning-go/" target="_blank" rel="noopener">学习Go语言</a> (<a href="http://xxiyy.qiniudn.com/%E5%AD%A6%E4%B9%A0%20Go%20%E8%AF%AD%E8%A8%80\(Golang\" target="_blank" rel="noopener">PDF</a>.pdf?download))</li>
+<li><a href="https://github.com/astaxie/build-web-application-with-golang" target="_blank" rel="noopener">Go Web 编程</a> (此书已经出版，希望开发者们去购买，支持作者的创作)</li>
+<li><a href="https://github.com/astaxie/Go-in-Action" target="_blank" rel="noopener">Go实战开发</a> (当我收录此项目时，作者已经写完第三章，如果读完前面章节觉得有帮助，可以给作者<a href="https://me.alipay.com/astaxie" target="_blank" rel="noopener">捐赠</a>，以鼓励作者的继续创作)</li>
+<li><a href="https://github.com/astaxie/NPWG_zh" target="_blank" rel="noopener">Network programming with Go 中文翻译版本</a></li>
+<li><a href="http://www.hellogcc.org/effective_go.html" target="_blank" rel="noopener">Effective Go</a></li>
 </ul>
 <hr>
 <h3 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h3><ul>
-<li><a href="http://www.ibm.com/developerworks/cn/java/j-pg/" target="_blank" rel="external">实战 Groovy 系列</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/java/j-pg/" target="_blank" rel="noopener">实战 Groovy 系列</a></li>
 </ul>
 <hr>
 <h3 id="Haskell"><a href="#Haskell" class="headerlink" title="Haskell"></a>Haskell</h3><ul>
-<li><a href="http://rwh.readthedocs.org/en/latest/" target="_blank" rel="external">Real World Haskell 中文版</a></li>
-<li><a href="http://fleurer-lee.com/lyah/" target="_blank" rel="external">Haskell趣学指南</a></li>
+<li><a href="http://rwh.readthedocs.org/en/latest/" target="_blank" rel="noopener">Real World Haskell 中文版</a></li>
+<li><a href="http://fleurer-lee.com/lyah/" target="_blank" rel="noopener">Haskell趣学指南</a></li>
 </ul>
 <hr>
 <h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><ul>
-<li><a href="https://github.com/qinjx/30min_guides/blob/master/ios.md" target="_blank" rel="external">iOS开发60分钟入门</a></li>
-<li><a href="http://isux.tencent.com/ios-human-interface-guidelines-ui-design-basics-ios7.html" target="_blank" rel="external">iOS7人机界面指南</a></li>
-<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/" target="_blank" rel="external">Google Objective-C Style Guide 中文版</a></li>
-<li><a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">iPhone 6 屏幕揭秘</a></li>
-<li><a href="http://nilsun.github.io/apple-watch/" target="_blank" rel="external">Apple Watch开发初探</a></li>
-<li><a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/index.html" target="_blank" rel="external">马上着手开发 iOS 应用程序</a></li>
-<li><a href="https://github.com/jkyin/Subtitle" target="_blank" rel="external">网易斯坦福大学公开课：iOS 7应用开发字幕文件</a></li>
+<li><a href="https://github.com/qinjx/30min_guides/blob/master/ios.md" target="_blank" rel="noopener">iOS开发60分钟入门</a></li>
+<li><a href="http://isux.tencent.com/ios-human-interface-guidelines-ui-design-basics-ios7.html" target="_blank" rel="noopener">iOS7人机界面指南</a></li>
+<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/" target="_blank" rel="noopener">Google Objective-C Style Guide 中文版</a></li>
+<li><a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="noopener">iPhone 6 屏幕揭秘</a></li>
+<li><a href="http://nilsun.github.io/apple-watch/" target="_blank" rel="noopener">Apple Watch开发初探</a></li>
+<li><a href="https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/index.html" target="_blank" rel="noopener">马上着手开发 iOS 应用程序</a></li>
+<li><a href="https://github.com/jkyin/Subtitle" target="_blank" rel="noopener">网易斯坦福大学公开课：iOS 7应用开发字幕文件</a></li>
 </ul>
 <hr>
 <h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ul>
-<li><a href="http://bq69.com/blog/articles/script/868/google-javascript-style-guide.html" target="_blank" rel="external">Google JavaScript 代码风格指南</a></li>
-<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="external">Google JSON 风格指南</a></li>
-<li><a href="https://github.com/adamlu/javascript-style-guide" target="_blank" rel="external">Airbnb JavaScript 规范</a></li>
-<li><a href="http://javascript.ruanyifeng.com/" target="_blank" rel="external">JavaScript 标准参考教程（alpha）</a></li>
-<li><a href="http://pij.robinqu.me/" target="_blank" rel="external">Javascript编程指南</a> (<a href="https://github.com/RobinQu/Programing-In-Javascript" target="_blank" rel="external">源码</a>)</li>
-<li><a href="https://github.com/justjavac/12-javascript-quirks" target="_blank" rel="external">javascript 的 12 个怪癖</a></li>
-<li><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/" target="_blank" rel="external">JavaScript 秘密花园</a></li>
-<li><a href="http://icodeit.org/jsccp/" target="_blank" rel="external">JavaScript核心概念及实践</a> (PDF) (此书已由人民邮电出版社出版发行，但作者依然免费提供PDF版本，希望开发者们去购买，支持作者)</li>
-<li><a href="https://github.com/jayli/javascript-patterns" target="_blank" rel="external">《JavaScript 模式》</a> “JavaScript patterns”中译本</li>
-<li><a href="http://justjavac.com/named-function-expressions-demystified.html" target="_blank" rel="external">命名函数表达式探秘</a>  (注:原文由<a href="http://www.cn-cuckoo.com" target="_blank" rel="external">为之漫笔</a>翻译，原始地址无法打开，所以此处地址为我博客上的备份)</li>
-<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns" target="_blank" rel="external">学用 JavaScript 设计模式</a> (开源中国)</li>
-<li><a href="http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html" target="_blank" rel="external">深入理解JavaScript系列</a></li>
-<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6 入门</a> (作者：阮一峰)</li>
+<li><a href="http://bq69.com/blog/articles/script/868/google-javascript-style-guide.html" target="_blank" rel="noopener">Google JavaScript 代码风格指南</a></li>
+<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="noopener">Google JSON 风格指南</a></li>
+<li><a href="https://github.com/adamlu/javascript-style-guide" target="_blank" rel="noopener">Airbnb JavaScript 规范</a></li>
+<li><a href="http://javascript.ruanyifeng.com/" target="_blank" rel="noopener">JavaScript 标准参考教程（alpha）</a></li>
+<li><a href="http://pij.robinqu.me/" target="_blank" rel="noopener">Javascript编程指南</a> (<a href="https://github.com/RobinQu/Programing-In-Javascript" target="_blank" rel="noopener">源码</a>)</li>
+<li><a href="https://github.com/justjavac/12-javascript-quirks" target="_blank" rel="noopener">javascript 的 12 个怪癖</a></li>
+<li><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/" target="_blank" rel="noopener">JavaScript 秘密花园</a></li>
+<li><a href="http://icodeit.org/jsccp/" target="_blank" rel="noopener">JavaScript核心概念及实践</a> (PDF) (此书已由人民邮电出版社出版发行，但作者依然免费提供PDF版本，希望开发者们去购买，支持作者)</li>
+<li><a href="https://github.com/jayli/javascript-patterns" target="_blank" rel="noopener">《JavaScript 模式》</a> “JavaScript patterns”中译本</li>
+<li><a href="http://justjavac.com/named-function-expressions-demystified.html" target="_blank" rel="noopener">命名函数表达式探秘</a>  (注:原文由<a href="http://www.cn-cuckoo.com" target="_blank" rel="noopener">为之漫笔</a>翻译，原始地址无法打开，所以此处地址为我博客上的备份)</li>
+<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns" target="_blank" rel="noopener">学用 JavaScript 设计模式</a> (开源中国)</li>
+<li><a href="http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html" target="_blank" rel="noopener">深入理解JavaScript系列</a></li>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a> (作者：阮一峰)</li>
 <li>jQuery<ul>
-<li><a href="http://www.cn-cuckoo.com/deconstructed/jquery.html" target="_blank" rel="external">jQuery 解构</a></li>
-<li><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="external">简单易懂的JQuery魔法</a></li>
-<li><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="external">How to write jQuery plugin</a></li>
+<li><a href="http://www.cn-cuckoo.com/deconstructed/jquery.html" target="_blank" rel="noopener">jQuery 解构</a></li>
+<li><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="noopener">简单易懂的JQuery魔法</a></li>
+<li><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="noopener">How to write jQuery plugin</a></li>
 </ul>
 </li>
 <li>Node.js<ul>
-<li><a href="http://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="external">Node入门</a></li>
-<li><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会NodeJS</a></li>
-<li><a href="https://github.com/nodejs-tw/nodejs-wiki-book" target="_blank" rel="external">Nodejs Wiki Book</a> (繁体中文)</li>
-<li><a href="http://expressjs.jser.us/" target="_blank" rel="external">express.js 中文文档</a></li>
-<li><a href="https://github.com/turingou/koa-guide" target="_blank" rel="external">koa 中文文档</a></li>
-<li><a href="https://github.com/nswbmw/N-blog" target="_blank" rel="external">使用 Express + MongoDB 搭建多人博客</a></li>
-<li><a href="http://javascript.ruanyifeng.com/nodejs/express.html" target="_blank" rel="external">Express框架</a></li>
-<li><a href="https://github.com/alsotang/node-lessons" target="_blank" rel="external">Node.js 包教不包会</a></li>
-<li><a href="https://www.npmjs.org/package/learnyounode-zh-cn" target="_blank" rel="external">Learn You The Node.js For Much Win! (中文版)</a></li>
-<li><a href="http://i5ting.github.io/node-debug-tutorial/" target="_blank" rel="external">Node debug 三法三例</a></li>
-<li><a href="https://www.gitbook.com/book/0532/nodejs/details" target="_blank" rel="external">nodejs中文文档</a></li>
+<li><a href="http://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="noopener">Node入门</a></li>
+<li><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="noopener">七天学会NodeJS</a></li>
+<li><a href="https://github.com/nodejs-tw/nodejs-wiki-book" target="_blank" rel="noopener">Nodejs Wiki Book</a> (繁体中文)</li>
+<li><a href="http://expressjs.jser.us/" target="_blank" rel="noopener">express.js 中文文档</a></li>
+<li><a href="https://github.com/turingou/koa-guide" target="_blank" rel="noopener">koa 中文文档</a></li>
+<li><a href="https://github.com/nswbmw/N-blog" target="_blank" rel="noopener">使用 Express + MongoDB 搭建多人博客</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/express.html" target="_blank" rel="noopener">Express框架</a></li>
+<li><a href="https://github.com/alsotang/node-lessons" target="_blank" rel="noopener">Node.js 包教不包会</a></li>
+<li><a href="https://www.npmjs.org/package/learnyounode-zh-cn" target="_blank" rel="noopener">Learn You The Node.js For Much Win! (中文版)</a></li>
+<li><a href="http://i5ting.github.io/node-debug-tutorial/" target="_blank" rel="noopener">Node debug 三法三例</a></li>
+<li><a href="https://www.gitbook.com/book/0532/nodejs/details" target="_blank" rel="noopener">nodejs中文文档</a></li>
 </ul>
 </li>
 <li>underscore.js<ul>
-<li><a href="http://learningcn.com/underscore/" target="_blank" rel="external">Underscore.js中文文档</a></li>
+<li><a href="http://learningcn.com/underscore/" target="_blank" rel="noopener">Underscore.js中文文档</a></li>
 </ul>
 </li>
 <li>backbone.js<ul>
-<li><a href="http://www.the5fire.com/backbone-js-tutorials-pdf-download.html" target="_blank" rel="external">backbone.js入门教程</a> (PDF)</li>
-<li><a href="https://github.com/the5fire/backbonejs-learning-note" target="_blank" rel="external">Backbone.js入门教程第二版</a></li>
-<li><a href="http://feliving.github.io/developing-backbone-applications" target="_blank" rel="external">Developing Backbone.js Applications(中文版)</a></li>
+<li><a href="http://www.the5fire.com/backbone-js-tutorials-pdf-download.html" target="_blank" rel="noopener">backbone.js入门教程</a> (PDF)</li>
+<li><a href="https://github.com/the5fire/backbonejs-learning-note" target="_blank" rel="noopener">Backbone.js入门教程第二版</a></li>
+<li><a href="http://feliving.github.io/developing-backbone-applications" target="_blank" rel="noopener">Developing Backbone.js Applications(中文版)</a></li>
 </ul>
 </li>
 <li>AngularJS<ul>
-<li><a href="https://github.com/mgechev/angularjs-style-guide/blob/master/README-zh-cn.md" target="_blank" rel="external">AngularJS最佳实践和风格指南</a></li>
-<li><a href="https://github.com/peiransun/angularjs-cn" target="_blank" rel="external">AngularJS中译本</a></li>
-<li><a href="https://github.com/zensh/AngularjsTutorial_cn" target="_blank" rel="external">AngularJS入门教程</a></li>
-<li><a href="https://github.com/xufei/Make-Your-Own-AngularJS/blob/master/01.md" target="_blank" rel="external">构建自己的AngularJS</a></li>
-<li><a href="http://www.waylau.com/build-angularjs-app-with-yeoman-in-windows/" target="_blank" rel="external">在Windows环境下用Yeoman构建AngularJS项目</a></li>
+<li><a href="https://github.com/mgechev/angularjs-style-guide/blob/master/README-zh-cn.md" target="_blank" rel="noopener">AngularJS最佳实践和风格指南</a></li>
+<li><a href="https://github.com/peiransun/angularjs-cn" target="_blank" rel="noopener">AngularJS中译本</a></li>
+<li><a href="https://github.com/zensh/AngularjsTutorial_cn" target="_blank" rel="noopener">AngularJS入门教程</a></li>
+<li><a href="https://github.com/xufei/Make-Your-Own-AngularJS/blob/master/01.md" target="_blank" rel="noopener">构建自己的AngularJS</a></li>
+<li><a href="http://www.waylau.com/build-angularjs-app-with-yeoman-in-windows/" target="_blank" rel="noopener">在Windows环境下用Yeoman构建AngularJS项目</a></li>
 </ul>
 </li>
 <li>Zepto.js<ul>
-<li><a href="http://mweb.baidu.com/zeptoapi/" target="_blank" rel="external">Zepto.js 中文文档</a></li>
+<li><a href="http://mweb.baidu.com/zeptoapi/" target="_blank" rel="noopener">Zepto.js 中文文档</a></li>
 </ul>
 </li>
 <li>Sea.js<ul>
-<li><a href="http://island205.github.io/HelloSea.js/" target="_blank" rel="external">Hello Sea.js</a></li>
+<li><a href="http://island205.github.io/HelloSea.js/" target="_blank" rel="noopener">Hello Sea.js</a></li>
 </ul>
 </li>
 <li>React.js<ul>
-<li><a href="http://reactjs.cn/" target="_blank" rel="external">React.js 中文文档</a></li>
+<li><a href="http://reactjs.cn/" target="_blank" rel="noopener">React.js 中文文档</a></li>
 </ul>
 </li>
 <li>CoffeeScript<ul>
-<li><a href="http://island205.github.io/coffeescript-cookbook.github.com/" target="_blank" rel="external">CoffeeScript Cookbook</a></li>
-<li><a href="http://island205.github.io/tlboc/" target="_blank" rel="external">The Little Book on CoffeeScript中文版</a></li>
-<li><a href="https://github.com/geekplux/coffeescript-style-guide" target="_blank" rel="external">CoffeeScript 编码风格指南</a></li>
+<li><a href="http://island205.github.io/coffeescript-cookbook.github.com/" target="_blank" rel="noopener">CoffeeScript Cookbook</a></li>
+<li><a href="http://island205.github.io/tlboc/" target="_blank" rel="noopener">The Little Book on CoffeeScript中文版</a></li>
+<li><a href="https://github.com/geekplux/coffeescript-style-guide" target="_blank" rel="noopener">CoffeeScript 编码风格指南</a></li>
 </ul>
 </li>
 <li>ExtJS<ul>
-<li><a href="http://extjs-doc-cn.github.io/ext4api/" target="_blank" rel="external">Ext4.1.0 中文文档</a></li>
+<li><a href="http://extjs-doc-cn.github.io/ext4api/" target="_blank" rel="noopener">Ext4.1.0 中文文档</a></li>
 </ul>
 </li>
 <li>Meteor<ul>
-<li><a href="http://zh.discovermeteor.com/" target="_blank" rel="external">Discover Meteor</a></li>
+<li><a href="http://zh.discovermeteor.com/" target="_blank" rel="noopener">Discover Meteor</a></li>
 </ul>
 </li>
-<li><a href="http://www.ituring.com.cn/minibook/950" target="_blank" rel="external">Chrome扩展及应用开发</a></li>
+<li><a href="http://www.ituring.com.cn/minibook/950" target="_blank" rel="noopener">Chrome扩展及应用开发</a></li>
 </ul>
 <hr>
 <h3 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h3><ul>
-<li><a href="http://liam0205.me/2014/09/08/latex-introduction/" target="_blank" rel="external">一份其实很短的 LaTeX 入门文档</a></li>
-<li><a href="http://www.mohu.org/info/lshort-cn.pdf" target="_blank" rel="external">一份不太简短的 LATEX 2ε 介绍</a> （PDF版）</li>
+<li><a href="http://liam0205.me/2014/09/08/latex-introduction/" target="_blank" rel="noopener">一份其实很短的 LaTeX 入门文档</a></li>
+<li><a href="http://www.mohu.org/info/lshort-cn.pdf" target="_blank" rel="noopener">一份不太简短的 LATEX 2ε 介绍</a> （PDF版）</li>
 </ul>
 <hr>
 <h3 id="LISP"><a href="#LISP" class="headerlink" title="LISP"></a>LISP</h3><ul>
-<li><a href="http://acl.readthedocs.org/en/latest/" target="_blank" rel="external">ANSI Common Lisp 中文翻譯版</a></li>
+<li><a href="http://acl.readthedocs.org/en/latest/" target="_blank" rel="noopener">ANSI Common Lisp 中文翻譯版</a></li>
 </ul>
 <hr>
 <h3 id="Lua"><a href="#Lua" class="headerlink" title="Lua"></a>Lua</h3><ul>
-<li><a href="https://github.com/andycai/luaprimer" target="_blank" rel="external">Lua编程入门</a></li>
-<li><a href="http://www.codingnow.com/2000/download/lua_manual.html" target="_blank" rel="external">Lua 5.1 参考手册 中文翻译</a></li>
-<li><a href="http://cloudwu.github.io/lua53doc/" target="_blank" rel="external">Lua 5.3 参考手册 中文翻译</a></li>
+<li><a href="https://github.com/andycai/luaprimer" target="_blank" rel="noopener">Lua编程入门</a></li>
+<li><a href="http://www.codingnow.com/2000/download/lua_manual.html" target="_blank" rel="noopener">Lua 5.1 参考手册 中文翻译</a></li>
+<li><a href="http://cloudwu.github.io/lua53doc/" target="_blank" rel="noopener">Lua 5.3 参考手册 中文翻译</a></li>
 </ul>
 <hr>
 <h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><ul>
-<li><a href="https://github.com/horus/modern_perl_book" target="_blank" rel="external">Modern Perl 中文版</a></li>
-<li><a href="http://perl.linuxtoy.org/" target="_blank" rel="external">Perl 程序员应该知道的事</a></li>
+<li><a href="https://github.com/horus/modern_perl_book" target="_blank" rel="noopener">Modern Perl 中文版</a></li>
+<li><a href="http://perl.linuxtoy.org/" target="_blank" rel="noopener">Perl 程序员应该知道的事</a></li>
 </ul>
 <hr>
 <h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><ul>
-<li><a href="http://www.laruence.com/2010/06/21/1608.html" target="_blank" rel="external">PHP调试技术手册</a>(PDF)</li>
-<li><a href="http://www.blogkun.com/project.html" target="_blank" rel="external">XDebug 2中文手册(译)</a> (CHM)</li>
-<li><a href="http://wulijun.github.io/php-the-right-way/" target="_blank" rel="external">PHP之道</a></li>
-<li><a href="https://github.com/justjavac/PHP-Best-Practices-zh_CN" target="_blank" rel="external">PHP 最佳实践</a></li>
-<li><a href="http://ryancao.gitbooks.io/php-developer-prepares/content/" target="_blank" rel="external">PHP 开发者实践</a></li>
-<li><a href="https://github.com/reeze/tipi" target="_blank" rel="external">深入理解PHP内核</a></li>
-<li><a href="http://www.walu.cc/phpbook/" target="_blank" rel="external">PHP扩展开发及内核应用</a></li>
-<li><a href="http://codeigniter.org.cn/user_guide/index.html" target="_blank" rel="external">CodeIgniter 用户指南</a></li>
-<li><a href="http://www.golaravel.com/docs/" target="_blank" rel="external">Laravel4 中文文档</a></li>
-<li><a href="https://github.com/huanghua581/laravel-getting-started" target="_blank" rel="external">Laravel 入门</a></li>
-<li><a href="http://symfony-docs-chs.readthedocs.org/en/latest/" target="_blank" rel="external">Symfony2中文文档</a> (未译完)</li>
-<li><a href="http://phalcon.5iunix.net/" target="_blank" rel="external">Phalcon中文文档</a>（翻译进行中）</li>
-<li><a href="http://yiibook.com//doc" target="_blank" rel="external">YiiBook几本Yii框架的在线教程</a></li>
-<li><a href="http://www.digpage.com/" target="_blank" rel="external">深入理解 Yii 2.0</a></li>
-<li><a href="http://www.yiichina.com/" target="_blank" rel="external">Yii 框架中文文檔</a></li>
-<li><a href="http://www.nowamagic.net/librarys/books/contents/php" target="_blank" rel="external">简单易懂的PHP魔法</a></li>
-<li><a href="https://github.com/LinkedDestiny/swoole-doc" target="_blank" rel="external">swoole文档及入门教程</a></li>
-<li><a href="http://www.phpcomposer.com" target="_blank" rel="external">Composer 中文网</a></li>
-<li><a href="http://minimee.org/php/slim" target="_blank" rel="external">Slim 中文文档</a></li>
+<li><a href="http://www.laruence.com/2010/06/21/1608.html" target="_blank" rel="noopener">PHP调试技术手册</a>(PDF)</li>
+<li><a href="http://www.blogkun.com/project.html" target="_blank" rel="noopener">XDebug 2中文手册(译)</a> (CHM)</li>
+<li><a href="http://wulijun.github.io/php-the-right-way/" target="_blank" rel="noopener">PHP之道</a></li>
+<li><a href="https://github.com/justjavac/PHP-Best-Practices-zh_CN" target="_blank" rel="noopener">PHP 最佳实践</a></li>
+<li><a href="http://ryancao.gitbooks.io/php-developer-prepares/content/" target="_blank" rel="noopener">PHP 开发者实践</a></li>
+<li><a href="https://github.com/reeze/tipi" target="_blank" rel="noopener">深入理解PHP内核</a></li>
+<li><a href="http://www.walu.cc/phpbook/" target="_blank" rel="noopener">PHP扩展开发及内核应用</a></li>
+<li><a href="http://codeigniter.org.cn/user_guide/index.html" target="_blank" rel="noopener">CodeIgniter 用户指南</a></li>
+<li><a href="http://www.golaravel.com/docs/" target="_blank" rel="noopener">Laravel4 中文文档</a></li>
+<li><a href="https://github.com/huanghua581/laravel-getting-started" target="_blank" rel="noopener">Laravel 入门</a></li>
+<li><a href="http://symfony-docs-chs.readthedocs.org/en/latest/" target="_blank" rel="noopener">Symfony2中文文档</a> (未译完)</li>
+<li><a href="http://phalcon.5iunix.net/" target="_blank" rel="noopener">Phalcon中文文档</a>（翻译进行中）</li>
+<li><a href="http://yiibook.com//doc" target="_blank" rel="noopener">YiiBook几本Yii框架的在线教程</a></li>
+<li><a href="http://www.digpage.com/" target="_blank" rel="noopener">深入理解 Yii 2.0</a></li>
+<li><a href="http://www.yiichina.com/" target="_blank" rel="noopener">Yii 框架中文文檔</a></li>
+<li><a href="http://www.nowamagic.net/librarys/books/contents/php" target="_blank" rel="noopener">简单易懂的PHP魔法</a></li>
+<li><a href="https://github.com/LinkedDestiny/swoole-doc" target="_blank" rel="noopener">swoole文档及入门教程</a></li>
+<li><a href="http://www.phpcomposer.com" target="_blank" rel="noopener">Composer 中文网</a></li>
+<li><a href="http://minimee.org/php/slim" target="_blank" rel="noopener">Slim 中文文档</a></li>
 </ul>
 <hr>
 <h3 id="Prolog"><a href="#Prolog" class="headerlink" title="Prolog"></a>Prolog</h3><ul>
-<li><a href="http://fengdidi.github.io/blog/2011/11/15/qian-yan/" target="_blank" rel="external">笨办法学Prolog</a></li>
+<li><a href="http://fengdidi.github.io/blog/2011/11/15/qian-yan/" target="_blank" rel="noopener">笨办法学Prolog</a></li>
 </ul>
 <hr>
 <h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
-<li><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000" target="_blank" rel="external">小白的Python教程</a></li>
-<li><a href="http://woodpecker.org.cn/abyteofpython_cn/chinese/" target="_blank" rel="external">简明Python教程</a></li>
-<li><a href="http://looly.gitbooks.io/python-basic" target="_blank" rel="external">零基础学Python</a></li>
-<li><a href="http://lovelypython.readthedocs.org/en/latest/" target="_blank" rel="external">可爱的 Python </a></li>
-<li><a href="http://www.pythondoc.com/pythontutorial27/index.html" target="_blank" rel="external">Python 2.7 官方教程中文版</a></li>
-<li><a href="http://www.pythondoc.com/pythontutorial3/index.html" target="_blank" rel="external">Python 3.3 官方教程中文版</a></li>
-<li><a href="http://sebug.net/paper/books/dive-into-python3/" target="_blank" rel="external">深入 Python 3</a></li>
-<li><a href="https://code.google.com/p/zhong-wiki/wiki/PEP8" target="_blank" rel="external">PEP8 Python代码风格规范</a></li>
-<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/" target="_blank" rel="external">Google Python 风格指南 中文版</a></li>
-<li><a href="http://liam0205.me/2013/11/02/Python-tutorial-zh_cn/" target="_blank" rel="external">Python入门教程</a> (<a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf" target="_blank" rel="external">PDF</a>)</li>
-<li><a href="http://article.yeeyan.org/view/311527/287706" target="_blank" rel="external">Python的神奇方法指南</a></li>
-<li><a href="http://sebug.net/paper/books/LearnPythonTheHardWay/" target="_blank" rel="external">笨办法学 Python</a> （<a href="http://liam0205.me/attachment/Python/PyHardWay/Learn_Python_The_Hard_Way_zh-cn.pdf" target="_blank" rel="external">PDF</a>版下载）</li>
-<li><a href="http://django-chinese-docs.readthedocs.org/en/latest/" target="_blank" rel="external">Django 1.5 文档中文版</a> 正在翻译中</li>
-<li><a href="http://django-1-7-doc.coding.io/" target="_blank" rel="external">Diango 1.7 文档中文版</a>  正在翻译中，目前只翻译了目录</li>
-<li><a href="https://github.com/brantyoung/zh-django-best-practices" target="_blank" rel="external">Django 最佳实践</a></li>
-<li><a href="http://andrew-liu.gitbooks.io/django-blog/" target="_blank" rel="external">Django搭建简易博客教程</a></li>
-<li><a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="external">The Django Book 中文版</a></li>
-<li><a href="http://webpy.org/tutorial3.zh-cn" target="_blank" rel="external">web.py 0.3 新手指南</a></li>
-<li><a href="http://webpy.org/cookbook/index.zh-cn" target="_blank" rel="external">Web.py Cookbook 简体中文版</a></li>
-<li><a href="http://woodpecker.org.cn/diveintopython/" target="_blank" rel="external">Dive Into Python 中文版</a></li>
-<li><a href="https://associates.amazon.cn/gp/associates/network/main.html" target="_blank" rel="external">Bottle 文档中文版</a> (需翻墙)</li>
-<li><a href="http://docs.jinkan.org/docs/flask/" target="_blank" rel="external">Flask 文档中文版</a></li>
-<li><a href="http://docs.jinkan.org/docs/jinja2/" target="_blank" rel="external">Jinja2 文档中文版</a></li>
-<li><a href="http://werkzeug-docs-cn.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">Werkzeug 文档中文版</a></li>
-<li><a href="http://spacewander.github.io/explore-flask-zh" target="_blank" rel="external">Flask之旅</a></li>
-<li><a href="http://demo.pythoner.com/itt2zh/index.html" target="_blank" rel="external">Introduction to Tornado 中文翻译</a></li>
-<li><a href="http://pan.baidu.com/s/1qW4pvnY" target="_blank" rel="external">Python自然语言处理中文版</a> （感谢陈涛同学的翻译，也谢谢 <a href="https://github.com/shwley" target="_blank" rel="external">@shwley</a> 联系了作者）</li>
-<li><a href="http://liam0205.me/2014/09/11/matplotlib-tutorial-zh-cn/" target="_blank" rel="external">Python 绘图库 matplotlib 官方指南中文翻译</a></li>
-<li><a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">Scrapy 0.25 文档</a></li>
-<li><a href="https://github.com/carfly/thinkpython-cn" target="_blank" rel="external">ThinkPython</a></li>
-<li><a href="http://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html" target="_blank" rel="external">Python快速教程</a></li>
-<li><a href="http://wiki.ubuntu.org.cn/Python正则表达式操作指南" target="_blank" rel="external">Python 正则表达式操作指南</a></li>
-<li><a href="http://www.crifan.com/files/doc/docbook/python_beginner_tutorial/release/html/python_beginner_tutorial.html" target="_blank" rel="external">python初级教程：入门详解</a></li>
-<li><a href="http://python3-cookbook.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">Python Cookbook 第3版 中文版</a></li>
-<li><a href="http://likebeta.gitbooks.io/twisted-intro-cn/" target="_blank" rel="external">Twisted 与异步编程入门</a></li>
-<li><a href="http://textgrocery.readthedocs.org/zh/latest/index.html" target="_blank" rel="external">TextGrocery 中文 API</a> ( 基于svm算法的一个短文本分类 Python 库 )</li>
-<li><a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">Requests: HTTP for Humans</a></li>
-<li><a href="http://pillow-cn.readthedocs.org/en/latest/#" target="_blank" rel="external">Pillow 中文文档</a></li>
+<li><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000" target="_blank" rel="noopener">小白的Python教程</a></li>
+<li><a href="http://woodpecker.org.cn/abyteofpython_cn/chinese/" target="_blank" rel="noopener">简明Python教程</a></li>
+<li><a href="http://looly.gitbooks.io/python-basic" target="_blank" rel="noopener">零基础学Python</a></li>
+<li><a href="http://lovelypython.readthedocs.org/en/latest/" target="_blank" rel="noopener">可爱的 Python </a></li>
+<li><a href="http://www.pythondoc.com/pythontutorial27/index.html" target="_blank" rel="noopener">Python 2.7 官方教程中文版</a></li>
+<li><a href="http://www.pythondoc.com/pythontutorial3/index.html" target="_blank" rel="noopener">Python 3.3 官方教程中文版</a></li>
+<li><a href="http://sebug.net/paper/books/dive-into-python3/" target="_blank" rel="noopener">深入 Python 3</a></li>
+<li><a href="https://code.google.com/p/zhong-wiki/wiki/PEP8" target="_blank" rel="noopener">PEP8 Python代码风格规范</a></li>
+<li><a href="http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/" target="_blank" rel="noopener">Google Python 风格指南 中文版</a></li>
+<li><a href="http://liam0205.me/2013/11/02/Python-tutorial-zh_cn/" target="_blank" rel="noopener">Python入门教程</a> (<a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf" target="_blank" rel="noopener">PDF</a>)</li>
+<li><a href="http://article.yeeyan.org/view/311527/287706" target="_blank" rel="noopener">Python的神奇方法指南</a></li>
+<li><a href="http://sebug.net/paper/books/LearnPythonTheHardWay/" target="_blank" rel="noopener">笨办法学 Python</a> （<a href="http://liam0205.me/attachment/Python/PyHardWay/Learn_Python_The_Hard_Way_zh-cn.pdf" target="_blank" rel="noopener">PDF</a>版下载）</li>
+<li><a href="http://django-chinese-docs.readthedocs.org/en/latest/" target="_blank" rel="noopener">Django 1.5 文档中文版</a> 正在翻译中</li>
+<li><a href="http://django-1-7-doc.coding.io/" target="_blank" rel="noopener">Diango 1.7 文档中文版</a>  正在翻译中，目前只翻译了目录</li>
+<li><a href="https://github.com/brantyoung/zh-django-best-practices" target="_blank" rel="noopener">Django 最佳实践</a></li>
+<li><a href="http://andrew-liu.gitbooks.io/django-blog/" target="_blank" rel="noopener">Django搭建简易博客教程</a></li>
+<li><a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="noopener">The Django Book 中文版</a></li>
+<li><a href="http://webpy.org/tutorial3.zh-cn" target="_blank" rel="noopener">web.py 0.3 新手指南</a></li>
+<li><a href="http://webpy.org/cookbook/index.zh-cn" target="_blank" rel="noopener">Web.py Cookbook 简体中文版</a></li>
+<li><a href="http://woodpecker.org.cn/diveintopython/" target="_blank" rel="noopener">Dive Into Python 中文版</a></li>
+<li><a href="https://associates.amazon.cn/gp/associates/network/main.html" target="_blank" rel="noopener">Bottle 文档中文版</a> (需翻墙)</li>
+<li><a href="http://docs.jinkan.org/docs/flask/" target="_blank" rel="noopener">Flask 文档中文版</a></li>
+<li><a href="http://docs.jinkan.org/docs/jinja2/" target="_blank" rel="noopener">Jinja2 文档中文版</a></li>
+<li><a href="http://werkzeug-docs-cn.readthedocs.org/zh_CN/latest/" target="_blank" rel="noopener">Werkzeug 文档中文版</a></li>
+<li><a href="http://spacewander.github.io/explore-flask-zh" target="_blank" rel="noopener">Flask之旅</a></li>
+<li><a href="http://demo.pythoner.com/itt2zh/index.html" target="_blank" rel="noopener">Introduction to Tornado 中文翻译</a></li>
+<li><a href="http://pan.baidu.com/s/1qW4pvnY" target="_blank" rel="noopener">Python自然语言处理中文版</a> （感谢陈涛同学的翻译，也谢谢 <a href="https://github.com/shwley" target="_blank" rel="noopener">@shwley</a> 联系了作者）</li>
+<li><a href="http://liam0205.me/2014/09/11/matplotlib-tutorial-zh-cn/" target="_blank" rel="noopener">Python 绘图库 matplotlib 官方指南中文翻译</a></li>
+<li><a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/" target="_blank" rel="noopener">Scrapy 0.25 文档</a></li>
+<li><a href="https://github.com/carfly/thinkpython-cn" target="_blank" rel="noopener">ThinkPython</a></li>
+<li><a href="http://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html" target="_blank" rel="noopener">Python快速教程</a></li>
+<li><a href="http://wiki.ubuntu.org.cn/Python正则表达式操作指南" target="_blank" rel="noopener">Python 正则表达式操作指南</a></li>
+<li><a href="http://www.crifan.com/files/doc/docbook/python_beginner_tutorial/release/html/python_beginner_tutorial.html" target="_blank" rel="noopener">python初级教程：入门详解</a></li>
+<li><a href="http://python3-cookbook.readthedocs.org/zh_CN/latest/" target="_blank" rel="noopener">Python Cookbook 第3版 中文版</a></li>
+<li><a href="http://likebeta.gitbooks.io/twisted-intro-cn/" target="_blank" rel="noopener">Twisted 与异步编程入门</a></li>
+<li><a href="http://textgrocery.readthedocs.org/zh/latest/index.html" target="_blank" rel="noopener">TextGrocery 中文 API</a> ( 基于svm算法的一个短文本分类 Python 库 )</li>
+<li><a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/" target="_blank" rel="noopener">Requests: HTTP for Humans</a></li>
+<li><a href="http://pillow-cn.readthedocs.org/en/latest/#" target="_blank" rel="noopener">Pillow 中文文档</a></li>
 </ul>
 <hr>
 <h3 id="R"><a href="#R" class="headerlink" title="R"></a>R</h3><ul>
-<li><a href="https://github.com/yihui/r-ninja" target="_blank" rel="external">R语言忍者秘笈</a></li>
+<li><a href="https://github.com/yihui/r-ninja" target="_blank" rel="noopener">R语言忍者秘笈</a></li>
 </ul>
 <hr>
 <h3 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h3><ul>
-<li><a href="https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md" target="_blank" rel="external">Ruby 风格指南</a></li>
-<li><a href="https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhCN.md" target="_blank" rel="external">Rails 风格指南</a></li>
-<li><a href="http://lrthw.github.io/" target="_blank" rel="external">笨方法學 Ruby</a></li>
-<li><a href="http://guides.ruby-china.org/" target="_blank" rel="external">Ruby on Rails 指南</a></li>
-<li><a href="http://ihower.tw/rails4/index.html" target="_blank" rel="external">Ruby on Rails 實戰聖經</a></li>
-<li><a href="http://railstutorial-china.org/" target="_blank" rel="external">Ruby on Rails Tutorial 原书第 3 版</a> (本书网页版免费提供，电子版以 PDF、EPub 和 Mobi 格式提供购买，仅售 9.9 美元)</li>
-<li><a href="http://wusuopu.gitbooks.io/write-ruby-extension-with-c/content/" target="_blank" rel="external">编写Ruby的C拓展</a></li>
-<li><a href="https://ruby-china.org/topics/22386" target="_blank" rel="external">Ruby 源码解读</a></li>
+<li><a href="https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md" target="_blank" rel="noopener">Ruby 风格指南</a></li>
+<li><a href="https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhCN.md" target="_blank" rel="noopener">Rails 风格指南</a></li>
+<li><a href="http://lrthw.github.io/" target="_blank" rel="noopener">笨方法學 Ruby</a></li>
+<li><a href="http://guides.ruby-china.org/" target="_blank" rel="noopener">Ruby on Rails 指南</a></li>
+<li><a href="http://ihower.tw/rails4/index.html" target="_blank" rel="noopener">Ruby on Rails 實戰聖經</a></li>
+<li><a href="http://railstutorial-china.org/" target="_blank" rel="noopener">Ruby on Rails Tutorial 原书第 3 版</a> (本书网页版免费提供，电子版以 PDF、EPub 和 Mobi 格式提供购买，仅售 9.9 美元)</li>
+<li><a href="http://wusuopu.gitbooks.io/write-ruby-extension-with-c/content/" target="_blank" rel="noopener">编写Ruby的C拓展</a></li>
+<li><a href="https://ruby-china.org/topics/22386" target="_blank" rel="noopener">Ruby 源码解读</a></li>
 </ul>
 <hr>
 <h3 id="Scala"><a href="#Scala" class="headerlink" title="Scala"></a>Scala</h3><ul>
-<li><a href="http://twitter.github.io/scala_school/zh_cn/index.html" target="_blank" rel="external">Scala课堂</a> (Twitter的Scala中文教程)</li>
-<li><a href="http://twitter.github.io/effectivescala/index-cn.html" target="_blank" rel="external">Effective Scala</a>(Twitter的Scala最佳实践的中文翻译)</li>
-<li><a href="http://zh.scala-tour.com/" target="_blank" rel="external">Scala指南</a></li>
+<li><a href="http://twitter.github.io/scala_school/zh_cn/index.html" target="_blank" rel="noopener">Scala课堂</a> (Twitter的Scala中文教程)</li>
+<li><a href="http://twitter.github.io/effectivescala/index-cn.html" target="_blank" rel="noopener">Effective Scala</a>(Twitter的Scala最佳实践的中文翻译)</li>
+<li><a href="http://zh.scala-tour.com/" target="_blank" rel="noopener">Scala指南</a></li>
 </ul>
 <hr>
 <h3 id="Scheme"><a href="#Scheme" class="headerlink" title="Scheme"></a>Scheme</h3><ul>
-<li><a href="http://deathking.github.io/yast-cn/" target="_blank" rel="external">Yet Another Scheme Tutorial Scheme入门教程</a></li>
-<li><a href="http://songjinghe.github.io/TYS-zh-translation/" target="_blank" rel="external">Scheme语言简明教程</a></li>
+<li><a href="http://deathking.github.io/yast-cn/" target="_blank" rel="noopener">Yet Another Scheme Tutorial Scheme入门教程</a></li>
+<li><a href="http://songjinghe.github.io/TYS-zh-translation/" target="_blank" rel="noopener">Scheme语言简明教程</a></li>
 </ul>
 <hr>
 <h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><ul>
-<li><a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="external">Shell脚本编程30分钟入门</a></li>
-<li><a href="http://blog.sae.sina.com.cn/archives/3606" target="_blank" rel="external">Bash脚本15分钟进阶教程</a></li>
-<li><a href="https://github.com/me115/linuxtools_rst" target="_blank" rel="external">Linux工具快速教程</a></li>
-<li><a href="https://github.com/wzb56/13_questions_of_shell" target="_blank" rel="external">shell十三问</a></li>
+<li><a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="noopener">Shell脚本编程30分钟入门</a></li>
+<li><a href="http://blog.sae.sina.com.cn/archives/3606" target="_blank" rel="noopener">Bash脚本15分钟进阶教程</a></li>
+<li><a href="https://github.com/me115/linuxtools_rst" target="_blank" rel="noopener">Linux工具快速教程</a></li>
+<li><a href="https://github.com/wzb56/13_questions_of_shell" target="_blank" rel="noopener">shell十三问</a></li>
 </ul>
 <hr>
 <h3 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h3><ul>
-<li><a href="http://numbbbbb.github.io/the-swift-programming-language-in-chinese/" target="_blank" rel="external">The Swift Programming Language 中文版</a></li>
-<li><a href="http://dev.swiftguide.cn" target="_blank" rel="external">Swift 语言指南</a></li>
-<li><a href="https://github.com/x140yu/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="external">Stanford 公开课，Developing iOS 8 Apps with Swift 字幕翻译文件</a></li>
+<li><a href="http://numbbbbb.github.io/the-swift-programming-language-in-chinese/" target="_blank" rel="noopener">The Swift Programming Language 中文版</a></li>
+<li><a href="http://dev.swiftguide.cn" target="_blank" rel="noopener">Swift 语言指南</a></li>
+<li><a href="https://github.com/x140yu/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="noopener">Stanford 公开课，Developing iOS 8 Apps with Swift 字幕翻译文件</a></li>
 </ul>
 <hr>
 ]]></content>

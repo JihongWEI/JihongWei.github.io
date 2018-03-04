@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,60 +37,10 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -89,36 +49,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jihongWei, jhWei，三鹿伴我长大" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="&三鹿伴我长大" type="application/atom+xml" />
-
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
 
 
 
 
 
 
-<meta name="description" content="每个一闪而过的想法，都值得记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="&三鹿伴我长大">
-<meta property="og:url" content="http://blublu.xyz/index.html">
-<meta property="og:site_name" content="&三鹿伴我长大">
-<meta property="og:description" content="每个一闪而过的想法，都值得记录">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&三鹿伴我长大">
-<meta name="twitter:description" content="每个一闪而过的想法，都值得记录">
 
 
 
@@ -127,13 +76,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: undefined,
-      author: '博主'
-    },
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -145,26 +94,44 @@
 </script>
 
 
-
-
-  <title> &三鹿伴我长大 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?f2d08b8679592e2f4ac9825d1947b7b8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+  
+  <meta name="keywords" content="jihongWei, jhWei，三鹿伴我长大" />
+
+
+<meta name="description" content="每个一闪而过的想法，都值得记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="三鹿伴我长大&#39;s blog">
+<meta property="og:url" content="http://jihong.xyz/index.html">
+<meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
+<meta property="og:description" content="每个一闪而过的想法，都值得记录">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三鹿伴我长大&#39;s blog">
+<meta name="twitter:description" content="每个一闪而过的想法，都值得记录">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="三鹿伴我长大's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://jihong.xyz/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>三鹿伴我长大's blog</title>
+  
 
 
 
@@ -172,37 +139,72 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">&三鹿伴我长大</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">三鹿伴我长大's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
+      
   </div>
-  <p class="site-subtitle">纠正错误的方式有很多，而解决一个错误的终极办法就是不让它发生</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -214,54 +216,35 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
         </li>
       
 
       
         <li class="menu-item menu-item-search">
           
-            <a href="#" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
         </li>
       
     </ul>
@@ -270,20 +253,39 @@
   
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
+
 
 
     </div>
   
 </nav>
 
+
+  
+
+
+
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -300,7 +302,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/深入理解计算机系统-perflab-handout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -308,74 +327,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-perflab-handout/" itemprop="url">
-                  深入理解计算机系统-perflab-handout
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-perflab-handout/" itemprop="url">深入理解计算机系统-perflab-handout</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-02T18:45:48+08:00" content="2016-12-02">
-              2016-12-02
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T18:45:48+08:00">2016-12-02</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/深入理解计算机系统-perflab-handout/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-perflab-handout">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -385,27 +409,34 @@
         
           <h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>kernel.c文件中主要有两个需要进行优化的函数：rotate和smooth，并分别给出了naive_rotate和naive_smooth两个函数的基本实现作为baseline作为你改进后的程序的比较对象。你需要读懂rotate和smooth函数，并对其进行优化。你每写一个新版本的、优化的rotate和smooth函数，均可在成注册后使用driver进行测试，并得到对应的CPE和加速比。本次实验，要求针对每个函数、每个人均至少写出3种优化版本、并根据driver报告的结果进行性能分析。 </p>
 <h3 id="优化rotate函数"><a href="#优化rotate函数" class="headerlink" title="优化rotate函数"></a>优化rotate函数</h3><p>原始的rotate函数如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </div><div class="line"> * naive_rotate - The naive baseline version of rotate </div><div class="line"> */</span></div><div class="line"><span class="keyword">char</span> naive_rotate_descr[] = <span class="string">"naive_rotate: Naive baseline implementation"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">naive_rotate</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </div><div class="line"></span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>-j, i, dim)] = src[RIDX(i, j, dim)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"> * naive_rotate - The naive baseline version of rotate </div><div class="line"> */</div><div class="line"><span class="keyword">char</span> naive_rotate_descr[] = <span class="string">"naive_rotate: Naive baseline implementation"</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">naive_rotate</span><span class="params">(<span class="keyword">int</span> dim, pixel *src, pixel *dst)</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dim; i++)</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; dim; j++)</div><div class="line">        dst[RIDX(dim<span class="number">-1</span>-j, i, dim)] = src[RIDX(i, j, dim)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>原始代码用了一个双层循环将每个像素点变换到对应的地方去。不难发现，在最内层循环中，j的值每次都会改变，所以每执行一次赋值就要计算一次dim-1-j，这样随着像素点的增多，速度将会慢下来。仔细分析一下代码就能发现一个十分简单的优化方法：将原本从(0,0)处作为src读取起始点改为用i的值作为列作为初始读取值。换句话说就是每次因为外层i保持不变，我们可以将其用<code>dim-1-i</code>来作为读取列,一直从最后一列的第一个像素读到底并转换到i行上。那么赋值语句将变成<code>dst[RIDX(i, j, dim)] = src[RIDX(j, dim-i-1, dim)]</code>，这样就不用每次都计算<code>dim-1-j</code>了。<br>优化代码如下：<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/深入理解计算机系统-perflab-handout/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -415,6 +446,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -427,7 +462,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/programer/比特小镇的集市/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -435,74 +487,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/programer/比特小镇的集市/" itemprop="url">
-                  比特小镇的集市
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/programer/比特小镇的集市/" itemprop="url">比特小镇的集市</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-01T18:47:13+08:00" content="2016-12-01">
-              2016-12-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T18:47:13+08:00">2016-12-01</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programer/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员的那些事</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programer/" itemprop="url" rel="index"><span itemprop="name">程序员的那些事</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/programer/比特小镇的集市/" class="leancloud_visitors" data-flag-title="比特小镇的集市">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -512,25 +569,32 @@
         
           <h1 id="比特小镇的集市"><a href="#比特小镇的集市" class="headerlink" title="比特小镇的集市"></a>比特小镇的集市</h1><p>从前有个叫比特的小镇，镇子上的居民过着无忧无虑的生活，但令大家最为头痛的事情是每天都要翻山越岭，经过长达十几里的路程到另外一个地方参加集市。小镇有很多特产，每次小镇的居民都会带着不同的特产去参加集会，来交换自己所需要的生活物品。忽然有一天，小镇来了一个农夫，农夫说：“大家每天这么辛苦的跑来跑去，只能换取一点点东西，不划算啊！这样吧，我来建一条公路，每天提供货车，大家知道交一点点过路费就好了。“小镇的居民商量了一下，觉得可以。公路建成那天大家兴高采烈的乘着农夫的货车去往集市。</p>
 <p>时间过得很快，转眼一年多过去了，农夫算了算一年的收益，发现光收取过路费对于成本会有有点困难，毕竟公路还需要修修补补，这也是不小的开销。怎么办呢？如果增加过路费的话，小镇居民肯定不同意，想了又想也没有什么好主意。这天农夫的司机马突然说道，既然路程这么远，公路维护费用这么高，不如我们在路中间的位置开辟一个新的集市，让两边的人在新集市交易多好。这样不仅有双份的过路费，同时集市的摊位还能挣钱。农夫立刻同意，着手开始修建集市。<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/programer/比特小镇的集市/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -540,6 +604,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -552,7 +620,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/IEEE754-浮点数范围与精度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -560,74 +645,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/IEEE754-浮点数范围与精度/" itemprop="url">
-                  IEEE754 浮点数范围
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/IEEE754-浮点数范围与精度/" itemprop="url">IEEE754 浮点数范围</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-14T13:46:06+08:00" content="2016-11-14">
-              2016-11-14
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-14T13:46:06+08:00">2016-11-14</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/IEEE754-浮点数范围与精度/" class="leancloud_visitors" data-flag-title="IEEE754 浮点数范围">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -635,34 +725,41 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，再次需要时又记不太清楚了。说明还是理解得不够深刻，于是趁着需要借机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在<a href="http://blublu.xyz/computer-principle/float与double精度丢失的问题/">float与double精度丢失的问题</a>里有解释，这里就不再赘述了。</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直觉得对浮点数这一块都弄清楚了，但是才过了不到一个月，又记不太清楚了。说明对于这个问题还是理解得不够深刻，于是趁机复习了一遍。对浮点数的范围与精度又有了新的认识。关于浮点数与浮点数精度丢失的问题在<a href="http://jihong.xyz/computer-principle/float与double精度丢失的问题/" target="_blank" rel="noopener">float与double精度丢失的问题</a>里有解释，这里就不再赘述了。</p>
 <h2 id="浮点数的范围"><a href="#浮点数的范围" class="headerlink" title="浮点数的范围"></a>浮点数的范围</h2><p>都知道浮点数的存储是分为[sign][exponent][significand]三个部分的，而阶码采用了偏置位来计算。也就是E=e-Bias，Bias=2^(k-1) - 1，k为阶码的位数。</p>
 <ul>
 <li>关于Bias，其实这个和补码的原理是一样的，但是为什么不直接采取补码？这个在之前的文章里也解释过，是因为不需要再重新设计一套电路来判断符号位，直接使用偏置位来使其能够表示负数。</li>
-<li>关于补码，可以查看我之前写的<a href="http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/">关于二进制运算中的原码反码补码的一些理解</a></li>
+<li>关于补码，可以查看我之前写的<a href="http://blublu.xyz/computer-principle/关于二进制运算中的原码反码补码的一些理解/" target="_blank" rel="noopener">关于二进制运算中的原码反码补码的一些理解</a></li>
 </ul>
 <p>下面开始进入正题：<br>如果是32位的float格式，那么指数E的范围就是-126~127。为什么是-126~127？因为阶码为<code>0</code>与<code>255</code>时都为非规格化数与特殊值(Inf or Nan)，另有它用了。所以实际上我们能用的数就是1~254，很显然偏置位Bias=127，那么E的最小值为<code>1-127=-126</code>，最大值为<code>254-127=127</code>。如果你还非要问为什么Bias=2^(k-1) - 1 的话，那么其实是这样的：(2^k - 2)/2=2^(k-1) - 1。因为[00..0]与[11..1]这两个阶码被使用作为表示非规格化数与特殊值了，所以总的能表示其它数字的个数只剩下2^k - 2个。</p>
 <p>好了我们来讨论浮点数的范围，既然指数的值为-126~127，那么所能表达的最大的数当然是1.1111111…1<sub>23位</sub> * 2^127 近似于2^128 = 3.40E^38 ，那么负数亦然，只需要把符号位改为1即可。所以float的范围为-3.40E^38 ~ 3.40E^38 。double类型也是如此，因为double的指数范围为<code>-1022 ~ 1023</code>,所以最大能表示的数值约等于2^1024 = 1.7E^308 。所以double的范围为-1.7E^308 ~ 1.7E^308。</p>
 <hr>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/IEEE754-浮点数范围与精度/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -672,6 +769,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -684,7 +785,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/programer/Linux下搭建Windows与office的KMS服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -692,74 +810,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/programer/Linux下搭建Windows与office的KMS服务器/" itemprop="url">
-                  Linux下搭建Windows与Office的KMS服务器
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/programer/Linux下搭建Windows与office的KMS服务器/" itemprop="url">Linux下搭建Windows与Office的KMS服务器</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-08T19:51:34+08:00" content="2016-11-08">
-              2016-11-08
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T19:51:34+08:00">2016-11-08</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programer/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员的那些事</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programer/" itemprop="url" rel="index"><span itemprop="name">程序员的那些事</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/programer/Linux下搭建Windows与office的KMS服务器/" class="leancloud_visitors" data-flag-title="Linux下搭建Windows与Office的KMS服务器">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -778,25 +901,32 @@
 <p><strong>服务器端口：1688</strong><br><strong>系统：Centos linux 发行版</strong></p>
 <h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>使用root用户登录，分别运行以下3条命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -c http://mirrors.tintsoft.com/software/vlmcsd/vlmcsd.sh</div><div class="line">chmod +x vlmcsd.sh</div><div class="line">./vlmcsd.sh 2&gt;&amp;1 | tee vlmcsd.log</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/programer/Linux下搭建Windows与office的KMS服务器/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -806,6 +936,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -818,7 +952,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/深入理解计算机系统-第三章课后作业/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -826,74 +977,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-第三章课后作业/" itemprop="url">
-                  深入理解计算机系统-第三章课后作业
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-第三章课后作业/" itemprop="url">深入理解计算机系统-第三章课后作业</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-05T20:06:27+08:00" content="2016-11-05">
-              2016-11-05
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-05T20:06:27+08:00">2016-11-05</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/深入理解计算机系统-第三章课后作业/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-第三章课后作业">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -931,25 +1087,32 @@
 <p>所以根据以上汇编代码可以得到等价的C代码如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">decode2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = z-y;</div><div class="line">    <span class="keyword">return</span> (temp ^ x) * (temp &lt;&lt; <span class="number">15</span> &gt;&gt; <span class="number">15</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/深入理解计算机系统-第三章课后作业/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -959,6 +1122,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -971,7 +1138,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/浮点数除0与整数除0的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -979,74 +1163,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/浮点数除0与整数除0的问题/" itemprop="url">
-                  浮点数除0与整数除0的问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/浮点数除0与整数除0的问题/" itemprop="url">浮点数除0与整数除0的问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-04T19:02:45+08:00" content="2016-11-04">
-              2016-11-04
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-04T19:02:45+08:00">2016-11-04</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/浮点数除0与整数除0的问题/" class="leancloud_visitors" data-flag-title="浮点数除0与整数除0的问题">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1058,25 +1247,32 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码二：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line">	<span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/浮点数除0与整数除0的问题/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1086,6 +1282,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1098,7 +1298,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/深入理解计算机系统-拆炸弹实验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -1106,74 +1323,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-拆炸弹实验/" itemprop="url">
-                  深入理解计算机系统-拆炸弹实验
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/深入理解计算机系统-拆炸弹实验/" itemprop="url">深入理解计算机系统-拆炸弹实验</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-28T20:04:40+08:00" content="2016-10-28">
-              2016-10-28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-28T20:04:40+08:00">2016-10-28</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/深入理解计算机系统-拆炸弹实验/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-拆炸弹实验">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1184,25 +1406,32 @@
           <p>查看bomb.c文件里的main函数，可以发现它在分析完命令行的参数完成之后调用了initialize_bomb()函数，之后输出了两个语句。紧接着就是read_line()函数，显然这个是读取我们所需要的字符，接着就是phase_1()与phase_defused()函数了。再往下看，可以看出分别调用了phase_1 ~ phase_6六个函数，这应该就是每个拆除炸弹的阶段函数了。<br>通过<code>objdump -d bomb &gt; bomb.s</code>把反汇编代码输出到bomb.s文件上，方便查找。<br>接下来就是逐个阶段的分析了</p>
 <h6 id="phase1"><a href="#phase1" class="headerlink" title="phase1"></a>phase1</h6><p>首先找到phase_1函数的汇编代码如下:</p>
 <figure class="highlight as"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="number">08048</span>f61 &lt;phase_1&gt;:</div><div class="line"><span class="number">8048</span>f61:   <span class="number">55</span>                      push   %ebp</div><div class="line"><span class="number">8048</span>f62:   <span class="number">89</span> e5                   mov    %esp,%ebp</div><div class="line"><span class="number">8048</span>f64:   <span class="number">83</span> ec <span class="number">18</span>                sub    $<span class="number">0x18</span>,%esp</div><div class="line"><span class="number">8048</span>f67:   c7 <span class="number">44</span> <span class="number">24</span> <span class="number">04</span> <span class="number">5</span>c a1 <span class="number">04</span>    movl   $<span class="number">0x804a15c</span>,<span class="number">0x4</span>(%esp)</div><div class="line"><span class="number">8048</span>f6e:   <span class="number">08</span> </div><div class="line"><span class="number">8048</span>f6f:   <span class="number">8</span>b <span class="number">45</span> <span class="number">08</span>                mov    <span class="number">0x8</span>(%ebp),%eax</div><div class="line"><span class="number">8048</span>f72:   <span class="number">89</span> <span class="number">04</span> <span class="number">24</span>                mov    %eax,(%esp)</div><div class="line"><span class="number">8048</span>f75:   e8 <span class="number">31</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">8048</span>fab &lt;strings_not_equal&gt;</div><div class="line"><span class="number">8048</span>f7a:   <span class="number">85</span> c0                   test   %eax,%eax</div><div class="line"><span class="number">8048</span>f7c:   <span class="number">74</span> <span class="number">05</span>                   je     <span class="number">8048</span>f83 &lt;phase_1+<span class="number">0x22</span>&gt;</div><div class="line"><span class="number">8048</span>f7e:   e8 <span class="number">4</span>e <span class="number">01</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">80490</span>d1 &lt;explode_bomb&gt;</div><div class="line"><span class="number">8048</span>f83:   c9                      leave  </div><div class="line"><span class="number">8048</span>f84:   c3                      ret    </div><div class="line"><span class="number">8048</span>f85:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f86:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f87:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f88:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f89:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8a:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8b:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8c:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8d:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8e:   <span class="number">90</span>                      nop</div><div class="line"><span class="number">8048</span>f8f:   <span class="number">90</span>                      nop</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/深入理解计算机系统-拆炸弹实验/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1212,6 +1441,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1224,7 +1457,24 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/float与double精度丢失的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JihongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三鹿伴我长大's blog">
+    </span>
 
     
       <header class="post-header">
@@ -1232,74 +1482,79 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/computer-principle/float与double精度丢失的问题/" itemprop="url">
-                  float与double精度丢失的问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/computer-principle/float与double精度丢失的问题/" itemprop="url">float与double精度丢失的问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-20T20:44:05+08:00" content="2016-10-20">
-              2016-10-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-20T20:44:05+08:00">2016-10-20</time>
+            
+
+            
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/computer-principle/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机原理</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
 
                 
                 
-
               
             </span>
           
 
           
             
-          
-
           
 
           
           
              <span id="/computer-principle/float与double精度丢失的问题/" class="leancloud_visitors" data-flag-title="float与double精度丢失的问题">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1312,25 +1567,32 @@
 <p>为什么一个整数分别赋值给double和float,在输出的时候float型却不一样且偏大了呢？</p>
 <p>其实导致这样的结果主要是因为float的精度的问题，float在内存中主要分为三部分，第一部分是符号位，第二部分是指数位，第三部分是尾数部分。尾数部分的长度为23位，又因为可以隐式地认为第一位是1（因为我们总是可以通过调整指数大小把小数点移动到最高位为1上的右边），所以实际上我们float能够识别24位二进制数，也就是2^24 - 1 = 16,777,215,所以float的精度是不高于八位的。</p>
 <p>同理因为double是64位的，所以识别的精度要有2^52 - 1 = 450,359,962,770,496，也就是不高于16位。但是题目中的1234567890也就是只有十位而已，所以double可以确保它的精度不被改变而float却不行。<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/computer-principle/float与double精度丢失的问题/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1340,6 +1602,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1356,9 +1622,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -1372,123 +1635,168 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG"
-               alt="jhWei" />
-          <p class="site-author-name" itemprop="name">jhWei</p>
-          <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://7xpajj.com1.z0.glb.clouddn.com/2017-01-01-5B95C5CE-D45C-49CD-BE95-E8B1546333DA.JPG"
+                alt="JihongWei" />
+            
+              <p class="site-author-name" itemprop="name">JihongWei</p>
+              <p class="site-description motion-element" itemprop="description">每个一闪而过的想法，都值得记录</p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
+            <nav class="site-state motion-element">
               
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">分类</span>
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-            </div>
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
               </a>
             </div>
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/jihongWei" target="_blank" title="Github">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  Github
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://weibo.com/coblu" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/blublu" target="_blank" title="coding">
-                  
-                    <i class="fa fa-fw fa-spinner"></i>
-                  
-                  coding
-                </a>
-              </span>
-            
+
           
-        </div>
+          
 
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              Links
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
+                  </li>
+                
+              </ul>
             </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://coolshell.cn/" title="左耳朵耗子" target="_blank">左耳朵耗子</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://stackoverflow.com" title="stackoverflow" target="_blank">stackoverflow</a>
-                </li>
-              
-            </ul>
-          </div>
-        
+          
 
+          
+            
+          
+          
+
+        </div>
       </section>
+
+      
 
       
 
@@ -1502,36 +1810,49 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">jhWei</span>
+  <span class="author" itemprop="copyrightHolder">JihongWei</span>
+
+  
+
+  
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+
+
+
+
+
+
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -1550,226 +1871,417 @@
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
 
 
 
-  
+
 
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
   <script type="text/javascript">
-    $(document).ready(function () {
-      if ( $('#local-search-input').size() === 0) {
-        return;
-      }
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-      // Popup Window;
-      var isfetched = false;
-      // Search DB path;
-      var search_path = "search.xml";
-      if (search_path.length == 0) {
-        search_path = "search.xml";
-      }
-      var path = "/" + search_path;
-      // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
 
-      function proceedsearch() {
-        $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-        $('.popup').toggle();
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
 
-      }
-      // search function;
-      var searchFunc = function(path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-          url: path,
-          dataType: "xml",
-          async: true,
-          success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-              return {
-                title: $( "title", this ).text(),
-                content: $("content",this).text(),
-                url: $( "url" , this).text()
-              };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-              var matchcounts = 0;
-              var str='<ul class=\"search-result-list\">';
-              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-              $resultContent.innerHTML = "";
-              if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                  var isMatch = true;
-                  var content_index = [];
-                  var data_title = data.title.trim().toLowerCase();
-                  var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                  var data_url = data.url;
-                  var index_title = -1;
-                  var index_content = -1;
-                  var first_occur = -1;
-                  // only match artiles with not empty titles and contents
-                  if(data_title != '' && data_content != '') {
-                    keywords.forEach(function(keyword, i) {
-                      index_title = data_title.indexOf(keyword);
-                      index_content = data_content.indexOf(keyword);
-                      if( index_title < 0 && index_content < 0 ){
-                        isMatch = false;
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
                       } else {
-                        if (index_content < 0) {
-                          index_content = 0;
-                        }
-                        if (i == 0) {
-                          first_occur = index_content;
-                        }
+                        return itemLeft.word.length - itemRight.word.length;
                       }
                     });
-                  }
-                  // show search results
-                  if (isMatch) {
-                    matchcounts += 1;
-                    str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                    var content = data.content.trim().replace(/<[^>]+>/g,"");
-                    if (first_occur >= 0) {
-                      // cut out 100 characters
-                      var start = first_occur - 20;
-                      var end = first_occur + 80;
-                      if(start < 0){
-                        start = 0;
-                      }
-                      if(start == 0){
-                        end = 50;
-                      }
-                      if(end > content.length){
-                        end = content.length;
-                      }
-                      var match_content = content.substring(start, end);
-                      // highlight all keywords
-                      keywords.forEach(function(keyword){
-                        var regS = new RegExp(keyword, "gi");
-                        match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                      });
+                  });
 
-                      str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
                     }
-                    str += "</li>";
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
                   }
-                })};
-              str += "</ul>";
-              if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-              if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-              $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
           }
-        });}
 
-      // handle and trigger popup window;
-      $('.popup-trigger').mousedown(function(e) {
-        e.stopPropagation();
-        if (isfetched == false) {
-          searchFunc(path, 'local-search-input', 'local-search-result');
-        } else {
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
           proceedsearch();
-        };
+        }
+      });
+    }
 
-      });
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
 
-      $('.popup-btn-close').click(function(e){
-        $('.popup').hide();
-        $(".popoverlay").remove();
-        $('body').css('overflow', '');
-      });
-      $('.popup').click(function(e){
-        e.stopPropagation();
-      });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("2a230Af6Lwhz0WQtjSxeKx7r-gzGzoHsz", "h7ju3u4qRe3tQb6AoTXyjIoH");</script>
   <script>
     function showTime(Counter) {
@@ -1799,6 +2311,14 @@
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -1818,35 +2338,24 @@
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set 'security' option to 'false'.');
+            
           }
         },
         error: function(error) {
@@ -1868,11 +2377,21 @@
 
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
