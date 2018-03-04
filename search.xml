@@ -1085,67 +1085,6 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
     
     <entry>
       <title><![CDATA[Java中常见的问题]]></title>
-      <url>http://jihong.xyz/programming/java%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91/</url>
-      <content type="html"><![CDATA[<h3 id="把数组转成ArrayList"><a href="#把数组转成ArrayList" class="headerlink" title="把数组转成ArrayList"></a>把数组转成ArrayList</h3><p>为了将数组转换为ArrayList，我们经常会这样做：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = Arrays.asList(arr);</div></pre></td></tr></table></figure>
-<p>使用<code>Arrays.asList()</code>方法可以得到一个<code>ArrayList</code>，但是得到这个<code>ArrayList</code>其实是定义在<code>Arrays</code>类中的一个私有的静态内部类。这个类虽然和<code>java.util.ArrayList</code>同名，但是并不是同一个类。我就曾经被深深地坑过…<code>java.util.Arrays.ArrayList</code>类中实现了<code>set()</code>, <code>get()</code>, <code>contains()</code>等方法，但是并没有定义向其中增加元素的方法。也就是说通过<code>Arrays.asList()</code>得到的<code>ArrayList</code>的大小是固定的。</p>
-<p>如果在开发过程中，想得到一个真正的<code>ArrayList</code>对象（java.util.ArrayList的实例），可以通过以下方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(arr));</div></pre></td></tr></table></figure>
-<p>java.util.ArrayList中包含一个可以接受集合类型参数的构造函数。因为java.util.Arrays.ArrayList这个内部类继承了AbstractList类，所以，该类也是Collection的子类。<br><a id="more"></a></p>
-<h3 id="判断一个数组是否包含某个值"><a href="#判断一个数组是否包含某个值" class="headerlink" title="判断一个数组是否包含某个值"></a>判断一个数组是否包含某个值</h3><p>在判断一个数组中是否包含某个值的时候，我们经常这样做：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;(Arrays.asList(arr));</div><div class="line">    <span class="keyword">return</span> set.contains(targetValue);</div></pre></td></tr></table></figure>
-<p>以上方式虽然可以实现功能，但是效率却比较低。因为将数组压入Collection类型中，首先要将数组元素遍历一遍，然后再使用集合类做其他操作。</p>
-<p>在判断一个数组是否包含某个值的时候，推荐使用for循环遍历的形式或者使用Apache Commons类库中提供的ArrayUtils类的contains方法。</p>
-<h3 id="在循环中删除列表中的元素"><a href="#在循环中删除列表中的元素" class="headerlink" title="在循环中删除列表中的元素"></a>在循环中删除列表中的元素</h3><p>在讨论这个问题之前，先考虑以下代码的输出结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</div><div class="line">list.remove(i);</div><div class="line">&#125;</div><div class="line">System.out.println(list);</div></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[b,d]</div></pre></td></tr></table></figure>
-<p>以上代码的目的是想遍历删除list中所有元素，但是结果却没有成功。原因是忽略了一个关键的问题：当一个元素被删除时，列表的大小缩小并且下标也会随之变化，所以当你想要在一个循环中用下标删除多个元素的时候，它并不会正常的生效。</p>
-<p>也有些人知道以上代码的问题就由于数组下标变换引起的。所以，他们想到使用增强for循环的形式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(String s:list)&#123;</div><div class="line">    <span class="keyword">if</span>(s.equals(<span class="string">"a"</span>))&#123;</div><div class="line">        list.remove(s);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是，很不幸的是，以上代码会抛出<code>ConcurrentModificationException</code>，有趣的是，如果在remove操作后增加一个break，代码就不会报错：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(String s:list)&#123;</div><div class="line">    <span class="keyword">if</span>(s.equals(<span class="string">"a"</span>))&#123;</div><div class="line">        list.remove(s);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>迭代器（Iterator）是工作在一个独立的线程中，并且拥有一个 mutex 锁。 迭代器被创建之后会建立一个指向原来对象的单链索引表，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引指针往后移动的时候就找不到要迭代的对象，所以按照 fail-fast 原则 迭代器会马上抛出java.util.ConcurrentModificationException 异常。</p>
-</blockquote>
-<p>所以，正确的在遍历过程中删除元素的方法应该是使用Iterator：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>));</div><div class="line">Iterator&lt;String&gt; iter = list.iterator();</div><div class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</div><div class="line">    String s = iter.next();</div><div class="line">    <span class="keyword">if</span> (s.equals(<span class="string">"a"</span>)) &#123;</div><div class="line">        iter.remove();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>next()方法必须在调用remove()方法之前调用。如果在循环过程中先调用remove()，再调用next()，就会导致异常ConcurrentModificationException。原因如上。</p>
-<h3 id="HashTable-和-HashMap-的选择"><a href="#HashTable-和-HashMap-的选择" class="headerlink" title="HashTable 和 HashMap 的选择"></a>HashTable 和 HashMap 的选择</h3><p>了解算法的人可能对HashTable比较熟悉，因为他是一个数据结构的名字。但在Java里边，用HashMap来表示这样的数据结构。Hashtable和 HashMap的一个关键性的不同是，HashTable是同步的，而HashMap不是。所以通常不需要HashTable，HashMap用的更多。</p>
-<h3 id="使用原始集合类型"><a href="#使用原始集合类型" class="headerlink" title="使用原始集合类型"></a>使用原始集合类型</h3><p>在 Java 里边，原始类型和无界通配符类型很容易混合在一起。以 Set 为例，<code>Set</code>是一个原始类型，而<code>Set&lt; ? &gt;</code>是一个无界通配符类型。 （可以把原始类型理解为没有使用泛型约束的类型）</p>
-<p>考虑下面使用原始类型List作为参数的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(List list, Object o)</span></span>&#123;</div><div class="line">    list.add(o);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">    add(list, <span class="number">10</span>);</div><div class="line">    String s = list.get(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面的代码将会抛出异常：</p>
-<p><code>java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</code></p>
-<p>使用原始集合类型是很危险的，因为原始集合类型跳过了泛型类型检查，是不安全的。<code>Set</code>、<code>Set&lt; ? &gt;</code>和<code>Set&lt; Object &gt;</code>之间有很大差别。</p>
-<h3 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h3><p>程序员们经常使用public作为类中的字段的修饰符，因为这样可以很简单的通过引用得到值，但这并不是好的设计，按照经验，分配给成员变量的访问级别应该尽可能的低。参考Java中的四种访问级别</p>
-<h3 id="ArrayList与LinkedList的选择"><a href="#ArrayList与LinkedList的选择" class="headerlink" title="ArrayList与LinkedList的选择"></a>ArrayList与LinkedList的选择</h3><p>当程序员们不知道<code>ArrayList</code>与<code>LinkedList</code>的区别时，他们经常使用ArrayList，因为它看起来比较熟悉。然而，它们之前有巨大的性能差别。简而言之，如果有大量的增加删除操作并且没有很多的随机访问元素的操作，应该首先<code>LinkedList</code>。（<code>LinkedList</code>更适合从中间插入或者删除（链表的特性））</p>
-<h3 id="可变与不可变"><a href="#可变与不可变" class="headerlink" title="可变与不可变"></a>可变与不可变</h3><p>不可变对象有许多的优点，比如简单，安全等等。同时，也有人提出疑问：既然不可变有这么多好处，为什么不把所有类都搞成不可变的呢？</p>
-<p>通常情况下，可变对象可以用来避免产生过多的中间对象。一个经典的实例就是连接大量的字符串，如果使用不可变的字符串，将会产生大量的需要进行垃圾回收的对象。这会浪费CPU大量的时间，使用可变对象才是正确的方案(比如StringBuilder)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String result=<span class="string">""</span>;</div><div class="line"><span class="keyword">for</span>(String s: arr)&#123;</div><div class="line">    result = result + s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/23616211/why-we-need-mutable-classes" target="_blank" rel="noopener">StackOverflow</a>中也有关于这个的讨论。</p>
-<h3 id="父类和子类的构造函数"><a href="#父类和子类的构造函数" class="headerlink" title="父类和子类的构造函数"></a>父类和子类的构造函数</h3><p>上图的代码中有两处编译时错误，原因其实很简单，主要和构造函数有关。首先，我们都知道：如果一个类没有定义构造函数，编译器将会插入一个无参数的默认构造函数。如果一个类中定义了一个带参数的构造函数，那么编译器就不会再帮我们创建无参的构造函数。</p>
-<p>上面的Super类中定义了一个带参数的构造函数。编译器将不会插入默认的无参数构造函数。</p>
-<p>我们还应该知道：<br>子类的所有构造函数（无论是有参还是无参）在执行时，都会调用父类的无参构造函数。<br>所以，编译器试图调用Super类中的无参构造函数。但是父类默认的构造函数未定义，编译器就会报出这个错误信息。</p>
-<p>要解决这个问题，可以简单的通过</p>
-<ol>
-<li>在父类中添加一个Super()构造方法，就像这样：</li>
-</ol>
-<p><code>public Super(){}</code></p>
-<ol>
-<li><p>移除自定义的父类构造函数</p>
-</li>
-<li><p>在子类的构造函数中调用父类的super(value)。</p>
-</li>
-</ol>
-<h3 id="””还是构造函数"><a href="#””还是构造函数" class="headerlink" title="””还是构造函数"></a>””还是构造函数</h3><p>关于这个问题，也是经常容易出现困惑的地方。</p>
-<p>其实，如果你只需要创建一个字符串，你可以使用双引号的方式，如果你需要在堆中创建一个新的对象，你可以选择构造函数的方式。</p>
-<p>在String d = new String(“abcd”)时，因为字面值“abcd”已经是字符串类型，那么使用构造函数方式只会创建一个额外没有用处的对象。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java中常见的问题]]></title>
       <url>http://jihong.xyz/programming/Java%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h3 id="把数组转成ArrayList"><a href="#把数组转成ArrayList" class="headerlink" title="把数组转成ArrayList"></a>把数组转成ArrayList</h3><p>为了将数组转换为ArrayList，我们经常会这样做：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = Arrays.asList(arr);</div></pre></td></tr></table></figure>
@@ -1363,6 +1302,25 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 </blockquote>
 <p>当攻击者准备256个字符串，它们的哈希值包第一字节包含了所有的情况。然后用它们去尝试系统登录，记录返回结果所需的时间，耗时最长的那个就是第一字节猜对的那个。虽然是微秒级别，但通过大量数据的采集，是完全可以推测到所有的哈希值的。然后通过离线计算，绕过系统的登录验证次数的限制。</p>
 <p>可能乍看之下几乎没有人能做到，但是这个世界就是这么神奇，还真有人做到了，而且已经运到到实际项目中。。。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《1984》读后感]]></title>
+      <url>http://jihong.xyz/daydream/1984%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+      <content type="html"><![CDATA[<p>乔治奥威尔的《1984》是一本已经被研究得透烂的书，但不管政治学家将其剖析得如何不留余地，我依然想写写合上书那一刻自己心中难以言喻的复杂感受，自己的体会哪怕再重复毕竟也是自己经历过的。这是一种奇妙又难得的阅读体验，就像是被一股巨大又庞杂的情绪充斥，一时间想到书里那些新词，想到书中世界和现实世界的联系，想到那些没有发生却有可能发生的未来，想到作者的一语成谶，想到自己的定位，想到微博时代的1984。它们真实的可怕。</p>
+<p>这本书自出版至今被放在专家学者的显微镜下无数次的解剖放大，由其派生出的一系列新词和概念甚至被收录大英词典，但作为模板并不是它的全部意义。它是著作但同时也是一部小说，小说具有情节，情节中带有戏剧，戏剧引人遐想。另一方面，它更应该被脱离出“学术”的帽子，以一种纯体悟的方式被反省、被观照，或者说，这也是因为我的水平目前只能达到这样。<br>其实自从微博开始实行实名制起，我就知道这个世界再也不存在什么匿名，或者本来就不存在，只是我们懒于承认。你的所有言论都被曝光于监察者的监督下，不再存在网络隐私。常有新闻报道某某人因在网上发布不实信息而被拘留逮捕，这种消息常让我不安——个人的言论因造成扰乱治安而被捕是法制需要，那会不会有一天，仅仅因为言论的政治原因而被惩罚。会不会有一天，突然发生有人撞开了我家的门将在电脑前刷微博的我带走仅仅因为我曾发过的一条自己也记不得了的微薄，而其被指政治意向不正确？别说不可能，《1984》中的世界就是这么被操作的，而我们又都无法预见历史的走向是不是倒退。<br><a id="more"></a><br>书中所描绘的那个世界，是一个我宁愿被打死也不愿去生活的时代，可书中的那些人还是实实在在地在作者笔下活着。他们不会为现实痛苦么？他们不会怨念生在这个时代是怎样虚掷了唯一的一辈子么？他们不会渴望摆脱受制而获得自由么？他们不会为因为自己的一句梦话就被捕的现状担心么？而作者笔下的残酷就在于，他在抛给你这些问题后又简明扼要地回答了你，“不会”。</p>
+<p>温水里的青蛙往往无意于自救，因为它们一点一点地习以为常。水深火热。1984年的英国人生活在水深火热中却无自救之意，是因为在他们的印象里水一直是那么深 火一直是那么热。“有人似乎隐隐记得，以前的食物比现在丰厚，上一次大洋国的敌人好像是东亚国<code></code>”但也仅仅是记得，真理部出色的工作成果绝对可以抹杀任何蛛丝马迹。世间最可怕的事是什么，就是人不能相信自己的判断和思考。“自由即奴役”，你渴望冠冕堂皇的自由么？那就请心甘情愿地接受奴役吧。<br>但奥威尔要写的不是浪潮，而是浪潮裹挟中那个跃起的叛逆，那个希望的载体。但既然你决定要当主人公了，你就得承受异于旁人的艰辛。温斯特活得比所有人都痛苦，因为他独立的思考方式始终突兀地立在那里，不肯随波逐流，拒绝接受洗脑，不愿被奴役即不能在此世界自由的生活。 是，此处的自由就是放开手任由自己被外力推动控制的自由，就是不再执念而接受最终灌输的开放式自由，就是放纵自己盲目而麻木的跟着“上面”走的自由，你可以随心所欲地活着，因为你脑袋里思考的，你可能在夜班梦话里无意识反映出的真实所想，都是顺从于操作规律的，真心的将虚伪当作了真实，而在你的逻辑体系中2+2=5是驳无可驳的真理，自然不必揣着秘密终日伪装着生活，大可随时随地说出自己真实感受。这是自由么。当然是自由——“奴役式”的自由。</p>
+<p>都说《1984》一语成谶的预言了上世纪六七十年代中国的文化大革命，相信每一个国人阅读此书时都会感同身受般的共鸣。文革里人人都要背毛泽东语录，但那个时代活得最自由的就是真正将其视为圭玺的人。知识分子或收敛锋芒苟且于世，或不堪折辱悬梁自尽。他们格格不入于世的思想体系如针毡，他们独具的风骨于那个时代脱了节。而文革十年中最自由的群体则非红卫兵莫属。他们将领袖希望民众根植的思想体系变成了自己的思想体系，他们可以堂而皇之地闯到别人家里抄家放火，可以轻易把看不顺眼的人扣上反革命的帽子置于公众视野下游街批斗。当时代在逆流的时候，你是选择继续顺流还是顺着时代一起逆流？无疑后者才能得到自由。倒行逆施的自由，为虎作伥的自由，放弃良知的自由，文革式的自由，老大哥口中的自由，看似自由的自由。<br>自由即奴役。奴役即自由。老大哥完成了他的自圆其说。</p>
+<p>这种奴役式的自由探讨比比皆是。2008年由丹尼斯•甘塞尔执导的德国电影《浪潮》所述的也是这种模式。影片改编自真实事件。1967年，美国加州一所高中的历史教师Ron Jones为了让学生们明白什么叫法西斯主义，搞了一场教学实验。他提出铿锵有力的口号，“纪律铸造力量”、“团结铸造力量”和“行动铸造力量”，用严苛的规条束缚学生，向他们灌输集体主义，要求他们绝对服从，遵守纪律。令人惊讶的是，学生们非常顺从，步调一致地投入其中。他们精神抖擞，穿上制服，做课间操，互相监督，很快凝聚成一个新的团体。他们给这个团体命名为“浪潮”，还设计了一个标志性的动作：手臂从右往左，划出一个波浪状的曲线。学生们没有意识到自己越来越像纳粹分子，他们发传单，印贴纸，拉拢新的成员。只用五天时间，这个班就由20人变成了200人。这群学生，这群不相信法西斯会在今日卷土重来是因为它没有群众基础的学生，用自己的行动狠狠扇了自己的耳光。<br>短短的5天内，是什么将民主制度下成长的学生变成法西斯式的极权拥护者。为什么被民主了那么多年的学生会一夜之间心甘情愿的被奴役。究其所以，恐怕是因为他们在“浪潮”中能得到自由——即前文提到的“奴役式自由”。因为你加入了这个组织，你就可以在这组织中得到认可，就可以打着组织的名号仗着人多力量大对组织外的人为所欲为，就可以享受组织对成员的优待。就可以感受到被需要，感受到自身处于洪流中的力量。一旦得到这些，就不再有人愿意花些时间究其表里，就不会再有意识以局外人的身份看看这场闹剧。反之，不加入组织即意味被排挤，被捉弄，人们感受到了由此带来的不自由，便只能投入另一种“伪自由”。</p>
+<p>伪自由的之外必定存在真自由。即便后者来之不易甚至饱含艰涩，也有人愿意放弃蒙蔽的愉悦而换取真实的痛苦。温斯特被自己对现世的质疑折磨得日益消瘦，甚至在电刑架上死去活来，也不愿放弃自己的质疑。“谁掌控过去，谁就掌控未来。”他做着掌控过去的工作，却看不到未来。一旦放弃己见投身浪潮便意味着自我放逐，於是只能偷着写日记，偷着收藏无伤大雅却被核心党禁止的东西，偷着和裘丽娅在却其顿小屋中拥抱做爱等待天暗天明，偷着思考，偷着绝望，一日日等着终结时刻的到来，在诚惶诚恐中体会生命的真实与纠结的痛苦。可惜的是，他拒绝被自由的奴役，也没能换来最后的觉醒。</p>
+<p>这才发现，有时候“自由”二字远不如想象中那么美好温情。换而言之，“自由”被粉饰成很多种，关键看你愿意花多大的力气去追寻哪一种。微博时代，人人忙着给自己贴标签。“公知”“五毛”不可开交，而有趣的是，一开始倾向模糊的人，一旦走向某个立场，就会不断强化这个立场，越走越远。其实道理很简单，游移在边缘地带的人总是痛苦的，他对多种思想都持有不同程度的认可，他不愿轻易走上其中任何一条道路。而结果是，这样的人往往最易遭到攻击。持相同立场的每一个人彼此抱团，自我保护，并攻击其他立场团体的人。而只有当你选择了其中的一种，你才可以在此之中畅所欲言，固执己见，并最终自圆其说。你终于做出了选择，你不再纠结，你由此自由。</p>
+<p>回到文首提出的担忧，其实已经不需要担心发个微博因为政治言论不当而被惩，今时今日，只要你的言论略有欠缺，各位博友的骂词就能把你家电脑刷到死机。</p>
+<p>我们每个人都不愿被思想奴役，我们每个人都在思想奴役他人。<br>我们都在充当思想极权的支撑者。</p>
+<p>这个时代的自由已经变了味，人人都在高歌要求自由，却没人能真正为其下个定义。自由不是随性，当过去可以被肆意篡改，当历史被板上钉钉地刻在时间轴里却被硬生生拆下重写，在刻骨的无奈与悲哀里，我们真的还想要这份自由么；<br>当我们人人像一颗颗粒子般整齐划一的在粒子流中游荡反转时，我们真的还要这份自由么；<br>当新闻不再可信，当自由得乱了套毫无章法，我们真的还要这份自由么；<br>当我们在电幕下被监视，在“仇恨三分钟”里被改造得真的能获取所谓“从心所欲不逾矩”，我们真的还要这颗心，真的还要这份自由么。</p>
+<p>“战争即和平，自由即奴役，无知即力量。”阅读时我一直在想，第二句话为什么不是“奴役即自由”，这样编排岂非前后逻辑更合理。后来终于明白，在那个时代，廉价的自由已然泛滥，奴役才是被摆上台面的民众所需，也是最终目的。</p>
+<p>这样一想，因为什么原因“被消失”变得不再可怕，至少我还自由的保留了被捕被审的可能性，这种可能性来源于思想的不屈服不盲从，这让我异于旁人，让我比他们自由。</p>
+<p>这是庶民的胜利。</p>
 ]]></content>
     </entry>
     
