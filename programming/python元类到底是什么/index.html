@@ -103,19 +103,19 @@
   <meta name="keywords" content="Python," />
 
 
-<meta name="description" content="最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(^__^) 好像没什么区别）Python确实在很大意义上方便了我">
+<meta name="description" content="最近趁着有点时间，打算把Python重拾一下。Python确实在很大意义上方便了我们的编程，解放了双手。特别是从 Java 变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！” 在读到Python元类的时候，刚开始看到下面这段代码的我是很惊讶的. 123456&amp;gt;&amp;gt;&amp;gt; isinstance(object, type)True&amp;gt;&amp;gt;&amp;gt; isinsta">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python元类到底是什么">
 <meta property="og:url" content="http://jihong.xyz/programming/python元类到底是什么/index.html">
 <meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
-<meta property="og:description" content="最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(^__^) 好像没什么区别）Python确实在很大意义上方便了我">
+<meta property="og:description" content="最近趁着有点时间，打算把Python重拾一下。Python确实在很大意义上方便了我们的编程，解放了双手。特别是从 Java 变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！” 在读到Python元类的时候，刚开始看到下面这段代码的我是很惊讶的. 123456&amp;gt;&amp;gt;&amp;gt; isinstance(object, type)True&amp;gt;&amp;gt;&amp;gt; isinsta">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/ca54cfa2cc510d2dcc40e3cc7fb2e051_b.png">
-<meta property="og:updated_time" content="2016-07-21T03:57:41.000Z">
+<meta property="og:updated_time" content="2018-03-04T07:34:22.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python元类到底是什么">
-<meta name="twitter:description" content="最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(^__^) 好像没什么区别）Python确实在很大意义上方便了我">
+<meta name="twitter:description" content="最近趁着有点时间，打算把Python重拾一下。Python确实在很大意义上方便了我们的编程，解放了双手。特别是从 Java 变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！” 在读到Python元类的时候，刚开始看到下面这段代码的我是很惊讶的. 123456&amp;gt;&amp;gt;&amp;gt; isinstance(object, type)True&amp;gt;&amp;gt;&amp;gt; isinsta">
 <meta name="twitter:image" content="http://7xpajj.com1.z0.glb.clouddn.com/ca54cfa2cc510d2dcc40e3cc7fb2e051_b.png">
 
 
@@ -407,10 +407,10 @@
       
 
       
-        <p>最近趁着有点时间，就打算把python重拾一下，以前虽然了解了python的大概语法，但并没有拿来当作主力语言.为了不让它在脑子里荒废，决定重新学一下python的各种用法.老话说得好，温故而知新.果然再过一段时间重新读一遍python的语法以及相关用法,和以前的感觉完全不同了.如果以前是似懂非懂的话，现在应该是半知半解的状态了！（(<em>^__^</em>) 好像没什么区别）Python确实在很大意义上方便了我们的编程，解放了双手。特别是从Java变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！”</p>
-<p>在读到Python元类的时候，刚开始看到下面这段代码的我是一脸懵逼的.</p>
+        <p>最近趁着有点时间，打算把Python重拾一下。Python确实在很大意义上方便了我们的编程，解放了双手。特别是从 Java 变换过来，所以这也是为什么那么多人感叹“人生苦短，我用Python！”</p>
+<p>在读到Python元类的时候，刚开始看到下面这段代码的我是很惊讶的.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object, type)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(type, object)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(object(), type)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-<p>wtf？type和object互为子类？深受静态语言洗脑的我完全无法接受这样的现实.然后就开始了啃书啃知识的阶段了…各种搜寻它们俩到底是个什么关系？</p>
+<p>wtf？type和object互为子类？深受静态语言洗脑的我完全无法接受这样的现实.然后就开始了啃书啃知识的阶段了…开始搜寻它们俩到底是什么关系。</p>
 <p>最后打破世界观的观点来了.type和object就好比蛋鸡关系那样，它们是一个共生关系，并不能说先有谁后有谁，需要同时存在.object的类型是type，也就是说object类是type类的实例对象，它们之间的关系就是实例关系.说起来有点拗口，不嫌烦的话再啰嗦一句，object类是type的实例化对象.</p>
 <p>首先，要缕清这个关系，还是需要舍弃掉之前静态语言所带来的概念，重新构造我们的世界观.在python里，一切都是对象，这个一切比号称完全面向对象的java还要完全.<strong> 包括class、type、object等等都是对象 </strong>.</p>
 <blockquote>
@@ -491,8 +491,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/knowledge/vim常用命令/" rel="prev" title="vim常用命令">
-                vim常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/knowledge/vim常用命令/" rel="prev" title="Vim 常用命令">
+                Vim 常用命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -597,7 +597,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -638,7 +638,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

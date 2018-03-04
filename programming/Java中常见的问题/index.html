@@ -100,21 +100,21 @@
 
 
   
-  <meta name="keywords" content="编程素养," />
+  <meta name="keywords" content="Java," />
 
 
-<meta name="description" content="2.58编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。 1234int is_little_endian()&amp;#123;    int x = 1;    return *(char*)&amp;amp;x;&amp;#125; 假设是32位的小端机器，那么x变量存储方式将为0000 0001 00">
-<meta name="keywords" content="编程素养">
+<meta name="description" content="把数组转成ArrayList为了将数组转换为ArrayList，我们经常会这样做： 1List&amp;lt;String&amp;gt; list = Arrays.asList(arr); 使用Arrays.asList()方法可以得到一个ArrayList，但是得到这个ArrayList其实是定义在Arrays类中的一个私有的静态内部类。这个类虽然和java.util.ArrayList同名，但是并不是同一">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解计算机系统-第二章课后作业">
-<meta property="og:url" content="http://jihong.xyz/computer-principle/深入理解计算机系统-第二章课后作业/index.html">
+<meta property="og:title" content="Java中常见的问题">
+<meta property="og:url" content="http://jihong.xyz/programming/Java中常见的问题/index.html">
 <meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
-<meta property="og:description" content="2.58编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。 1234int is_little_endian()&amp;#123;    int x = 1;    return *(char*)&amp;amp;x;&amp;#125; 假设是32位的小端机器，那么x变量存储方式将为0000 0001 00">
+<meta property="og:description" content="把数组转成ArrayList为了将数组转换为ArrayList，我们经常会这样做： 1List&amp;lt;String&amp;gt; list = Arrays.asList(arr); 使用Arrays.asList()方法可以得到一个ArrayList，但是得到这个ArrayList其实是定义在Arrays类中的一个私有的静态内部类。这个类虽然和java.util.ArrayList同名，但是并不是同一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-11-07T12:10:02.000Z">
+<meta property="og:updated_time" content="2018-03-04T02:56:03.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解计算机系统-第二章课后作业">
-<meta name="twitter:description" content="2.58编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。 1234int is_little_endian()&amp;#123;    int x = 1;    return *(char*)&amp;amp;x;&amp;#125; 假设是32位的小端机器，那么x变量存储方式将为0000 0001 00">
+<meta name="twitter:title" content="Java中常见的问题">
+<meta name="twitter:description" content="把数组转成ArrayList为了将数组转换为ArrayList，我们经常会这样做： 1List&amp;lt;String&amp;gt; list = Arrays.asList(arr); 使用Arrays.asList()方法可以得到一个ArrayList，但是得到这个ArrayList其实是定义在Arrays类中的一个私有的静态内部类。这个类虽然和java.util.ArrayList同名，但是并不是同一">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://jihong.xyz/computer-principle/深入理解计算机系统-第二章课后作业/"/>
+  <link rel="canonical" href="http://jihong.xyz/programming/Java中常见的问题/"/>
 
 
 
@@ -132,7 +132,7 @@
     sidebar: "",
   };
 </script>
-  <title>深入理解计算机系统-第二章课后作业 | 三鹿伴我长大's blog</title>
+  <title>Java中常见的问题 | 三鹿伴我长大's blog</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/computer-principle/深入理解计算机系统-第二章课后作业/">
+    <link itemprop="mainEntityOfPage" href="http://jihong.xyz/programming/Java中常见的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JihongWei">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深入理解计算机系统-第二章课后作业</h1>
+          <h1 class="post-title" itemprop="name headline">Java中常见的问题</h1>
         
 
         <div class="post-meta">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-13T20:06:21+08:00">2016-10-13</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-30T19:42:21+08:00">2016-03-30</time>
             
 
             
@@ -360,7 +360,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/computer-principle/" itemprop="url" rel="index"><span itemprop="name">计算机原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
@@ -374,7 +374,7 @@
 
           
           
-             <span id="/computer-principle/深入理解计算机系统-第二章课后作业/" class="leancloud_visitors" data-flag-title="深入理解计算机系统-第二章课后作业">
+             <span id="/programming/Java中常见的问题/" class="leancloud_visitors" data-flag-title="Java中常见的问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -405,102 +405,61 @@
       
 
       
-        <h6 id="2-58"><a href="#2-58" class="headerlink" title="2.58"></a>2.58</h6><p>编写过程is_little_endian，当在小端机器上编译和运行时返回1，在大端机器上编译运行时返回0.这个过程应该可以运行在任何机器上，无论机器的字长是多少。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_little_endian</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> *(<span class="keyword">char</span>*)&amp;x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>假设是32位的小端机器，那么x变量存储方式将为<code>0000 0001 0000 0000 0000 0000 0000 0000</code>，反之则为<code>0000 0000 0000 0000 0000 0000 0000 0001</code>。通过取变量<code>x</code>的地址然后强制转换<code>char*</code>，再通过指针取出这个强制转换后的地址上的值（无论是大端还是小端，都是取内存低8位的地址，所以大端模式取到的是<code>0000 0000</code>，而小端模式取到的值是<code>0000 0001</code>）。<strong>如果第二句语句改为<code>return (char)x</code>，则无论是大端还是小端机器，最终的结果都为1。因为强制转换是在寄存器进行的而不是在内存进行的，那么<code>(char)x</code>就是保留其低八位的值，也就是<code>0000 0001</code></strong></p>
-<hr>
-<a id="more"></a>
-<h6 id="2-71"><a href="#2-71" class="headerlink" title="2.71"></a>2.71</h6><p>你刚刚开始在一家公司工作，他们要实现一组过程来操作一个数据结构，要将４个有符号字节封装成一个32位unsigned。在这个unsigned中的字节是从0（最底有效字节）编号到3（最高有效字节）。分配给你的任务是：为使用二进制补码运算和算术右移的机器编写一个具有如下原形的函数：<br>/<em>Declaration of data type where 4 bytes are packed in to an unsigned </em>/<br>typedef unsigned packed_t;</p>
-<p>/<em> Extract byte from word. Return as signed integer </em>/<br>int xbyte(packed_t world, int bytenum);</p>
-<p>也就是说，函数会抽取指定的字节，再把它符号扩展为一个32位int．<br>你的前任（因为水平不高而被解雇了）编写了下面的代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*Failed attempt at xbyte */</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">xbyte</span><span class="params">(<span class="keyword">unsigned</span> word, <span class="keyword">int</span> bytenum)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (word &gt;&gt;(bytenum &lt;&lt; <span class="number">3</span>)) &amp; <span class="number">0xFF</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>问题<br>１．这段代码错在哪里？<br>２．给出函数的正确实现，只能使用左右移位和一个减法．</strong></p>
-<p><strong>答：</strong></p>
+        <h3 id="把数组转成ArrayList"><a href="#把数组转成ArrayList" class="headerlink" title="把数组转成ArrayList"></a>把数组转成ArrayList</h3><p>为了将数组转换为ArrayList，我们经常会这样做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = Arrays.asList(arr);</div></pre></td></tr></table></figure>
+<p>使用<code>Arrays.asList()</code>方法可以得到一个<code>ArrayList</code>，但是得到这个<code>ArrayList</code>其实是定义在<code>Arrays</code>类中的一个私有的静态内部类。这个类虽然和<code>java.util.ArrayList</code>同名，但是并不是同一个类。我就曾经被深深地坑过…<code>java.util.Arrays.ArrayList</code>类中实现了<code>set()</code>, <code>get()</code>, <code>contains()</code>等方法，但是并没有定义向其中增加元素的方法。也就是说通过<code>Arrays.asList()</code>得到的<code>ArrayList</code>的大小是固定的。</p>
+<p>如果在开发过程中，想得到一个真正的<code>ArrayList</code>对象（java.util.ArrayList的实例），可以通过以下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(arr));</div></pre></td></tr></table></figure>
+<p>java.util.ArrayList中包含一个可以接受集合类型参数的构造函数。因为java.util.Arrays.ArrayList这个内部类继承了AbstractList类，所以，该类也是Collection的子类。<br><a id="more"></a></p>
+<h3 id="判断一个数组是否包含某个值"><a href="#判断一个数组是否包含某个值" class="headerlink" title="判断一个数组是否包含某个值"></a>判断一个数组是否包含某个值</h3><p>在判断一个数组中是否包含某个值的时候，我们经常这样做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;(Arrays.asList(arr));</div><div class="line">    <span class="keyword">return</span> set.contains(targetValue);</div></pre></td></tr></table></figure>
+<p>以上方式虽然可以实现功能，但是效率却比较低。因为将数组压入Collection类型中，首先要将数组元素遍历一遍，然后再使用集合类做其他操作。</p>
+<p>在判断一个数组是否包含某个值的时候，推荐使用for循环遍历的形式或者使用Apache Commons类库中提供的ArrayUtils类的contains方法。</p>
+<h3 id="在循环中删除列表中的元素"><a href="#在循环中删除列表中的元素" class="headerlink" title="在循环中删除列表中的元素"></a>在循环中删除列表中的元素</h3><p>在讨论这个问题之前，先考虑以下代码的输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</div><div class="line">list.remove(i);</div><div class="line">&#125;</div><div class="line">System.out.println(list);</div></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[b,d]</div></pre></td></tr></table></figure>
+<p>以上代码的目的是想遍历删除list中所有元素，但是结果却没有成功。原因是忽略了一个关键的问题：当一个元素被删除时，列表的大小缩小并且下标也会随之变化，所以当你想要在一个循环中用下标删除多个元素的时候，它并不会正常的生效。</p>
+<p>也有些人知道以上代码的问题就由于数组下标变换引起的。所以，他们想到使用增强for循环的形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(String s:list)&#123;</div><div class="line">    <span class="keyword">if</span>(s.equals(<span class="string">"a"</span>))&#123;</div><div class="line">        list.remove(s);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是，很不幸的是，以上代码会抛出<code>ConcurrentModificationException</code>，有趣的是，如果在remove操作后增加一个break，代码就不会报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>));</div><div class="line"><span class="keyword">for</span>(String s:list)&#123;</div><div class="line">    <span class="keyword">if</span>(s.equals(<span class="string">"a"</span>))&#123;</div><div class="line">        list.remove(s);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>迭代器（Iterator）是工作在一个独立的线程中，并且拥有一个 mutex 锁。 迭代器被创建之后会建立一个指向原来对象的单链索引表，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，所以当索引指针往后移动的时候就找不到要迭代的对象，所以按照 fail-fast 原则 迭代器会马上抛出java.util.ConcurrentModificationException 异常。</p>
+</blockquote>
+<p>所以，正确的在遍历过程中删除元素的方法应该是使用Iterator：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>));</div><div class="line">Iterator&lt;String&gt; iter = list.iterator();</div><div class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</div><div class="line">    String s = iter.next();</div><div class="line">    <span class="keyword">if</span> (s.equals(<span class="string">"a"</span>)) &#123;</div><div class="line">        iter.remove();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>next()方法必须在调用remove()方法之前调用。如果在循环过程中先调用remove()，再调用next()，就会导致异常ConcurrentModificationException。原因如上。</p>
+<h3 id="HashTable-和-HashMap-的选择"><a href="#HashTable-和-HashMap-的选择" class="headerlink" title="HashTable 和 HashMap 的选择"></a>HashTable 和 HashMap 的选择</h3><p>了解算法的人可能对HashTable比较熟悉，因为他是一个数据结构的名字。但在Java里边，用HashMap来表示这样的数据结构。Hashtable和 HashMap的一个关键性的不同是，HashTable是同步的，而HashMap不是。所以通常不需要HashTable，HashMap用的更多。</p>
+<h3 id="使用原始集合类型"><a href="#使用原始集合类型" class="headerlink" title="使用原始集合类型"></a>使用原始集合类型</h3><p>在 Java 里边，原始类型和无界通配符类型很容易混合在一起。以 Set 为例，<code>Set</code>是一个原始类型，而<code>Set&lt; ? &gt;</code>是一个无界通配符类型。 （可以把原始类型理解为没有使用泛型约束的类型）</p>
+<p>考虑下面使用原始类型List作为参数的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(List list, Object o)</span></span>&#123;</div><div class="line">    list.add(o);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">    add(list, <span class="number">10</span>);</div><div class="line">    String s = list.get(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码将会抛出异常：</p>
+<p><code>java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</code></p>
+<p>使用原始集合类型是很危险的，因为原始集合类型跳过了泛型类型检查，是不安全的。<code>Set</code>、<code>Set&lt; ? &gt;</code>和<code>Set&lt; Object &gt;</code>之间有很大差别。</p>
+<h3 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h3><p>程序员们经常使用public作为类中的字段的修饰符，因为这样可以很简单的通过引用得到值，但这并不是好的设计，按照经验，分配给成员变量的访问级别应该尽可能的低。参考Java中的四种访问级别</p>
+<h3 id="ArrayList与LinkedList的选择"><a href="#ArrayList与LinkedList的选择" class="headerlink" title="ArrayList与LinkedList的选择"></a>ArrayList与LinkedList的选择</h3><p>当程序员们不知道<code>ArrayList</code>与<code>LinkedList</code>的区别时，他们经常使用ArrayList，因为它看起来比较熟悉。然而，它们之前有巨大的性能差别。简而言之，如果有大量的增加删除操作并且没有很多的随机访问元素的操作，应该首先<code>LinkedList</code>。（<code>LinkedList</code>更适合从中间插入或者删除（链表的特性））</p>
+<h3 id="可变与不可变"><a href="#可变与不可变" class="headerlink" title="可变与不可变"></a>可变与不可变</h3><p>不可变对象有许多的优点，比如简单，安全等等。同时，也有人提出疑问：既然不可变有这么多好处，为什么不把所有类都搞成不可变的呢？</p>
+<p>通常情况下，可变对象可以用来避免产生过多的中间对象。一个经典的实例就是连接大量的字符串，如果使用不可变的字符串，将会产生大量的需要进行垃圾回收的对象。这会浪费CPU大量的时间，使用可变对象才是正确的方案(比如StringBuilder)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String result=<span class="string">""</span>;</div><div class="line"><span class="keyword">for</span>(String s: arr)&#123;</div><div class="line">    result = result + s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/23616211/why-we-need-mutable-classes" target="_blank" rel="noopener">StackOverflow</a>中也有关于这个的讨论。</p>
+<h3 id="父类和子类的构造函数"><a href="#父类和子类的构造函数" class="headerlink" title="父类和子类的构造函数"></a>父类和子类的构造函数</h3><p>上图的代码中有两处编译时错误，原因其实很简单，主要和构造函数有关。首先，我们都知道：如果一个类没有定义构造函数，编译器将会插入一个无参数的默认构造函数。如果一个类中定义了一个带参数的构造函数，那么编译器就不会再帮我们创建无参的构造函数。</p>
+<p>上面的Super类中定义了一个带参数的构造函数。编译器将不会插入默认的无参数构造函数。</p>
+<p>我们还应该知道：<br>子类的所有构造函数（无论是有参还是无参）在执行时，都会调用父类的无参构造函数。<br>所以，编译器试图调用Super类中的无参构造函数。但是父类默认的构造函数未定义，编译器就会报出这个错误信息。</p>
+<p>要解决这个问题，可以简单的通过</p>
 <ol>
-<li>可以看出，如果要取出的这个字节的值为负数的时候，代码的处理是错误的，即会处理为正数。</li>
-<li>代码的正确实现如下：</li>
+<li>在父类中添加一个Super()构造方法，就像这样：</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">xbyte</span><span class="params">(<span class="keyword">unsigned</span> word, <span class="keyword">int</span> bytenum)</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (word &lt;&lt;((<span class="number">3</span>-bytenum) &lt;&lt; <span class="number">3</span>)) &gt;&gt; <span class="number">24</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>代码解释：</strong><br>由于算术右移是按照符号位来填充扩展位的，那么我们可以采取先左移(3-n)*8位来把要取的字节左边的无效位左移覆盖掉，再通过右移24位来把当前字节置于最低字节位。而此时，如果此数为正，那么左边将会全是0，不会影响到结果；如果此数为负，低八位的前24位必将全部是1（算术右移），因为负数是用补码表示的，取反后除了符号位其余23位将会变为0，而低八位正常取反加1，同样也不影响结果。</p>
-<hr>
-<h6 id="2-84"><a href="#2-84" class="headerlink" title="2.84"></a>2.84</h6><p>给定一个浮点格式，有 k 位指数和 n 位小数，对于下列数，写出阶码 E、尾数 M、<br>小数 f 和值 V 的公式。另外，请描述其位表示。</p>
-<p>A. 数 5.0。<br>B. 能够被准确描述的最大奇整数。<br>C. 最小的正规格化数的倒数。</p>
-<p><strong>答：</strong></p>
-<pre><code>A.    5.0转化为二进制得0000 0101.0，等价于1.01*2^2 
-    所以：
-    E=2
-    M=1.25
-    f=0.25
-    V=(-1)^s * M * 2^E = (-1)^0 * 1.25 * 2^2
-    位表示: [0]1[10··0]k[010··0]n
-
-B. 首先明确奇数的最低位一定为1.
-   其次因为是最大奇整数，所以s位也是为0的.
-   考虑到可能会出现两种情况，一种是E大于等于小数位n，另一种是E小于小数位n，下面分两种情况讨论
-   1.E&gt;=n:
-   显然E可表示的阶数已经超过所需要的了，所以取n就好
-   E=n
-   f=0.[1...1]n
-   M=1.[1...1]n
-   V=(-1)^0 * M * 2^E=(-1)^0 * 1.[1..1]n * 2^n
-   位表示: [0]1[E+Bias]k[1...1]n = [0]1[n + (2^(k-1) - 1)]k[1...1]n
-
-   2.E&lt;n:
-   若E&lt;n，那么小数部分的前E位只需要为1就可以了，后面的n-E部分是0 or 1都不影响最终结果
-   E=2^(k-1) - 1
-   f=0.[1...1]E[****]n-E
-   M=1.[1...1]E[****]n-E
-   V=(-1)^0 * M * 2^E=(-1)^0 * 1.[1...1]E[****]n-E * 2^(2^(k-1) - 1)
-   位表示: [0]1[1..10]k[1...1]E[****]n-E
-
-   需要说明的是E的计算过程：E=(max)e-Bias=(2^k -2) - (2^(k-1) - 1) = 2^(k-1) - 1，其
-   中e的最大值取2^k - 2是因为阶码全为1时做特殊用途(表示无穷大)，所以e最大的规格化表示为
-   [1..10]k。
-
-C. 最小规格化整数可以根据定义得出：[0]1[0...01]k[00..0]n,它的值V=(-1)^0 * 1.0
-   * 2^(2-2^(k-1))，它的倒数的值为V=(-1)^0 * 1.0 * 2^-(2-2^(k-1))=2^(2^(k-1) - 2)
-   所以：
-   E=2^(k-1) - 2
-   M=1.0
-   f=0.0
-   e=E+Bias=(2^(k-1) - 2) + (2^(k-1) - 1)=2^k -3
-   位表示: [0]1[11...01]k[0..0]n
-</code></pre><hr>
-<h6 id="2-88"><a href="#2-88" class="headerlink" title="2.88"></a>2.88</h6><p>我们在一个 int 类型为 32 位补码表示的机器上运行程序。float 类型的值使用 32<br>位 IEEE 格式，而 double 类型的值使用 64 位 IEEE 格式。</p>
-<p>我们产生随机数 x、y 和 z，并且把它们转换成 double 类型的值：</p>
-<p>/<em> Create some arbitrary values </em>/<br>int x = random();<br>int y = random();<br>int z = random();</p>
-<p>/<em> Convert to double </em>/<br>double dx = (double)x;<br>double dy = (double)y;<br>double dz = (double)z;</p>
-<p>对于下列的每个 C 表达式，你要指出表达式是否总是为 1。如果它总是为 1，描述其<br>中的数学原理。否则，列举出使它为 0 的参数的例子。请注意，不能使用 IA32 机器<br>运行 GCC 来测试你的答案，因为对于 float 和 double，它使用的都是 80 位的扩展<br>精度表示。</p>
-<p>A. (double)(float)x == dx<br>B. dx + dy == (double)(x+y)<br>C. dx + dy + dz == dz + dy + dx<br>D. dx <em> dy </em> dz == dz <em> dy </em> dx<br>E. dx / dx == dy / dy</p>
-<p><strong>答：</strong></p>
-<pre><code>A.否，可以想到int可以存储31位有效数字，而float算上隐含的个位数也仅能表示24位的宽度。当
-  x=2^25 - 1时，左边的值为33554432，而右边因为double可以容纳53位（含隐含位）所以可以无误差
-  转换一个32位的int整数，float却不行。同理可验证，只要大于24位之后其低位超出的部分为1时都会
-  产生这样的误差，如果为0则截断无影响。
-
-B.是，double的精度容纳范围仍然包含2*Int(max)，所以左右式子总是相等的。
-
-C.是，浮点数是不支持结合律的，假设dx=0.001，dy=1e53，dz=-1e53。如果根据左边的运算顺序，结
-  果为0，而右边为0.001。这是因为在左边运算时，因为double的尾数部分只有52位，而显然要先算
-  0.001+1e53的话则0.001部分因为超过double所能容纳位数被舍掉，所以最终结果为0。而右边因为先
-  运算1e53+(-1e53)所以相当于0.001+0，则可以正确表现出结果来。但是题目是通过用int转换为
-  double值的，所以double可以容纳32位所有int的值，不会发生舍弃的情况，所以不论是按何种顺序运
-  算结果都是一样的。
-
-D.是，double的取值范围为-2^-1024 ~ 2^1024 = -1.7e(-308)～1.7e308。所以当dx=1e155，
-  dy=1e155，dz=1e-155时，左边的式子结果为Inf，而右边为1e155。但int并没有那么大的数值，32
-  位int只能表示-2147483648~2147483647这个范围，所以double在这个式子中完全可以容纳3个int
-  相乘的结果而不产生误差，所以整个式子是为真值的。
-
-E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值是不一样的，为0的那一部为Not a
-  Number，而另一部分则为1，所以整个式子不相等。
-</code></pre><hr>
-<h6 id="2-92"><a href="#2-92" class="headerlink" title="2.92"></a>2.92</h6><p>遵循位级浮点编码规则，实现具有如下原型的函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Compute -f.  If f is NaN, then return f. */</span></div><div class="line"><span class="function">float_bits <span class="title">float_negate</span><span class="params">(float_bits f)</span></span>;</div></pre></td></tr></table></figure>
-<p>对于浮点数 f，这个函数计算-f。如果 f 是 NaN，你的函数应该简单地返回 f。测试你的函数，对参数 f 可以取的所有 2^32 个值求值，将结果与你使用机器的浮点运算得到的结果相比较。</p>
-<p><strong>答：</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">type <span class="keyword">unsigned</span> float_bits;</div><div class="line"><span class="function">float_bits <span class="title">float_negate</span><span class="params">(float_bits f)</span></span>&#123;</div><div class="line">    <span class="keyword">unsigned</span> s = f &gt;&gt; <span class="number">31</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="built_in">exp</span> = (f &gt;&gt; <span class="number">23</span>) &amp; <span class="number">0xff</span>;</div><div class="line">    <span class="keyword">unsigned</span> frac = f &amp; <span class="number">0x7fffff</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">exp</span> == <span class="number">0xff</span> &amp;&amp; frac != <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> f;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (~s &lt;&lt; <span class="number">31</span>) | (<span class="built_in">exp</span> &lt;&lt; <span class="number">23</span>) | frac;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>代码解释：</strong><br>    首先明确，float_bits肯定是用unsigned来保存的。其次我们要把浮点数f的符号位、阶码、尾数三个部分都取出来存到不同的变量中以备后续使用。符号位我们可以通过右移31位得到，因为已经定义float_bits为unsigned，所以右移为逻辑右移，不需要考虑符号位填充右移位的问题。阶码通过右移23位并与0xff相与得到，最后是小数部分通过与低23位1也就是0x7fffff相与取低23位的值得到。<br>    根据题意，若f为NaN则返回f，否则返回-f。根据定义，f为NaN的定义为：阶码全为1且尾数部分不为0。所以有<code>if(exp == 0xff &amp;&amp; frac != 0)</code>。<br>    最后看看返回-f的情况，通过把符号位取反后左移31位还原符号位，接着把阶码左移23位并与之前还原过的符号位相或，最后与小数部分相或，这样就得到了一个-f。</p>
+<p><code>public Super(){}</code></p>
+<ol>
+<li><p>移除自定义的父类构造函数</p>
+</li>
+<li><p>在子类的构造函数中调用父类的super(value)。</p>
+</li>
+</ol>
+<h3 id="””还是构造函数"><a href="#””还是构造函数" class="headerlink" title="””还是构造函数"></a>””还是构造函数</h3><p>关于这个问题，也是经常容易出现困惑的地方。</p>
+<p>其实，如果你只需要创建一个字符串，你可以使用双引号的方式，如果你需要在堆中创建一个新的对象，你可以选择构造函数的方式。</p>
+<p>在String d = new String(“abcd”)时，因为字面值“abcd”已经是字符串类型，那么使用构造函数方式只会创建一个额外没有用处的对象。</p>
 
       
     </div>
@@ -521,7 +480,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
       
         <div class="post-tags">
           
-            <a href="/tags/Programming-literacy/" rel="tag"># 编程素养</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -534,8 +493,8 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/computer-principle/关于二进制运算中的原码反码补码的一些理解/" rel="next" title="关于二进制运算中的原码反码补码的一些理解">
-                <i class="fa fa-chevron-left"></i> 关于二进制运算中的原码反码补码的一些理解
+              <a href="/security/Cookie、session、OAuth token的异同之处/" rel="next" title="Cookie、session、OAuth token的异同之处">
+                <i class="fa fa-chevron-left"></i> Cookie、session、OAuth token的异同之处
               </a>
             
           </div>
@@ -544,8 +503,8 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programer/老罗新机发布会的一些感受/" rel="prev" title="老罗新机发布会的一些感受">
-                老罗新机发布会的一些感受 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/java中常见的坑/" rel="prev" title="Java中常见的问题">
+                Java中常见的问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -659,7 +618,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -700,7 +659,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -769,7 +728,7 @@ E.否，若dy或dx中任意一个且仅有一个为0时，那么左右边的值�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-58"><span class="nav-number">1.</span> <span class="nav-text">2.58</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-71"><span class="nav-number">2.</span> <span class="nav-text">2.71</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-84"><span class="nav-number">3.</span> <span class="nav-text">2.84</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-88"><span class="nav-number">4.</span> <span class="nav-text">2.88</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-92"><span class="nav-number">5.</span> <span class="nav-text">2.92</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#把数组转成ArrayList"><span class="nav-number">1.</span> <span class="nav-text">把数组转成ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断一个数组是否包含某个值"><span class="nav-number">2.</span> <span class="nav-text">判断一个数组是否包含某个值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在循环中删除列表中的元素"><span class="nav-number">3.</span> <span class="nav-text">在循环中删除列表中的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashTable-和-HashMap-的选择"><span class="nav-number">4.</span> <span class="nav-text">HashTable 和 HashMap 的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用原始集合类型"><span class="nav-number">5.</span> <span class="nav-text">使用原始集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问级别"><span class="nav-number">6.</span> <span class="nav-text">访问级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList与LinkedList的选择"><span class="nav-number">7.</span> <span class="nav-text">ArrayList与LinkedList的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可变与不可变"><span class="nav-number">8.</span> <span class="nav-text">可变与不可变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父类和子类的构造函数"><span class="nav-number">9.</span> <span class="nav-text">父类和子类的构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#””还是构造函数"><span class="nav-number">10.</span> <span class="nav-text">””还是构造函数</span></a></li></ol></div>
             
 
           </div>

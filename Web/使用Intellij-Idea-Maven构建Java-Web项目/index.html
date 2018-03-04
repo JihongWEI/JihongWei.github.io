@@ -103,13 +103,13 @@
   <meta name="keywords" content="web后端," />
 
 
-<meta name="description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。    接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解">
+<meta name="description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，正好趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，但也是相当繁琐的。不过好在自从servlet3.0与Spring出现之后，编写Java web已经变得比较简单了。不再需要那么多的xml配置，确实大大提高了生产力。    接下来进入主题了，主要还是用maven来构建一个web项目，首先还是先要来">
 <meta name="keywords" content="web后端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Intellij Idea + Maven构建Java Web项目">
 <meta property="og:url" content="http://jihong.xyz/Web/使用Intellij-Idea-Maven构建Java-Web项目/index.html">
 <meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
-<meta property="og:description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。    接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解">
+<meta property="og:description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，正好趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，但也是相当繁琐的。不过好在自从servlet3.0与Spring出现之后，编写Java web已经变得比较简单了。不再需要那么多的xml配置，确实大大提高了生产力。    接下来进入主题了，主要还是用maven来构建一个web项目，首先还是先要来">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-22%3A29%3A32.jpg">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-22%3A42%3A50.jpg">
@@ -123,10 +123,10 @@
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-23%3A46%3A30.jpg">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-23%3A49%3A16.jpg">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-23%3A54%3A18.jpg">
-<meta property="og:updated_time" content="2016-10-10T12:04:48.000Z">
+<meta property="og:updated_time" content="2018-03-04T07:39:01.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Intellij Idea + Maven构建Java Web项目">
-<meta name="twitter:description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。    接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解">
+<meta name="twitter:description" content="最近正好需要用到Java来做一个web项目，好久也没接触Java了，正好趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，但也是相当繁琐的。不过好在自从servlet3.0与Spring出现之后，编写Java web已经变得比较简单了。不再需要那么多的xml配置，确实大大提高了生产力。    接下来进入主题了，主要还是用maven来构建一个web项目，首先还是先要来">
 <meta name="twitter:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-09-18-22%3A29%3A32.jpg">
 
 
@@ -418,8 +418,8 @@
       
 
       
-        <p>   最近正好需要用到Java来做一个web项目，好久也没接触Java了，也是趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，也是相当繁琐的。不过好在自从servlet3.0与Spring之后，编写Java web已经变得比较简单了，不再需要那么多的xml配置，确实大大提高了生产力。</p>
-<p>   接下来该进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解一下Maven是什么，以及它可以拿来干嘛。</p>
+        <p>   最近正好需要用到Java来做一个web项目，好久也没接触Java了，正好趁着这个机会再熟悉熟悉Java。用Java来做web项目，配置是至关重要的，但也是相当繁琐的。不过好在自从servlet3.0与Spring出现之后，编写Java web已经变得比较简单了。不再需要那么多的xml配置，确实大大提高了生产力。</p>
+<p>   接下来进入主题了，主要还是用maven来构建一个web项目，首先还是先要来了解一下Maven是什么，以及它可以拿来干嘛。</p>
 <blockquote>
 <p>Maven 其实是很多东西，Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。Maven 有一个生命周期，当你运行 mvn install 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。此外，Maven能够很方便的帮你管理项目报告，生成站点，管理JAR文件，等等。</p>
 </blockquote>
@@ -487,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/knowledge/vim常用命令/" rel="next" title="vim常用命令">
-                <i class="fa fa-chevron-left"></i> vim常用命令
+              <a href="/knowledge/vim常用命令/" rel="next" title="Vim 常用命令">
+                <i class="fa fa-chevron-left"></i> Vim 常用命令
               </a>
             
           </div>
@@ -603,7 +603,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -644,7 +644,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

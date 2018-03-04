@@ -103,19 +103,19 @@
   <meta name="keywords" content="C/C++," />
 
 
-<meta name="description" content="越往深处学越感觉底层的重要性，在受不了上层无穷多的新武器的学习之后，打算再潜心修炼一下基本功。正好看到了一个比较有趣的关于单向链表删除的问题，下来就来细细剖析这个问题。 如果对二级指针不太清楚的同学，可以查看我之前写的关于二级指针的文章。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操作。但是这样做不好的地">
+<meta name="description" content="越往后学越发感受到 C 语言的强大，我想这也正是它风靡几十年不倒的原因吧！而学习 C 语言，最重要也是最强大的莫过于它的指针了。今天正好看到了一个比较有趣的关于单向链表删除的问题，下来就来详细剖析这个问题。 二级指针在之前的一篇关于二级指针的文章里有详细谈到。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操">
 <meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二级指针操纵单向链表">
 <meta property="og:url" content="http://jihong.xyz/programming/二级指针操纵单向链表/index.html">
 <meta property="og:site_name" content="三鹿伴我长大&#39;s blog">
-<meta property="og:description" content="越往深处学越感觉底层的重要性，在受不了上层无穷多的新武器的学习之后，打算再潜心修炼一下基本功。正好看到了一个比较有趣的关于单向链表删除的问题，下来就来细细剖析这个问题。 如果对二级指针不太清楚的同学，可以查看我之前写的关于二级指针的文章。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操作。但是这样做不好的地">
+<meta property="og:description" content="越往后学越发感受到 C 语言的强大，我想这也正是它风靡几十年不倒的原因吧！而学习 C 语言，最重要也是最强大的莫过于它的指针了。今天正好看到了一个比较有趣的关于单向链表删除的问题，下来就来详细剖析这个问题。 二级指针在之前的一篇关于二级指针的文章里有详细谈到。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-10-10-19%3A31%3A33.jpg">
-<meta property="og:updated_time" content="2016-10-10T12:07:06.000Z">
+<meta property="og:updated_time" content="2018-03-04T07:37:57.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二级指针操纵单向链表">
-<meta name="twitter:description" content="越往深处学越感觉底层的重要性，在受不了上层无穷多的新武器的学习之后，打算再潜心修炼一下基本功。正好看到了一个比较有趣的关于单向链表删除的问题，下来就来细细剖析这个问题。 如果对二级指针不太清楚的同学，可以查看我之前写的关于二级指针的文章。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操作。但是这样做不好的地">
+<meta name="twitter:description" content="越往后学越发感受到 C 语言的强大，我想这也正是它风靡几十年不倒的原因吧！而学习 C 语言，最重要也是最强大的莫过于它的指针了。今天正好看到了一个比较有趣的关于单向链表删除的问题，下来就来详细剖析这个问题。 二级指针在之前的一篇关于二级指针的文章里有详细谈到。 一般来说，在单项链表中要删除当前curr节点时，只需要令prev-&amp;gt;next = next，再free(curr)就完成了这个删除操">
 <meta name="twitter:image" content="http://7xpajj.com1.z0.glb.clouddn.com/2016-10-10-19%3A31%3A33.jpg">
 
 
@@ -407,8 +407,8 @@
       
 
       
-        <p>越往深处学越感觉底层的重要性，在受不了上层无穷多的新武器的学习之后，打算再潜心修炼一下基本功。正好看到了一个比较有趣的关于单向链表删除的问题，下来就来细细剖析这个问题。</p>
-<p>如果对二级指针不太清楚的同学，可以查看我之前写的关于<a href="/programming/指针的指针——二级指针/">二级指针</a>的文章。</p>
+        <p>越往后学越发感受到 C 语言的强大，我想这也正是它风靡几十年不倒的原因吧！而学习 C 语言，最重要也是最强大的莫过于它的指针了。今天正好看到了一个比较有趣的关于单向链表删除的问题，下来就来详细剖析这个问题。</p>
+<p>二级指针在之前的一篇关于<a href="/programming/指针的指针——二级指针/">二级指针</a>的文章里有详细谈到。</p>
 <p>一般来说，在单项链表中要删除当前curr节点时，只需要令<code>prev-&gt;next = next</code>，再<code>free(curr)</code>就完成了这个删除操作。但是这样做不好的地方是我们必然要维护一个previous先序结点，且在每次判断时还需要区分当前结点是否是头节点，如果是头节点在删除之前还要令<code>head = next</code>。完整的代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> node&#123;</div><div class="line">    <span class="keyword">struct</span> node * next;</div><div class="line">    ....</div><div class="line">&#125; node;</div><div class="line"><span class="comment">//给bool(*)(node const)的类型函数指针取一个别名为remove_fn </span></div><div class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">bool</span> <span class="params">(* remove_fn)</span><span class="params">(node <span class="keyword">const</span> * v)</span></span>;</div><div class="line"> </div><div class="line"><span class="comment">// Remove all nodes from the supplied list for which the</span></div><div class="line"><span class="comment">// supplied remove function returns true.</span></div><div class="line"><span class="comment">// Returns the new head of the list.</span></div><div class="line"><span class="function">node * <span class="title">remove_if</span><span class="params">(node * head, remove_fn rm)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span> (node * prev = <span class="literal">NULL</span>, * curr = head; curr != <span class="literal">NULL</span>; )&#123;</div><div class="line">        node * <span class="keyword">const</span> next = curr-&gt;next;</div><div class="line">        <span class="keyword">if</span> (rm(curr))&#123;</div><div class="line">            <span class="keyword">if</span> (prev)</div><div class="line">                prev-&gt;next = next;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                head = next;</div><div class="line">            <span class="built_in">free</span>(curr);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            prev = curr;</div><div class="line">            </div><div class="line">        curr = next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -583,7 +583,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -624,7 +624,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
